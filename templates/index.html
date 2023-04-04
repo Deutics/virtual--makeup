@@ -1,0 +1,27 @@
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8  offset-lg-2">
+                <h3 class="mt-5">Live Streaming</h3>
+                <img id="video" src="" width="50%">
+                <br>
+                <button id="start" type="button" onclick="startStream()">Start Stream</button>
+                <button id="stop" type="button" onclick="stopStream()">Stop Stream</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var video = document.getElementById("video");
+        var startButton = document.getElementById("start");
+        var stopButton = document.getElementById("stop");
+
+        function startStream() {
+            video.src = "{{ url_for('video_feed') }}";
+        }
+
+        function stopStream() {
+            video.src = "";
+            fetch('/stop_stream');
+        }
+    </script>
+</body>
