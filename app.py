@@ -15,7 +15,7 @@ def apply_lip(image, landmarks, color=(0, 255, 0)):
     # Extract the x and y coordinates of the landmarks corresponding to the lips
     lips_landmarks_upper = [61, 185, 40, 39, 37, 0, 267, 270, 409, 291]
     lips_landmarks_lower = [61, 146, 84, 17, 314, 405, 321, 375, 291]
-
+    # coords
     x_coords_upper, y_coords_upper = [], []
     x_coords_lower, y_coords_lower = [], []
     for landmark_idx in lips_landmarks_upper:
