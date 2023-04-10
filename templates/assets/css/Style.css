@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+body {
+  overflow-x: hidden;
+}
+.container {
+  width: 98%;
+  background-color: black;
+  border-radius: 15px;
+  height: 94vh;
+  padding: 10px;
+}
+.main {
+  width: 50%;
+  display: flex;
+  /* margin: 20px 0px 10px 50px; */
+  height: 93vh;
+  margin: auto;
+  border-radius: 15px;
+  overflow-x: hidden;
+  border: 1px solid gray;
+  overflow-y: hidden;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: auto;
+}
+.img {
+  width: 300px;
+  height: 200px;
+}
+.column {
+  width: 340px;
+  height: 20%;
+  position: relative;
+  border: 1px solid gray;
+  text-align: center;
+}
+.insidecolumn > p {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 0px;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  align-items: center;
+}
+.insidecolumn > span {
+  font-size: 12px;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 10px;
+  color: white;
+}
+.columns {
+  width: 340px;
+  height: 80px;
+  border: 1px solid gray;
+  text-align: center;
+}
+.background {
+  background-image: url("../images/img9.png");
+  background-size: cover;
+  background-position: center;
+  height: 87.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+}
+.background > img {
+  width: 100%;
+  height: 500px;
+}
+.footer {
+  width: 100%;
+  height: 12.5%;
+  background-color: #403f3f;
+}
+.footer > p {
+  font-size: 20px;
+  font-weight: 700px;
+  margin: 10px 10px;
+  color: white;
+}
+.icons {
+  display: flex;
+  flex-direction: row;
+
+  text-align: center;
+  position: absolute;
+}
+.circle {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  background-color: black;
+  align-items: center;
+  justify-content: center;
+}
+.circle > img {
+  width: 15px;
+}
+.icon {
+  height: 25px;
+  margin-left: 20px;
+}
+.small {
+  width: 340px;
+  height: 3%;
+  position: relative;
+  border-bottom: 1px solid gray;
+  text-align: center;
+}
+.inside > span {
+  color: white;
+  font-size: 8px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.biglipstick {
+  width: 340px;
+  height: 80%;
+  position: relative;
+  border-bottom: 1px solid gray;
+  text-align: center;
+}
+.button {
+  background-color: red;
+  color: white;
+  margin-top: 70px;
+  height: 30px;
+  width: 200px;
+  border: 0px;
+  border-radius: 5px;
+}
+#myDiv {
+  margin-left: 10px;
+  height: 300px;
+}
+@media (min-width: 768px) and (max-width: 1068px) {
+  .left,
+  .column,
+  .columns {
+    width: 250px;
+  }
+}
+@media (min-width: 1920px) {
+  .biglipstick {
+    width: 340px;
+    height: 550px;
+    position: relative;
+    border-bottom: 1px solid gray;
+    text-align: center;
+  }
+  .small {
+    width: 340px;
+    height: 20%;
+    border-bottom: 1px solid gray;
+    text-align: center;
+  }
+  .button {
+    margin-bottom: 10px;
+  }
+  .inside > span {
+    color: white;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 700;
+    text-align: center;
+  }
+}
