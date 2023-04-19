@@ -1,0 +1,321 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+html {
+  font-size: 10px;
+}
+* {
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  font-family: "Roboto", "sans-serif";
+}
+body {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.container {
+  height: 94vh;
+  padding: 1rem;
+}
+.row {
+  width:50%;
+  height:93vh;
+  border-radius: 1.5rem;
+  border: 1px solid gray;
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+}
+.column {
+  width: 50rem;
+  height: auto;
+}
+.textcolumn {
+  display: flex;
+  flex-direction: column;
+}
+
+/* index page left image height */
+.insidecolumns {
+  height: 7.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid gray;
+}
+.insidecolumns > .text {
+  color: #fff;
+  font-size: 1.5rem;
+}
+a {
+  text-decoration: none;
+}
+.insidecolumns a > .text {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.5rem;
+}
+/* recomendation page left image */
+.insidecolumn {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid gray;
+}
+.insidelipstick {
+  height: 46rem;
+}
+.insidecolumn > .text {
+  font-size: 1.5rem;
+  color: white;
+}
+.insidelipstick > button {
+  width: 25rem;
+  height: 3.5rem;
+  margin: 2% 10%;
+  background-color: red;
+  border-radius: 5px;
+  color: white;
+  border: 0px;
+}
+.insidelipstick > .text {
+  font-size: 1.2rem;
+  display: flex;
+  color: white;
+  justify-content: center;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.columns {
+  width: 100%;
+  height: 55rem;
+  background-color: aliceblue;
+
+  /*background-image:url('{{ url_for('video_feed') }}');*/
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.footer {
+  width: 100%;
+  height: 7.2rem;
+  background-color: #403f3f;
+}
+.footer > span {
+  padding: 2rem;
+  color: white;
+  font-size: 2rem;
+}
+.icon {
+  margin: 0rem 2rem;
+}
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  top: 88.5%;
+}
+.circle {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  background-color: black;
+  align-items: center;
+  justify-content: center;
+}
+.circle > img {
+  width: 15px;
+}
+/* js file css code */
+
+.line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.line > p {
+  color: #fff;
+  font-size: 1rem;
+}
+.colors {
+  display: flex;
+  flex-direction: row;
+}
+
+.color {
+  width: 25px;
+  margin-left: 20px;
+  border-radius: 15px;
+  height: 25px;
+  cursor: pointer;
+}
+/* iphone SE media query */
+@media (min-width: 320px) and (max-width: 375px) {
+  .row {
+    width: 35rem;
+    height: max-content;
+  }
+  .column {
+    width: 25rem;
+  }
+.insidecolumn{
+  height:3.72rem;
+}
+  .insidecolumns {
+    height: 7.72rem;
+  }
+  .insidecolumns > .text {
+    font-size: 1.3rem;
+  }
+  .columns {
+    height: 55.5rem;
+  }
+  .insidelipstick {
+    height: 35rem;
+  }
+  .insidelipstick > button {
+    width: 12rem;
+    height: 3.5rem;
+    margin: 12% 10%;
+  }
+  /* js file styling */
+  .color {
+    height: 15px;
+    width: 15px;
+    margin-left: 5px;
+  }
+  .line {
+    margin-bottom: 2px;
+  }
+  .line > p {
+    font-size: 1.2rem;
+  }
+  .footer {
+    height: 8rem;
+  }
+}
+/* iphone 12 pro media query */
+@media (min-width: 376px) and (max-width: 413px) {
+  .row {
+    width: 35rem;
+    height: max-content;
+  }
+  .column {
+    width: 25rem;
+  }
+  /* index page left column */
+  .insidecolumns {
+    height: 10rem;
+  }
+  .insidecolumns > .text {
+    font-size: 1.3rem;
+  }
+  .columns {
+    height: 74.5rem;
+  }
+  .insidelipstick {
+    height: 40rem;
+  }
+  .insidelipstick > button {
+    width: 12rem;
+    height: 3.5rem;
+    margin: 12% 10%;
+  }
+  /* recomendation page left column in which images  */
+  .insidecolumn {
+    height: 5.5rem;
+  }
+  /* js file styling */
+  .color {
+    height: 15px;
+    width: 15px;
+    margin-left: 5px;
+  }
+  .line {
+    margin-bottom: 3px;
+  }
+  .line > p {
+    font-size: 1.5rem;
+  }
+}
+/* iphone XR media query */
+@media (min-width: 414px) and (max-width: 480px) {
+  .row {
+    width: 38rem;
+    height: max-content;
+  }
+  .column {
+    width: 25rem;
+  }
+  /* index page left column */
+  .insidecolumns {
+    height: 10.5rem;
+  }
+  .insidecolumns > .text {
+    font-size: 1.2rem;
+  }
+  .columns {
+    height: 77rem;
+  }
+  .insidelipstick {
+    height: 40rem;
+  }
+  .insidelipstick > button {
+    width: 12rem;
+    height: 3.5rem;
+    margin: 12% 10%;
+  }
+  /* recomendation page left column in which images  */
+  .insidecolumn {
+    height: 6.1rem;
+  }
+  .insidecolumn > .text {
+    font-size: 1.6rem;
+  }
+  /* js file styling */
+  .color {
+    height: 15px;
+    width: 15px;
+    margin-left: 5px;
+  }
+  .line {
+    margin-bottom: 3px;
+  }
+  .line > p {
+    font-size: 1.5rem;
+  }
+}
+
+/* ipad mini */
+@media (min-width: 481px) and (max-width: 768px) {
+  .row {
+    width: 50rem;
+    height: max-content;
+  }
+  .insidelipstick > button {
+    margin: 5% 10%;
+  }
+}
+/* ipad air */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .row {
+    width: 70rem;
+    height: max-content;
+  }
+  .insidelipstick > button {
+    margin: 5% 10%;
+  }
+}

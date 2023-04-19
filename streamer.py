@@ -17,7 +17,6 @@ class Streamer:
         self.streaming = False
 
     def get_frame(self):
-
         if not self.streaming:
             return None
         ret, frame = self.web_stream.read()

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, redirect
 from streamer import Streamer
 from landmarks_extractor import LandmarksExtractor
 from apply_makeup import ApplyMakeup
@@ -50,7 +50,6 @@ def index():
 
 @app.route('/video_feed')
 def video_feed():
-
     return Response(generate_frames(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
@@ -59,6 +58,16 @@ def video_feed():
 def stop_stream():
     streamer.stop_streaming()
     return 'Stopped streaming'
+
+
+@app.route('/recommendation')
+def recommendation():
+    return render_template('recommendation.html')
+
+
+@app.route('/recommendation_mask')
+def recommendation_mask():
+    return redirect('/recommendation')
 
 
 if __name__ == '__main__':
