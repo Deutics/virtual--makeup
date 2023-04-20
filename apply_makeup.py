@@ -33,6 +33,8 @@ def apply_color(image, face_landmarks,  landmarks_1, landmarks_2, color):
 
 class ApplyMakeup:
     def __init__(self):
+        self.lipstick_color = None
+
         self.left_concealer_landmarks = [133, 243, 244, 128, 121, 120, 119, 118, 117, 111,
                                          35, 226, 130, 163, 144, 145, 153, 154, 155]
         self.right_concealer_landmarks = [362, 463, 464, 357, 350, 349, 348, 347, 346, 340, 265,

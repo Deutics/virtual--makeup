@@ -1,4 +1,6 @@
-from flask import Flask, render_template, Response, redirect
+
+
+from flask import Flask, render_template, Response, redirect, request
 from streamer import Streamer
 from landmarks_extractor import LandmarksExtractor
 from apply_makeup import ApplyMakeup
@@ -10,13 +12,14 @@ streamer = Streamer()
 landmarks_extractor = LandmarksExtractor()
 apply_makeup = ApplyMakeup()
 
-color = (128, 128, 128)
+color = (0, 0, 255)
 
 
 def generate_frames():
+
     # image weights
-    alpha = 0.5
-    beta = 0.5
+    alpha = 0.7
+    beta = 0.3
     # initialize webcam
     streamer.initialize_streaming()
     while True:
@@ -26,14 +29,14 @@ def generate_frames():
 
             # Extract landmarks
             landmarks = landmarks_extractor.extract_landmarks(frame)
-            if landmarks:
+            if landmarks and apply_makeup.lipstick_color:
                 face_landmarks = landmarks[0]
                 face_landmarks = face_landmarks.landmark
                 # Apply makeup
-                frame = apply_makeup.apply_concealer(frame, face_landmarks, color, alpha, beta)
-                frame = apply_makeup.apply_blush(frame, face_landmarks, color, alpha, beta)
-                frame = apply_makeup.apply_lipstick(frame, face_landmarks, color, alpha, beta)
-                frame = apply_makeup.apply_eye_shade(frame, face_landmarks, color, alpha, beta)
+                # frame = apply_makeup.apply_concealer(frame, face_landmarks, color, alpha, beta)
+                # frame = apply_makeup.apply_blush(frame, face_landmarks, color, alpha, beta)
+                frame = apply_makeup.apply_lipstick(frame, face_landmarks, apply_makeup.lipstick_color, alpha, beta)
+                # frame = apply_makeup.apply_eye_shade(frame, face_landmarks, color, alpha, beta)
                 # frame = apply_makeup.apply_foundation(frame, face_landmarks, color, alpha, beta)
 
             # Convert the frame to bytes and yield it to the response
@@ -68,6 +71,16 @@ def recommendation():
 @app.route('/recommendation_mask')
 def recommendation_mask():
     return redirect('/recommendation')
+
+
+@app.route('/recommendation_data', methods=['POST'])
+def recommendation_data():
+    lipstick_color = request.form.get("lipstick_color")
+    lipstick_color = tuple(map(int, lipstick_color.strip("()").split(",")))
+    reversed_color = lipstick_color[::-1]
+    apply_makeup.lipstick_color = reversed_color
+
+    return "Data Recieved"
 
 
 if __name__ == '__main__':
