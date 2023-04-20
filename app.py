@@ -12,7 +12,6 @@ streamer = Streamer()
 landmarks_extractor = LandmarksExtractor()
 apply_makeup = ApplyMakeup()
 
-color = (0, 0, 255)
 
 
 def generate_frames():
@@ -36,7 +35,7 @@ def generate_frames():
                 # frame = apply_makeup.apply_concealer(frame, face_landmarks, color, alpha, beta)
                 # frame = apply_makeup.apply_blush(frame, face_landmarks, color, alpha, beta)
                 frame = apply_makeup.apply_lipstick(frame, face_landmarks, apply_makeup.lipstick_color, alpha, beta)
-                # frame = apply_makeup.apply_eye_shade(frame, face_landmarks, color, alpha, beta)
+                frame = apply_makeup.apply_eye_shade(frame, face_landmarks, apply_makeup.lipstick_color, 0.9, 0.1)
                 # frame = apply_makeup.apply_foundation(frame, face_landmarks, color, alpha, beta)
 
             # Convert the frame to bytes and yield it to the response
