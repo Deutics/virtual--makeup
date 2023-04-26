@@ -1,17 +1,53 @@
-
-
-from flask import Flask, render_template, Response, redirect, request
+from flask import Flask, render_template, Response, request, redirect
 from streamer import Streamer
 from landmarks_extractor import LandmarksExtractor
 from apply_makeup import ApplyMakeup
+
 import cv2
 
-app = Flask(__name__)
 
 streamer = Streamer()
 landmarks_extractor = LandmarksExtractor()
 apply_makeup = ApplyMakeup()
 
+
+class MakeupRecommendationApp:
+    def __init__(self):
+        self.app = Flask(__name__)
+        self.app.add_url_rule('/', view_func=self.index)
+        self.app.add_url_rule('/video_feed', view_func=self.video_feed)
+        self.app.add_url_rule('/recommendation', view_func=self.recommendation)
+        self.app.add_url_rule('/recommendation_mask', view_func=self.recommendation_mask)
+        self.app.add_url_rule('/recommendation_data', view_func=self.recommendation_data, methods=['POST'])
+
+    def run(self, *args, **kwargs):
+        self.app.run(*args, **kwargs)
+
+    @staticmethod
+    def index():
+        return render_template('index.html')
+
+    @staticmethod
+    def video_feed():
+        return Response(generate_frames(),
+                        mimetype='multipart/x-mixed-replace; boundary=frame')
+
+    @staticmethod
+    def recommendation():
+        return render_template('recommendation.html')
+
+    @staticmethod
+    def recommendation_mask():
+        return redirect('/recommendation')
+
+    @staticmethod
+    def recommendation_data():
+        lipstick_color = request.form.get("lipstick_color")
+        lipstick_color = tuple(map(int, lipstick_color.strip("()").split(",")))
+        reversed_color = lipstick_color[::-1]
+        apply_makeup.lipstick_color = reversed_color
+
+        return "Data Recieved"
 
 def generate_frames():
 
@@ -42,44 +78,3 @@ def generate_frames():
             frame_bytes = buffer.tobytes()
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
-
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-
-@app.route('/video_feed')
-def video_feed():
-    return Response(generate_frames(),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
-
-
-@app.route('/stop_stream')
-def stop_stream():
-    streamer.stop_streaming()
-    return 'Stopped streaming'
-
-
-@app.route('/recommendation')
-def recommendation():
-    return render_template('recommendation.html')
-
-
-@app.route('/recommendation_mask')
-def recommendation_mask():
-    return redirect('/recommendation')
-
-
-@app.route('/recommendation_data', methods=['POST'])
-def recommendation_data():
-    lipstick_color = request.form.get("lipstick_color")
-    lipstick_color = tuple(map(int, lipstick_color.strip("()").split(",")))
-    reversed_color = lipstick_color[::-1]
-    apply_makeup.lipstick_color = reversed_color
-
-    return "Data Recieved"
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
