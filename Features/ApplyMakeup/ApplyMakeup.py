@@ -85,4 +85,3 @@ class ApplyMakeup:
     #     filtered_image = cv2.addWeighted(image, alpha, mask, beta, 0)
     #
     #     return filtered_image
-

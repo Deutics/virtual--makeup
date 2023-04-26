@@ -1,4 +1,4 @@
-from app2 import MakeupRecommendationApp
+from app import MakeupRecommendationApp
 
 
 my_app = MakeupRecommendationApp()
