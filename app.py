@@ -1,10 +1,11 @@
 import cv2
 from flask import Flask, render_template, Response, request, redirect
+import time
 
 from Streamer.Streamer import Streamer
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
 from Features.ApplyMakeup.ApplyMakeup import ApplyMakeup
-
+from Features.ImageSaver.ImageSaver import ImageSaver
 
 class MakeupRecommendationApp:
     def __init__(self):
@@ -18,6 +19,7 @@ class MakeupRecommendationApp:
         self.app.add_url_rule('/recommendation', view_func=self.recommendation)
         self.app.add_url_rule('/recommendation_mask', view_func=self.recommendation_mask)
         self.app.add_url_rule('/recommendation_data', view_func=self.recommendation_data, methods=['POST'])
+        self._time = None
 
     def run(self, *args, **kwargs):
         self.app.run(*args, **kwargs)
@@ -54,14 +56,25 @@ class MakeupRecommendationApp:
         self._streamer.initialize_streaming()
 
         while self._streamer.is_streaming:
+            if self._time is None:
+                self._time = time.time()
+
             # get frames one by one
             frame = self._streamer.get_frame()
 
             # Extract landmarks
             landmarks = self._landmarks_extractor.extract_landmarks(frame)
             if landmarks and self._apply_makeup.lipstick_color:
+
                 face_landmarks = landmarks[0]
                 face_landmarks = face_landmarks.landmark
+
+                if (time.time() - self._time) >= 20:
+                    if self._apply_makeup.lipstick_color:
+                        ImageSaver(frame=frame, color=self._apply_makeup.lipstick_color,
+                                   face_landmarks=face_landmarks).store_image()
+                        self._time = None
+
                 # Apply makeup
                 # frame = apply_makeup.apply_concealer(frame, face_landmarks, color, alpha, beta)
                 # frame = apply_makeup.apply_blush(frame, face_landmarks, color, alpha, beta)

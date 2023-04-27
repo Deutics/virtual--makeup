@@ -3,34 +3,6 @@ import numpy as np
 import cv2
 
 
-def apply_color(image, face_landmarks,  landmarks_1, landmarks_2, color):
-
-    # coords
-    x_coords_1, y_coords_1 = [], []
-    x_coords_2, y_coords_2 = [], []
-    for landmark_idx in landmarks_1:
-        landmark = face_landmarks[landmark_idx]
-        # landmarks coordinates
-        x = int(landmark.x * image.shape[1])
-        y = int(landmark.y * image.shape[0])
-        x_coords_1.append(x)
-        y_coords_1.append(y)
-    for landmark_idx in landmarks_2:
-        landmark = face_landmarks[landmark_idx]
-        # landmarks coordinates
-        x = int(landmark.x * image.shape[1])
-        y = int(landmark.y * image.shape[0])
-        x_coords_2.append(x)
-        y_coords_2.append(y)
-    mask = copy.deepcopy(image)
-    pts_1 = np.array([[(x_coords_1[i], y_coords_1[i]) for i in range(len(landmarks_1))]], np.int32)
-    pts_2 = np.array([[(x_coords_2[i], y_coords_2[i]) for i in range(len(landmarks_2))]], np.int32)
-    cv2.fillPoly(mask, pts_1, color)
-    cv2.fillPoly(mask, pts_2, color)
-
-    return mask
-
-
 class ApplyMakeup:
     def __init__(self):
         self.lipstick_color = None
@@ -57,28 +29,55 @@ class ApplyMakeup:
                                          173, 157, 158, 159, 160, 161, 246, 130]
 
     def apply_concealer(self, image, face_landmarks, color, alpha, beta):
-        mask = apply_color(image, face_landmarks, self.left_concealer_landmarks, self.right_concealer_landmarks, color)
+        mask = self._apply_color(image, face_landmarks, self.left_concealer_landmarks, self.right_concealer_landmarks, color)
         filtered_image = cv2.addWeighted(image, alpha, mask, beta, 0)
 
         return filtered_image
 
     def apply_lipstick(self, image, face_landmarks, color, alpha, beta):
-        mask = apply_color(image, face_landmarks, self.lower_lip_landmarks, self.upper_lip_landmarks, color)
+        mask = self._apply_color(image, face_landmarks, self.lower_lip_landmarks, self.upper_lip_landmarks, color)
         filtered_image = cv2.addWeighted(image, alpha, mask, beta, 0)
 
         return filtered_image
 
     def apply_blush(self, image, face_landmarks, color, alpha, beta):
-        mask = apply_color(image, face_landmarks, self.left_blush_landmarks, self.right_blush_landmarks, color)
+        mask = self._apply_color(image, face_landmarks, self.left_blush_landmarks, self.right_blush_landmarks, color)
         filtered_image = cv2.addWeighted(image, alpha, mask, beta, 0)
 
         return filtered_image
 
     def apply_eye_shade(self, image, face_landmarks, color, alpha, beta):
-        mask = apply_color(image, face_landmarks, self.left_eye_shade_landmarks, self.right_eye_shade_landmarks, color)
+        mask = self._apply_color(image, face_landmarks, self.left_eye_shade_landmarks, self.right_eye_shade_landmarks, color)
         filtered_image = cv2.addWeighted(image, alpha, mask, beta, 0)
 
         return filtered_image
+
+    @staticmethod
+    def _apply_color(image, face_landmarks, landmarks_1, landmarks_2, color):
+        # cords
+        x_cords_1, y_cords_1 = [], []
+        x_cords_2, y_cords_2 = [], []
+        for landmark_idx in landmarks_1:
+            landmark = face_landmarks[landmark_idx]
+            # landmarks coordinates
+            x = int(landmark.x * image.shape[1])
+            y = int(landmark.y * image.shape[0])
+            x_cords_1.append(x)
+            y_cords_1.append(y)
+        for landmark_idx in landmarks_2:
+            landmark = face_landmarks[landmark_idx]
+            # landmarks coordinates
+            x = int(landmark.x * image.shape[1])
+            y = int(landmark.y * image.shape[0])
+            x_cords_2.append(x)
+            y_cords_2.append(y)
+        mask = copy.deepcopy(image)
+        pts_1 = np.array([[(x_cords_1[i], y_cords_1[i]) for i in range(len(landmarks_1))]], np.int32)
+        pts_2 = np.array([[(x_cords_2[i], y_cords_2[i]) for i in range(len(landmarks_2))]], np.int32)
+        cv2.fillPoly(mask, pts_1, color)
+        cv2.fillPoly(mask, pts_2, color)
+
+        return mask
 
     # def apply_foundation(self, image, face_landmarks, color, alpha, beta):
     #     mask = apply_color(image, face_landmarks, self.foundation_landmarks, self.foundation_landmarks, color)

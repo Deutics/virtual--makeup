@@ -1,5 +1,8 @@
 from app import MakeupRecommendationApp
 
 
-my_app = MakeupRecommendationApp()
-my_app.run()
+# Main Function
+if __name__ == '__main__':
+
+    my_app = MakeupRecommendationApp()
+    my_app.run()
