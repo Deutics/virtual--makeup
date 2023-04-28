@@ -1,11 +1,13 @@
 import cv2
 from flask import Flask, render_template, Response, request, redirect
 import time
+import copy
 
 from Streamer.Streamer import Streamer
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
 from Features.ApplyMakeup.ApplyMakeup import ApplyMakeup
 from Features.ImageSaver.ImageSaver import ImageSaver
+
 
 class MakeupRecommendationApp:
     def __init__(self):
@@ -69,18 +71,22 @@ class MakeupRecommendationApp:
                 face_landmarks = landmarks[0]
                 face_landmarks = face_landmarks.landmark
 
-                if (time.time() - self._time) >= 20:
+                if (time.time() - self._time) >= 3:
                     if self._apply_makeup.lipstick_color:
-                        ImageSaver(frame=frame, color=self._apply_makeup.lipstick_color,
-                                   face_landmarks=face_landmarks).store_image()
+                        ImageSaver(frame=copy.deepcopy(frame), color=self._apply_makeup.lipstick_color)\
+                            .store_image()
                         self._time = None
 
                 # Apply makeup
-                # frame = apply_makeup.apply_concealer(frame, face_landmarks, color, alpha, beta)
-                # frame = apply_makeup.apply_blush(frame, face_landmarks, color, alpha, beta)
-                frame = self._apply_makeup.apply_lipstick(frame, face_landmarks, self._apply_makeup.lipstick_color, alpha, beta)
-                frame = self._apply_makeup.apply_eye_shade(frame, face_landmarks, self._apply_makeup.lipstick_color, 0.9, 0.1)
-                # frame = apply_makeup.apply_foundation(frame, face_landmarks, color, alpha, beta)
+                # frame = self._apply_makeup.apply_concealer(frame, face_landmarks, color, alpha, beta)
+                frame = self._apply_makeup.apply_blush(frame, face_landmarks, self._apply_makeup.lipstick_color,
+                                                       alpha, beta)
+                frame = self._apply_makeup.apply_lipstick(frame, face_landmarks, self._apply_makeup.lipstick_color,
+                                                          alpha, beta)
+                frame = self._apply_makeup.apply_eye_shade(frame, face_landmarks, self._apply_makeup.lipstick_color,
+                                                           0.9, 0.1)
+                # frame = self._apply_makeup.apply_foundation(frame, face_landmarks, self._apply_makeup.lipstick_color,
+                #                                             alpha, beta)
 
             # Convert the frame to bytes and yield it to the response
             ret, buffer = cv2.imencode('.jpg', frame)
