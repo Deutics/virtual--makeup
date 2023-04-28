@@ -71,16 +71,16 @@ class MakeupRecommendationApp:
                 face_landmarks = landmarks[0]
                 face_landmarks = face_landmarks.landmark
 
-                if (time.time() - self._time) >= 3:
-                    if self._apply_makeup.lipstick_color:
-                        ImageSaver(frame=copy.deepcopy(frame), color=self._apply_makeup.lipstick_color)\
-                            .store_image()
-                        self._time = None
+                if (time.time() - self._time) >= 10:
+                    ImageSaver(frame=copy.deepcopy(frame), color=self._apply_makeup.lipstick_color).store_image()
+                    self._time = None
 
                 # Apply makeup
+
                 # frame = self._apply_makeup.apply_concealer(frame, face_landmarks, color, alpha, beta)
-                frame = self._apply_makeup.apply_blush(frame, face_landmarks, self._apply_makeup.lipstick_color,
-                                                       alpha, beta)
+                # frame = self._apply_makeup.apply_blush(frame, face_landmarks, self._apply_makeup.lipstick_color,
+                #                                        alpha, beta)
+
                 frame = self._apply_makeup.apply_lipstick(frame, face_landmarks, self._apply_makeup.lipstick_color,
                                                           alpha, beta)
                 frame = self._apply_makeup.apply_eye_shade(frame, face_landmarks, self._apply_makeup.lipstick_color,
