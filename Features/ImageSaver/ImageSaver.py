@@ -7,27 +7,6 @@ from Features.ApplyMakeup.ApplyMakeup import ApplyMakeup
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
 
 
-def apply_lipstick(data):
-    apply_makeup = ApplyMakeup()
-    # Extract landmarks
-    landmarks = LandmarksExtractor().extract_landmarks(data['frame'])
-    face_landmarks = landmarks[0]
-    face_landmarks = face_landmarks.landmark
-    frame = apply_makeup.apply_lipstick(image=copy.deepcopy(data['frame']), face_landmarks=face_landmarks,
-                                        color=data['color'], alpha=data['alpha'], beta=data['beta'])
-
-    save_image(frame=frame, image_path="Outputs\\{}\\Lipstick".format(data['timestamp']),
-               combination=(data['alpha'], data['beta']))
-
-
-def save_image(frame, image_path, combination):
-    if not os.path.exists(image_path):
-        os.makedirs(image_path)
-    if os.path.exists(image_path):
-        cv2.imwrite(os.path.join(image_path, '{}.jpg').format(combination), frame)
-        cv2.waitKey(1)
-
-
 class ImageSaver:
     def __init__(self, frame, color):
         self._image = frame
@@ -59,13 +38,28 @@ class ImageSaver:
     def store_image(self):
         pool = multiprocessing.Pool()
         pool.map(apply_lipstick, self._processed_dict)
+        pool.close()
 
-        # pool.close()
-        # # Create and start the worker processes
-        # processes = [
-        #     multiprocessing.Process(target=apply_lipstick, args=(data,))
-        #     for i, data in enumerate(self._processed_dict)
-        # ]
-        # for process in processes:
-        #     process.start()
+
+# Global Functions
+
+def apply_lipstick(data):
+    apply_makeup = ApplyMakeup()
+    # Extract landmarks
+    landmarks = LandmarksExtractor().extract_landmarks(data['frame'])
+    face_landmarks = landmarks[0]
+    face_landmarks = face_landmarks.landmark
+    frame = apply_makeup.apply_lipstick(image=copy.deepcopy(data['frame']), face_landmarks=face_landmarks,
+                                        color=data['color'], alpha=data['alpha'], beta=data['beta'])
+
+    save_image(frame=frame, image_path="Outputs\\{}\\Lipstick".format(data['timestamp']),
+               combination=(data['alpha'], data['beta']))
+
+
+def save_image(frame, image_path, combination):
+    if not os.path.exists(image_path):
+        os.makedirs(image_path)
+    cv2.imwrite(os.path.join(image_path, '{}.jpg').format(combination), frame)
+
+
 
