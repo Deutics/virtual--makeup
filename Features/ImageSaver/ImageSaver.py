@@ -8,41 +8,45 @@ from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
 
 
 class ImageSaver:
-    def __init__(self, frame, color):
-        self._image = frame
-        self._color = color
+    def __init__(self):
+        self._frame = None
+        self._color = None
+        self._time_stamp = None
+        self._processed_dict = None
+
         self._all_combinations = [(0.1, 0.9), (0.2, 0.8), (0.3, 0.7), (0.4, 0.6), (0.5, 0.5),
                                   (0.6, 0.4), (0.7, 0.3), (0.8, 0.2), (0.9, 0.1)]
 
-        # Convert the timestamp to the desired format
-        self._time_stamp = time.strftime('%d-%m-%Y\\%H-%M-%S', time.localtime(time.time()))
-
-        self._processed_dict = self.process_combinations()
-
-    def process_combinations(self):
-        result = []
+    def _prepare_data_combinations(self):
+        resultant_combinations = []
 
         for combination in self._all_combinations:
             alpha, beta = combination
             data = {
-                'frame': self._image,
+                'frame': self._frame,
                 'color': self._color,
                 'timestamp': self._time_stamp,
                 'alpha': alpha,
                 'beta': beta
             }
-            result.append(data)
+            resultant_combinations.append(data)
 
-        return result
+        return resultant_combinations
 
-    def store_image(self):
+    def create_multiprocess_pool(self, frame, color):
+        self._initialize_items(frame, color)
+        # create pool
         pool = multiprocessing.Pool()
         pool.map(apply_lipstick, self._processed_dict)
-        pool.close()
+
+    def _initialize_items(self, frame, color):
+        self._frame = frame
+        self._color = color
+        self._time_stamp = time.strftime('%d-%m-%Y\\%H-%M-%S', time.localtime(time.time()))
+        self._processed_dict = self._prepare_data_combinations()
 
 
 # Global Functions
-
 def apply_lipstick(data):
     apply_makeup = ApplyMakeup()
     # Extract landmarks
@@ -60,6 +64,3 @@ def save_image(frame, image_path, combination):
     if not os.path.exists(image_path):
         os.makedirs(image_path)
     cv2.imwrite(os.path.join(image_path, '{}.jpg').format(combination), frame)
-
-
-

@@ -2,6 +2,7 @@ import cv2
 from flask import Flask, render_template, Response, request, redirect
 import time
 import copy
+import multiprocessing
 
 from Streamer.Streamer import Streamer
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
@@ -14,6 +15,7 @@ class MakeupRecommendationApp:
         self._streamer = Streamer()
         self._landmarks_extractor = LandmarksExtractor()
         self._apply_makeup = ApplyMakeup()
+        self._image_saver = ImageSaver()
 
         self.app = Flask(__name__)
         self.app.add_url_rule('/', view_func=self.index)
@@ -72,7 +74,10 @@ class MakeupRecommendationApp:
                 face_landmarks = face_landmarks.landmark
 
                 if (time.time() - self._time) >= 10:
-                    ImageSaver(frame=copy.deepcopy(frame), color=self._apply_makeup.lipstick_color).store_image()
+                    process = multiprocessing.Process(target=self._image_saver.create_multiprocess_pool,
+                                                      args=(copy.deepcopy(frame), self._apply_makeup.lipstick_color))
+                    # Start the process
+                    process.start()
                     self._time = None
 
                 # Apply makeup
