@@ -228,7 +228,7 @@ window.onload = function () {
                 // NEW
                 data = colorDiv.style.backgroundColor
                 data = data.split("rgb")
-                data = "lipstick_color=" + data[1]
+                data = "foundation_color=" + data[1]
 
                 var xhttp = new XMLHttpRequest()
                 xhttp.open("POST", "/recommendation_data", true)
@@ -280,7 +280,7 @@ window.onload = function () {
                 // NEW
                 data = colorDiv.style.backgroundColor
                 data = data.split("rgb")
-                data = "lipstick_color=" + data[1]
+                data = "blush_color=" + data[1]
 
                 var xhttp = new XMLHttpRequest()
                 xhttp.open("POST", "/recommendation_data", true)
@@ -332,7 +332,7 @@ window.onload = function () {
                 // NEW
                 data = colorDiv.style.backgroundColor
                 data = data.split("rgb")
-                data = "lipstick_color=" + data[1]
+                data = "concealer_color=" + data[1]
 
                 var xhttp = new XMLHttpRequest()
                 xhttp.open("POST", "/recommendation_data", true)

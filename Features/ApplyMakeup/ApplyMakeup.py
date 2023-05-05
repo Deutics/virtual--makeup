@@ -19,6 +19,7 @@ class ApplyMakeup:
 
         self.left_blush_landmarks = [101, 117, 34, 227, 137, 207]
         self.right_blush_landmarks = [330, 264, 366, 427]
+
         self.foundation_landmarks = [251, 389, 356, 454, 323, 361, 288, 397, 365, 379,
                                      378, 400, 377, 152, 148, 176, 149, 150, 136, 172,
                                      58, 132, 127, 162, 21, 54, 103, 67, 109, 10, 338,
@@ -54,6 +55,8 @@ class ApplyMakeup:
 
     @staticmethod
     def _apply_color(image, face_landmarks, landmarks_1, landmarks_2, color):
+        if color == (0, 0, 0):
+            return image
         # cords
         x_cords_1, y_cords_1 = [], []
         x_cords_2, y_cords_2 = [], []
@@ -79,8 +82,8 @@ class ApplyMakeup:
 
         return mask
 
-    # def apply_foundation(self, image, face_landmarks, color, alpha, beta):
-    #     mask = apply_color(image, face_landmarks, self.foundation_landmarks, self.foundation_landmarks, color)
-    #     filtered_image = cv2.addWeighted(image, alpha, mask, beta, 0)
-    #
-    #     return filtered_image
+    def apply_foundation(self, image, face_landmarks, color, alpha, beta):
+        mask = self._apply_color(image, face_landmarks, self.foundation_landmarks, self.foundation_landmarks, color)
+        filtered_image = cv2.addWeighted(image, alpha, mask, beta, 0)
+
+        return filtered_image
