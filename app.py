@@ -10,6 +10,14 @@ from Features.ApplyMakeup.ApplyMakeup import ApplyMakeup
 from Features.ImageSaver.ImageSaver import ImageSaver
 
 
+colors = {
+    "lipstick_color": (0, 0, 0),
+    "eyeshadow_color": (0, 0, 0),
+    "blush_color": (0, 0, 0),
+    "foundation_color": (0, 0, 0),
+    "concealor_color": (0, 0, 0),
+}    
+
 class MakeupRecommendationApp:
     def __init__(self):
         self._streamer = Streamer()
@@ -44,12 +52,20 @@ class MakeupRecommendationApp:
     def recommendation_mask():
         return redirect('/recommendation')
 
-    def recommendation_data(self):
-        lipstick_color = request.form.get("lipstick_color")
-        lipstick_color = tuple(map(int, lipstick_color.strip("()").split(",")))
-        reversed_color = lipstick_color[::-1]
-        self._apply_makeup.lipstick_color = reversed_color
 
+
+
+    def get_rgb_color(self,color, index):
+        if color is not None:
+            color = tuple(map(int, color.strip("()").split(",")))
+            colors[index] = color[::-1]
+
+
+    def recommendation_data(self):
+        self.get_rgb_color(request.form.get("lipstick_color"), "lipstick_color")
+        self.get_rgb_color(request.form.get("eyeshadow_color"), "eyeshadow_color")
+        self._apply_makeup.lipstick_color = colors["lipstick_color"]
+        self._apply_makeup.eyeshadow_color = colors["eyeshadow_color"]
         return "Data Received"
 
     def generate_frames(self):
@@ -68,7 +84,7 @@ class MakeupRecommendationApp:
 
             # Extract landmarks
             landmarks = self._landmarks_extractor.extract_landmarks(frame)
-            if landmarks and self._apply_makeup.lipstick_color:
+            if landmarks and self._apply_makeup.lipstick_color and self._apply_makeup.eyeshadow_color:
 
                 face_landmarks = landmarks[0]
                 face_landmarks = face_landmarks.landmark
@@ -88,8 +104,10 @@ class MakeupRecommendationApp:
 
                 frame = self._apply_makeup.apply_lipstick(frame, face_landmarks, self._apply_makeup.lipstick_color,
                                                           alpha, beta)
-                frame = self._apply_makeup.apply_eye_shade(frame, face_landmarks, self._apply_makeup.lipstick_color,
+                frame = self._apply_makeup.apply_eye_shade(frame, face_landmarks, self._apply_makeup.eyeshadow_color,
                                                            0.9, 0.1)
+                                                # frame = self._apply_makeup.apply_concealer(frame, face_landmarks, self._apply_makeup.lipstick_color,
+                                                #            0.9, 0.1)
                 # frame = self._apply_makeup.apply_foundation(frame, face_landmarks, self._apply_makeup.lipstick_color,
                 #                                             alpha, beta)
 

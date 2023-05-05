@@ -1,321 +1,184 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
-html {
-  font-size: 10px;
-}
-* {
-  padding: 0px;
-  margin: 0px;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  font-family: "Roboto", "sans-serif";
-}
 body {
-  background-color: black;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
+    margin: 0;
 }
-.container {
-  height: 94vh;
-  padding: 1rem;
+.outerWrapper {
+    width: 100vw;
+    display: flex;
 }
-.row {
-  width:50%;
-  height:93vh;
-  border-radius: 1.5rem;
-  border: 1px solid gray;
-  display: flex;
-  margin: auto;
-  flex-direction: row;
-}
-.column {
-  width: 50rem;
-  height: auto;
-}
-.textcolumn {
-  display: flex;
-  flex-direction: column;
+.mainImage {
+    background-color: rgb(85, 38, 38);
+    height: 100vh;
+    width: 75vw;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    /* background-image: url("../img/samples.jpg"); */
 }
 
-/* index page left image height */
-.insidecolumns {
-  height: 7.5rem;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  border: 1px solid gray;
+.mainImage > img {
+    object-fit: fill;
 }
-.insidecolumns > .text {
-  color: #fff;
-  font-size: 1.5rem;
-}
-a {
-  text-decoration: none;
-}
-.insidecolumns a > .text {
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.5rem;
-}
-/* recomendation page left image */
-.insidecolumn {
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid gray;
-}
-.insidelipstick {
-  height: 46rem;
-}
-.insidecolumn > .text {
-  font-size: 1.5rem;
-  color: white;
-}
-.insidelipstick > button {
-  width: 25rem;
-  height: 3.5rem;
-  margin: 2% 10%;
-  background-color: red;
-  border-radius: 5px;
-  color: white;
-  border: 0px;
-}
-.insidelipstick > .text {
-  font-size: 1.2rem;
-  display: flex;
-  color: white;
-  justify-content: center;
-}
-.main {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-}
-.columns {
-  width: 100%;
-  height: 55rem;
-  background-color: aliceblue;
 
-  /*background-image:url('{{ url_for('video_feed') }}');*/
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+.sideBar {
+    max-width: 70vw;
+    width: 25vw;
+    height: 20vh;
+    display: none;
+
+    background-color: white;
 }
-.footer {
-  width: 100%;
-  height: 7.2rem;
-  background-color: #403f3f;
+
+.item__sidebar {
+    align-items: center;
+    text-align: center;
 }
-.footer > span {
-  padding: 2rem;
-  color: white;
-  font-size: 2rem;
-}
-.icon {
-  margin: 0rem 2rem;
-}
-.icons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  position: relative;
-  top: 88.5%;
-}
-.circle {
-  display: flex;
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  margin-bottom: 10px;
-  margin-left: 20px;
-  background-color: black;
-  align-items: center;
-  justify-content: center;
-}
-.circle > img {
-  width: 15px;
-}
-/* js file css code */
 
 .line {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+    margin-bottom: 10px;
 }
 .line > p {
-  color: #fff;
-  font-size: 1rem;
+    padding: 0;
+    margin: -4px 0;
 }
+
 .colors {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .color {
-  width: 25px;
-  margin-left: 20px;
-  border-radius: 15px;
-  height: 25px;
-  cursor: pointer;
-}
-/* iphone SE media query */
-@media (min-width: 320px) and (max-width: 375px) {
-  .row {
-    width: 35rem;
-    height: max-content;
-  }
-  .column {
-    width: 25rem;
-  }
-.insidecolumn{
-  height:3.72rem;
-}
-  .insidecolumns {
-    height: 7.72rem;
-  }
-  .insidecolumns > .text {
-    font-size: 1.3rem;
-  }
-  .columns {
-    height: 55.5rem;
-  }
-  .insidelipstick {
-    height: 35rem;
-  }
-  .insidelipstick > button {
-    width: 12rem;
-    height: 3.5rem;
-    margin: 12% 10%;
-  }
-  /* js file styling */
-  .color {
-    height: 15px;
-    width: 15px;
-    margin-left: 5px;
-  }
-  .line {
-    margin-bottom: 2px;
-  }
-  .line > p {
-    font-size: 1.2rem;
-  }
-  .footer {
-    height: 8rem;
-  }
-}
-/* iphone 12 pro media query */
-@media (min-width: 376px) and (max-width: 413px) {
-  .row {
-    width: 35rem;
-    height: max-content;
-  }
-  .column {
-    width: 25rem;
-  }
-  /* index page left column */
-  .insidecolumns {
-    height: 10rem;
-  }
-  .insidecolumns > .text {
-    font-size: 1.3rem;
-  }
-  .columns {
-    height: 74.5rem;
-  }
-  .insidelipstick {
-    height: 40rem;
-  }
-  .insidelipstick > button {
-    width: 12rem;
-    height: 3.5rem;
-    margin: 12% 10%;
-  }
-  /* recomendation page left column in which images  */
-  .insidecolumn {
-    height: 5.5rem;
-  }
-  /* js file styling */
-  .color {
-    height: 15px;
-    width: 15px;
-    margin-left: 5px;
-  }
-  .line {
-    margin-bottom: 3px;
-  }
-  .line > p {
-    font-size: 1.5rem;
-  }
-}
-/* iphone XR media query */
-@media (min-width: 414px) and (max-width: 480px) {
-  .row {
-    width: 38rem;
-    height: max-content;
-  }
-  .column {
-    width: 25rem;
-  }
-  /* index page left column */
-  .insidecolumns {
-    height: 10.5rem;
-  }
-  .insidecolumns > .text {
-    font-size: 1.2rem;
-  }
-  .columns {
-    height: 77rem;
-  }
-  .insidelipstick {
-    height: 40rem;
-  }
-  .insidelipstick > button {
-    width: 12rem;
-    height: 3.5rem;
-    margin: 12% 10%;
-  }
-  /* recomendation page left column in which images  */
-  .insidecolumn {
-    height: 6.1rem;
-  }
-  .insidecolumn > .text {
-    font-size: 1.6rem;
-  }
-  /* js file styling */
-  .color {
-    height: 15px;
-    width: 15px;
-    margin-left: 5px;
-  }
-  .line {
-    margin-bottom: 3px;
-  }
-  .line > p {
-    font-size: 1.5rem;
-  }
+    width: 18px;
+    margin-left: 10px;
+    border-radius: 50%;
+    height: 18px;
+    cursor: pointer;
+    box-shadow: inset 1px 1px 1px 1px #272727;
 }
 
-/* ipad mini */
-@media (min-width: 481px) and (max-width: 768px) {
-  .row {
-    width: 50rem;
-    height: max-content;
-  }
-  .insidelipstick > button {
-    margin: 5% 10%;
-  }
+.color:first-child {
+    margin-left: 0px;
 }
-/* ipad air */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .row {
-    width: 70rem;
-    height: max-content;
-  }
-  .insidelipstick > button {
-    margin: 5% 10%;
-  }
+
+.expanded {
+    height: 72vh;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid #d3d3d3;
+
+    cursor: pointer;
+    background-color: #1f2022;
+    color: #d3d3d3;
+    text-transform: uppercase;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.taptotry {
+    font-size: 8px;
+}
+
+.closed {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid #d3d3d3;
+    height: 20vh;
+    cursor: pointer;
+    background-color: #1f2022;
+    color: #d3d3d3;
+    text-transform: uppercase;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* #closed1 {
+    background-image: url("../static/img/concealer.png");
+}
+#closed2 {
+    background-image: url("../static/img/lipstickbg.png");
+}
+#closed3 {
+    background-image: url("../static/img/foundation.png");
+}
+#closed4 {
+    background-image: url("../static/img/blush.png");
+}
+#closed5 {
+    background-image: url("../static/img/eyebrowliner.png");
+}
+
+#expanded1 {
+    background-image: url("../static/img/concealer.png");
+}
+#expanded2 {
+    background-image: url("../static/img/lipstickbg.png");
+}
+#expanded3 {
+    background-image: url("../static/img/foundation.png");
+}
+#expanded4 {
+    background-image: url("../static/img/blush.png");
+}
+#expanded5 {
+    background-image: url("../static/img/eyebrowliner.png");
+} */
+
+.hamburger {
+    position: absolute;
+    top: 1%;
+    color: #fff;
+    left: 1%;
+}
+
+.cross {
+    display: none;
+    position: absolute;
+    top: 1%;
+    color: #fff;
+
+    left: 1%;
+}
+.toggle {
+    display: none;
+}
+@media only screen and (max-width: 786px) {
+    .toggle {
+        display: block;
+    }
+    .sideBar {
+        display: block;
+        position: absolute;
+        max-width: 50vw;
+        width: 50vw;
+    }
+    .mainImage {
+        width: 100vw;
+    }
+}
+
+@media screen and (min-width: 786px) {
+    .sideBar {
+        display: block;
+    }
 }
