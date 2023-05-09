@@ -138,9 +138,34 @@ let objects = [
     },
 ]
 
+let selectedColorsArray = [
+    { type: "lipstick", color: "#FD0000" },
+    { type: "foundation", color: "#FD0000" },
+    { type: "eyeShadow", color: "#FD0000" },
+    { type: "blush", color: "#FD0000" },
+    { type: "concealor", color: "#FD0000" },
+]
+
 window.onload = function () {
     if (window.innerWidth < 786) {
         handleCloseSideBar()
+    }
+
+    let selectedColors = document.getElementById("selectedColors")
+    for (let i = 0; i < selectedColorsArray.length; i++) {
+        let item = document.createElement("div")
+        item.classList.add("selectedColors_item")
+
+        let itemName = document.createElement("div")
+        let itemColor = document.createElement("div")
+        itemColor.style.backgroundColor = selectedColorsArray[i].color
+        itemColor.classList.add("selectedColors_item_color")
+
+        itemName.textContent = selectedColorsArray[i].type
+        item.appendChild(itemName)
+        item.appendChild(itemColor)
+
+        selectedColors.appendChild(item)
     }
 
     // lipstick
@@ -159,6 +184,7 @@ window.onload = function () {
         for (let j = 0; j < obj.colors.length; j++) {
             let colorDiv = document.createElement("div")
             colorDiv.classList.add("color")
+
             colorDiv.style.backgroundColor = obj.colors[j]
             // add click event listener to each color div
             colorDiv.addEventListener("click", function () {
@@ -167,6 +193,32 @@ window.onload = function () {
                 if (window.innerWidth < 786) {
                     handleCloseSideBar()
                 }
+
+                if (colorDiv.classList.contains("addborder")) {
+                    colorDiv.classList.remove("addborder")
+
+                    selectedColors = selectedColors.map((item) => {
+                        if (item.type === "lipstick") {
+                            return { type: "lipstick", color: "" }
+                        } else {
+                            return item
+                        }
+                    })
+                } else {
+                    colorDiv.classList.add("addborder")
+                    selectedColors = selectedColors.map((item) => {
+                        if (item.type === "lipstick") {
+                            return {
+                                type: "lipstick",
+                                color: colorDiv.style.backgroundColor,
+                            }
+                        } else {
+                            return item
+                        }
+                    })
+                }
+
+                console.log(selectedColors)
 
                 // NEW
                 data = colorDiv.style.backgroundColor
