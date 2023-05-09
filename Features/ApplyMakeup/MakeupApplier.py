@@ -56,13 +56,13 @@ class MakeupApplier:
         return image
 
     @staticmethod
-    def _create_makeup_mask(image, face_landmarks, landmarks, color):
+    def _create_makeup_mask(frame, face_landmarks, landmarks, color):
         if color == (0, 0, 0):
-            return image
+            return frame
 
-        mask = image.copy()
+        mask = frame.copy()
         for i, landmark in enumerate(landmarks):
-            points = np.array([[face_landmarks[idx].x * image.shape[1], face_landmarks[idx].y * image.shape[0]]
+            points = np.array([[face_landmarks[idx].x * frame.shape[1], face_landmarks[idx].y * frame.shape[0]]
                               for idx in landmark], np.int32)
 
             cv2.fillPoly(mask, [points], color)
