@@ -15,8 +15,9 @@ colors = {
     "eyeshadow_color": (0, 0, 0),
     "blush_color": (0, 0, 0),
     "foundation_color": (0, 0, 0),
-    "concealor_color": (0, 0, 0),
-}    
+    "concealer_color": (0, 0, 0),
+}
+
 
 class MakeupRecommendationApp:
     def __init__(self):
@@ -52,20 +53,26 @@ class MakeupRecommendationApp:
     def recommendation_mask():
         return redirect('/recommendation')
 
-
-
-
-    def get_rgb_color(self,color, index):
+    def get_rgb_color(self, color, index):
         if color is not None:
             color = tuple(map(int, color.strip("()").split(",")))
             colors[index] = color[::-1]
 
-
     def recommendation_data(self):
         self.get_rgb_color(request.form.get("lipstick_color"), "lipstick_color")
         self.get_rgb_color(request.form.get("eyeshadow_color"), "eyeshadow_color")
+        self.get_rgb_color(request.form.get("blush_color"), "blush_color")
+        self.get_rgb_color(request.form.get("concealer_color"), "concealer_color")
+        self.get_rgb_color(request.form.get("foundation_color"), "foundation_color")
+
+        # print(colors)
+
         self._apply_makeup.lipstick_color = colors["lipstick_color"]
         self._apply_makeup.eyeshadow_color = colors["eyeshadow_color"]
+        self._apply_makeup.blush_color = colors["blush_color"]
+        self._apply_makeup.blush_color = colors["concealer_color"]
+        self._apply_makeup.blush_color = colors["foundation_color"]
+
         return "Data Received"
 
     def generate_frames(self):
@@ -86,8 +93,7 @@ class MakeupRecommendationApp:
             landmarks = self._landmarks_extractor.extract_landmarks(frame)
             if landmarks and self._apply_makeup.lipstick_color and self._apply_makeup.eyeshadow_color:
 
-                face_landmarks = landmarks[0]
-                face_landmarks = face_landmarks.landmark
+                face_landmarks = landmarks[0].landmark
 
                 if (time.time() - self._time) >= 10:
                     process = multiprocessing.Process(target=self._image_saver.create_multiprocess_pool,
@@ -98,18 +104,15 @@ class MakeupRecommendationApp:
 
                 # Apply makeup
 
-                # frame = self._apply_makeup.apply_concealer(frame, face_landmarks, color, alpha, beta)
-                # frame = self._apply_makeup.apply_blush(frame, face_landmarks, self._apply_makeup.lipstick_color,
-                #                                        alpha, beta)
+                frame = self._apply_makeup.apply_concealer(frame, face_landmarks, colors["concealer_color"], 0.95, 0.05)
 
-                frame = self._apply_makeup.apply_lipstick(frame, face_landmarks, self._apply_makeup.lipstick_color,
-                                                          alpha, beta)
-                frame = self._apply_makeup.apply_eye_shade(frame, face_landmarks, self._apply_makeup.eyeshadow_color,
-                                                           0.9, 0.1)
-                                                # frame = self._apply_makeup.apply_concealer(frame, face_landmarks, self._apply_makeup.lipstick_color,
-                                                #            0.9, 0.1)
-                # frame = self._apply_makeup.apply_foundation(frame, face_landmarks, self._apply_makeup.lipstick_color,
-                #                                             alpha, beta)
+                frame = self._apply_makeup.apply_blush(frame, face_landmarks, colors["blush_color"], 0.95, 0.05)
+
+                frame = self._apply_makeup.apply_lipstick(frame, face_landmarks, colors["lipstick_color"], 0.8, 0.2)
+
+                frame = self._apply_makeup.apply_eye_shade(frame, face_landmarks, colors["eyeshadow_color"], 0.9, 0.1)
+
+                frame = self._apply_makeup.apply_foundation(frame, face_landmarks, colors["foundation_color"], 0.95, 0.05)
 
             # Convert the frame to bytes and yield it to the response
             ret, buffer = cv2.imencode('.jpg', frame)
