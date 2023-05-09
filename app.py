@@ -6,7 +6,7 @@ import multiprocessing
 
 from Streamer.Streamer import Streamer
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
-from Features.ApplyMakeup.ApplyMakeup import ApplyMakeup
+from Features.ApplyMakeup.MakeupApplier import MakeupApplier
 from Features.ImageSaver.ImageSaver import ImageSaver
 
 
@@ -23,7 +23,7 @@ class MakeupRecommendationApp:
     def __init__(self):
         self._streamer = Streamer()
         self._landmarks_extractor = LandmarksExtractor()
-        self._apply_makeup = ApplyMakeup()
+        self._apply_makeup = MakeupApplier()
         self._image_saver = ImageSaver()
 
         self.app = Flask(__name__)
@@ -53,7 +53,8 @@ class MakeupRecommendationApp:
     def recommendation_mask():
         return redirect('/recommendation')
 
-    def get_rgb_color(self, color, index):
+    @staticmethod
+    def get_rgb_color(color, index):
         if color is not None:
             color = tuple(map(int, color.strip("()").split(",")))
             colors[index] = color[::-1]
@@ -66,12 +67,11 @@ class MakeupRecommendationApp:
         self.get_rgb_color(request.form.get("foundation_color"), "foundation_color")
 
         # print(colors)
-
-        self._apply_makeup.lipstick_color = colors["lipstick_color"]
-        self._apply_makeup.eyeshadow_color = colors["eyeshadow_color"]
-        self._apply_makeup.blush_color = colors["blush_color"]
-        self._apply_makeup.blush_color = colors["concealer_color"]
-        self._apply_makeup.blush_color = colors["foundation_color"]
+        self._apply_makeup.makeup_items_data["Concealer"]["color"] = colors["concealer_color"]
+        self._apply_makeup.makeup_items_data["Lipstick"]["color"] = colors["lipstick_color"]
+        self._apply_makeup.makeup_items_data["Eye_shade"]["color"] = colors["eyeshadow_color"]
+        self._apply_makeup.makeup_items_data["Blush"]["color"] = colors["blush_color"]
+        self._apply_makeup.makeup_items_data["Foundation"]["color"] = colors["foundation_color"]
 
         return "Data Received"
 
@@ -79,10 +79,12 @@ class MakeupRecommendationApp:
         # image weights
         alpha = 0.7
         beta = 0.3
+
         # initialize webcam
         self._streamer.initialize_streaming()
 
         while self._streamer.is_streaming:
+            # initializing timer for saving images
             if self._time is None:
                 self._time = time.time()
 
@@ -91,28 +93,20 @@ class MakeupRecommendationApp:
 
             # Extract landmarks
             landmarks = self._landmarks_extractor.extract_landmarks(frame)
-            if landmarks and self._apply_makeup.lipstick_color and self._apply_makeup.eyeshadow_color:
 
+            if landmarks:
                 face_landmarks = landmarks[0].landmark
 
                 if (time.time() - self._time) >= 10:
                     process = multiprocessing.Process(target=self._image_saver.create_multiprocess_pool,
-                                                      args=(copy.deepcopy(frame), self._apply_makeup.lipstick_color))
+                                                      args=(copy.deepcopy(frame), self._apply_makeup.makeup_items_data))
+
                     # Start the process
                     process.start()
                     self._time = None
 
                 # Apply makeup
-
-                frame = self._apply_makeup.apply_concealer(frame, face_landmarks, colors["concealer_color"], 0.95, 0.05)
-
-                frame = self._apply_makeup.apply_blush(frame, face_landmarks, colors["blush_color"], 0.95, 0.05)
-
-                frame = self._apply_makeup.apply_lipstick(frame, face_landmarks, colors["lipstick_color"], 0.8, 0.2)
-
-                frame = self._apply_makeup.apply_eye_shade(frame, face_landmarks, colors["eyeshadow_color"], 0.9, 0.1)
-
-                frame = self._apply_makeup.apply_foundation(frame, face_landmarks, colors["foundation_color"], 0.95, 0.05)
+                frame = self._apply_makeup.apply_makeup_to_image(frame, face_landmarks)
 
             # Convert the frame to bytes and yield it to the response
             ret, buffer = cv2.imencode('.jpg', frame)

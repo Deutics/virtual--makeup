@@ -3,7 +3,7 @@ import os
 import cv2
 import time
 import copy
-from Features.ApplyMakeup.ApplyMakeup import ApplyMakeup
+from Features.ApplyMakeup.MakeupApplier import MakeupApplier
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
 
 
@@ -17,7 +17,7 @@ class ImageSaver:
         self._all_combinations = [(0.1, 0.9), (0.2, 0.8), (0.3, 0.7), (0.4, 0.6), (0.5, 0.5),
                                   (0.6, 0.4), (0.7, 0.3), (0.8, 0.2), (0.9, 0.1)]
 
-    def _prepare_data_combinations(self):
+    def _prepare_data_combinations(self, data):
         resultant_combinations = []
 
         for combination in self._all_combinations:
@@ -33,22 +33,21 @@ class ImageSaver:
 
         return resultant_combinations
 
-    def create_multiprocess_pool(self, frame, color):
-        self._initialize_items(frame, color)
+    def create_multiprocess_pool(self, frame, data):
+        self._initialize_items(frame, data)
         # create pool
         pool = multiprocessing.Pool()
         pool.map(apply_lipstick, self._processed_dict)
 
-    def _initialize_items(self, frame, color):
+    def _initialize_items(self, frame, data):
         self._frame = frame
-        self._color = color
         self._time_stamp = time.strftime('%d-%m-%Y\\%H-%M-%S', time.localtime(time.time()))
-        self._processed_dict = self._prepare_data_combinations()
+        self._processed_dict = self._prepare_data_combinations(data)
 
 
 # Global Functions
 def apply_lipstick(data):
-    apply_makeup = ApplyMakeup()
+    apply_makeup = MakeupApplier()
     # Extract landmarks
     landmarks = LandmarksExtractor().extract_landmarks(data['frame'])
     face_landmarks = landmarks[0]
