@@ -9,13 +9,12 @@ from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
 from Features.ApplyMakeup.MakeupApplier import MakeupApplier
 from Features.ImageSaver.ImageSaver import ImageSaver
 
-
 colors = {
-    "lipstick_color": (0, 0, 0),
-    "eyeshadow_color": (0, 0, 0),
-    "blush_color": (0, 0, 0),
-    "foundation_color": (0, 0, 0),
-    "concealer_color": (0, 0, 0),
+    "lipstick": (0, 0, 0),
+    "eye_shade": (0, 0, 0),
+    "blush": (0, 0, 0),
+    "foundation": (0, 0, 0),
+    "concealer": (0, 0, 0),
 }
 
 
@@ -60,25 +59,22 @@ class MakeupRecommendationApp:
             colors[index] = color[::-1]
 
     def recommendation_data(self):
-        self.get_rgb_color(request.form.get("lipstick_color"), "lipstick_color")
-        self.get_rgb_color(request.form.get("eyeshadow_color"), "eyeshadow_color")
-        self.get_rgb_color(request.form.get("blush_color"), "blush_color")
-        self.get_rgb_color(request.form.get("concealer_color"), "concealer_color")
-        self.get_rgb_color(request.form.get("foundation_color"), "foundation_color")
+        self.get_rgb_color(request.form.get("lipstick_color"), "lipstick")
+        self.get_rgb_color(request.form.get("eyeshadow_color"), "eye_shade")
+        self.get_rgb_color(request.form.get("blush_color"), "blush")
+        self.get_rgb_color(request.form.get("concealer_color"), "concealer")
+        self.get_rgb_color(request.form.get("foundation_color"), "foundation")
 
         # print(colors)
-        self._apply_makeup.makeup_items_data["Concealer"]["color"] = colors["concealer_color"]
-        self._apply_makeup.makeup_items_data["Lipstick"]["color"] = colors["lipstick_color"]
-        self._apply_makeup.makeup_items_data["Eye_shade"]["color"] = colors["eyeshadow_color"]
-        self._apply_makeup.makeup_items_data["Blush"]["color"] = colors["blush_color"]
-        self._apply_makeup.makeup_items_data["Foundation"]["color"] = colors["foundation_color"]
+        self._apply_makeup.makeup_items_data["Concealer"]["color"] = colors["concealer"]
+        self._apply_makeup.makeup_items_data["Lipstick"]["color"] = colors["lipstick"]
+        self._apply_makeup.makeup_items_data["Eye_shade"]["color"] = colors["eye_shade"]
+        self._apply_makeup.makeup_items_data["Blush"]["color"] = colors["blush"]
+        self._apply_makeup.makeup_items_data["Foundation"]["color"] = colors["foundation"]
 
         return "Data Received"
 
     def generate_frames(self):
-        # image weights
-        alpha = 0.7
-        beta = 0.3
 
         # initialize webcam
         self._streamer.initialize_streaming()
@@ -98,9 +94,9 @@ class MakeupRecommendationApp:
                 face_landmarks = landmarks[0].landmark
 
                 if (time.time() - self._time) >= 10:
-                    process = multiprocessing.Process(target=self._image_saver.create_multiprocess_pool,
-                                                      args=(copy.deepcopy(frame), self._apply_makeup.makeup_items_data))
 
+                    process = multiprocessing.Process(target=self._image_saver.create_multiprocess_pool,
+                                                      args=(copy.deepcopy(frame), colors))
                     # Start the process
                     process.start()
                     self._time = None

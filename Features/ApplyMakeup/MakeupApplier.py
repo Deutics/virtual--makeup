@@ -55,6 +55,18 @@ class MakeupApplier:
 
         return image
 
+    def apply_makeup_to_save(self, image, face_landmarks, features):
+
+        for key, feature in features.items():
+            mask = self._create_makeup_mask(image, face_landmarks,
+                                            feature["landmarks_id"],
+                                            feature["color"])
+
+            image = cv2.addWeighted(image, feature["alpha"],
+                                    mask, feature["beta"], 0)
+
+        return image
+
     @staticmethod
     def _create_makeup_mask(frame, face_landmarks, landmarks, color):
         if color == (0, 0, 0):

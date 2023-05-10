@@ -10,52 +10,58 @@ from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
 class ImageSaver:
     def __init__(self):
         self._frame = None
-        self._color = None
         self._time_stamp = None
         self._processed_dict = None
 
         self._all_combinations = [(0.1, 0.9), (0.2, 0.8), (0.3, 0.7), (0.4, 0.6), (0.5, 0.5),
-                                  (0.6, 0.4), (0.7, 0.3), (0.8, 0.2), (0.9, 0.1)]
+                                  (0.6, 0.4), (0.7, 0.3), (0.9, 0.1), (0.8, 0.2)]
 
-    def _prepare_data_combinations(self, data):
+    def _prepare_data_combinations(self, colors):
+
         resultant_combinations = []
-
-        for combination in self._all_combinations:
-            alpha, beta = combination
-            data = {
-                'frame': self._frame,
-                'color': self._color,
-                'timestamp': self._time_stamp,
-                'alpha': alpha,
-                'beta': beta
-            }
-            resultant_combinations.append(data)
-
+        for key, color in colors.items():
+            for combination in self._all_combinations:
+                makeup = MakeupApplier()
+                if color == (0, 0, 0):
+                    break
+                makeup.makeup_items_data[key.capitalize()]["color"] = color
+                makeup.makeup_items_data[key.capitalize()]["alpha"], \
+                    makeup.makeup_items_data[key.capitalize()]["beta"] = combination
+                temp = {
+                    'feature': key.capitalize(),
+                    'frame': self._frame,
+                    'timestamp': self._time_stamp,
+                    'data': makeup.makeup_items_data,
+                    'alpha': combination[0],
+                    'beta': combination[1]
+                }
+                resultant_combinations.append(temp)
         return resultant_combinations
-
-    def create_multiprocess_pool(self, frame, data):
-        self._initialize_items(frame, data)
-        # create pool
-        pool = multiprocessing.Pool()
-        pool.map(apply_lipstick, self._processed_dict)
 
     def _initialize_items(self, frame, data):
         self._frame = frame
         self._time_stamp = time.strftime('%d-%m-%Y\\%H-%M-%S', time.localtime(time.time()))
         self._processed_dict = self._prepare_data_combinations(data)
 
+    def create_multiprocess_pool(self, frame, data):
+        self._initialize_items(frame, data)
+        # create pool
+        pool = multiprocessing.Pool()
+        pool.map(apply_makeup, self._processed_dict)
+        pool.close()
+
 
 # Global Functions
-def apply_lipstick(data):
-    apply_makeup = MakeupApplier()
+def apply_makeup(data):
+    makeup = MakeupApplier()
     # Extract landmarks
     landmarks = LandmarksExtractor().extract_landmarks(data['frame'])
     face_landmarks = landmarks[0]
     face_landmarks = face_landmarks.landmark
-    frame = apply_makeup.apply_lipstick(image=copy.deepcopy(data['frame']), face_landmarks=face_landmarks,
-                                        color=data['color'], alpha=data['alpha'], beta=data['beta'])
+    frame = makeup.apply_makeup_to_save(image=copy.deepcopy(data['frame']), face_landmarks=face_landmarks,
+                                        features=data['data'])
 
-    save_image(frame=frame, image_path="Outputs\\{}\\Lipstick".format(data['timestamp']),
+    save_image(frame=frame, image_path="Outputs\\{}\\{}".format(data['timestamp'], data['feature']),
                combination=(data['alpha'], data['beta']))
 
 
