@@ -4,9 +4,17 @@ const arrExpanded = [
     "expanded3",
     "expanded4",
     "expanded5",
+    "expanded6",
 ]
 
-const arrClosed = ["closed1", "closed2", "closed3", "closed4", "closed5"]
+const arrClosed = [
+    "closed1",
+    "closed2",
+    "closed3",
+    "closed4",
+    "closed5",
+    "closed6",
+]
 
 const handlerClosed = (val) => {
     arrExpanded.forEach((item, i) => {
@@ -15,7 +23,7 @@ const handlerClosed = (val) => {
 
     arrClosed.forEach((item, i) => {
         document.getElementById(item).style.display = "flex"
-        document.getElementById(item).style.height = "7vh"
+        document.getElementById(item).style.height = "6vh"
         document.getElementById(item).style.fontSize = "15px"
     })
 
@@ -36,7 +44,7 @@ const handleCloseSideBar = () => {
     document.getElementById("hamburger").style.display = "block"
 }
 
-let objects = [
+let colorShades = [
     {
         heading: "SHEER",
         colors: [
@@ -138,13 +146,59 @@ let objects = [
     },
 ]
 
+let colorShadesAiRec = [
+    {
+        heading: "foundation",
+        colors: ["#FD0000"],
+    },
+    {
+        heading: "eye shadow",
+        colors: ["#FE007A"],
+    },
+    {
+        heading: "concealer",
+        colors: ["#FD0000"],
+    },
+    {
+        heading: "blush",
+        colors: ["#FD0000"],
+    },
+    {
+        heading: "lipstick",
+        colors: ["#FE007A"],
+    },
+]
+
 let selectedColorsArray = [
     { type: "lipstick", color: "#FD0000" },
     { type: "foundation", color: "#FD0000" },
     { type: "eyeShadow", color: "#FD0000" },
     { type: "blush", color: "#FD0000" },
-    { type: "concealor", color: "#FD0000" },
+    { type: "concealer", color: "#FD0000" },
 ]
+
+const resetValues = [
+    "lipstick_color=(0, 0, 0)",
+    "concealer_color=(0, 0, 0)",
+    "foundation_color=(0, 0, 0)",
+    "blush_color=(0, 0, 0)",
+    "eyeshadow_color=(0, 0, 0)",
+]
+
+const reset = () => {
+    resetValues.forEach((item) => {
+        var xhttp = new XMLHttpRequest()
+        xhttp.open("POST", "/recommendation_data", true)
+        xhttp.setRequestHeader(
+            "Content-type",
+            "application/x-www-form-urlencoded"
+        )
+        xhttp.send(item)
+    })
+    document
+        .querySelectorAll("#color")
+        .forEach((item) => item.classList.remove("addborder"))
+}
 
 window.onload = function () {
     if (window.innerWidth < 786) {
@@ -168,9 +222,9 @@ window.onload = function () {
         selectedColors.appendChild(item)
     }
 
-    // lipstick
-    for (let i = 0; i < objects.length; i++) {
-        let obj = objects[i]
+    // ai
+    for (let i = 0; i < colorShadesAiRec.length; i++) {
+        let obj = colorShadesAiRec[i]
         let line = document.createElement("div")
         line.classList.add("line")
 
@@ -184,20 +238,91 @@ window.onload = function () {
         for (let j = 0; j < obj.colors.length; j++) {
             let colorDiv = document.createElement("div")
             colorDiv.classList.add("color")
-
+            colorDiv.setAttribute("id", "color")
             colorDiv.style.backgroundColor = obj.colors[j]
             // add click event listener to each color div
             colorDiv.addEventListener("click", function () {
-                console.log(colorDiv.style.backgroundColor)
-
                 if (window.innerWidth < 786) {
                     handleCloseSideBar()
                 }
-
                 if (colorDiv.classList.contains("addborder")) {
                     colorDiv.classList.remove("addborder")
 
-                    selectedColors = selectedColors.map((item) => {
+                    data = "rgb(0, 0, 0)"
+                    data = data.split("rgb")
+                    data = "lipstick_color=" + data[1]
+
+                    var xhttp = new XMLHttpRequest()
+                    xhttp.open("POST", "/recommendation_data", true)
+                    xhttp.setRequestHeader(
+                        "Content-type",
+                        "application/x-www-form-urlencoded"
+                    )
+                    xhttp.send(data)
+                    if (obj.heading === "foundation") {
+                        data = "rgb(0, 0, 0)"
+                        data = data.split("rgb")
+                        data = "foundation_color=" + data[1]
+
+                        var xhttp = new XMLHttpRequest()
+                        xhttp.open("POST", "/recommendation_data", true)
+                        xhttp.setRequestHeader(
+                            "Content-type",
+                            "application/x-www-form-urlencoded"
+                        )
+                        xhttp.send(data)
+                    } else if (obj.heading === "lipstick") {
+                        data = "rgb(0, 0, 0)"
+                        data = data.split("rgb")
+                        data = "lipstick_color=" + data[1]
+
+                        var xhttp = new XMLHttpRequest()
+                        xhttp.open("POST", "/recommendation_data", true)
+                        xhttp.setRequestHeader(
+                            "Content-type",
+                            "application/x-www-form-urlencoded"
+                        )
+                        xhttp.send(data)
+                    } else if (obj.heading === "blush") {
+                        data = "rgb(0, 0, 0)"
+                        data = data.split("rgb")
+                        data = "blush_color=" + data[1]
+
+                        var xhttp = new XMLHttpRequest()
+                        xhttp.open("POST", "/recommendation_data", true)
+                        xhttp.setRequestHeader(
+                            "Content-type",
+                            "application/x-www-form-urlencoded"
+                        )
+                        xhttp.send(data)
+                    } else if (obj.heading === "eye shadow") {
+                        data = "rgb(0, 0, 0)"
+                        data = data.split("rgb")
+                        data = "eyeshadow_color=" + data[1]
+
+                        var xhttp = new XMLHttpRequest()
+                        xhttp.open("POST", "/recommendation_data", true)
+                        xhttp.setRequestHeader(
+                            "Content-type",
+                            "application/x-www-form-urlencoded"
+                        )
+                        xhttp.send(data)
+                    } else if (obj.heading === "concealer") {
+                        data = "rgb(0, 0, 0)"
+                        data = data.split("rgb")
+                        data = "concealer_color=" + data[1]
+
+                        var xhttp = new XMLHttpRequest()
+                        xhttp.open("POST", "/recommendation_data", true)
+                        xhttp.setRequestHeader(
+                            "Content-type",
+                            "application/x-www-form-urlencoded"
+                        )
+                        xhttp.send(data)
+                    } else {
+                    }
+
+                    selectedColorsArray = selectedColorsArray.map((item) => {
                         if (item.type === "lipstick") {
                             return { type: "lipstick", color: "" }
                         } else {
@@ -206,7 +331,71 @@ window.onload = function () {
                     })
                 } else {
                     colorDiv.classList.add("addborder")
-                    selectedColors = selectedColors.map((item) => {
+
+                    if (obj.heading === "foundation") {
+                        data = colorDiv.style.backgroundColor
+                        data = data.split("rgb")
+                        data = "foundation_color=" + data[1]
+
+                        var xhttp = new XMLHttpRequest()
+                        xhttp.open("POST", "/recommendation_data", true)
+                        xhttp.setRequestHeader(
+                            "Content-type",
+                            "application/x-www-form-urlencoded"
+                        )
+                        xhttp.send(data)
+                    } else if (obj.heading === "lipstick") {
+                        data = colorDiv.style.backgroundColor
+                        data = data.split("rgb")
+                        data = "lipstick_color=" + data[1]
+
+                        var xhttp = new XMLHttpRequest()
+                        xhttp.open("POST", "/recommendation_data", true)
+                        xhttp.setRequestHeader(
+                            "Content-type",
+                            "application/x-www-form-urlencoded"
+                        )
+                        xhttp.send(data)
+                    } else if (obj.heading === "blush") {
+                        data = colorDiv.style.backgroundColor
+                        data = data.split("rgb")
+                        data = "blush_color=" + data[1]
+
+                        var xhttp = new XMLHttpRequest()
+                        xhttp.open("POST", "/recommendation_data", true)
+                        xhttp.setRequestHeader(
+                            "Content-type",
+                            "application/x-www-form-urlencoded"
+                        )
+                        xhttp.send(data)
+                    } else if (obj.heading === "eye shadow") {
+                        data = colorDiv.style.backgroundColor
+                        data = data.split("rgb")
+                        data = "eyeshadow_color=" + data[1]
+
+                        var xhttp = new XMLHttpRequest()
+                        xhttp.open("POST", "/recommendation_data", true)
+                        xhttp.setRequestHeader(
+                            "Content-type",
+                            "application/x-www-form-urlencoded"
+                        )
+                        xhttp.send(data)
+                    } else if (obj.heading === "concealer") {
+                        data = colorDiv.style.backgroundColor
+                        data = data.split("rgb")
+                        data = "concealer_color=" + data[1]
+
+                        var xhttp = new XMLHttpRequest()
+                        xhttp.open("POST", "/recommendation_data", true)
+                        xhttp.setRequestHeader(
+                            "Content-type",
+                            "application/x-www-form-urlencoded"
+                        )
+                        xhttp.send(data)
+                    } else {
+                    }
+
+                    selectedColorsArray = selectedColorsArray.map((item) => {
                         if (item.type === "lipstick") {
                             return {
                                 type: "lipstick",
@@ -217,22 +406,93 @@ window.onload = function () {
                         }
                     })
                 }
+            })
+            colorsDiv.appendChild(colorDiv)
 
-                console.log(selectedColors)
+            if ((j + 1) % 6 === 0 && j !== obj.colors.length - 1) {
+                let row = document.createElement("div")
+                row.classList.add("row")
+                colorsDiv.appendChild(row)
+            }
+        }
+        line.appendChild(colorsDiv)
 
-                // NEW
-                data = colorDiv.style.backgroundColor
-                data = data.split("rgb")
-                data = "lipstick_color=" + data[1]
+        document.getElementById("aiRec").appendChild(line)
+    }
 
-                var xhttp = new XMLHttpRequest()
-                xhttp.open("POST", "/recommendation_data", true)
-                xhttp.setRequestHeader(
-                    "Content-type",
-                    "application/x-www-form-urlencoded"
-                )
-                xhttp.send(data)
-                //
+    // lipstick
+    for (let i = 0; i < colorShades.length; i++) {
+        let obj = colorShades[i]
+        let line = document.createElement("div")
+        line.classList.add("line")
+
+        let heading = document.createElement("p")
+        heading.textContent = obj.heading
+        line.appendChild(heading)
+
+        let colorsDiv = document.createElement("div")
+        colorsDiv.classList.add("colors")
+
+        for (let j = 0; j < obj.colors.length; j++) {
+            let colorDiv = document.createElement("div")
+            colorDiv.classList.add("color")
+            colorDiv.setAttribute("id", "color")
+            colorDiv.style.backgroundColor = obj.colors[j]
+            // add click event listener to each color div
+            colorDiv.addEventListener("click", function () {
+                document
+                    .querySelectorAll("#color")
+                    .forEach((item) => item.classList.remove("addborder"))
+
+                if (window.innerWidth < 786) {
+                    handleCloseSideBar()
+                }
+                if (colorDiv.classList.contains("addborder")) {
+                    colorDiv.classList.remove("addborder")
+
+                    data = "rgb(0, 0, 0)"
+                    data = data.split("rgb")
+                    data = "lipstick_color=" + data[1]
+
+                    var xhttp = new XMLHttpRequest()
+                    xhttp.open("POST", "/recommendation_data", true)
+                    xhttp.setRequestHeader(
+                        "Content-type",
+                        "application/x-www-form-urlencoded"
+                    )
+                    xhttp.send(data)
+                    selectedColorsArray = selectedColorsArray.map((item) => {
+                        if (item.type === "lipstick") {
+                            return { type: "lipstick", color: "" }
+                        } else {
+                            return item
+                        }
+                    })
+                } else {
+                    colorDiv.classList.add("addborder")
+                    selectedColorsArray = selectedColorsArray.map((item) => {
+                        if (item.type === "lipstick") {
+                            return {
+                                type: "lipstick",
+                                color: colorDiv.style.backgroundColor,
+                            }
+                        } else {
+                            return item
+                        }
+                    })
+
+                    data = colorDiv.style.backgroundColor
+                    data = data.split("rgb")
+                    data = "lipstick_color=" + data[1]
+
+                    var xhttp = new XMLHttpRequest()
+                    xhttp.open("POST", "/recommendation_data", true)
+                    xhttp.setRequestHeader(
+                        "Content-type",
+                        "application/x-www-form-urlencoded"
+                    )
+                    xhttp.send(data)
+                }
             })
             colorsDiv.appendChild(colorDiv)
 
@@ -245,16 +505,11 @@ window.onload = function () {
         line.appendChild(colorsDiv)
 
         document.getElementById("lipstickShades").appendChild(line)
-        // document.getElementById("concealerShades").appendChild(line)
-        // document.getElementById("eyeShadowShades").appendChild(line)
-
-        // document.getElementById("blushShades").appendChild(line)
-        // document.getElementById("foundationShades").appendChild(line)
     }
 
     //foundation
-    for (let i = 0; i < objects.length; i++) {
-        let obj = objects[i]
+    for (let i = 0; i < colorShades.length; i++) {
+        let obj = colorShades[i]
         let line = document.createElement("div")
         line.classList.add("line")
 
@@ -268,16 +523,51 @@ window.onload = function () {
         for (let j = 0; j < obj.colors.length; j++) {
             let colorDiv = document.createElement("div")
             colorDiv.classList.add("color")
+            colorDiv.setAttribute("id", "color")
             colorDiv.style.backgroundColor = obj.colors[j]
             // add click event listener to each color div
             colorDiv.addEventListener("click", function () {
-                console.log(colorDiv.style.backgroundColor)
+                document
+                    .querySelectorAll("#color")
+                    .forEach((item) => item.classList.remove("addborder"))
 
                 if (window.innerWidth < 786) {
                     handleCloseSideBar()
                 }
+                if (colorDiv.classList.contains("addborder")) {
+                    colorDiv.classList.remove("addborder")
 
-                // NEW
+                    data = "rgb(0, 0, 0)"
+                    data = data.split("rgb")
+                    data = "lipstick_color=" + data[1]
+
+                    var xhttp = new XMLHttpRequest()
+                    xhttp.open("POST", "/recommendation_data", true)
+                    xhttp.setRequestHeader(
+                        "Content-type",
+                        "application/x-www-form-urlencoded"
+                    )
+                    xhttp.send(data)
+                    selectedColorsArray = selectedColorsArray.map((item) => {
+                        if (item.type === "lipstick") {
+                            return { type: "lipstick", color: "" }
+                        } else {
+                            return item
+                        }
+                    })
+                } else {
+                    colorDiv.classList.add("addborder")
+                    selectedColorsArray = selectedColorsArray.map((item) => {
+                        if (item.type === "lipstick") {
+                            return {
+                                type: "lipstick",
+                                color: colorDiv.style.backgroundColor,
+                            }
+                        } else {
+                            return item
+                        }
+                    })
+                }
                 data = colorDiv.style.backgroundColor
                 data = data.split("rgb")
                 data = "foundation_color=" + data[1]
@@ -305,8 +595,8 @@ window.onload = function () {
     }
 
     // blush
-    for (let i = 0; i < objects.length; i++) {
-        let obj = objects[i]
+    for (let i = 0; i < colorShades.length; i++) {
+        let obj = colorShades[i]
         let line = document.createElement("div")
         line.classList.add("line")
 
@@ -320,16 +610,51 @@ window.onload = function () {
         for (let j = 0; j < obj.colors.length; j++) {
             let colorDiv = document.createElement("div")
             colorDiv.classList.add("color")
+            colorDiv.setAttribute("id", "color")
             colorDiv.style.backgroundColor = obj.colors[j]
             // add click event listener to each color div
             colorDiv.addEventListener("click", function () {
-                console.log(colorDiv.style.backgroundColor)
+                document
+                    .querySelectorAll("#color")
+                    .forEach((item) => item.classList.remove("addborder"))
 
                 if (window.innerWidth < 786) {
                     handleCloseSideBar()
                 }
+                if (colorDiv.classList.contains("addborder")) {
+                    colorDiv.classList.remove("addborder")
 
-                // NEW
+                    data = "rgb(0, 0, 0)"
+                    data = data.split("rgb")
+                    data = "lipstick_color=" + data[1]
+
+                    var xhttp = new XMLHttpRequest()
+                    xhttp.open("POST", "/recommendation_data", true)
+                    xhttp.setRequestHeader(
+                        "Content-type",
+                        "application/x-www-form-urlencoded"
+                    )
+                    xhttp.send(data)
+                    selectedColorsArray = selectedColorsArray.map((item) => {
+                        if (item.type === "lipstick") {
+                            return { type: "lipstick", color: "" }
+                        } else {
+                            return item
+                        }
+                    })
+                } else {
+                    colorDiv.classList.add("addborder")
+                    selectedColorsArray = selectedColorsArray.map((item) => {
+                        if (item.type === "lipstick") {
+                            return {
+                                type: "lipstick",
+                                color: colorDiv.style.backgroundColor,
+                            }
+                        } else {
+                            return item
+                        }
+                    })
+                }
                 data = colorDiv.style.backgroundColor
                 data = data.split("rgb")
                 data = "blush_color=" + data[1]
@@ -357,8 +682,8 @@ window.onload = function () {
     }
 
     //concealor
-    for (let i = 0; i < objects.length; i++) {
-        let obj = objects[i]
+    for (let i = 0; i < colorShades.length; i++) {
+        let obj = colorShades[i]
         let line = document.createElement("div")
         line.classList.add("line")
 
@@ -372,16 +697,51 @@ window.onload = function () {
         for (let j = 0; j < obj.colors.length; j++) {
             let colorDiv = document.createElement("div")
             colorDiv.classList.add("color")
+            colorDiv.setAttribute("id", "color")
             colorDiv.style.backgroundColor = obj.colors[j]
             // add click event listener to each color div
             colorDiv.addEventListener("click", function () {
-                console.log(colorDiv.style.backgroundColor)
+                document
+                    .querySelectorAll("#color")
+                    .forEach((item) => item.classList.remove("addborder"))
 
                 if (window.innerWidth < 786) {
                     handleCloseSideBar()
                 }
+                if (colorDiv.classList.contains("addborder")) {
+                    colorDiv.classList.remove("addborder")
 
-                // NEW
+                    data = "rgb(0, 0, 0)"
+                    data = data.split("rgb")
+                    data = "lipstick_color=" + data[1]
+
+                    var xhttp = new XMLHttpRequest()
+                    xhttp.open("POST", "/recommendation_data", true)
+                    xhttp.setRequestHeader(
+                        "Content-type",
+                        "application/x-www-form-urlencoded"
+                    )
+                    xhttp.send(data)
+                    selectedColorsArray = selectedColorsArray.map((item) => {
+                        if (item.type === "lipstick") {
+                            return { type: "lipstick", color: "" }
+                        } else {
+                            return item
+                        }
+                    })
+                } else {
+                    colorDiv.classList.add("addborder")
+                    selectedColorsArray = selectedColorsArray.map((item) => {
+                        if (item.type === "lipstick") {
+                            return {
+                                type: "lipstick",
+                                color: colorDiv.style.backgroundColor,
+                            }
+                        } else {
+                            return item
+                        }
+                    })
+                }
                 data = colorDiv.style.backgroundColor
                 data = data.split("rgb")
                 data = "concealer_color=" + data[1]
@@ -409,8 +769,8 @@ window.onload = function () {
     }
 
     //eyeshadow
-    for (let i = 0; i < objects.length; i++) {
-        let obj = objects[i]
+    for (let i = 0; i < colorShades.length; i++) {
+        let obj = colorShades[i]
         let line = document.createElement("div")
         line.classList.add("line")
 
@@ -424,16 +784,51 @@ window.onload = function () {
         for (let j = 0; j < obj.colors.length; j++) {
             let colorDiv = document.createElement("div")
             colorDiv.classList.add("color")
+            colorDiv.setAttribute("id", "color")
             colorDiv.style.backgroundColor = obj.colors[j]
             // add click event listener to each color div
             colorDiv.addEventListener("click", function () {
-                console.log(colorDiv.style.backgroundColor)
+                document
+                    .querySelectorAll("#color")
+                    .forEach((item) => item.classList.remove("addborder"))
 
                 if (window.innerWidth < 786) {
                     handleCloseSideBar()
                 }
+                if (colorDiv.classList.contains("addborder")) {
+                    colorDiv.classList.remove("addborder")
 
-                // NEW
+                    data = "rgb(0, 0, 0)"
+                    data = data.split("rgb")
+                    data = "lipstick_color=" + data[1]
+
+                    var xhttp = new XMLHttpRequest()
+                    xhttp.open("POST", "/recommendation_data", true)
+                    xhttp.setRequestHeader(
+                        "Content-type",
+                        "application/x-www-form-urlencoded"
+                    )
+                    xhttp.send(data)
+                    selectedColorsArray = selectedColorsArray.map((item) => {
+                        if (item.type === "lipstick") {
+                            return { type: "lipstick", color: "" }
+                        } else {
+                            return item
+                        }
+                    })
+                } else {
+                    colorDiv.classList.add("addborder")
+                    selectedColorsArray = selectedColorsArray.map((item) => {
+                        if (item.type === "lipstick") {
+                            return {
+                                type: "lipstick",
+                                color: colorDiv.style.backgroundColor,
+                            }
+                        } else {
+                            return item
+                        }
+                    })
+                }
                 data = colorDiv.style.backgroundColor
                 data = data.split("rgb")
                 data = "eyeshadow_color=" + data[1]
@@ -444,6 +839,7 @@ window.onload = function () {
                     "Content-type",
                     "application/x-www-form-urlencoded"
                 )
+
                 xhttp.send(data)
                 // 4. This will be called after the response is received
 

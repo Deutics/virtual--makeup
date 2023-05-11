@@ -12,7 +12,18 @@ body {
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
+    text-align: center;
+
     /* background-image: url("../img/samples.jpg"); */
+}
+
+.mainImage_innerWrapper {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .mainImage > img {
@@ -71,7 +82,7 @@ body {
     position: absolute;
     bottom: 5px;
     right: 2.5vw;
-    display: flex;
+    display: none;
     justify-content: space-around;
 }
 
@@ -93,7 +104,7 @@ body {
 }
 
 .expanded {
-    height: 72vh;
+    height: 70vh;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -109,10 +120,29 @@ body {
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
-    line-height: 31px;
+    line-height: 25px;
     text-align: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.expanded > span {
+    padding-bottom: 10px;
+}
+
+.backButton {
+    /* position: absolute;
+    width: 50vw;
+    left: 50vw; */
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    background-image: url(../img/back.svg);
+    background-repeat: no-repeat;
+}
+.backButton:hover {
+    height: 41px;
+    width: 41px;
 }
 
 .taptotry {
@@ -126,7 +156,7 @@ body {
     align-items: center;
     box-sizing: border-box;
     border: 1px solid #d3d3d3;
-    height: 20vh;
+    height: 16.66666vh;
     cursor: pointer;
     background-color: #1f2022;
     color: #d3d3d3;
@@ -156,6 +186,9 @@ body {
 #closed5 {
     background-image: url("../img/eyebrowliner.png");
 }
+#closed6 {
+    background-image: url("../img/airecommendation.png");
+}
 
 #expanded1 {
     background-image: url("../img/concealer.png");
@@ -171,6 +204,9 @@ body {
 }
 #expanded5 {
     background-image: url("../img/eyebrowliner.png");
+}
+#expanded6 {
+    background-image: url("../img/airecommendation.png");
 }
 
 .hamburger {
@@ -203,6 +239,12 @@ body {
     }
     .mainImage {
         width: 100vw;
+    }
+    .expanded > span {
+        font-size: 15px;
+    }
+    .closed {
+        font-size: 16px;
     }
 }
 
