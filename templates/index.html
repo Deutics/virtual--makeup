@@ -13,59 +13,44 @@
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
             rel="stylesheet"
         />
-        <title>VM</title>
+        <!-- 
+        <link rel="stylesheet" href="../static/css/style.css" />
+        <script src="../static/js/script.js"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
+            rel="stylesheet"
+        /> -->
+        <title>Virtual Makeup</title>
     </head>
     <body>
         <div class="outerWrapper">
             <div class="sideBar" id="sideBar">
-                <div class="item__sidebar">
-                    <div
-                        class="expanded"
-                        id="expanded1"
-                        onclick="handlerExpanded(1)"
-                        style="background-image: url('{{ url_for('static',  filename='img/concealer.png')}}')"
-                    >
-                        concealer
-                        <div id="concealerShades"></div>
-                    </div>
-
-                    <div
-                        class="closed"
-                        style="background-image: url('{{ url_for('static',  filename='img/concealer.png')}}')"
-                        id="closed1"
-                        onclick="handlerClosed(1)"
-                    >
-                        concealer
-                    </div>
-                </div>
                 <div>
                     <div
                         class="expanded"
-                        id="expanded2"
-                        onclick="handlerExpanded(2)"
-                        style="background-image: url('{{ url_for('static',  filename='img/lipstick.png')}}')"
+                        id="expanded6"
+                        style="background-image: url('{{ url_for('static',  filename='img/airecommendation.png')}}')"
                     >
-                        lipstick
-
-                        <div id="lipstickShades"></div>
+                        <span>ai recommendations </span>
+                        <div id="aiRec"></div>
                     </div>
+
                     <div
                         class="closed"
-                        style="background-image: url('{{ url_for('static',  filename='img/lipstick.png')}}')"
-                        id="closed2"
-                        onclick="handlerClosed(2)"
+                        style="background-image: url('{{ url_for('static',  filename='img/airecommendation.png')}}')"
+                        id="closed6"
+                        onclick="handlerClosed(6)"
                     >
-                        lipstick
+                        ai recommendations
                     </div>
                 </div>
                 <div>
                     <div
                         class="expanded"
                         id="expanded3"
-                        onclick="handlerExpanded(3)"
                         style="background-image: url('{{ url_for('static',  filename='img/foundation.png')}}')"
                     >
-                        foundation
+                        <span>foundation </span>
                         <div id="foundationShades"></div>
                     </div>
 
@@ -81,11 +66,49 @@
                 <div>
                     <div
                         class="expanded"
+                        id="expanded5"
+                        style="background-image: url('{{ url_for('static',  filename='img/eyebrowliner.png')}}')"
+                    >
+                        <span>eye shadow </span>
+                        <div id="eyeShadowShades"></div>
+                    </div>
+
+                    <div
+                        class="closed"
+                        style="background-image: url('{{ url_for('static',  filename='img/eyebrowliner.png')}}')"
+                        id="closed5"
+                        onclick="handlerClosed(5)"
+                    >
+                        eye shadow
+                    </div>
+                </div>
+                <div class="item__sidebar">
+                    <div
+                        class="expanded"
+                        id="expanded1"
+                        style="background-image: url('{{ url_for('static',  filename='img/concealer.png')}}')"
+                    >
+                        <span>concealer </span>
+                        <div id="concealerShades"></div>
+                    </div>
+
+                    <div
+                        class="closed"
+                        style="background-image: url('{{ url_for('static',  filename='img/concealer.png')}}')"
+                        id="closed1"
+                        onclick="handlerClosed(1)"
+                    >
+                        concealer
+                    </div>
+                </div>
+
+                <div>
+                    <div
+                        class="expanded"
                         id="expanded4"
-                        onclick="handlerExpanded(4)"
                         style="background-image: url('{{ url_for('static',  filename='img/blush.png')}}')"
                     >
-                        blush
+                        <span>blush </span>
                         <div id="blushShades"></div>
                     </div>
 
@@ -101,28 +124,37 @@
                 <div>
                     <div
                         class="expanded"
-                        id="expanded5"
-                        onclick="handlerExpanded(5)"
-                        style="background-image: url('{{ url_for('static',  filename='img/eyebrowliner.png')}}')"
+                        id="expanded2"
+                        style="background-image: url('{{ url_for('static',  filename='img/lipstick.png')}}')"
                     >
-                        eye shadow
-                        <div id="eyeShadowShades"></div>
+                        <span>lipstick </span>
+                        <div id="lipstickShades"></div>
                     </div>
-
                     <div
                         class="closed"
-                        style="background-image: url('{{ url_for('static',  filename='img/eyebrowliner.png')}}')"
-                        id="closed5"
-                        onclick="handlerClosed(5)"
+                        style="background-image: url('{{ url_for('static',  filename='img/lipstick.png')}}')"
+                        id="closed2"
+                        onclick="handlerClosed(2)"
                     >
-                        eye shadow
+                        lipstick
                     </div>
                 </div>
             </div>
             <div
                 class="mainImage"
                 style="background-image:url('{{ url_for('video_feed') }}')"
-            ></div>
+            >
+                <div class="mainImage_innerWrapper">
+                    <div style="height: 90vh"></div>
+                    <div
+                        id="backButton"
+                        class="backButton"
+                        style="background-image: url('{{ url_for('static',  filename='img/back.svg')}}')"
+                        onclick="reset()"
+                    ></div>
+                </div>
+            </div>
+            <div id="selectedColors" class="selectedColors"></div>
 
             <div class="toggle">
                 <div

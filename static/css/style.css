@@ -12,7 +12,18 @@ body {
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
+    text-align: center;
+
     /* background-image: url("../img/samples.jpg"); */
+}
+
+.mainImage_innerWrapper {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .mainImage > img {
@@ -59,12 +70,41 @@ body {
     box-shadow: inset 1px 1px 1px 1px #272727;
 }
 
+.addborder {
+    box-sizing: border-box;
+    border: 1px solid #d3d3d3;
+}
+
+.selectedColors {
+    background-color: #d3d3d3;
+    width: 70vw;
+    height: 40px;
+    position: absolute;
+    bottom: 5px;
+    right: 2.5vw;
+    display: none;
+    justify-content: space-around;
+}
+
+.selectedColors_item {
+    display: flex;
+}
+
+.selectedColors_item_color {
+    width: 18px;
+    margin-left: 10px;
+    border-radius: 50%;
+    height: 18px;
+    cursor: pointer;
+    box-shadow: inset 1px 1px 1px 1px #272727;
+}
+
 .color:first-child {
     margin-left: 0px;
 }
 
 .expanded {
-    height: 72vh;
+    height: 70vh;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -80,10 +120,29 @@ body {
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
-    line-height: 31px;
+    line-height: 25px;
     text-align: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.expanded > span {
+    padding-bottom: 10px;
+}
+
+.backButton {
+    /* position: absolute;
+    width: 50vw;
+    left: 50vw; */
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    background-image: url(../img/back.svg);
+    background-repeat: no-repeat;
+}
+.backButton:hover {
+    height: 41px;
+    width: 41px;
 }
 
 .taptotry {
@@ -97,7 +156,7 @@ body {
     align-items: center;
     box-sizing: border-box;
     border: 1px solid #d3d3d3;
-    height: 20vh;
+    height: 16.66666vh;
     cursor: pointer;
     background-color: #1f2022;
     color: #d3d3d3;
@@ -112,37 +171,43 @@ body {
     background-size: cover;
 }
 
-/* #closed1 {
-    background-image: url("../static/img/concealer.png");
+#closed1 {
+    background-image: url("../img/concealer.png");
 }
 #closed2 {
-    background-image: url("../static/img/lipstickbg.png");
+    background-image: url("../img/lipstick.png");
 }
 #closed3 {
-    background-image: url("../static/img/foundation.png");
+    background-image: url("../img/foundation.png");
 }
 #closed4 {
-    background-image: url("../static/img/blush.png");
+    background-image: url("../img/blush.png");
 }
 #closed5 {
-    background-image: url("../static/img/eyebrowliner.png");
+    background-image: url("../img/eyebrowliner.png");
+}
+#closed6 {
+    background-image: url("../img/airecommendation.png");
 }
 
 #expanded1 {
-    background-image: url("../static/img/concealer.png");
+    background-image: url("../img/concealer.png");
 }
 #expanded2 {
-    background-image: url("../static/img/lipstickbg.png");
+    background-image: url("../img/lipstick.png");
 }
 #expanded3 {
-    background-image: url("../static/img/foundation.png");
+    background-image: url("../img/foundation.png");
 }
 #expanded4 {
-    background-image: url("../static/img/blush.png");
+    background-image: url("../img/blush.png");
 }
 #expanded5 {
-    background-image: url("../static/img/eyebrowliner.png");
-} */
+    background-image: url("../img/eyebrowliner.png");
+}
+#expanded6 {
+    background-image: url("../img/airecommendation.png");
+}
 
 .hamburger {
     position: absolute;
@@ -174,6 +239,12 @@ body {
     }
     .mainImage {
         width: 100vw;
+    }
+    .expanded > span {
+        font-size: 15px;
+    }
+    .closed {
+        font-size: 16px;
     }
 }
 
