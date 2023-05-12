@@ -1,11 +1,12 @@
 import multiprocessing
 import os
+import uuid
+
 import cv2
 import time
 import copy
 from Features.ApplyMakeup.MakeupApplier import MakeupApplier
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
-from concurrent import futures
 
 
 class ImageSaver:
@@ -46,7 +47,6 @@ class ImageSaver:
 
 
 def create_multiprocess_pool(frame, data):
-    # print("insd")
     image_saver = ImageSaver()
 
     image_saver.initialize_items(frame, data)
@@ -73,4 +73,5 @@ def apply_makeup(data):
 def save_image(frame, image_path, combination):
     if not os.path.exists(image_path):
         os.makedirs(image_path)
-    cv2.imwrite(os.path.join(image_path, '{}.jpg').format(combination), frame)
+    unique_id = str(uuid.uuid4())[:8]
+    cv2.imwrite(os.path.join(image_path, '{}.jpg').format(str(combination) + str(uuid.uuid4())[:4]), frame)

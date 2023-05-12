@@ -200,6 +200,11 @@ const reset = () => {
         .forEach((item) => item.classList.remove("addborder"))
 }
 
+window.addEventListener('beforeunload', function () {
+    // Send a request to stop the camera stream when the tab is being closed
+    fetch('/stop_camera', { method: 'POST' });
+  });
+
 window.onload = function () {
     if (window.innerWidth < 786) {
         handleCloseSideBar()

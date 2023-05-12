@@ -1,8 +1,7 @@
 import cv2
 from flask import Flask, render_template, Response, request, redirect
 import time
-import copy
-import multiprocessing
+# import multiprocessing
 import threading
 
 from Streamer.Streamer import Streamer
@@ -32,6 +31,9 @@ class MakeupRecommendationApp:
         self.app.add_url_rule('/recommendation', view_func=self.recommendation)
         self.app.add_url_rule('/recommendation_mask', view_func=self.recommendation_mask)
         self.app.add_url_rule('/recommendation_data', view_func=self.recommendation_data, methods=['POST'])
+        # New
+        self.app.add_url_rule('/stop_camera', view_func=self.stop_streaming, methods=['POST'])
+        #
         self._time = None
 
     def run(self, *args, **kwargs):
@@ -74,6 +76,10 @@ class MakeupRecommendationApp:
         self._apply_makeup.makeup_items_data["Foundation"]["color"] = colors["foundation"]
 
         return "Data Received"
+
+    def stop_streaming(self):
+        self._streamer.stop_streaming()
+        return "Stop Streaming"
 
     def generate_frames(self):
 
