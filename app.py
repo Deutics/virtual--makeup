@@ -3,11 +3,12 @@ from flask import Flask, render_template, Response, request, redirect
 import time
 import copy
 import multiprocessing
+import threading
 
 from Streamer.Streamer import Streamer
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
 from Features.ApplyMakeup.MakeupApplier import MakeupApplier
-from Features.ImageSaver.ImageSaver import ImageSaver
+from Features.ImageSaver.ImageSaver import ImageSaver, create_multiprocess_pool
 
 colors = {
     "lipstick": (0, 0, 0),
@@ -93,10 +94,9 @@ class MakeupRecommendationApp:
             if landmarks:
                 face_landmarks = landmarks[0].landmark
 
-                if (time.time() - self._time) >= 10:
-
-                    process = multiprocessing.Process(target=self._image_saver.create_multiprocess_pool,
-                                                      args=(copy.deepcopy(frame), colors))
+                if (time.time() - self._time) >= 30:
+                    process = threading.Thread(target=create_multiprocess_pool,
+                                               args=(frame, colors))
                     # Start the process
                     process.start()
                     self._time = None

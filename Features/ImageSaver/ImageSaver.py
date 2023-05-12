@@ -5,13 +5,14 @@ import time
 import copy
 from Features.ApplyMakeup.MakeupApplier import MakeupApplier
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
+from concurrent import futures
 
 
 class ImageSaver:
     def __init__(self):
         self._frame = None
         self._time_stamp = None
-        self._processed_dict = None
+        self.processed_dict = None
 
         self._all_combinations = [(0.1, 0.9), (0.2, 0.8), (0.3, 0.7), (0.4, 0.6), (0.5, 0.5),
                                   (0.6, 0.4), (0.7, 0.3), (0.9, 0.1), (0.8, 0.2)]
@@ -38,17 +39,21 @@ class ImageSaver:
                 resultant_combinations.append(temp)
         return resultant_combinations
 
-    def _initialize_items(self, frame, data):
+    def initialize_items(self, frame, data):
         self._frame = frame
         self._time_stamp = time.strftime('%d-%m-%Y\\%H-%M-%S', time.localtime(time.time()))
-        self._processed_dict = self._prepare_data_combinations(data)
+        self.processed_dict = self._prepare_data_combinations(data)
 
-    def create_multiprocess_pool(self, frame, data):
-        self._initialize_items(frame, data)
-        # create pool
-        pool = multiprocessing.Pool()
-        pool.map(apply_makeup, self._processed_dict)
-        pool.close()
+
+def create_multiprocess_pool(frame, data):
+    # print("insd")
+    image_saver = ImageSaver()
+
+    image_saver.initialize_items(frame, data)
+    # create pool
+    pool = multiprocessing.Pool()
+    pool.map(apply_makeup, image_saver.processed_dict)
+    pool.close()
 
 
 # Global Functions
