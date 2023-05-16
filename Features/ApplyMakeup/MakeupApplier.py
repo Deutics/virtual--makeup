@@ -4,7 +4,7 @@ import cv2
 
 class MakeupApplier:
     def __init__(self):
-
+        self._person_race = None
         self._makeup_items_data = {"Concealer": {"color": (0, 0, 0),
                                                  "landmarks_id": [[133, 243, 244, 128, 121, 120, 119, 118, 117, 111,
                                                                    35, 226, 130, 163, 144, 145, 153, 154, 155],
@@ -52,6 +52,7 @@ class MakeupApplier:
 
             image = cv2.addWeighted(image, data["alpha"],
                                     mask, data["beta"], 0)
+        image = self.add_race_in_frame(image)
 
         return image
 
@@ -65,6 +66,18 @@ class MakeupApplier:
             image = cv2.addWeighted(image, feature["alpha"],
                                     mask, feature["beta"], 0)
 
+        return image
+
+    def add_race_in_frame(self, image):
+        # Calculate the position to add the text
+        height, width, _ = image.shape
+        center_x, center_y = width // 2, height // 2
+        position_x, position_y = center_x - 150, center_y - 120
+
+        # text_size, _ = cv2.getTextSize(self._person_race, cv2.FONT_HERSHEY_SIMPLEX, 1, 1)
+        text_position = (position_x, position_y)
+        image = cv2.putText(image, self._person_race, text_position, cv2.FONT_HERSHEY_SIMPLEX,
+                            0.3, (0, 0, 0), 1, cv2.LINE_AA)
         return image
 
     @staticmethod
@@ -89,3 +102,11 @@ class MakeupApplier:
     @makeup_items_data.setter
     def makeup_items_data(self, data):
         self._makeup_items_data = data
+
+    @property
+    def person_race(self):
+        return self._person_race
+
+    @person_race.setter
+    def person_race(self, race):
+        self._person_race = race

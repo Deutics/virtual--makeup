@@ -100,15 +100,13 @@ class MakeupRecommendationApp:
 
             if landmarks:
                 face_landmarks = landmarks[0].landmark
-                if not self._person_race:
+                if not self._apply_makeup.person_race:
                     prediction = DeepFace.analyze(img_path=frame, actions=('race',), enforce_detection=False)
-                    self._person_race = prediction[0]['dominant_race']
-                    print(self._person_race)
+                    self._apply_makeup.person_race = prediction[0]['dominant_race']
 
                 if (time.time() - self._time) >= 30:
-
                     prediction = DeepFace.analyze(img_path=frame, actions=('race',), enforce_detection=False)
-                    self._person_race = prediction[0]['dominant_race']
+                    self._apply_makeup.person_race = prediction[0]['dominant_race']
 
                     process = threading.Thread(target=create_multiprocess_pool,
                                                args=(frame, colors))
@@ -124,3 +122,4 @@ class MakeupRecommendationApp:
             frame_bytes = buffer.tobytes()
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+
