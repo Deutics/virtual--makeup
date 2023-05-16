@@ -17,5 +17,7 @@ class LandmarksExtractor:
         # Process the image and find the face landmarks
         results = self.face_mesh.process(image)
         landmarks = results.multi_face_landmarks
+        # if landmarks:
+        #     landmarks = landmarks[0].landmark
 
         return landmarks

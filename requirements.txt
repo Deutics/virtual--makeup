@@ -7,3 +7,5 @@ opencv_python
 
 Flask==2.2.3
 mediapipe==0.9.3.0
+
+deepface

@@ -1,8 +1,12 @@
+import threading
 from app import MakeupRecommendationApp
 
 
-# Main Function
-if __name__ == '__main__':
-
+def main():
     my_app = MakeupRecommendationApp()
     my_app.run()
+
+
+if __name__ == '__main__':
+    thread = threading.Thread(target=main)
+    thread.start()

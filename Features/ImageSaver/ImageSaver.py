@@ -42,7 +42,7 @@ class ImageSaver:
 
     def initialize_items(self, frame, data):
         self._frame = frame
-        self._time_stamp = time.strftime('%d-%m-%Y\\%H-%M-%S', time.localtime(time.time()))
+        self._time_stamp = (time.strftime('%d-%m-%Y\\%H-%M-%S', time.localtime(time.time())))+str(uuid.uuid4())[:8]
         self.processed_dict = self._prepare_data_combinations(data)
 
 
@@ -66,7 +66,8 @@ def apply_makeup(data):
     frame = makeup.apply_makeup_to_save(image=copy.deepcopy(data['frame']), face_landmarks=face_landmarks,
                                         features=data['data'])
 
-    save_image(frame=frame, image_path="Outputs\\{}\\{}".format(data['timestamp'], data['feature']),
+    save_image(frame=frame, image_path="Outputs\\{}\\{}".format(data['timestamp'],
+                                                                data['feature']),
                combination=(data['alpha'], data['beta']))
 
 

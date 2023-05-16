@@ -3,6 +3,7 @@ from flask import Flask, render_template, Response, request, redirect
 import time
 # import multiprocessing
 import threading
+from deepface import DeepFace
 
 from Streamer.Streamer import Streamer
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
@@ -24,7 +25,7 @@ class MakeupRecommendationApp:
         self._landmarks_extractor = LandmarksExtractor()
         self._apply_makeup = MakeupApplier()
         self._image_saver = ImageSaver()
-
+        self._person_race = None
         self.app = Flask(__name__)
         self.app.add_url_rule('/', view_func=self.index)
         self.app.add_url_rule('/video_feed', view_func=self.video_feed)
@@ -99,8 +100,16 @@ class MakeupRecommendationApp:
 
             if landmarks:
                 face_landmarks = landmarks[0].landmark
+                if not self._person_race:
+                    prediction = DeepFace.analyze(img_path=frame, actions=('race',), enforce_detection=False)
+                    self._person_race = prediction[0]['dominant_race']
+                    print(self._person_race)
 
                 if (time.time() - self._time) >= 30:
+
+                    prediction = DeepFace.analyze(img_path=frame, actions=('race',), enforce_detection=False)
+                    self._person_race = prediction[0]['dominant_race']
+
                     process = threading.Thread(target=create_multiprocess_pool,
                                                args=(frame, colors))
                     # Start the process

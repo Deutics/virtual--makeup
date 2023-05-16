@@ -3,7 +3,7 @@ import cv2
 
 class Streamer:
     def __init__(self):
-        self._is_streaming = True
+        self._is_streaming = False
         self._web_stream = None
         self._source = 0
 
@@ -19,7 +19,7 @@ class Streamer:
 
     def get_frame(self):
         if not self._is_streaming:
-            return None
+            return 0
         _, frame = self._web_stream.read()
         return frame
 
