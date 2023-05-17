@@ -21,7 +21,7 @@ colors = {
 
 class MakeupRecommendationApp:
     def __init__(self):
-        self._streamer = Streamer()
+        self._streamer = Streamer("video.mp4")
         self._landmarks_extractor = LandmarksExtractor()
         self._apply_makeup = MakeupApplier()
         self._image_saver = ImageSaver()
@@ -110,10 +110,10 @@ class MakeupRecommendationApp:
                     prediction = DeepFace.analyze(img_path=frame, actions=('race',), enforce_detection=False)
                     self._person_race = prediction[0]['dominant_race']
 
-                    process = threading.Thread(target=create_multiprocess_pool,
-                                               args=(frame, colors))
+                    # process = threading.Thread(target=create_multiprocess_pool,
+                    #                            args=(frame, colors))
                     # Start the process
-                    process.start()
+                    # process.start()
                     self._time = None
 
                 # Apply makeup
