@@ -10,6 +10,7 @@ from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
 from Features.ApplyMakeup.MakeupApplier import MakeupApplier
 from Features.ImageSaver.ImageSaver import ImageSaver, create_multiprocess_pool
 
+# for the makeup colors
 colors = {
     "lipstick": (0, 0, 0),
     "eye_shade": (0, 0, 0),
@@ -25,16 +26,15 @@ class MakeupRecommendationApp:
         self._landmarks_extractor = LandmarksExtractor()
         self._apply_makeup = MakeupApplier()
         self._image_saver = ImageSaver()
-        self._person_race = None
         self.app = Flask(__name__)
         self.app.add_url_rule('/', view_func=self.index)
         self.app.add_url_rule('/video_feed', view_func=self.video_feed)
         self.app.add_url_rule('/recommendation', view_func=self.recommendation)
         self.app.add_url_rule('/recommendation_mask', view_func=self.recommendation_mask)
         self.app.add_url_rule('/recommendation_data', view_func=self.recommendation_data, methods=['POST'])
-        # New
+
         self.app.add_url_rule('/stop_camera', view_func=self.stop_streaming, methods=['POST'])
-        #
+
         self._time = None
 
     def run(self, *args, **kwargs):
@@ -69,7 +69,6 @@ class MakeupRecommendationApp:
         self.get_rgb_color(request.form.get("concealer_color"), "concealer")
         self.get_rgb_color(request.form.get("foundation_color"), "foundation")
 
-        # print(colors)
         self._apply_makeup.makeup_items_data["Concealer"]["color"] = colors["concealer"]
         self._apply_makeup.makeup_items_data["Lipstick"]["color"] = colors["lipstick"]
         self._apply_makeup.makeup_items_data["Eye_shade"]["color"] = colors["eye_shade"]
@@ -105,13 +104,11 @@ class MakeupRecommendationApp:
                     self._apply_makeup.person_race = prediction[0]['dominant_race']
 
                 if (time.time() - self._time) >= 30:
-                    prediction = DeepFace.analyze(img_path=frame, actions=('race',), enforce_detection=False)
-                    self._apply_makeup.person_race = prediction[0]['dominant_race']
+                    # thread to analyze race
+                    threading.Thread(target=analyze_person_race, args=(frame, self._apply_makeup)).start()
 
-                    process = threading.Thread(target=create_multiprocess_pool,
-                                               args=(frame, colors))
-                    # Start the process
-                    process.start()
+                    # thread to create save images
+                    threading.Thread(target=create_multiprocess_pool, args=(frame, colors)).start()
                     self._time = None
 
                 # Apply makeup
@@ -123,3 +120,8 @@ class MakeupRecommendationApp:
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
 
+
+# Static function to analyze the race of person in frame
+def analyze_person_race(frame, apply_makeup):
+    prediction = DeepFace.analyze(img_path=frame, actions=('race',), enforce_detection=False)
+    apply_makeup.person_race = prediction[0]['dominant_race']

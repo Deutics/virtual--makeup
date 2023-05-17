@@ -74,7 +74,6 @@ class MakeupApplier:
         center_x, center_y = width // 2, height // 2
         position_x, position_y = center_x - 150, center_y - 120
 
-        # text_size, _ = cv2.getTextSize(self._person_race, cv2.FONT_HERSHEY_SIMPLEX, 1, 1)
         text_position = (position_x, position_y)
         image = cv2.putText(image, self._person_race, text_position, cv2.FONT_HERSHEY_SIMPLEX,
                             0.3, (0, 0, 0), 1, cv2.LINE_AA)
