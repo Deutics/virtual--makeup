@@ -69,23 +69,30 @@ class MakeupApplier:
         return image
 
     def add_race_in_frame(self, image):
+        """***********************************
+        Params: image
+        Functions: add race txt to image
+        **************************************"""
         # Calculate the position to add the text
         height, width, _ = image.shape
         center_x, center_y = width // 2, height // 2
-        position_x, position_y = center_x - 150, center_y - 120
+        text_position = (center_x - 150, center_y - 120)
 
-        text_position = (position_x, position_y)
         image = cv2.putText(image, self._person_race, text_position, cv2.FONT_HERSHEY_SIMPLEX,
                             0.3, (0, 0, 0), 1, cv2.LINE_AA)
         return image
 
     @staticmethod
-    def _create_makeup_mask(frame, face_landmarks, landmarks, color):
+    def _create_makeup_mask(frame, face_landmarks, makeup_landmarks, color):
+        """*********************************
+        Params: frame, face_landmarks, makeup_landmarks, color
+        Function: apply sent color to the frame with the landmarks received
+        ************************************"""
         if color == (0, 0, 0):
             return frame
 
         mask = frame.copy()
-        for i, landmark in enumerate(landmarks):
+        for i, landmark in enumerate(makeup_landmarks):
             points = np.array([[face_landmarks[idx].x * frame.shape[1], face_landmarks[idx].y * frame.shape[0]]
                               for idx in landmark], np.int32)
 

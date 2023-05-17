@@ -32,7 +32,6 @@ class MakeupRecommendationApp:
         self.app.add_url_rule('/recommendation', view_func=self.recommendation)
         self.app.add_url_rule('/recommendation_mask', view_func=self.recommendation_mask)
         self.app.add_url_rule('/recommendation_data', view_func=self.recommendation_data, methods=['POST'])
-
         self.app.add_url_rule('/stop_camera', view_func=self.stop_streaming, methods=['POST'])
 
         self._time = None
@@ -95,13 +94,12 @@ class MakeupRecommendationApp:
             frame = self._streamer.get_frame()
 
             # Extract landmarks
-            landmarks = self._landmarks_extractor.extract_landmarks(frame)
+            face_landmarks = self._landmarks_extractor.extract_landmarks(frame)
 
-            if landmarks:
-                face_landmarks = landmarks[0].landmark
-                if not self._apply_makeup.person_race:
-                    prediction = DeepFace.analyze(img_path=frame, actions=('race',), enforce_detection=False)
-                    self._apply_makeup.person_race = prediction[0]['dominant_race']
+            if face_landmarks:
+                # face_landmarks = landmarks[0].landmark
+                if not self._apply_makeup.person_race:      # for 1 time only
+                    analyze_person_race(frame, self._apply_makeup)
 
                 if (time.time() - self._time) >= 30:
                     # thread to analyze race
@@ -123,5 +121,9 @@ class MakeupRecommendationApp:
 
 # Static function to analyze the race of person in frame
 def analyze_person_race(frame, apply_makeup):
+    """*************************************
+    Parameters: frame, apply_makeup(instance of class)
+    Functionality: Analyze the race of person in frame
+    ****************************************"""
     prediction = DeepFace.analyze(img_path=frame, actions=('race',), enforce_detection=False)
     apply_makeup.person_race = prediction[0]['dominant_race']

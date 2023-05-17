@@ -60,9 +60,8 @@ def create_multiprocess_pool(frame, data):
 def apply_makeup(data):
     makeup = MakeupApplier()
     # Extract landmarks
-    landmarks = LandmarksExtractor().extract_landmarks(data['frame'])
-    face_landmarks = landmarks[0]
-    face_landmarks = face_landmarks.landmark
+    face_landmarks = LandmarksExtractor().extract_landmarks(data['frame'])
+
     frame = makeup.apply_makeup_to_save(image=copy.deepcopy(data['frame']), face_landmarks=face_landmarks,
                                         features=data['data'])
 
@@ -74,5 +73,4 @@ def apply_makeup(data):
 def save_image(frame, image_path, combination):
     if not os.path.exists(image_path):
         os.makedirs(image_path)
-    unique_id = str(uuid.uuid4())[:8]
     cv2.imwrite(os.path.join(image_path, '{}.jpg').format(str(combination) + str(uuid.uuid4())[:4]), frame)
