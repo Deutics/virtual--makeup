@@ -52,27 +52,28 @@ body {
     margin-bottom: 10px;
 }
 .line > p {
-    padding: 0;
-    margin: -4px 0;
+    margin: -12px 0px 0px 0;
 }
 
 .colors {
     display: flex;
     flex-direction: row;
+    margin-bottom: 12%;
 }
 
 .color {
-    width: 18px;
+    width: 21px;
     margin-left: 10px;
     border-radius: 50%;
-    height: 18px;
+    height: 21px;
     cursor: pointer;
     box-shadow: inset 1px 1px 1px 1px #272727;
 }
 
 .addborder {
     box-sizing: border-box;
-    border: 1px solid #d3d3d3;
+    border: 3px solid #f5eded;
+    box-shadow: inset 0px 0px 0px 0px #272727;
 }
 
 .selectedColors {
@@ -102,7 +103,27 @@ body {
 .color:first-child {
     margin-left: 0px;
 }
-
+.closed {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid #d3d3d3;
+    height: 16.66666vh;
+    cursor: pointer;
+    background-color: #1f2022;
+    color: #d3d3d3;
+    text-transform: uppercase;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .expanded {
     height: 70vh;
     display: none;
@@ -123,6 +144,7 @@ body {
     line-height: 25px;
     text-align: center;
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
 }
 
@@ -147,28 +169,6 @@ body {
 
 .taptotry {
     font-size: 8px;
-}
-
-.closed {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    border: 1px solid #d3d3d3;
-    height: 16.66666vh;
-    cursor: pointer;
-    background-color: #1f2022;
-    color: #d3d3d3;
-    text-transform: uppercase;
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 31px;
-    text-align: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 #closed1 {

@@ -46,10 +46,10 @@ const handleCloseSideBar = () => {
 
 let colorShades = [
     {
-        heading: "SHEER",
+        heading: "MATTE",
         colors: [
             "#FD0000",
-            "#FF3B3B",
+            "#FF3C3C",
             "#FF5C5C",
             "#FD0000",
             "#FCB9B9",
@@ -57,7 +57,7 @@ let colorShades = [
         ],
     },
     {
-        heading: "MATTE",
+        heading: " ",
         colors: [
             "#FE007A",
             "#FF3A8D",
@@ -68,80 +68,69 @@ let colorShades = [
         ],
     },
     {
-        heading: "GLOSSY",
+        heading: " ",
         colors: [
-            "#FD0000",
-            "#FF3B3B",
-            "#FF5C5C",
-            "#FD0000",
-            "#FCB9B9",
-            "#FFD0D0",
+            "#BE6D92",
+            "#F13784",
+            "#E952BC",
+            "#AC617F",
+            "#BB2A6B",
+            "#E52450",
         ],
     },
     {
-        heading: "SHEER",
+        heading: " ",
         colors: [
-            "#FD0000",
-            "#FF3B3B",
-            "#FF5C5C",
-            "#FD0000",
-            "#FCB9B9",
-            "#FFD0D0",
+            "#E29B97",
+            "#ED979E",
+            "#D28E9F",
+            "#E08999",
+            "#B3898B",
+            "#CA769A",
         ],
     },
     {
-        heading: "MATTE",
+        heading: " ",
         colors: [
-            "#FE007A",
-            "#FF3A8D",
-            "#FF66B9",
-            "#FC6AFF",
-            "#FF9DEF",
-            "#FFD0F8",
+            "#CD6F89",
+            "#D36290",
+            "#AE4560",
+            "#BE6873",
+            "#C98378",
+            "#E5656A",
         ],
     },
     {
-        heading: "GLOSSY",
+        heading: " ",
         colors: [
-            "#FD0000",
-            "#FF3B3B",
-            "#FF5C5C",
-            "#FD0000",
-            "#FCB9B9",
-            "#FFD0D0",
+            "#C07564",
+            "#D56563",
+            "#CF6260",
+            "#BE444F",
+            "#E32050",
+            "#D91E21",
         ],
     },
     {
-        heading: "SHEER",
+        heading: " ",
         colors: [
-            "#FD0000",
-            "#FF3B3B",
-            "#FF5C5C",
-            "#FD0000",
-            "#FCB9B9",
-            "#FFD0D0",
+            "#BF202A",
+            "#DD3242",
+            "#DD2A3F",
+            "#A42C38",
+            "#8E1D23",
+            "#A37072",
         ],
     },
     {
-        heading: "MATTE",
+        heading: " ",
         colors: [
-            "#FE007A",
-            "#FF3A8D",
-            "#FF66B9",
-            "#FC6AFF",
-            "#FF9DEF",
-            "#FFD0F8",
-        ],
-    },
-    {
-        heading: "GLOSSY",
-        colors: [
-            "#FD0000",
-            "#FF3B3B",
-            "#FF5C5C",
-            "#FD0000",
-            "#FCB9B9",
-            "#FFD0D0",
+            "#854D4E",
+            "#73374D",
+            "#832C61",
+            "#881D31",
+            "#E951BA",
+            "#DE9894",
         ],
     },
 ]
@@ -199,7 +188,6 @@ const reset = () => {
         .querySelectorAll("#color")
         .forEach((item) => item.classList.remove("addborder"))
 }
-
 
 window.onload = function () {
     if (window.innerWidth < 786) {
@@ -428,6 +416,7 @@ window.onload = function () {
 
         let heading = document.createElement("p")
         heading.textContent = obj.heading
+
         line.appendChild(heading)
 
         let colorsDiv = document.createElement("div")
@@ -436,12 +425,12 @@ window.onload = function () {
         for (let j = 0; j < obj.colors.length; j++) {
             let colorDiv = document.createElement("div")
             colorDiv.classList.add("color")
-            colorDiv.setAttribute("id", "color")
+            colorDiv.setAttribute("id", "lipstick_color")
             colorDiv.style.backgroundColor = obj.colors[j]
             // add click event listener to each color div
             colorDiv.addEventListener("click", function () {
                 document
-                    .querySelectorAll("#color")
+                    .querySelectorAll("#lipstick_color")
                     .forEach((item) => item.classList.remove("addborder"))
 
                 if (window.innerWidth < 786) {
@@ -523,12 +512,12 @@ window.onload = function () {
         for (let j = 0; j < obj.colors.length; j++) {
             let colorDiv = document.createElement("div")
             colorDiv.classList.add("color")
-            colorDiv.setAttribute("id", "color")
+            colorDiv.setAttribute("id", "foundation_color")
             colorDiv.style.backgroundColor = obj.colors[j]
             // add click event listener to each color div
             colorDiv.addEventListener("click", function () {
                 document
-                    .querySelectorAll("#color")
+                    .querySelectorAll("#foundation_color")
                     .forEach((item) => item.classList.remove("addborder"))
 
                 if (window.innerWidth < 786) {
@@ -610,12 +599,12 @@ window.onload = function () {
         for (let j = 0; j < obj.colors.length; j++) {
             let colorDiv = document.createElement("div")
             colorDiv.classList.add("color")
-            colorDiv.setAttribute("id", "color")
+            colorDiv.setAttribute("id", "blush_color")
             colorDiv.style.backgroundColor = obj.colors[j]
             // add click event listener to each color div
             colorDiv.addEventListener("click", function () {
                 document
-                    .querySelectorAll("#color")
+                    .querySelectorAll("#blush_color§")
                     .forEach((item) => item.classList.remove("addborder"))
 
                 if (window.innerWidth < 786) {
@@ -697,12 +686,12 @@ window.onload = function () {
         for (let j = 0; j < obj.colors.length; j++) {
             let colorDiv = document.createElement("div")
             colorDiv.classList.add("color")
-            colorDiv.setAttribute("id", "color")
+            colorDiv.setAttribute("id", "concealer_color")
             colorDiv.style.backgroundColor = obj.colors[j]
             // add click event listener to each color div
             colorDiv.addEventListener("click", function () {
                 document
-                    .querySelectorAll("#color")
+                    .querySelectorAll("#concealer_color")
                     .forEach((item) => item.classList.remove("addborder"))
 
                 if (window.innerWidth < 786) {
@@ -784,12 +773,12 @@ window.onload = function () {
         for (let j = 0; j < obj.colors.length; j++) {
             let colorDiv = document.createElement("div")
             colorDiv.classList.add("color")
-            colorDiv.setAttribute("id", "color")
+            colorDiv.setAttribute("id", "eyeshadow_color")
             colorDiv.style.backgroundColor = obj.colors[j]
             // add click event listener to each color div
             colorDiv.addEventListener("click", function () {
                 document
-                    .querySelectorAll("#color")
+                    .querySelectorAll("#eyeshadow_color")
                     .forEach((item) => item.classList.remove("addborder"))
 
                 if (window.innerWidth < 786) {
