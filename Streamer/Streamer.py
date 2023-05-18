@@ -2,10 +2,10 @@ import cv2
 
 
 class Streamer:
-    def __init__(self):
+    def __init__(self, source=0):
         self._is_streaming = False
         self._web_stream = None
-        self._source = 0
+        self._source = source
 
     def initialize_streaming(self):
         self._is_streaming = True

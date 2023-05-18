@@ -1,14 +1,15 @@
 import cv2
 from flask import Flask, render_template, Response, request, redirect
 import time
-# import multiprocessing
-import threading
+from threading import Thread
 from deepface import DeepFace
 
 from Streamer.Streamer import Streamer
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
 from Features.ApplyMakeup.MakeupApplier import MakeupApplier
 from Features.ImageSaver.ImageSaver import ImageSaver, create_multiprocess_pool
+from Utils.ThreadWithReturnValue import ThreadWithReturnValue
+
 
 # for the makeup colors
 colors = {
@@ -26,6 +27,8 @@ class MakeupRecommendationApp:
         self._landmarks_extractor = LandmarksExtractor()
         self._apply_makeup = MakeupApplier()
         self._image_saver = ImageSaver()
+        self._time = None
+
         self.app = Flask(__name__)
         self.app.add_url_rule('/', view_func=self.index)
         self.app.add_url_rule('/video_feed', view_func=self.video_feed)
@@ -33,8 +36,7 @@ class MakeupRecommendationApp:
         self.app.add_url_rule('/recommendation_mask', view_func=self.recommendation_mask)
         self.app.add_url_rule('/recommendation_data', view_func=self.recommendation_data, methods=['POST'])
         self.app.add_url_rule('/stop_camera', view_func=self.stop_streaming, methods=['POST'])
-
-        self._time = None
+        self.app.add_url_rule('/get_person_race', view_func=self.get_person_race)
 
     def run(self, *args, **kwargs):
         self.app.run(*args, **kwargs)
@@ -61,6 +63,9 @@ class MakeupRecommendationApp:
             color = tuple(map(int, color.strip("()").split(",")))
             colors[index] = color[::-1]
 
+    def get_person_race(self):
+        return self._apply_makeup.person_race
+
     def recommendation_data(self):
         self.get_rgb_color(request.form.get("lipstick_color"), "lipstick")
         self.get_rgb_color(request.form.get("eyeshadow_color"), "eye_shade")
@@ -81,35 +86,25 @@ class MakeupRecommendationApp:
         return "Stop Streaming"
 
     def generate_frames(self):
-
-        # initialize webcam
         self._streamer.initialize_streaming()
 
         while self._streamer.is_streaming:
-            # initializing timer for saving images
             if self._time is None:
                 self._time = time.time()
 
-            # get frames one by one
             frame = self._streamer.get_frame()
-
-            # Extract landmarks
             face_landmarks = self._landmarks_extractor.extract_landmarks(frame)
 
             if face_landmarks:
-                # face_landmarks = landmarks[0].landmark
                 if not self._apply_makeup.person_race:      # for 1 time only
-                    analyze_person_race(frame, self._apply_makeup)
-
+                    self._apply_makeup.person_race = analyze_person_race(frame)
                 if (time.time() - self._time) >= 30:
-                    # thread to analyze race
-                    threading.Thread(target=analyze_person_race, args=(frame, self._apply_makeup)).start()
+                    self._apply_makeup.person_race = self.analyze_person_race_in_thread(frame)
 
-                    # thread to create save images
-                    threading.Thread(target=create_multiprocess_pool, args=(frame, colors)).start()
+                    Thread(target=create_multiprocess_pool, args=(frame, colors)).start()
+
                     self._time = None
 
-                # Apply makeup
                 frame = self._apply_makeup.apply_makeup_to_image(frame, face_landmarks)
 
             # Convert the frame to bytes and yield it to the response
@@ -118,12 +113,21 @@ class MakeupRecommendationApp:
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
 
+    @staticmethod
+    def analyze_person_race_in_thread(frame):
+        thread = ThreadWithReturnValue(target=analyze_person_race, args=(frame,))
+        thread.start()
+        return thread.join()
 
-# Static function to analyze the race of person in frame
-def analyze_person_race(frame, apply_makeup):
+
+def analyze_person_race(frame):
     """*************************************
     Parameters: frame, apply_makeup(instance of class)
     Functionality: Analyze the race of person in frame
     ****************************************"""
-    prediction = DeepFace.analyze(img_path=frame, actions=('race',), enforce_detection=False)
-    apply_makeup.person_race = prediction[0]['dominant_race']
+
+    prediction = DeepFace.analyze(img_path=frame, actions=('race',), enforce_detection=False)[0]
+    person_race = prediction['dominant_race']
+    if person_race != "white" and person_race != "black":
+        person_race = 'brown'
+    return person_race
