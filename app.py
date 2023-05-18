@@ -22,8 +22,8 @@ colors = {
 
 
 class MakeupRecommendationApp:
-    def __init__(self):
-        self._streamer = Streamer()
+    def __init__(self, source=0):
+        self._streamer = Streamer(source=source)
         self._landmarks_extractor = LandmarksExtractor()
         self._apply_makeup = MakeupApplier()
         self._image_saver = ImageSaver()
