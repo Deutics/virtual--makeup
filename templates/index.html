@@ -13,13 +13,13 @@
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
             rel="stylesheet"
         />
-        <!--
+
         <link rel="stylesheet" href="../static/css/style.css" />
         <script src="../static/js/script.js"></script>
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
             rel="stylesheet"
-        /> -->
+        />
         <title>Virtual Makeup</title>
     </head>
     <body>
@@ -171,10 +171,9 @@
             </div>
         </div>
         <script>
-            window.addEventListener('beforeunload', function () {
-            fetch('/stop_camera', { method: 'POST' });
-            });
+            window.addEventListener("beforeunload", function () {
+                fetch("/stop_camera", { method: "POST" })
+            })
         </script>
-
     </body>
 </html>
