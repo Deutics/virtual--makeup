@@ -64,6 +64,9 @@ class MakeupRecommendationApp:
             colors[index] = color[::-1]
 
     def get_person_race(self):
+        """
+        :return: send person race to HTML
+        """
         return self._apply_makeup.person_race
 
     def recommendation_data(self):
@@ -98,10 +101,12 @@ class MakeupRecommendationApp:
             if face_landmarks:
                 if not self._apply_makeup.person_race:      # for 1 time only
                     self._apply_makeup.person_race = analyze_person_race(frame)
+
                 if (time.time() - self._time) >= 30:
+
                     self._apply_makeup.person_race = self.analyze_person_race_in_thread(frame)
 
-                    Thread(target=create_multiprocess_pool, args=(frame, colors)).start()
+                    # Thread(target=create_multiprocess_pool, args=(frame, colors)).start()
 
                     self._time = None
 

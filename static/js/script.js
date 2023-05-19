@@ -208,14 +208,18 @@ function getPersonRace() {
             });
     }
 
+
 window.onload = function () {
     if (window.innerWidth < 786) {
         handleCloseSideBar()
     }
+    // New
+
     getPersonRace();
 
     // Periodically update every 30 seconds
     setInterval(getPersonRace, 30000);
+    //
     let selectedColors = document.getElementById("selectedColors")
     for (let i = 0; i < selectedColorsArray.length; i++) {
         let item = document.createElement("div")
