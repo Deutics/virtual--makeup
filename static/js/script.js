@@ -189,10 +189,23 @@ const reset = () => {
         .forEach((item) => item.classList.remove("addborder"))
 }
 
+// Wahab Edit
+function getPersonRace() {
+        fetch('/get_person_race')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('race-div').innerText = data;
+            });
+    }
+
 window.onload = function () {
     if (window.innerWidth < 786) {
         handleCloseSideBar()
     }
+    getPersonRace();
+
+    // Periodically update every 30 seconds
+    setInterval(getPersonRace, 30000);
     let selectedColors = document.getElementById("selectedColors")
     for (let i = 0; i < selectedColorsArray.length; i++) {
         let item = document.createElement("div")
