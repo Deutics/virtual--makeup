@@ -125,7 +125,7 @@ body {
     background-size: cover;
 }
 .expanded {
-    height: 70vh;
+    min-height: 70vh;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -150,6 +150,10 @@ body {
 
 .expanded > span {
     padding-bottom: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
 }
 
 .backButton {
@@ -252,4 +256,35 @@ body {
     .sideBar {
         display: block;
     }
+}
+
+.aiRec {
+    display: flex;
+}
+
+.black_race {
+    padding: 5px 15px;
+}
+.brown_race {
+    padding: 5px;
+}
+.white_race {
+    padding: 5px;
+}
+
+.black_race > span {
+    font-size: 1rem;
+}
+
+.brown_race > span {
+    font-size: 1rem;
+}
+.white_race > span {
+    font-size: 1rem;
+}
+
+.race-selected {
+    background-color: #95929278;
+
+    border-radius: 10px;
 }

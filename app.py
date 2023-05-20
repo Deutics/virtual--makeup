@@ -67,6 +67,9 @@ class MakeupRecommendationApp:
         """
         :return: send person race to HTML
         """
+
+
+        print(self._apply_makeup.person_race)
         return self._apply_makeup.person_race
 
     def recommendation_data(self):
