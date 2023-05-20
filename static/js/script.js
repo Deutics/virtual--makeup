@@ -195,6 +195,7 @@ var brown_race = {}
 var white_race = {}
 
 // Wahab Edit
+
 function getPersonRace() {
     fetch("/get_person_race")
         .then((response) => response.text())
@@ -222,10 +223,12 @@ window.onload = function () {
     if (window.innerWidth < 786) {
         handleCloseSideBar()
     }
-    getPersonRace()
+
+    //    getPersonRace();
 
     // Periodically update every 30 seconds
-    setInterval(getPersonRace, 30000)
+    //    setInterval(getPersonRace, 30000);
+
     let selectedColors = document.getElementById("selectedColors")
     for (let i = 0; i < selectedColorsArray.length; i++) {
         let item = document.createElement("div")

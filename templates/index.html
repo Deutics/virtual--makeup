@@ -9,6 +9,12 @@
             href="{{ url_for('static', filename='css/style.css') }}"
         />
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/script2.js') }}"></script>
+        <script
+            src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+            integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+            crossorigin="anonymous"
+        ></script>
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
             rel="stylesheet"
@@ -16,6 +22,8 @@
 
         <link rel="stylesheet" href="../static/css/style.css" />
         <script src="../static/js/script.js"></script>
+        <!-- <script src="../static/js/script2.js') }}"></script> -->
+
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
             rel="stylesheet"
@@ -23,7 +31,6 @@
         <title>Virtual Makeup</title>
     </head>
     <body>
-        <!-- <div id="race-div"></div> -->
         <div class="outerWrapper">
             <div class="sideBar" id="sideBar">
                 <div>
@@ -394,10 +401,31 @@
                     </div>
                 </div>
             </div>
-            <div
-                class="mainImage"
-                style="background-image:url('{{ url_for('video_feed') }}')"
-            >
+            <div class="mainImage">
+                <div id="container" style="position: relative">
+                    <img
+                        id="photo"
+                        class="processedImg"
+                        style="position: absolute; top: 0; left: 0; z-index: 1"
+                    />
+                    <video
+                        autoplay
+                        playsinline
+                        id="videoElement"
+                        style="position: absolute; top: 0; left: 0; z-index: 0"
+                    ></video>
+                    <canvas
+                        id="canvas"
+                        class="canvas"
+                        style="position: absolute; top: 0; left: 0; z-index: 2"
+                    ></canvas>
+                </div>
+                <!--                    style="background-image:url('{{ url_for('video_feed') }}')"-->
+                <!--            >-->
+                <!--                    <img id="photo"  style="position: absolute; top: 0; left: 0; z-index: 1;">-->
+                <!--                    <video autoplay playsinline id="videoElement" style="position: absolute; top: 0; left: 0; z-index: 0;"></video>-->
+                <!--                    <canvas id="canvas" style="position: absolute; top: 0; left: 0; z-index: 2;"></canvas>-->
+
                 <div class="mainImage_innerWrapper">
                     <div style="height: 90vh"></div>
                     <div
@@ -423,10 +451,66 @@
                 </div>
             </div>
         </div>
+        <script
+            src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+            integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+            crossorigin="anonymous"
+        ></script>
+
         <script>
             window.addEventListener("beforeunload", function () {
                 fetch("/stop_camera", { method: "POST" })
             })
+
+            /////
+            var socket = io.connect(
+                window.location.protocol +
+                    "//" +
+                    document.domain +
+                    ":" +
+                    location.port,
+                {
+                    transports: ["websocket"],
+                }
+            )
+            socket.on("connect", function () {
+                console.log("Connected...!", socket.connected)
+            })
+            var canvas = document.getElementById("canvas")
+            var context = canvas.getContext("2d")
+
+            const video = document.querySelector("#videoElement")
+
+            video.width = "800"
+            video.height = "700"
+
+            if (navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices
+                    .getUserMedia({
+                        video: true,
+                    })
+                    .then(function (stream) {
+                        video.srcObject = stream
+                        video.play()
+                    })
+                    .catch(function (err0r) {})
+            }
+
+            const FPS = 20
+            setInterval(() => {
+                canvas.height = video.videoHeight
+                canvas.width = video.videoWidth
+                context.drawImage(video, 0, 0)
+                var data = canvas.toDataURL("image/jpeg", 0.6)
+                context.clearRect(0, 0, video.videoWidth, video.videoHeight)
+                socket.emit("image", data)
+            }, 1000 / FPS)
+
+            socket.on("processed_image", function (image) {
+                photo.setAttribute("src", image)
+            })
+
+            /////
         </script>
     </body>
 </html>

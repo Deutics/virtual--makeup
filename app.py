@@ -1,8 +1,11 @@
-import cv2
-from flask import Flask, render_template, Response, request, redirect
 import time
-from threading import Thread
 from deepface import DeepFace
+import base64
+import os
+import cv2
+import numpy as np
+from flask import Flask, render_template, send_from_directory,request,redirect,Response
+from flask_socketio import SocketIO, emit
 
 from Streamer.Streamer import Streamer
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
@@ -29,8 +32,14 @@ class MakeupRecommendationApp:
         self._image_saver = ImageSaver()
         self._time = None
 
-        self.app = Flask(__name__)
-        self.app.add_url_rule('/', view_func=self.index)
+        self.app = Flask(__name__, static_folder="./static")
+        self.app.config["SECRET_KEY"] = "secret!"
+        self.socketio = SocketIO(self.app, async_mode="eventlet")
+        # # Routes
+        self.app.route("/")(self.index)
+        self.socketio.on("connect")(self.test_connect)
+        self.socketio.on("image")(self.receive_image)
+
         self.app.add_url_rule('/video_feed', view_func=self.video_feed)
         self.app.add_url_rule('/recommendation', view_func=self.recommendation)
         self.app.add_url_rule('/recommendation_mask', view_func=self.recommendation_mask)
@@ -38,12 +47,37 @@ class MakeupRecommendationApp:
         self.app.add_url_rule('/stop_camera', view_func=self.stop_streaming, methods=['POST'])
         self.app.add_url_rule('/get_person_race', view_func=self.get_person_race)
 
-    def run(self, *args, **kwargs):
-        self.app.run(*args, **kwargs)
+    # def run(self, *args, **kwargs):
+    #     self.app.run(*args, **kwargs)
+    def run(self):
+        self.socketio.run(self.app, debug=True, port=5000)
+        # self.app.run()
 
     @staticmethod
     def index():
         return render_template('index.html')
+
+    @staticmethod
+    def base64_to_image(base64_string):
+        base64_data = base64_string.split(",")[1]
+        image_bytes = base64.b64decode(base64_data)
+        image_array = np.frombuffer(image_bytes, dtype=np.uint8)
+        image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
+        return image
+
+    @staticmethod
+    def encode_image(image):
+        encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 90]
+        result, frame_encoded = cv2.imencode(".jpg", image, encode_param)
+        processed_img_data = base64.b64encode(frame_encoded).decode()
+        b64_src = "data:image/jpg;base64,"
+        processed_img_data = b64_src + processed_img_data
+        return processed_img_data
+
+    def test_connect(self):
+        print("Connected")
+        emit("my response", {"data": "Connected"})
+
 
     def video_feed(self):
         return Response(self.generate_frames(),
@@ -90,6 +124,15 @@ class MakeupRecommendationApp:
     def stop_streaming(self):
         self._streamer.stop_streaming()
         return "Stop Streaming"
+
+    def receive_image(self, image):
+        image = self.base64_to_image(image)
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        cv2.imwrite("image.jpg", image)
+        # frame_resized = cv2.resize(gray, (640, 360))
+        processed_img_data = self.encode_image(gray)
+        self.socketio.emit("processed_image", processed_img_data)
+
 
     def generate_frames(self):
         self._streamer.initialize_streaming()
@@ -139,3 +182,4 @@ def analyze_person_race(frame):
     if person_race != "white" and person_race != "black":
         person_race = 'brown'
     return person_race
+

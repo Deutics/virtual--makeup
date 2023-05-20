@@ -1,9 +1,18 @@
 body {
     margin: 0;
 }
+
+/* .canvas {
+    width: 100px;
+    height: 100px;
+} */
 .outerWrapper {
     width: 100vw;
     display: flex;
+}
+
+.processedImg {
+    width: 100%;
 }
 .mainImage {
     background-color: rgb(85, 38, 38);
