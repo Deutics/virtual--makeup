@@ -9,6 +9,7 @@
             href="{{ url_for('static', filename='css/style.css') }}"
         />
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/script2.js') }}"></script>
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
             rel="stylesheet"
@@ -16,6 +17,7 @@
 
         <link rel="stylesheet" href="../static/css/style.css" />
         <script src="../static/js/script.js"></script>
+        <script src="../static/js/script2.js') }}"></script>
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
             rel="stylesheet"
@@ -23,6 +25,11 @@
         <title>Virtual Makeup</title>
     </head>
     <body>
+    <div id="container" style="position: relative;">
+        <img id="photo" width="400" height="300" style="position: absolute; top: 0; left: 0; z-index: 1;">
+        <video autoplay playsinline id="videoElement" style="position: absolute; top: 0; left: 0; z-index: 0;"></video>
+        <canvas id="canvas" width="400" height="300" style="position: absolute; top: 0; left: 0; z-index: 2;"></canvas>
+      </div>
         <div id="race-div"></div>
         <div class="outerWrapper">
             <div class="sideBar" id="sideBar">
@@ -142,9 +149,14 @@
                 </div>
             </div>
             <div
-                class="mainImage"
-                style="background-image:url('{{ url_for('video_feed') }}')"
-            >
+                class="mainImage">
+<!--                    style="background-image:url('{{ url_for('video_feed') }}')"-->
+<!--            >-->
+<!--                    <img id="photo"  style="position: absolute; top: 0; left: 0; z-index: 1;">-->
+<!--                    <video autoplay playsinline id="videoElement" style="position: absolute; top: 0; left: 0; z-index: 0;"></video>-->
+<!--                    <canvas id="canvas" style="position: absolute; top: 0; left: 0; z-index: 2;"></canvas>-->
+
+
                 <div class="mainImage_innerWrapper">
                     <div style="height: 90vh"></div>
                     <div
@@ -170,10 +182,12 @@
                 </div>
             </div>
         </div>
+
         <script>
             window.addEventListener("beforeunload", function () {
                 fetch("/stop_camera", { method: "POST" })
-            })
+            });
+
         </script>
     </body>
 </html>

@@ -190,22 +190,34 @@ const reset = () => {
 }
 
 // Wahab Edit
+
 function getPersonRace() {
         fetch('/get_person_race')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('race-div').innerText = data;
+            })
+            .catch(error => {
+            // Handle any network or other errors
+            console.log("Error occurred:", error);
             });
     }
 
+
 window.onload = function () {
+
+
     if (window.innerWidth < 786) {
         handleCloseSideBar()
     }
-    getPersonRace();
+
+
+
+//    getPersonRace();
 
     // Periodically update every 30 seconds
-    setInterval(getPersonRace, 30000);
+//    setInterval(getPersonRace, 30000);
+
     let selectedColors = document.getElementById("selectedColors")
     for (let i = 0; i < selectedColorsArray.length; i++) {
         let item = document.createElement("div")
