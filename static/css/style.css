@@ -1,5 +1,11 @@
+@font-face {
+    font-family: "visbyround";
+    src: URL("visby.ttf") format("visbyround");
+}
+
 body {
     margin: 0;
+    font-family: visbyround;
 }
 
 /* .canvas {

@@ -200,7 +200,7 @@ function getPersonRace() {
     fetch("/get_person_race")
         .then((response) => response.text())
         .then((data) => {
-            console.log(data)
+            console.log("race from backend", data)
             white_race.classList.remove("race-selected")
             black_race.classList.remove("race-selected")
             brown_race.classList.remove("race-selected")
@@ -225,10 +225,10 @@ window.onload = function () {
         handleCloseSideBar()
     }
 
-    //    getPersonRace();
+    getPersonRace()
 
     // Periodically update every 30 seconds
-    //    setInterval(getPersonRace, 30000);
+    setInterval(getPersonRace, 30000)
 
     let selectedColors = document.getElementById("selectedColors")
     for (let i = 0; i < selectedColorsArray.length; i++) {
