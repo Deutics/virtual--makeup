@@ -85,6 +85,7 @@ class MakeupRecommendationApp:
         print("Connected")
         emit("my response", {"data": "Connected"})
 
+    # To apply ai recommended makeup
     def start_ai(self):
         self._apply_makeup.recommend_makeup_colors()
         self.update_global_colors()
@@ -96,6 +97,7 @@ class MakeupRecommendationApp:
             color = tuple(map(int, color.strip("()").split(",")))
             colors[index] = color[::-1]
 
+    # sends person's race
     def get_person_race(self):
         race = self._apply_makeup.person_race
         # Return a JSON response with the race information
@@ -116,6 +118,7 @@ class MakeupRecommendationApp:
 
         return "Data Received"
 
+    # receives image and then send processed image back
     def receive_image(self, image):
         image = self.base64_to_image(image)
         if image is not None:
