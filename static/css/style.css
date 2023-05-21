@@ -181,6 +181,7 @@ body {
     cursor: pointer;
     background-image: url(../img/back.svg);
     background-repeat: no-repeat;
+    z-index: 4;
 }
 .backButton:hover {
     height: 41px;

@@ -31,7 +31,7 @@ const handlerClosed = async (val) => {
 
     document.getElementById(`expanded${val}`).style.display = "flex"
 
-    if ((val = 6)) {
+    if (val === 6) {
         console.log("starting ai")
         await fetch("/start_ai", { method: "POST" })
     }
