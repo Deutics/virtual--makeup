@@ -3,10 +3,10 @@ from deepface import DeepFace
 import base64
 import cv2
 import numpy as np
-from flask import Flask, render_template, request, redirect, jsonify
+from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO, emit
 
-from Streamer.Streamer import Streamer
+# from Streamer.Streamer import Streamer
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
 from Features.ApplyMakeup.MakeupApplier import MakeupApplier
 from Features.ImageSaver.ImageSaver import ImageSaver, create_multiprocess_pool
@@ -64,9 +64,7 @@ class MakeupRecommendationApp:
     @staticmethod
     def encode_image(image):
         try:
-            # Check if the image is empty or None
-            if image is None:
-                return None
+            # check for image
 
             result, frame_encoded = cv2.imencode(".jpg", image)
 
@@ -110,11 +108,11 @@ class MakeupRecommendationApp:
         self.get_rgb_color(request.form.get("concealer_color"), "concealer")
         self.get_rgb_color(request.form.get("foundation_color"), "foundation")
 
-        self._apply_makeup.makeup_items_data["Concealer"]["color"] = colors["concealer"]
-        self._apply_makeup.makeup_items_data["Lipstick"]["color"] = colors["lipstick"]
-        self._apply_makeup.makeup_items_data["Eye_shade"]["color"] = colors["eye_shade"]
-        self._apply_makeup.makeup_items_data["Blush"]["color"] = colors["blush"]
-        self._apply_makeup.makeup_items_data["Foundation"]["color"] = colors["foundation"]
+        self._apply_makeup.makeup_items_data["concealer"]["color"] = colors["concealer"]
+        self._apply_makeup.makeup_items_data["lipstick"]["color"] = colors["lipstick"]
+        self._apply_makeup.makeup_items_data["eye_shade"]["color"] = colors["eye_shade"]
+        self._apply_makeup.makeup_items_data["blush"]["color"] = colors["blush"]
+        self._apply_makeup.makeup_items_data["foundation"]["color"] = colors["foundation"]
 
         return "Data Received"
 
@@ -149,12 +147,9 @@ class MakeupRecommendationApp:
         return thread.join()
 
     def update_global_colors(self):
-        ai_colors = self._apply_makeup.ai_recommended_colors()
-        colors["concealer"] = ai_colors["concealer"]
-        colors["lipstick"] = ai_colors["lipstick"]
-        colors["blush"] = ai_colors["blush"]
-        colors["eye_shade"] = ai_colors["eye_shade"]
-        colors["foundation"] = ai_colors["foundation"]
+        ai_recommended_colors = self._apply_makeup.ai_recommended_colors()
+        for item in ai_recommended_colors:
+            colors[item] = ai_recommended_colors[item]
 
 
 def analyze_person_race(frame):
