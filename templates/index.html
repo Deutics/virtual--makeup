@@ -420,11 +420,7 @@
                         style="position: absolute; top: 0; left: 0; z-index: 2"
                     ></canvas>
                 </div>
-                <!--                    style="background-image:url('{{ url_for('video_feed') }}')"-->
-                <!--            >-->
-                <!--                    <img id="photo"  style="position: absolute; top: 0; left: 0; z-index: 1;">-->
-                <!--                    <video autoplay playsinline id="videoElement" style="position: absolute; top: 0; left: 0; z-index: 0;"></video>-->
-                <!--                    <canvas id="canvas" style="position: absolute; top: 0; left: 0; z-index: 2;"></canvas>-->
+
 
                 <div class="mainImage_innerWrapper">
                     <div style="height: 90vh"></div>
@@ -458,10 +454,6 @@
         ></script>
 
         <script>
-            window.addEventListener("beforeunload", function () {
-                fetch("/stop_camera", { method: "POST" })
-            })
-
             /////
             var socket = io.connect(
                 window.location.protocol +

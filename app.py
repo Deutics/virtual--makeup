@@ -1,10 +1,9 @@
 import time
 from deepface import DeepFace
 import base64
-import os
 import cv2
 import numpy as np
-from flask import Flask, render_template, send_from_directory,request,redirect,Response
+from flask import Flask, render_template, request, redirect, Response
 from flask_socketio import SocketIO, emit
 
 from Streamer.Streamer import Streamer
@@ -12,7 +11,6 @@ from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
 from Features.ApplyMakeup.MakeupApplier import MakeupApplier
 from Features.ImageSaver.ImageSaver import ImageSaver, create_multiprocess_pool
 from Utils.ThreadWithReturnValue import ThreadWithReturnValue
-
 
 # for the makeup colors
 colors = {
@@ -32,38 +30,27 @@ class MakeupRecommendationApp:
         self._image_saver = ImageSaver()
         self._time = None
 
+        # socket
         self.app = Flask(__name__, static_folder="./static")
         self.app.config["SECRET_KEY"] = "secret!"
         self.socketio = SocketIO(self.app, async_mode="eventlet")
+
         # # Routes
         self.app.route("/")(self.index)
         self.socketio.on("connect")(self.test_connect)
         self.socketio.on("image")(self.receive_image)
-
-        self.app.add_url_rule('/video_feed', view_func=self.video_feed)
         self.app.add_url_rule('/recommendation', view_func=self.recommendation)
         self.app.add_url_rule('/recommendation_mask', view_func=self.recommendation_mask)
         self.app.add_url_rule('/recommendation_data', view_func=self.recommendation_data, methods=['POST'])
-        self.app.add_url_rule('/stop_camera', view_func=self.stop_streaming, methods=['POST'])
         self.app.add_url_rule('/get_person_race', view_func=self.get_person_race)
 
-    # def run(self, *args, **kwargs):
-    #     self.app.run(*args, **kwargs)
     def run(self):
         self.socketio.run(self.app, debug=True, port=5000)
-        # self.app.run()
 
     @staticmethod
     def index():
         return render_template('index.html')
 
-    # @staticmethod
-    # def base64_to_image(base64_string):
-    #     base64_data = base64_string.split(",")[1]
-    #     image_bytes = base64.b64decode(base64_data)
-    #     image_array = np.frombuffer(image_bytes, dtype=np.uint8)
-    #     image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
-    #     return image
     @staticmethod
     def base64_to_image(base64_string):
         try:
@@ -73,28 +60,33 @@ class MakeupRecommendationApp:
             image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
             return image
         except:
-            # print("Error:", e)  # Print the specific error message for debugging
             return None
 
     @staticmethod
     def encode_image(image):
-        # ------------
-        # encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 90]
-        result, frame_encoded = cv2.imencode(".jpg", image)
-        # result, frame_encoded = cv2.imencode(".jpg", image, encode_param)
-        processed_img_data = base64.b64encode(frame_encoded).decode()
-        b64_src = "data:image/jpg;base64,"
-        processed_img_data = b64_src + processed_img_data
-        return processed_img_data
+        try:
+            # Check if the image is empty or None
+            if image is None:
+                return None
 
-    def test_connect(self):
+            result, frame_encoded = cv2.imencode(".jpg", image)
+
+            # Check if encoding was successful
+            if not result:
+                return None
+
+            processed_img_data = base64.b64encode(frame_encoded).decode()
+            b64_src = "data:image/jpg;base64,"
+            processed_img_data = b64_src + processed_img_data
+            return processed_img_data
+
+        except:
+            return None
+
+    @staticmethod
+    def test_connect():
         print("Connected")
         emit("my response", {"data": "Connected"})
-
-
-    def video_feed(self):
-        return Response(self.generate_frames(),
-                        mimetype='multipart/x-mixed-replace; boundary=frame')
 
     @staticmethod
     def recommendation():
@@ -111,12 +103,6 @@ class MakeupRecommendationApp:
             colors[index] = color[::-1]
 
     def get_person_race(self):
-        """
-        :return: send person race to HTML
-        """
-
-
-        print(self._apply_makeup.person_race)
         return self._apply_makeup.person_race
 
     def recommendation_data(self):
@@ -134,35 +120,29 @@ class MakeupRecommendationApp:
 
         return "Data Received"
 
-    def stop_streaming(self):
-        self._streamer.stop_streaming()
-        return "Stop Streaming"
-
     def receive_image(self, image):
         image = self.base64_to_image(image)
-        # gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         if image is not None:
-            colrs = self.generate_frames(image)
-            processed_img_data = self.encode_image(colrs)
-            self.socketio.emit("processed_image", processed_img_data)
+            masked_image = self.apply_makeup(image)
+            encoded_image = self.encode_image(masked_image)
+            if encoded_image is not None:
+                self.socketio.emit("processed_image", encoded_image)
 
-    def generate_frames(self,frame):
+    def apply_makeup(self, frame):
         face_landmarks = self._landmarks_extractor.extract_landmarks(frame)
 
         if face_landmarks:
-            if not self._apply_makeup.person_race:      # for 1 time only
+
+            if self._apply_makeup.person_race is None or time.time() - self._time >= 30:
+                self._apply_makeup.person_race = self.analyze_person_race_in_thread(frame)
+                self._apply_makeup.recommend_makeup_colors()
+                # Thread(target=create_multiprocess_pool, args=(frame, colors)).start()
                 self._time = time.time()
-                self._apply_makeup.person_race = analyze_person_race(frame)
-                if (time.time() - self._time) >= 30:
-
-                    self._apply_makeup.person_race = self.analyze_person_race_in_thread(frame)
-
-                    # Thread(target=create_multiprocess_pool, args=(frame, colors)).start()
-
-                    self._time = None
 
             frame = self._apply_makeup.apply_makeup_to_image(frame, face_landmarks)
-            return frame
+
+        return frame
+
 
     @staticmethod
     def analyze_person_race_in_thread(frame):
@@ -182,4 +162,3 @@ def analyze_person_race(frame):
     if person_race != "white" and person_race != "black":
         person_race = 'brown'
     return person_race
-
