@@ -27,22 +27,42 @@ class MakeupApplier:
 
                                    "Foundation": {"color": (0, 0, 0),
                                                   "landmarks_id": [[251, 389, 356, 454, 323, 361, 288, 397, 365,
-                                                                   379, 378, 400, 377, 152, 148, 176, 149, 150,
-                                                                   136, 172, 58, 132, 127, 162, 21, 54, 103, 67, 109,
-                                                                   10, 338, 297, 332, 284],
+                                                                    379, 378, 400, 377, 152, 148, 176, 149, 150,
+                                                                    136, 172, 58, 132, 127, 162, 21, 54, 103, 67, 109,
+                                                                    10, 338, 297, 332, 284],
                                                                    [251, 389, 356, 454, 323, 361, 288, 397, 365, 379,
-                                                                   378, 400, 377, 152, 148, 176, 149, 150, 136, 172,
-                                                                   58, 132, 127, 162, 21, 54, 103, 67, 109, 10, 338,
-                                                                   297, 332, 284]],
+                                                                    378, 400, 377, 152, 148, 176, 149, 150, 136, 172,
+                                                                    58, 132, 127, 162, 21, 54, 103, 67, 109, 10, 338,
+                                                                    297, 332, 284]],
                                                   "alpha": 0.95, "beta": 0.05},
 
                                    "Eye_shade": {"color": (0, 0, 0),
                                                  "landmarks_id": [[226, 113, 225, 224, 223, 222, 221, 189, 244, 243,
-                                                                  173, 157, 158, 159, 160, 161, 246, 130],
+                                                                   173, 157, 158, 159, 160, 161, 246, 130],
                                                                   [464, 413, 441, 442, 443, 444, 445, 342, 446, 263,
-                                                                  466, 388, 387, 386, 384, 398, 362, 463]],
+                                                                   466, 388, 387, 386, 384, 398, 362, 463]],
                                                  "alpha": 0.9, "beta": 0.1}
                                    }
+
+        self._ai_colors_recommendations = {"white": {"lipstick": (224, 17, 95),
+                                                     "eye_shade": (255, 192, 203),
+                                                     "blush": (244, 194, 194),
+                                                     "foundation": (248, 224, 212),
+                                                     "concealer": (255, 229, 180)},
+
+                                           "black": {"lipstick": (150, 25, 25),
+                                                     "eye_shade": (174, 86, 28),
+                                                     "blush": (205, 141, 107),
+                                                     "foundation": (199, 166, 134),
+                                                     "concealer": (199, 166, 134)},
+
+                                           "brown": {"lipstick": (210, 4, 45),
+                                                     "eye_shade": (187, 42, 107),
+                                                     "blush": (219, 54, 86),
+                                                     "foundation": (233, 211, 199),
+                                                     "concealer": (210, 165, 140)},
+
+                                           }
 
     def apply_makeup_to_image(self, image, face_landmarks):
         for key, data in self._makeup_items_data.items():
@@ -53,7 +73,6 @@ class MakeupApplier:
 
             image = cv2.addWeighted(image, data["alpha"],
                                     mask, data["beta"], 0)
-        image = self.add_race_in_frame(image)
 
         return image
 
@@ -95,11 +114,19 @@ class MakeupApplier:
         mask = frame.copy()
         for i, landmark in enumerate(makeup_landmarks):
             points = np.array([[face_landmarks[idx].x * frame.shape[1], face_landmarks[idx].y * frame.shape[0]]
-                              for idx in landmark], np.int32)
+                               for idx in landmark], np.int32)
 
             cv2.fillPoly(mask, [points], color)
 
         return mask
+
+    def recommend_makeup_colors(self):
+        self._makeup_items_data["Concealer"]["color"] = self._ai_colors_recommendations[self._person_race]["concealer"]
+        self._makeup_items_data["Lipstick"]["color"] = self._ai_colors_recommendations[self._person_race]["lipstick"]
+        self._makeup_items_data["Eye_shade"]["color"] = self._ai_colors_recommendations[self._person_race]["eye_shade"]
+        self._makeup_items_data["Blush"]["color"] = self._ai_colors_recommendations[self._person_race]["blush"]
+        self._makeup_items_data["Foundation"]["color"] = self._ai_colors_recommendations[self._person_race]["foundation"]
+
 
     # Getter Setters
     @property
@@ -117,3 +144,4 @@ class MakeupApplier:
     @person_race.setter
     def person_race(self, race):
         self._person_race = race
+
