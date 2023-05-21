@@ -196,6 +196,12 @@ var white_race = {}
 
 // Wahab Edit
 
+function startAiRec() {
+    fetch("/start_ai")
+        .then((response) => response.text())
+        .then((data) => {})
+}
+
 function getPersonRace() {
     fetch("/get_person_race")
         .then((response) => response.text())
