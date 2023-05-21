@@ -16,7 +16,7 @@ const arrClosed = [
     "closed6",
 ]
 
-const handlerClosed = (val) => {
+const handlerClosed = async (val) => {
     arrExpanded.forEach((item, i) => {
         document.getElementById(item).style.display = "none"
     })
@@ -30,6 +30,11 @@ const handlerClosed = (val) => {
     document.getElementById(`closed${val}`).style.display = "none"
 
     document.getElementById(`expanded${val}`).style.display = "flex"
+
+    if ((val = 6)) {
+        console.log("starting ai")
+        await fetch("/start_ai", { method: "POST" })
+    }
 }
 
 const handleOpenSideBar = () => {
@@ -196,14 +201,8 @@ var white_race = {}
 
 // Wahab Edit
 
-function startAiRec() {
-    fetch("/start_ai")
-        .then((response) => response.text())
-        .then((data) => {})
-}
-
 function getPersonRace() {
-    fetch("/get_person_race")
+    fetch("/get_person_race", { method: "POST" })
         .then((response) => response.text())
         .then((data) => {
             console.log("race from backend", data)

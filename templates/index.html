@@ -409,12 +409,12 @@
                         class="processedImg"
                         style="position: absolute; top: 0; left: 0; z-index: 1"
                     />
-                    <!-- <video
+                    <video
                         autoplay
                         playsinline
                         id="videoElement"
                         style="position: absolute; top: 0; left: 0; z-index: 0"
-                    ></video> -->
+                    ></video>
                     <canvas
                         id="canvas"
                         class="canvas"
@@ -488,15 +488,14 @@
                     .catch(function (err0r) {})
             }
 
-            const FPS = 15
             setInterval(() => {
                 canvas.height = video.videoHeight
                 canvas.width = video.videoWidth
                 context.drawImage(video, 0, 0)
-                var data = canvas.toDataURL("image/jpeg", 0.4)
+                var data = canvas.toDataURL("image/jpeg", 0.5)
                 context.clearRect(0, 0, video.videoWidth, video.videoHeight)
                 socket.emit("image", data)
-            }, 1000 / FPS)
+            }, 100)
 
             socket.on("processed_image", function (image) {
                 photo.setAttribute("src", image)

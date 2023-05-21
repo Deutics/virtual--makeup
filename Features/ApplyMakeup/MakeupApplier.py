@@ -44,23 +44,23 @@ class MakeupApplier:
                                                  "alpha": 0.9, "beta": 0.1}
                                    }
 
-        self._ai_colors_recommendations = {"white": {"lipstick": (224, 17, 95),
-                                                     "eye_shade": (255, 192, 203),
-                                                     "blush": (244, 194, 194),
-                                                     "foundation": (248, 224, 212),
-                                                     "concealer": (255, 229, 180)},
+        self._ai_colors_recommendations = {"white": {"lipstick": (95, 17, 224),
+                                                     "eye_shade": (203, 192, 255),
+                                                     "blush": (194, 194, 244),
+                                                     "foundation": (212, 224, 248),
+                                                     "concealer": (180, 229, 255)},
 
-                                           "black": {"lipstick": (150, 25, 25),
-                                                     "eye_shade": (174, 86, 28),
-                                                     "blush": (205, 141, 107),
-                                                     "foundation": (199, 166, 134),
-                                                     "concealer": (199, 166, 134)},
+                                           "black": {"lipstick": (25, 25, 150),
+                                                     "eye_shade": (28, 86, 174),
+                                                     "blush": (107, 141, 205),
+                                                     "foundation": (134, 166, 199),
+                                                     "concealer": (134, 166, 199)},
 
-                                           "brown": {"lipstick": (210, 4, 45),
-                                                     "eye_shade": (187, 42, 107),
-                                                     "blush": (219, 54, 86),
-                                                     "foundation": (233, 211, 199),
-                                                     "concealer": (210, 165, 140)},
+                                           "brown": {"lipstick": (45, 4, 210),
+                                                     "eye_shade": (107, 42, 187),
+                                                     "blush": (86, 54, 219),
+                                                     "foundation": (199, 211, 233),
+                                                     "concealer": (140, 165, 210)},
 
                                            }
 
@@ -127,6 +127,8 @@ class MakeupApplier:
         self._makeup_items_data["Blush"]["color"] = self._ai_colors_recommendations[self._person_race]["blush"]
         self._makeup_items_data["Foundation"]["color"] = self._ai_colors_recommendations[self._person_race]["foundation"]
 
+    def ai_recommended_colors(self):
+        return self._ai_colors_recommendations[self._person_race]
 
     # Getter Setters
     @property
@@ -140,6 +142,10 @@ class MakeupApplier:
     @property
     def person_race(self):
         return self._person_race
+
+    @person_race.setter
+    def person_race(self, race):
+        self._person_race = race
 
     @person_race.setter
     def person_race(self, race):
