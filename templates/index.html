@@ -496,12 +496,12 @@
                     .catch(function (err0r) {})
             }
 
-            const FPS = 20
+            const FPS = 23
             setInterval(() => {
                 canvas.height = video.videoHeight
                 canvas.width = video.videoWidth
                 context.drawImage(video, 0, 0)
-                var data = canvas.toDataURL("image/jpeg", 0.6)
+                var data = canvas.toDataURL("image/jpeg", 0.5)
                 context.clearRect(0, 0, video.videoWidth, video.videoHeight)
                 socket.emit("image", data)
             }, 1000 / FPS)

@@ -57,18 +57,31 @@ class MakeupRecommendationApp:
     def index():
         return render_template('index.html')
 
+    # @staticmethod
+    # def base64_to_image(base64_string):
+    #     base64_data = base64_string.split(",")[1]
+    #     image_bytes = base64.b64decode(base64_data)
+    #     image_array = np.frombuffer(image_bytes, dtype=np.uint8)
+    #     image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
+    #     return image
     @staticmethod
     def base64_to_image(base64_string):
-        base64_data = base64_string.split(",")[1]
-        image_bytes = base64.b64decode(base64_data)
-        image_array = np.frombuffer(image_bytes, dtype=np.uint8)
-        image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
-        return image
+        try:
+            base64_data = base64_string.split(",")[1]
+            image_bytes = base64.b64decode(base64_data)
+            image_array = np.frombuffer(image_bytes, dtype=np.uint8)
+            image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
+            return image
+        except:
+            # print("Error:", e)  # Print the specific error message for debugging
+            return None
 
     @staticmethod
     def encode_image(image):
-        encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 90]
-        result, frame_encoded = cv2.imencode(".jpg", image, encode_param)
+        # ------------
+        # encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 90]
+        result, frame_encoded = cv2.imencode(".jpg", image)
+        # result, frame_encoded = cv2.imencode(".jpg", image, encode_param)
         processed_img_data = base64.b64encode(frame_encoded).decode()
         b64_src = "data:image/jpg;base64,"
         processed_img_data = b64_src + processed_img_data
@@ -127,27 +140,19 @@ class MakeupRecommendationApp:
 
     def receive_image(self, image):
         image = self.base64_to_image(image)
-        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        cv2.imwrite("image.jpg", image)
-        # frame_resized = cv2.resize(gray, (640, 360))
-        processed_img_data = self.encode_image(gray)
-        self.socketio.emit("processed_image", processed_img_data)
+        # gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        if image is not None:
+            colrs = self.generate_frames(image)
+            processed_img_data = self.encode_image(colrs)
+            self.socketio.emit("processed_image", processed_img_data)
 
+    def generate_frames(self,frame):
+        face_landmarks = self._landmarks_extractor.extract_landmarks(frame)
 
-    def generate_frames(self):
-        self._streamer.initialize_streaming()
-
-        while self._streamer.is_streaming:
-            if self._time is None:
+        if face_landmarks:
+            if not self._apply_makeup.person_race:      # for 1 time only
                 self._time = time.time()
-
-            frame = self._streamer.get_frame()
-            face_landmarks = self._landmarks_extractor.extract_landmarks(frame)
-
-            if face_landmarks:
-                if not self._apply_makeup.person_race:      # for 1 time only
-                    self._apply_makeup.person_race = analyze_person_race(frame)
-
+                self._apply_makeup.person_race = analyze_person_race(frame)
                 if (time.time() - self._time) >= 30:
 
                     self._apply_makeup.person_race = self.analyze_person_race_in_thread(frame)
@@ -156,13 +161,8 @@ class MakeupRecommendationApp:
 
                     self._time = None
 
-                frame = self._apply_makeup.apply_makeup_to_image(frame, face_landmarks)
-
-            # Convert the frame to bytes and yield it to the response
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame_bytes = buffer.tobytes()
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+            frame = self._apply_makeup.apply_makeup_to_image(frame, face_landmarks)
+            return frame
 
     @staticmethod
     def analyze_person_race_in_thread(frame):

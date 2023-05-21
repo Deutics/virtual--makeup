@@ -49,7 +49,7 @@ class MakeupApplier:
             mask = self._create_makeup_mask(image, face_landmarks,
                                             data["landmarks_id"],
                                             data["color"])
-            mask = cv2.GaussianBlur(mask, (7, 7), 20)
+            # mask = cv2.GaussianBlur(mask, (7, 7), 20)
 
             image = cv2.addWeighted(image, data["alpha"],
                                     mask, data["beta"], 0)

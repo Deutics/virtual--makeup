@@ -200,6 +200,7 @@ function getPersonRace() {
     fetch("/get_person_race")
         .then((response) => response.text())
         .then((data) => {
+            console.log(data)
             white_race.classList.remove("race-selected")
             black_race.classList.remove("race-selected")
             brown_race.classList.remove("race-selected")
