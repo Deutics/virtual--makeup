@@ -1,9 +1,24 @@
+@font-face {
+    font-family: visbyround;
+    src: url(visby.ttf);
+}
+
 body {
     margin: 0;
+    font-family: visbyround;
 }
+
+/* .canvas {
+    width: 100px;
+    height: 100px;
+} */
 .outerWrapper {
     width: 100vw;
     display: flex;
+}
+
+.processedImg {
+    width: 100%;
 }
 .mainImage {
     background-color: rgb(85, 38, 38);
@@ -104,6 +119,7 @@ body {
     margin-left: 0px;
 }
 .closed {
+    font-family: visbyround;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -115,7 +131,7 @@ body {
     background-color: #1f2022;
     color: #d3d3d3;
     text-transform: uppercase;
-    font-family: "Inter";
+
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -125,7 +141,7 @@ body {
     background-size: cover;
 }
 .expanded {
-    height: 70vh;
+    min-height: 70vh;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -137,7 +153,7 @@ body {
     background-color: #1f2022;
     color: #d3d3d3;
     text-transform: uppercase;
-    font-family: "Inter";
+
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -152,6 +168,10 @@ body {
     padding-bottom: 10px;
 }
 
+.mt-20 {
+    margin-top: 20px;
+}
+
 .backButton {
     /* position: absolute;
     width: 50vw;
@@ -161,6 +181,7 @@ body {
     cursor: pointer;
     background-image: url(../img/back.svg);
     background-repeat: no-repeat;
+    z-index: 4;
 }
 .backButton:hover {
     height: 41px;
@@ -252,4 +273,35 @@ body {
     .sideBar {
         display: block;
     }
+}
+
+.aiRec {
+    display: flex;
+}
+
+.black_race {
+    padding: 5px 15px;
+}
+.brown_race {
+    padding: 5px;
+}
+.white_race {
+    padding: 5px;
+}
+
+.black_race > span {
+    font-size: 1rem;
+}
+
+.brown_race > span {
+    font-size: 1rem;
+}
+.white_race > span {
+    font-size: 1rem;
+}
+
+.race-selected {
+    background-color: #95929278;
+
+    border-radius: 10px;
 }

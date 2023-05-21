@@ -1,6 +1,5 @@
 from app import MakeupRecommendationApp
-
-app = MakeupRecommendationApp()
+my_app = MakeupRecommendationApp(source=0)
 
 if __name__ == '__main__':
-    app.run()
+    my_app.run()

@@ -1,15 +1,18 @@
-import cv2
-from flask import Flask, render_template, Response, request, redirect
 import time
-# import multiprocessing
-import threading
 from deepface import DeepFace
+import base64
+import cv2
+import numpy as np
+from flask import Flask, render_template, request, redirect
+from flask_socketio import SocketIO, emit
 
 from Streamer.Streamer import Streamer
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
 from Features.ApplyMakeup.MakeupApplier import MakeupApplier
 from Features.ImageSaver.ImageSaver import ImageSaver, create_multiprocess_pool
+from Utils.ThreadWithReturnValue import ThreadWithReturnValue
 
+# for the makeup colors
 colors = {
     "lipstick": (0, 0, 0),
     "eye_shade": (0, 0, 0),
@@ -20,37 +23,81 @@ colors = {
 
 
 class MakeupRecommendationApp:
-    def __init__(self):
-        self._streamer = Streamer("video.mp4")
+    def __init__(self, source=0):
+        self._streamer = Streamer(source=source)
         self._landmarks_extractor = LandmarksExtractor()
         self._apply_makeup = MakeupApplier()
         self._image_saver = ImageSaver()
-        self._person_race = None
-        self.app = Flask(__name__)
-        self.app.add_url_rule('/', view_func=self.index)
-        self.app.add_url_rule('/video_feed', view_func=self.video_feed)
-        self.app.add_url_rule('/recommendation', view_func=self.recommendation)
-        self.app.add_url_rule('/recommendation_mask', view_func=self.recommendation_mask)
-        self.app.add_url_rule('/recommendation_data', view_func=self.recommendation_data, methods=['POST'])
-        # New
-        self.app.add_url_rule('/stop_camera', view_func=self.stop_streaming, methods=['POST'])
-        #
         self._time = None
 
-    def run(self, *args, **kwargs):
-        self.app.run(*args, **kwargs)
+        # socket
+        self.app = Flask(__name__, static_folder="./static")
+        self.app.config["SECRET_KEY"] = "secret!"
+        self.socketio = SocketIO(self.app, async_mode="eventlet")
+
+        # # Routes
+        self.app.route("/")(self.index)
+        self.socketio.on("connect")(self.test_connect)
+        self.socketio.on("image")(self.receive_image)
+        self.app.add_url_rule('/recommendation', view_func=self.recommendation)
+        self.app.add_url_rule('/recommendation_mask', view_func=self.recommendation_mask)
+        self.app.add_url_rule('/get_person_race', view_func=self.get_person_race, methods=['POST'])
+        self.app.add_url_rule('/recommendation_data', view_func=self.recommendation_data, methods=['POST'])
+        self.app.add_url_rule('/start_ai', view_func=self.start_ai, methods=['POST'])
+
+    def run(self):
+        self.socketio.run(self.app, debug=True, port=5000)
 
     @staticmethod
     def index():
         return render_template('index.html')
 
-    def video_feed(self):
-        return Response(self.generate_frames(),
-                        mimetype='multipart/x-mixed-replace; boundary=frame')
+    @staticmethod
+    def base64_to_image(base64_string):
+        try:
+            base64_data = base64_string.split(",")[1]
+            image_bytes = base64.b64decode(base64_data)
+            image_array = np.frombuffer(image_bytes, dtype=np.uint8)
+            image = cv2.imdecode(image_array, cv2.IMREAD_COLOR)
+            return image
+        except:
+            return None
+
+    @staticmethod
+    def encode_image(image):
+        try:
+            # Check if the image is empty or None
+            if image is None:
+                return None
+
+            result, frame_encoded = cv2.imencode(".jpg", image)
+
+            # Check if encoding was successful
+            if not result:
+                return None
+
+            processed_img_data = base64.b64encode(frame_encoded).decode()
+            b64_src = "data:image/jpg;base64,"
+            processed_img_data = b64_src + processed_img_data
+            return processed_img_data
+
+        except:
+            return None
+
+    @staticmethod
+    def test_connect():
+        print("Connected")
+        emit("my response", {"data": "Connected"})
 
     @staticmethod
     def recommendation():
         return render_template('recommendation.html')
+
+    def start_ai(self):
+        # self._apply_makeup.recommend_makeup_colors()
+        self._apply_makeup.recommend_makeup_colors()
+        self.update_global_colors()
+        return "MakeUp Applied"
 
     @staticmethod
     def recommendation_mask():
@@ -62,6 +109,9 @@ class MakeupRecommendationApp:
             color = tuple(map(int, color.strip("()").split(",")))
             colors[index] = color[::-1]
 
+    def get_person_race(self):
+        return self._apply_makeup.person_race
+
     def recommendation_data(self):
         self.get_rgb_color(request.form.get("lipstick_color"), "lipstick")
         self.get_rgb_color(request.form.get("eyeshadow_color"), "eye_shade")
@@ -69,7 +119,6 @@ class MakeupRecommendationApp:
         self.get_rgb_color(request.form.get("concealer_color"), "concealer")
         self.get_rgb_color(request.form.get("foundation_color"), "foundation")
 
-        # print(colors)
         self._apply_makeup.makeup_items_data["Concealer"]["color"] = colors["concealer"]
         self._apply_makeup.makeup_items_data["Lipstick"]["color"] = colors["lipstick"]
         self._apply_makeup.makeup_items_data["Eye_shade"]["color"] = colors["eye_shade"]
@@ -78,49 +127,53 @@ class MakeupRecommendationApp:
 
         return "Data Received"
 
-    def stop_streaming(self):
-        self._streamer.stop_streaming()
-        return "Stop Streaming"
+    def receive_image(self, image):
+        image = self.base64_to_image(image)
+        if image is not None:
+            masked_image = self.apply_makeup(image)
+            encoded_image = self.encode_image(masked_image)
+            if encoded_image is not None:
+                self.socketio.emit("processed_image", encoded_image)
 
-    def generate_frames(self):
+    def apply_makeup(self, frame):
+        face_landmarks = self._landmarks_extractor.extract_landmarks(frame)
 
-        # initialize webcam
-        self._streamer.initialize_streaming()
+        if face_landmarks:
 
-        while self._streamer.is_streaming:
-            # initializing timer for saving images
-            if self._time is None:
+            if self._apply_makeup.person_race is None or time.time() - self._time >= 30:
+                self._apply_makeup.person_race = self.analyze_person_race_in_thread(frame)
+                # self._apply_makeup.recommend_makeup_colors()
+                # self.update_global_colors()
+                # Thread(target=create_multiprocess_pool, args=(frame, colors)).start()
                 self._time = time.time()
 
-            # get frames one by one
-            frame = self._streamer.get_frame()
+            frame = self._apply_makeup.apply_makeup_to_image(frame, face_landmarks)
 
-            # Extract landmarks
-            landmarks = self._landmarks_extractor.extract_landmarks(frame)
+        return frame
 
-            if landmarks:
-                face_landmarks = landmarks[0].landmark
-                if not self._person_race:
-                    prediction = DeepFace.analyze(img_path=frame, actions=('race',), enforce_detection=False)
-                    self._person_race = prediction[0]['dominant_race']
-                    print(self._person_race)
+    @staticmethod
+    def analyze_person_race_in_thread(frame):
+        thread = ThreadWithReturnValue(target=analyze_person_race, args=(frame,))
+        thread.start()
+        return thread.join()
 
-                if (time.time() - self._time) >= 30:
+    def update_global_colors(self):
+        ai_colors = self._apply_makeup.ai_recommended_colors()
+        colors["concealer"] = ai_colors["concealer"]
+        colors["lipstick"] = ai_colors["lipstick"]
+        colors["blush"] = ai_colors["blush"]
+        colors["eye_shade"] = ai_colors["eye_shade"]
+        colors["foundation"] = ai_colors["foundation"]
 
-                    prediction = DeepFace.analyze(img_path=frame, actions=('race',), enforce_detection=False)
-                    self._person_race = prediction[0]['dominant_race']
 
-                    # process = threading.Thread(target=create_multiprocess_pool,
-                    #                            args=(frame, colors))
-                    # Start the process
-                    # process.start()
-                    self._time = None
+def analyze_person_race(frame):
+    """*************************************
+    Parameters: frame, apply_makeup(instance of class)
+    Functionality: Analyze the race of person in frame
+    ****************************************"""
 
-                # Apply makeup
-                frame = self._apply_makeup.apply_makeup_to_image(frame, face_landmarks)
-
-            # Convert the frame to bytes and yield it to the response
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame_bytes = buffer.tobytes()
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+    prediction = DeepFace.analyze(img_path=frame, actions=('race',), enforce_detection=False)[0]
+    person_race = prediction['dominant_race']
+    if person_race != "white" and person_race != "black":
+        person_race = 'brown'
+    return person_race
