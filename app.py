@@ -3,7 +3,7 @@ from deepface import DeepFace
 import base64
 import cv2
 import numpy as np
-from flask import Flask, render_template, request, redirect, Response
+from flask import Flask, render_template, request, redirect
 from flask_socketio import SocketIO, emit
 
 from Streamer.Streamer import Streamer
@@ -42,7 +42,7 @@ class MakeupRecommendationApp:
         self.app.add_url_rule('/recommendation', view_func=self.recommendation)
         self.app.add_url_rule('/recommendation_mask', view_func=self.recommendation_mask)
         self.app.add_url_rule('/recommendation_data', view_func=self.recommendation_data, methods=['POST'])
-        self.app.add_url_rule('/get_person_race', view_func=self.get_person_race)
+        self.app.add_url_rule('/start_ai', view_func=self.start_ai, methods=['POST'])
 
     def run(self):
         self.socketio.run(self.app, debug=True, port=5000)
@@ -92,6 +92,10 @@ class MakeupRecommendationApp:
     def recommendation():
         return render_template('recommendation.html')
 
+    def start_ai(self):
+        self._apply_makeup.recommend_makeup_colors()
+        return "MakeUp Applied"
+
     @staticmethod
     def recommendation_mask():
         return redirect('/recommendation')
@@ -104,6 +108,8 @@ class MakeupRecommendationApp:
 
     def get_person_race(self):
         return self._apply_makeup.person_race
+
+
 
     def recommendation_data(self):
         self.get_rgb_color(request.form.get("lipstick_color"), "lipstick")
@@ -135,14 +141,13 @@ class MakeupRecommendationApp:
 
             if self._apply_makeup.person_race is None or time.time() - self._time >= 30:
                 self._apply_makeup.person_race = self.analyze_person_race_in_thread(frame)
-                self._apply_makeup.recommend_makeup_colors()
+                # self._apply_makeup.recommend_makeup_colors()
                 # Thread(target=create_multiprocess_pool, args=(frame, colors)).start()
                 self._time = time.time()
 
             frame = self._apply_makeup.apply_makeup_to_image(frame, face_landmarks)
 
         return frame
-
 
     @staticmethod
     def analyze_person_race_in_thread(frame):

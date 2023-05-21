@@ -488,15 +488,15 @@
                     .catch(function (err0r) {})
             }
 
-            const FPS = 23
+<!--            const FPS = 50-->
             setInterval(() => {
                 canvas.height = video.videoHeight
                 canvas.width = video.videoWidth
                 context.drawImage(video, 0, 0)
-                var data = canvas.toDataURL("image/jpeg", 0.5)
+                var data = canvas.toDataURL("image/jpeg", 0.6)
                 context.clearRect(0, 0, video.videoWidth, video.videoHeight)
                 socket.emit("image", data)
-            }, 1000 / FPS)
+            }, 60)
 
             socket.on("processed_image", function (image) {
                 photo.setAttribute("src", image)
