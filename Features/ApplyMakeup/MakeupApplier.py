@@ -127,6 +127,8 @@ class MakeupApplier:
         self._makeup_items_data["Blush"]["color"] = self._ai_colors_recommendations[self._person_race]["blush"]
         self._makeup_items_data["Foundation"]["color"] = self._ai_colors_recommendations[self._person_race]["foundation"]
 
+    def ai_recommended_colors(self):
+        return self._ai_colors_recommendations[self._person_race]
 
     # Getter Setters
     @property
@@ -140,6 +142,10 @@ class MakeupApplier:
     @property
     def person_race(self):
         return self._person_race
+
+    @person_race.setter
+    def person_race(self, race):
+        self._person_race = race
 
     @person_race.setter
     def person_race(self, race):

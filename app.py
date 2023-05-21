@@ -109,8 +109,6 @@ class MakeupRecommendationApp:
     def get_person_race(self):
         return self._apply_makeup.person_race
 
-
-
     def recommendation_data(self):
         self.get_rgb_color(request.form.get("lipstick_color"), "lipstick")
         self.get_rgb_color(request.form.get("eyeshadow_color"), "eye_shade")
@@ -141,7 +139,8 @@ class MakeupRecommendationApp:
 
             if self._apply_makeup.person_race is None or time.time() - self._time >= 30:
                 self._apply_makeup.person_race = self.analyze_person_race_in_thread(frame)
-                # self._apply_makeup.recommend_makeup_colors()
+                self._apply_makeup.recommend_makeup_colors()
+                self.update_global_colors()
                 # Thread(target=create_multiprocess_pool, args=(frame, colors)).start()
                 self._time = time.time()
 
@@ -154,6 +153,14 @@ class MakeupRecommendationApp:
         thread = ThreadWithReturnValue(target=analyze_person_race, args=(frame,))
         thread.start()
         return thread.join()
+
+    def update_global_colors(self):
+        ai_colors = self._apply_makeup.ai_recommended_colors()
+        colors["concealer"] = ai_colors["concealer"]
+        colors["lipstick"] = ai_colors["lipstick"]
+        colors["blush"] = ai_colors["blush"]
+        colors["eye_shade"] = ai_colors["eye_shade"]
+        colors["foundation"] = ai_colors["foundation"]
 
 
 def analyze_person_race(frame):
