@@ -34,7 +34,7 @@ class MakeupRecommendationApp:
         self.app = Flask(__name__, static_folder="./static")
         # self.app = Flask(__name__,template_folder='templates')
         self.app.config["SECRET_KEY"] = "secret!"
-        self.socketio = SocketIO(self.app, async_mode="eventlet")
+        self.socketio = SocketIO(self.app, async_mode="eventlet", cors_allowed_origins='*')
 
         # # Routes
         self.app.route("/")(self.index)
