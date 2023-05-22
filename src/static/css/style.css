@@ -19,6 +19,8 @@ body {
 
 .processedImg {
     width: 100%;
+    height: 100vh;
+    object-fit: cover;
 }
 .mainImage {
     background-color: rgb(85, 38, 38);
@@ -41,6 +43,11 @@ body {
     align-items: center;
 }
 
+.container {
+    width: 100%;
+    height: 100%;
+}
+
 .mainImage > img {
     object-fit: fill;
 }
@@ -50,7 +57,7 @@ body {
     width: 25vw;
     height: 20vh;
     display: none;
-
+    z-index: 4;
     background-color: white;
 }
 
@@ -205,10 +212,10 @@ body {
     background-image: url("../img/blush.png");
 }
 #closed5 {
-    background-image: url("../img/eyebrowliner.png");
+    background-image: url("../img/eyebrow.png");
 }
 #closed6 {
-    background-image: url("../img/airecommendation.png");
+    background-image: url("../img/aiart.png");
 }
 
 #expanded1 {
@@ -224,15 +231,16 @@ body {
     background-image: url("../img/blush.png");
 }
 #expanded5 {
-    background-image: url("../img/eyebrowliner.png");
+    background-image: url("../img/eyebrow.png");
 }
 #expanded6 {
-    background-image: url("../img/airecommendation.png");
+    background-image: url("../img/aiart.png");
 }
 
 .hamburger {
     position: absolute;
     top: 1%;
+    z-index: 5;
     color: #fff;
     left: 1%;
 }
@@ -242,7 +250,7 @@ body {
     position: absolute;
     top: 1%;
     color: #fff;
-
+    z-index: 5;
     left: 1%;
 }
 .toggle {

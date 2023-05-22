@@ -163,14 +163,6 @@ let colorShadesAiRec = [
     },
 ]
 
-let selectedColorsArray = [
-    { type: "lipstick", color: "#FD0000" },
-    { type: "foundation", color: "#FD0000" },
-    { type: "eyeShadow", color: "#FD0000" },
-    { type: "blush", color: "#FD0000" },
-    { type: "concealer", color: "#FD0000" },
-]
-
 const resetValues = [
     "lipstick_color=(0, 0, 0)",
     "concealer_color=(0, 0, 0)",
@@ -199,20 +191,18 @@ var black_race = {}
 var brown_race = {}
 var white_race = {}
 
-// Wahab Edit
-
 function getPersonRace() {
     fetch("/get_person_race", { method: "POST" })
-        .then((response) => response.text())
+        .then((response) => response.json())
         .then((data) => {
             console.log("race from backend", data)
             white_race.classList.remove("race-selected")
             black_race.classList.remove("race-selected")
             brown_race.classList.remove("race-selected")
 
-            if (data === "white") {
+            if (data.race === "white") {
                 white_race.classList.add("race-selected")
-            } else if (data === "black") {
+            } else if (data.race === "black") {
                 black_race.classList.add("race-selected")
             } else {
                 brown_race.classList.add("race-selected")
@@ -235,221 +225,6 @@ window.onload = function () {
     // Periodically update every 30 seconds
     setInterval(getPersonRace, 30000)
 
-    let selectedColors = document.getElementById("selectedColors")
-    for (let i = 0; i < selectedColorsArray.length; i++) {
-        let item = document.createElement("div")
-        item.classList.add("selectedColors_item")
-
-        let itemName = document.createElement("div")
-        let itemColor = document.createElement("div")
-        itemColor.style.backgroundColor = selectedColorsArray[i].color
-        itemColor.classList.add("selectedColors_item_color")
-
-        itemName.textContent = selectedColorsArray[i].type
-        item.appendChild(itemName)
-        item.appendChild(itemColor)
-
-        selectedColors.appendChild(item)
-    }
-
-    // ai
-    // for (let i = 0; i < colorShadesAiRec.length; i++) {
-    //     let obj = colorShadesAiRec[i]
-    //     let line = document.createElement("div")
-    //     line.classList.add("line")
-
-    //     let heading = document.createElement("p")
-    //     heading.textContent = obj.heading
-    //     line.appendChild(heading)
-
-    //     let colorsDiv = document.createElement("div")
-    //     colorsDiv.classList.add("colors")
-
-    //     for (let j = 0; j < obj.colors.length; j++) {
-    //         let colorDiv = document.createElement("div")
-    //         colorDiv.classList.add("color")
-    //         colorDiv.setAttribute("id", "color")
-    //         colorDiv.style.backgroundColor = obj.colors[j]
-    //         // add click event listener to each color div
-    //         colorDiv.addEventListener("click", function () {
-    //             if (window.innerWidth < 786) {
-    //                 handleCloseSideBar()
-    //             }
-    //             if (colorDiv.classList.contains("addborder")) {
-    //                 colorDiv.classList.remove("addborder")
-
-    //                 data = "rgb(0, 0, 0)"
-    //                 data = data.split("rgb")
-    //                 data = "lipstick_color=" + data[1]
-
-    //                 var xhttp = new XMLHttpRequest()
-    //                 xhttp.open("POST", "/recommendation_data", true)
-    //                 xhttp.setRequestHeader(
-    //                     "Content-type",
-    //                     "application/x-www-form-urlencoded"
-    //                 )
-    //                 xhttp.send(data)
-    //                 if (obj.heading === "foundation") {
-    //                     data = "rgb(0, 0, 0)"
-    //                     data = data.split("rgb")
-    //                     data = "foundation_color=" + data[1]
-
-    //                     var xhttp = new XMLHttpRequest()
-    //                     xhttp.open("POST", "/recommendation_data", true)
-    //                     xhttp.setRequestHeader(
-    //                         "Content-type",
-    //                         "application/x-www-form-urlencoded"
-    //                     )
-    //                     xhttp.send(data)
-    //                 } else if (obj.heading === "lipstick") {
-    //                     data = "rgb(0, 0, 0)"
-    //                     data = data.split("rgb")
-    //                     data = "lipstick_color=" + data[1]
-
-    //                     var xhttp = new XMLHttpRequest()
-    //                     xhttp.open("POST", "/recommendation_data", true)
-    //                     xhttp.setRequestHeader(
-    //                         "Content-type",
-    //                         "application/x-www-form-urlencoded"
-    //                     )
-    //                     xhttp.send(data)
-    //                 } else if (obj.heading === "blush") {
-    //                     data = "rgb(0, 0, 0)"
-    //                     data = data.split("rgb")
-    //                     data = "blush_color=" + data[1]
-
-    //                     var xhttp = new XMLHttpRequest()
-    //                     xhttp.open("POST", "/recommendation_data", true)
-    //                     xhttp.setRequestHeader(
-    //                         "Content-type",
-    //                         "application/x-www-form-urlencoded"
-    //                     )
-    //                     xhttp.send(data)
-    //                 } else if (obj.heading === "eye shadow") {
-    //                     data = "rgb(0, 0, 0)"
-    //                     data = data.split("rgb")
-    //                     data = "eyeshadow_color=" + data[1]
-
-    //                     var xhttp = new XMLHttpRequest()
-    //                     xhttp.open("POST", "/recommendation_data", true)
-    //                     xhttp.setRequestHeader(
-    //                         "Content-type",
-    //                         "application/x-www-form-urlencoded"
-    //                     )
-    //                     xhttp.send(data)
-    //                 } else if (obj.heading === "concealer") {
-    //                     data = "rgb(0, 0, 0)"
-    //                     data = data.split("rgb")
-    //                     data = "concealer_color=" + data[1]
-
-    //                     var xhttp = new XMLHttpRequest()
-    //                     xhttp.open("POST", "/recommendation_data", true)
-    //                     xhttp.setRequestHeader(
-    //                         "Content-type",
-    //                         "application/x-www-form-urlencoded"
-    //                     )
-    //                     xhttp.send(data)
-    //                 } else {
-    //                 }
-
-    //                 selectedColorsArray = selectedColorsArray.map((item) => {
-    //                     if (item.type === "lipstick") {
-    //                         return { type: "lipstick", color: "" }
-    //                     } else {
-    //                         return item
-    //                     }
-    //                 })
-    //             } else {
-    //                 colorDiv.classList.add("addborder")
-
-    //                 if (obj.heading === "foundation") {
-    //                     data = colorDiv.style.backgroundColor
-    //                     data = data.split("rgb")
-    //                     data = "foundation_color=" + data[1]
-
-    //                     var xhttp = new XMLHttpRequest()
-    //                     xhttp.open("POST", "/recommendation_data", true)
-    //                     xhttp.setRequestHeader(
-    //                         "Content-type",
-    //                         "application/x-www-form-urlencoded"
-    //                     )
-    //                     xhttp.send(data)
-    //                 } else if (obj.heading === "lipstick") {
-    //                     data = colorDiv.style.backgroundColor
-    //                     data = data.split("rgb")
-    //                     data = "lipstick_color=" + data[1]
-
-    //                     var xhttp = new XMLHttpRequest()
-    //                     xhttp.open("POST", "/recommendation_data", true)
-    //                     xhttp.setRequestHeader(
-    //                         "Content-type",
-    //                         "application/x-www-form-urlencoded"
-    //                     )
-    //                     xhttp.send(data)
-    //                 } else if (obj.heading === "blush") {
-    //                     data = colorDiv.style.backgroundColor
-    //                     data = data.split("rgb")
-    //                     data = "blush_color=" + data[1]
-
-    //                     var xhttp = new XMLHttpRequest()
-    //                     xhttp.open("POST", "/recommendation_data", true)
-    //                     xhttp.setRequestHeader(
-    //                         "Content-type",
-    //                         "application/x-www-form-urlencoded"
-    //                     )
-    //                     xhttp.send(data)
-    //                 } else if (obj.heading === "eye shadow") {
-    //                     data = colorDiv.style.backgroundColor
-    //                     data = data.split("rgb")
-    //                     data = "eyeshadow_color=" + data[1]
-
-    //                     var xhttp = new XMLHttpRequest()
-    //                     xhttp.open("POST", "/recommendation_data", true)
-    //                     xhttp.setRequestHeader(
-    //                         "Content-type",
-    //                         "application/x-www-form-urlencoded"
-    //                     )
-    //                     xhttp.send(data)
-    //                 } else if (obj.heading === "concealer") {
-    //                     data = colorDiv.style.backgroundColor
-    //                     data = data.split("rgb")
-    //                     data = "concealer_color=" + data[1]
-
-    //                     var xhttp = new XMLHttpRequest()
-    //                     xhttp.open("POST", "/recommendation_data", true)
-    //                     xhttp.setRequestHeader(
-    //                         "Content-type",
-    //                         "application/x-www-form-urlencoded"
-    //                     )
-    //                     xhttp.send(data)
-    //                 } else {
-    //                 }
-
-    //                 selectedColorsArray = selectedColorsArray.map((item) => {
-    //                     if (item.type === "lipstick") {
-    //                         return {
-    //                             type: "lipstick",
-    //                             color: colorDiv.style.backgroundColor,
-    //                         }
-    //                     } else {
-    //                         return item
-    //                     }
-    //                 })
-    //             }
-    //         })
-    //         colorsDiv.appendChild(colorDiv)
-
-    //         if ((j + 1) % 6 === 0 && j !== obj.colors.length - 1) {
-    //             let row = document.createElement("div")
-    //             row.classList.add("row")
-    //             colorsDiv.appendChild(row)
-    //         }
-    //     }
-    //     line.appendChild(colorsDiv)
-
-    //     document.getElementById("aiRec").appendChild(line)
-    // }
-
     // lipstick
     for (let i = 0; i < colorShades.length; i++) {
         let obj = colorShades[i]
@@ -469,6 +244,7 @@ window.onload = function () {
             colorDiv.classList.add("color")
             colorDiv.setAttribute("id", "lipstick_color")
             colorDiv.style.backgroundColor = obj.colors[j]
+
             // add click event listener to each color div
             colorDiv.addEventListener("click", function () {
                 document
@@ -492,25 +268,8 @@ window.onload = function () {
                         "application/x-www-form-urlencoded"
                     )
                     xhttp.send(data)
-                    selectedColorsArray = selectedColorsArray.map((item) => {
-                        if (item.type === "lipstick") {
-                            return { type: "lipstick", color: "" }
-                        } else {
-                            return item
-                        }
-                    })
                 } else {
                     colorDiv.classList.add("addborder")
-                    selectedColorsArray = selectedColorsArray.map((item) => {
-                        if (item.type === "lipstick") {
-                            return {
-                                type: "lipstick",
-                                color: colorDiv.style.backgroundColor,
-                            }
-                        } else {
-                            return item
-                        }
-                    })
 
                     data = colorDiv.style.backgroundColor
                     data = data.split("rgb")
@@ -556,6 +315,7 @@ window.onload = function () {
             colorDiv.classList.add("color")
             colorDiv.setAttribute("id", "foundation_color")
             colorDiv.style.backgroundColor = obj.colors[j]
+
             // add click event listener to each color div
             colorDiv.addEventListener("click", function () {
                 document
@@ -579,25 +339,8 @@ window.onload = function () {
                         "application/x-www-form-urlencoded"
                     )
                     xhttp.send(data)
-                    selectedColorsArray = selectedColorsArray.map((item) => {
-                        if (item.type === "lipstick") {
-                            return { type: "lipstick", color: "" }
-                        } else {
-                            return item
-                        }
-                    })
                 } else {
                     colorDiv.classList.add("addborder")
-                    selectedColorsArray = selectedColorsArray.map((item) => {
-                        if (item.type === "lipstick") {
-                            return {
-                                type: "lipstick",
-                                color: colorDiv.style.backgroundColor,
-                            }
-                        } else {
-                            return item
-                        }
-                    })
                 }
                 data = colorDiv.style.backgroundColor
                 data = data.split("rgb")
@@ -646,7 +389,7 @@ window.onload = function () {
             // add click event listener to each color div
             colorDiv.addEventListener("click", function () {
                 document
-                    .querySelectorAll("#blush_color§")
+                    .querySelectorAll("#blush_color")
                     .forEach((item) => item.classList.remove("addborder"))
 
                 if (window.innerWidth < 786) {
@@ -666,25 +409,8 @@ window.onload = function () {
                         "application/x-www-form-urlencoded"
                     )
                     xhttp.send(data)
-                    selectedColorsArray = selectedColorsArray.map((item) => {
-                        if (item.type === "lipstick") {
-                            return { type: "lipstick", color: "" }
-                        } else {
-                            return item
-                        }
-                    })
                 } else {
                     colorDiv.classList.add("addborder")
-                    selectedColorsArray = selectedColorsArray.map((item) => {
-                        if (item.type === "lipstick") {
-                            return {
-                                type: "lipstick",
-                                color: colorDiv.style.backgroundColor,
-                            }
-                        } else {
-                            return item
-                        }
-                    })
                 }
                 data = colorDiv.style.backgroundColor
                 data = data.split("rgb")
@@ -753,25 +479,8 @@ window.onload = function () {
                         "application/x-www-form-urlencoded"
                     )
                     xhttp.send(data)
-                    selectedColorsArray = selectedColorsArray.map((item) => {
-                        if (item.type === "lipstick") {
-                            return { type: "lipstick", color: "" }
-                        } else {
-                            return item
-                        }
-                    })
                 } else {
                     colorDiv.classList.add("addborder")
-                    selectedColorsArray = selectedColorsArray.map((item) => {
-                        if (item.type === "lipstick") {
-                            return {
-                                type: "lipstick",
-                                color: colorDiv.style.backgroundColor,
-                            }
-                        } else {
-                            return item
-                        }
-                    })
                 }
                 data = colorDiv.style.backgroundColor
                 data = data.split("rgb")
@@ -840,25 +549,8 @@ window.onload = function () {
                         "application/x-www-form-urlencoded"
                     )
                     xhttp.send(data)
-                    selectedColorsArray = selectedColorsArray.map((item) => {
-                        if (item.type === "lipstick") {
-                            return { type: "lipstick", color: "" }
-                        } else {
-                            return item
-                        }
-                    })
                 } else {
                     colorDiv.classList.add("addborder")
-                    selectedColorsArray = selectedColorsArray.map((item) => {
-                        if (item.type === "lipstick") {
-                            return {
-                                type: "lipstick",
-                                color: colorDiv.style.backgroundColor,
-                            }
-                        } else {
-                            return item
-                        }
-                    })
                 }
                 data = colorDiv.style.backgroundColor
                 data = data.split("rgb")
@@ -872,9 +564,6 @@ window.onload = function () {
                 )
 
                 xhttp.send(data)
-                // 4. This will be called after the response is received
-
-                //
             })
             colorsDiv.appendChild(colorDiv)
 
@@ -888,4 +577,47 @@ window.onload = function () {
 
         document.getElementById("eyeShadowShades").appendChild(line)
     }
+    var socket = io.connect(
+        window.location.protocol + "//" + document.domain + ":" + location.port,
+        {
+            transports: ["websocket"],
+        }
+    )
+    socket.on("connect", function () {
+        console.log("Connected...!", socket.connected)
+    })
+    var canvas = document.getElementById("canvas")
+    var context = canvas.getContext("2d")
+
+    const video = document.querySelector("#videoElement")
+
+    video.width = "1"
+    video.height = "1"
+
+    if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices
+            .getUserMedia({
+                video: true,
+            })
+            .then(function (stream) {
+                video.srcObject = stream
+                video.play()
+            })
+            .catch(function (err) {
+                console.log("error in media devices", err)
+            })
+    }
+
+    setInterval(() => {
+        canvas.height = video.videoHeight
+        canvas.width = video.videoWidth
+        context.drawImage(video, 0, 0)
+        var data = canvas.toDataURL("image/jpeg", 0.5)
+        context.clearRect(0, 0, video.videoWidth, video.videoHeight)
+        socket.emit("image", data)
+    }, 100)
+
+    socket.on("processed_image", function (image) {
+        photo.setAttribute("src", image)
+    })
 }

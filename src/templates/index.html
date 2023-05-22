@@ -4,26 +4,24 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+        <script
+            src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+            integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+            crossorigin="anonymous"
+        ></script>
         <link
             rel="stylesheet"
             href="{{ url_for('static', filename='css/style.css') }}"
         />
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
-        <script
-            src="https://cdn.socket.io/4.6.0/socket.io.min.js"
-            integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
-            crossorigin="anonymous"
-        ></script>
-
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
             rel="stylesheet"
         />
 
-        <link rel="stylesheet" href="../static/css/style.css" />
-        <script src="../static/js/script.js"></script>
+        <!-- <link rel="stylesheet" href="../static/css/style.css" />
+        <script src="../static/js/script.js"></script> -->
 
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
@@ -38,9 +36,9 @@
                     <div
                         class="expanded"
                         id="expanded6"
-                        style="background-image: url('{{ url_for('static',  filename='img/airecommendation.png')}}')"
+                        style="background-image: url('{{ url_for('static',  filename='img/aiart.png')}}')"
                     >
-                        <span>ai recommendations </span>
+                        <span>ai artist </span>
                         <div class="aiRec" id="aiRec">
                             <div class="black_race" id="black_race">
                                 <span> black </span>
@@ -299,11 +297,11 @@
 
                     <div
                         class="closed"
-                        style="background-image: url('{{ url_for('static',  filename='img/airecommendation.png')}}')"
+                        style="background-image: url('{{ url_for('static',  filename='img/aiart.png')}}')"
                         id="closed6"
                         onclick="handlerClosed(6)"
                     >
-                        ai recommendations
+                        ai artist
                     </div>
                 </div>
                 <div>
@@ -329,7 +327,7 @@
                     <div
                         class="expanded"
                         id="expanded5"
-                        style="background-image: url('{{ url_for('static',  filename='img/eyebrowliner.png')}}')"
+                        style="background-image: url('{{ url_for('static',  filename='img/eyebrow.png')}}')"
                     >
                         <span>eye shadow </span>
                         <div id="eyeShadowShades"></div>
@@ -337,7 +335,7 @@
 
                     <div
                         class="closed"
-                        style="background-image: url('{{ url_for('static',  filename='img/eyebrowliner.png')}}')"
+                        style="background-image: url('{{ url_for('static',  filename='img/eyebrow.png')}}')"
                         id="closed5"
                         onclick="handlerClosed(5)"
                     >
@@ -407,18 +405,18 @@
                     <img
                         id="photo"
                         class="processedImg"
-                        style="position: absolute; top: 0; left: 0; z-index: 1"
+                        style="position: absolute; top: 0; left: 0; z-index: 0"
                     />
                     <video
                         autoplay
                         playsinline
                         id="videoElement"
-                        style="position: absolute; top: 0; left: 0; z-index: 0"
+                        style="position: absolute; top: 0; left: 0; z-index: -2"
                     ></video>
                     <canvas
                         id="canvas"
                         class="canvas"
-                        style="position: absolute; top: 0; left: 0; z-index: 2"
+                        style="position: absolute; top: 0; left: 0; z-index: -3"
                     ></canvas>
                 </div>
 
@@ -447,61 +445,5 @@
                 </div>
             </div>
         </div>
-        <script
-            src="https://cdn.socket.io/4.6.0/socket.io.min.js"
-            integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
-            crossorigin="anonymous"
-        ></script>
-
-        <script>
-            /////
-            var socket = io.connect(
-                window.location.protocol +
-                    "//" +
-                    document.domain +
-                    ":" +
-                    location.port,
-                {
-                    transports: ["websocket"],
-                }
-            )
-            socket.on("connect", function () {
-                console.log("Connected...!", socket.connected)
-            })
-            var canvas = document.getElementById("canvas")
-            var context = canvas.getContext("2d")
-
-            const video = document.querySelector("#videoElement")
-
-            video.width = "1"
-            video.height = "1"
-
-            if (navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices
-                    .getUserMedia({
-                        video: true,
-                    })
-                    .then(function (stream) {
-                        video.srcObject = stream
-                        video.play()
-                    })
-                    .catch(function (err0r) {})
-            }
-
-            setInterval(() => {
-                canvas.height = video.videoHeight
-                canvas.width = video.videoWidth
-                context.drawImage(video, 0, 0)
-                var data = canvas.toDataURL("image/jpeg", 0.5)
-                context.clearRect(0, 0, video.videoWidth, video.videoHeight)
-                socket.emit("image", data)
-            }, 100)
-
-            socket.on("processed_image", function (image) {
-                photo.setAttribute("src", image)
-            })
-
-            /////
-        </script>
     </body>
 </html>
