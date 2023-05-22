@@ -4,6 +4,10 @@ ARG PYTHON_VERSION
 WORKDIR /server
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+
+RUN apt update
+RUN apt install python3-opencv
+
 ADD requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 ADD . .
