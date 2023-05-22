@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt update
-RUN apt install python3-opencv
+RUN apt install -y python3-opencv
 
 ADD requirements.txt requirements.txt
 RUN pip install -r requirements.txt
