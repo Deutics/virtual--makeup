@@ -203,16 +203,16 @@ var white_race = {}
 
 function getPersonRace() {
     fetch("/get_person_race", { method: "POST" })
-        .then((response) => response.text())
+        .then((response) => response.json())
         .then((data) => {
             console.log("race from backend", data)
             white_race.classList.remove("race-selected")
             black_race.classList.remove("race-selected")
             brown_race.classList.remove("race-selected")
 
-            if (data === "white") {
+            if (data.race === "white") {
                 white_race.classList.add("race-selected")
-            } else if (data === "black") {
+            } else if (data.race === "black") {
                 black_race.classList.add("race-selected")
             } else {
                 brown_race.classList.add("race-selected")
