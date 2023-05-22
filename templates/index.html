@@ -22,8 +22,8 @@
             rel="stylesheet"
         />
 
-        <link rel="stylesheet" href="../static/css/style.css" />
-        <script src="../static/js/script.js"></script>
+        <!-- <link rel="stylesheet" href="../static/css/style.css" />
+        <script src="../static/js/script.js"></script> -->
 
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
@@ -38,9 +38,9 @@
                     <div
                         class="expanded"
                         id="expanded6"
-                        style="background-image: url('{{ url_for('static',  filename='img/airecommendation.png')}}')"
+                        style="background-image: url('{{ url_for('static',  filename='img/aiart.png')}}')"
                     >
-                        <span>ai recommendations </span>
+                        <span>ai artist </span>
                         <div class="aiRec" id="aiRec">
                             <div class="black_race" id="black_race">
                                 <span> black </span>
@@ -299,11 +299,11 @@
 
                     <div
                         class="closed"
-                        style="background-image: url('{{ url_for('static',  filename='img/airecommendation.png')}}')"
+                        style="background-image: url('{{ url_for('static',  filename='img/aiart.png')}}')"
                         id="closed6"
                         onclick="handlerClosed(6)"
                     >
-                        ai recommendations
+                        ai artist
                     </div>
                 </div>
                 <div>
@@ -329,7 +329,7 @@
                     <div
                         class="expanded"
                         id="expanded5"
-                        style="background-image: url('{{ url_for('static',  filename='img/eyebrowliner.png')}}')"
+                        style="background-image: url('{{ url_for('static',  filename='img/eyebrow.png')}}')"
                     >
                         <span>eye shadow </span>
                         <div id="eyeShadowShades"></div>
@@ -337,7 +337,7 @@
 
                     <div
                         class="closed"
-                        style="background-image: url('{{ url_for('static',  filename='img/eyebrowliner.png')}}')"
+                        style="background-image: url('{{ url_for('static',  filename='img/eyebrow.png')}}')"
                         id="closed5"
                         onclick="handlerClosed(5)"
                     >
@@ -407,18 +407,18 @@
                     <img
                         id="photo"
                         class="processedImg"
-                        style="position: absolute; top: 0; left: 0; z-index: 1"
+                        style="position: absolute; top: 0; left: 0; z-index: 0"
                     />
                     <video
                         autoplay
                         playsinline
                         id="videoElement"
-                        style="position: absolute; top: 0; left: 0; z-index: 0"
+                        style="position: absolute; top: 0; left: 0; z-index: -2"
                     ></video>
                     <canvas
                         id="canvas"
                         class="canvas"
-                        style="position: absolute; top: 0; left: 0; z-index: 2"
+                        style="position: absolute; top: 0; left: 0; z-index: -3"
                     ></canvas>
                 </div>
 
