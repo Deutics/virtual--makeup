@@ -32,6 +32,7 @@ class MakeupRecommendationApp:
 
         # socket
         self.app = Flask(__name__, static_folder="./static")
+        # self.app = Flask(__name__,template_folder='templates')
         self.app.config["SECRET_KEY"] = "secret!"
         self.socketio = SocketIO(self.app, async_mode="eventlet")
 
