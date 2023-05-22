@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 from flask import Flask, render_template, request, redirect
 from flask_socketio import SocketIO, emit
-
+from config import settings
 from Streamer.Streamer import Streamer
 from Features.LandmarksExtractor.LandmarksExtractor import LandmarksExtractor
 from Features.ApplyMakeup.MakeupApplier import MakeupApplier
@@ -46,7 +46,7 @@ class MakeupRecommendationApp:
         self.app.add_url_rule('/start_ai', view_func=self.start_ai, methods=['POST'])
 
     def run(self):
-        self.socketio.run(self.app, debug=True, port=5000)
+        self.socketio.run(self.app, debug=settings.DEBUG, port=settings.SERVER_PORT, host=settings.SERVER_HOST)
 
     @staticmethod
     def index():
