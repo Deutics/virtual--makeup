@@ -1,11 +1,12 @@
 numpy
 flask_socketio
-opencv_contrib_python==4.7.0.72
+opencv_contrib_python
 eventlet
 
 opencv_python
 
-Flask==2.2.3
-mediapipe==0.9.3.0
+Flask
+mediapipe
 
 deepface
+django-environ==0.10.0
