@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden;
+}
+
+.Conatiner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo_Sidebar {
+  font-family: "Goldman", cursive;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 2.188rem;
+  margin: 1rem 0 1rem 2rem;
+}
+
+.Sidebar_Footer {
+  font-family: "Goldman", cursive;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.Sidebar_MainContainer {
+  display: flex;
+  flex-direction: column;
+  font-family: "Oswald", sans-serif;
+  font-family: "Poppins", sans-serif;
+  width: 16rem;
+  background-color: #baabab;
+}
+.Sidebar_InnerContainer {
+  margin: 0.5rem 0 2rem 2rem;
+  border: 1px;
+  border-radius: 0.625rem;
+}
+
+/* ...........  Lipstick ..................... */
+
+.MainContianer {
+  width: 70%;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.Navbar_Container {
+  /* width: 53.125rem; */
+  display: flex;
+  justify-content: space-between;
+
+  font-weight: 500;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.navbarSearchContainer {
+  border: 1px solid #dcdcdc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+  border-radius: 10px;
+}
+
+.SearchbarInput {
+  width: 85%;
+  height: 100%;
+  border: none;
+  outline: none;
+}
