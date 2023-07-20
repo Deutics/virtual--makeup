@@ -57,7 +57,6 @@ body {
 .Navbar_Container {
   display: flex;
   justify-content: space-between;
-
   font-weight: 500;
   font-size: 1.5rem;
   font-family: "Poppins", sans-serif;
@@ -79,6 +78,29 @@ body {
   outline: none;
 }
 
+.LipstickContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem auto;
+  width: 100%;
+  /* flex-wrap: nowrap; */
+}
+
+.LipstickContainer a {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #828282;
+  background-color: #f5f6f6;
+  font-size: 0.9rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  width: 7rem;
+  text-align: center;
+}
+
 /* ..................Countour Container....... */
 .CountourContainer {
   display: flex;
@@ -96,5 +118,139 @@ body {
 .Sidebar_InnerContainer a.selected {
   width: 90%;
   border: 2px solid #947474;
-  border-radius: 1rem;
+  border-radius: 0.8rem;
+}
+
+.LipstickContainer a.selectedlipstick {
+  border-radius: 0.8rem;
+  padding: 0.5rem;
+  width: 7rem;
+  text-align: center;
+  background-color: #baabab;
+  color: white;
+}
+
+.mateContainer {
+  display: flex;
+ justify-content: space-between;
+}
+
+.Camera img {
+  width: 27rem;
+  height: 18rem;
+  margin-left: 5rem;
+}
+.contentlipstick {
+  width: 60%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  height: 400px;
+}
+
+.contentlipstick:hover {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
+}
+.contentlipstick::-webkit-scrollbar {
+  width: .6rem;
+  /* height: 1rem; */
+}
+.contentlipstick::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.2rem;
+}
+.contentlipstick:hover::-webkit-scrollbar-thumb {
+  background-color: #baabab;
+}
+.lipstickItem {
+  display: flex;
+  flex-direction: column;
+  width: 11rem;
+  padding: 1rem;
+  align-items: center;
+  text-align: center;
+  margin-top: -1rem !important;
+}
+
+.lipstickItem .img {
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.lipstickItem .icon {
+  margin-bottom: 0.5rem;
+}
+
+.lipstickItem h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.lipstickItem p {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+@media only screen and (max-width: 1050px) {
+  .mateContainer {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+  }
+  .contentlipstick {
+    width: 70%;
+  }
+  .Camera img {
+    width: 16rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .lipstickItem {
+    width: 9rem;
+    margin-right: 1rem;
+  }
+  .lipstickItem h3 {
+    font-size: 1rem;
+  }
+  .lipstickItem p {
+    font-size: 0.6rem;
+  }
+  .LipstickContainer {
+    overflow-x: hidden;
+    font-size: 0.1rem;
+    width: 90%;
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: space-between;
+  }
+  .LipstickContainer:hover {
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
+  }
+  .LipstickContainer::-webkit-scrollbar {
+    width: 0.1rem;
+    height: 0.3rem;
+  }
+  .LipstickContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.2rem;
+  }
+  .LipstickContainer:hover::-webkit-scrollbar-thumb {
+    background-color: #baabab;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .LipstickContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    white-space: nowrap;
+    font-size: 1rem;
+  }
 }

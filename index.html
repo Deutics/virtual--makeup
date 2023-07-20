@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Virtual Makeup</title>
     <link rel="stylesheet" href="/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,9 +22,8 @@
     <div class="Conatiner">
       <section class="Sidebar_MainContainer">
         <div class="Sidebar_InnerContainer">
-          
           <p class="logo_Sidebar">beau</p>
-          
+
           <a href="#aibeauty" onclick="showSection('aibeauty', this);">
             <img src="/Images/Icons/AI_Beauty_Icon.svg" alt="" />
           </a>
@@ -60,7 +59,6 @@
         </div>
       </section>
 
-
       <div id="aibeauty" class="MainContianer">
         <section class="Navbar_Container">
           <img src="/Images/OtherImages/CommingSoon_Image.svg" alt="" />
@@ -79,8 +77,56 @@
             />
           </div>
         </section>
-        <section style="margin: auto">Container Lipstick</section>
+
+        <section class="LipstickContainer">
+          <a href="#mate" onclick="showLipstickSection('mate', this);">
+            <p>Mate</p></a
+          >
+          <a href="#glossy" onclick="showLipstickSection('glossy', this);">
+            <p>Glossy</p></a
+          >
+          <a href="#frosted" onclick="showLipstickSection('frosted', this);">
+            <p>Frosted</p>
+          </a>
+
+          <a href="#stain" onclick="showLipstickSection('stain', this);">
+            <p>Stain/Sheer</p></a
+          >
+
+          <a href="#lipglose" onclick="showLipstickSection('lipglose', this);">
+            <p>Lip Glose</p>
+          </a>
+
+          <a
+            href="#lippamper"
+            onclick="showLipstickSection('lippamper', this);"
+          >
+            <p>Lip Pamper</p></a
+          >
+
+          <a href="#pearl" onclick="showLipstickSection('pearl', this);">
+            <p>Pearl</p>
+          </a>
+
+          <a href="#creamy" onclick="showLipstickSection('creamy', this);">
+            <p>Creamy</p>
+          </a>
+        </section>
+        <section class="mateContainer">
+          <div id="mate" class="LipstickContent contentlipstick"></div>
+          <div class="Camera"> 
+            <img  src="/Images/OtherImages/camera_Img.svg" alt="camera_img">
+          </div>
+        </section>
+        <div id="glossy" class="LipstickContent">Glossy</div>
+        <div id="frosted" class="LipstickContent">Frosted</div>
+        <div id="stain" class="LipstickContent">Stain/Sheer</div>
+        <div id="lipglose" class="LipstickContent">Lip Glose</div>
+        <div id="lippamper" class="LipstickContent">Lip Pamper</div>
+        <div id="pearl" class="LipstickContent">Pearl</div>
+        <div id="creamy" class="LipstickContent">Creamy</div>
       </div>
+
       <div id="countour" class="MainContianer">
         <section class="Navbar_Container">
           <img src="/Images/OtherImages/CommingSoon_Image.svg" alt="" />
@@ -129,10 +175,7 @@
         </section>
         <section class="CountourContainer">Coming Soon!</section>
       </div>
-
-
     </div>
-
 
     <script src="/index.js"></script>
   </body>
