@@ -3,9 +3,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  /* overflow: hidden; */
-}
 
 .Conatiner {
   display: flex;
@@ -25,7 +22,9 @@ body {
   color: #ffffff;
   font-weight: 400;
   font-size: 1rem;
-  margin: 2rem 0 0 0.5rem;
+  position: absolute;
+  bottom: 20px;
+  left: 2rem;
 }
 
 .Sidebar_MainContainer {
@@ -35,15 +34,38 @@ body {
   font-family: "Poppins", sans-serif;
   width: 16rem;
   background-color: #baabab;
+  height: 100vh;
 }
 .Sidebar_InnerContainer {
   margin: 0.5rem 0 2rem 2rem;
   border: 1px;
   border-radius: 0.625rem;
+  height: 100vh;
 }
 .Sidebar_InnerContainer a {
   display: flex;
   padding: 0.2rem;
+}
+
+.Side_Bar {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  height: 75%;
+}
+.Side_Bar:hover {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #e0e0e0;
+}
+.Side_Bar::-webkit-scrollbar {
+  width: 0.5rem;
+}
+.Side_Bar::-webkit-scrollbar-thumb {
+  background-color: #e0e0e0;
+  border-radius: 0.2rem;
+}
+.Side_Bar:hover::-webkit-scrollbar-thumb {
+  background-color: #e0e0e0;
 }
 
 /* ...........  Lipstick ..................... */
@@ -78,17 +100,37 @@ body {
   outline: none;
 }
 
-.LipstickContainer {
+.LipstickContainerCategories {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin: 2rem auto;
   width: 100%;
+  gap: 1rem;
+  overflow: hidden;
+
   /* flex-wrap: nowrap; */
 }
 
-.LipstickContainer a {
+.LipstickContainerCategories:hover {
+  overflow-x: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
+}
+.LipstickContainerCategories::-webkit-scrollbar {
+  width: 0.1rem;
+  height: 0.3rem;
+}
+.LipstickContainerCategories::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.2rem;
+}
+.LipstickContainerCategories:hover::-webkit-scrollbar-thumb {
+  background-color: #baabab;
+}
+
+.LipstickContainerCategories a {
   text-decoration: none;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -96,10 +138,28 @@ body {
   background-color: #f5f6f6;
   font-size: 0.9rem;
   border-radius: 1rem;
-  padding: 0.5rem;
-  width: 7rem;
+  padding: 0.2rem;
   text-align: center;
+  min-width: 6rem;
+  margin-bottom: 0.5rem;
 }
+.info {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+/* .lippamper {
+  width: 17rem !important;
+}
+.lipglose,
+.stain,
+.mate,
+.glossy,
+.frosted,
+.pearl,
+.creamy {
+  width: 11rem !important;
+} */
 
 /* ..................Countour Container....... */
 .CountourContainer {
@@ -121,31 +181,61 @@ body {
   border-radius: 0.8rem;
 }
 
-.LipstickContainer a.selectedlipstick {
+.LipstickContainerCategories a.selectedlipstick {
   border-radius: 0.8rem;
   padding: 0.5rem;
-  width: 7rem;
+  /* width: 7rem; */
   text-align: center;
   background-color: #baabab;
   color: white;
+  font-size: 0.8rem;
 }
 
 .mateContainer {
   display: flex;
- justify-content: space-between;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.Camera img {
-  width: 27rem;
-  height: 18rem;
-  margin-left: 5rem;
+.mateInnerContainer {
+  width: 100%;
+}
+
+/* .Camera {
+  height: 16rem;
+} */
+
+.Camera {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 70%;
+  top: 0;
+}
+.CameraImageContainer img {
+  width: 100%;
+  height: 90px;
+}
+
+#videoElement {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 230px;
+  gap: 2rem;
+}
+#videoElement {
+  width: 100%;
+  border-radius: 15px;
+  background-color: black;
 }
 .contentlipstick {
-  width: 60%;
+  width: 101%;
   flex-direction: row;
   flex-wrap: wrap;
   overflow-x: hidden;
-  height: 400px;
+  height: 430px;
 }
 
 .contentlipstick:hover {
@@ -154,7 +244,7 @@ body {
   scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
 }
 .contentlipstick::-webkit-scrollbar {
-  width: .6rem;
+  width: 0.6rem;
   /* height: 1rem; */
 }
 .contentlipstick::-webkit-scrollbar-thumb {
@@ -164,19 +254,19 @@ body {
 .contentlipstick:hover::-webkit-scrollbar-thumb {
   background-color: #baabab;
 }
+
 .lipstickItem {
   display: flex;
   flex-direction: column;
   width: 11rem;
-  padding: 1rem;
   align-items: center;
   text-align: center;
-  margin-top: -1rem !important;
 }
 
 .lipstickItem .img {
   width: 100%;
-  object-fit: cover;
+  height: 50%;
+  object-fit: fill;
   margin-bottom: 0.5rem;
 }
 
@@ -194,23 +284,333 @@ body {
   color: #888;
 }
 
-@media only screen and (max-width: 1050px) {
+/* .................... adTOCart................... */
+/* Add this CSS to your existing styles */
+
+.addToCartHeading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 15rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #000;
+  overflow-y: hidden;
+  height: 150px;
+}
+
+.addToCart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: -7rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #000;
+  overflow-y: hidden;
+  height: 150px;
+}
+.addToCartButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #baabab;
+  border-radius: 5rem;
+  height: 2.5rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  margin-top: -2rem;
+}
+
+.addToCart:hover {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
+}
+.addToCart::-webkit-scrollbar {
+  width: 0.6rem;
+  height: 10px;
+}
+.addToCart::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.2rem;
+}
+.addToCart:hover::-webkit-scrollbar-thumb {
+  background-color: #baabab;
+}
+
+.lipstickMobile {
+  display: none;
+}
+
+.lipstickInfo {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.addToCartImg,
+.addToCartIcon {
+  display: flex;
+  justify-content: space-between;
+  width: 35px;
+  height: 30px;
+  border: 1px solid #947474;
+  border-radius: 0.5rem;
+}
+
+.selectedLipstickInfo h4 {
+  display: flex;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 500;
+  align-items: center;
+}
+
+.selectedLipstickInfo p {
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+.smallScreenHeading {
+  display: none;
+}
+
+.Comming_Soon {
+  position: absolute;
+  top: 8rem;
+}
+
+@media screen and (max-width: 660px) {
+  .selectedLipstickInfo h4 {
+    margin-top: 2.5rem;
+    margin-left: -5rem;
+    height: 15%;
+    /* font-size: .8rem; */
+  }
+
+  .selectedLipstickInfo p {
+    margin-top: 4.6rem;
+    margin-left: 0.5rem;
+    position: absolute;
+    font-size: 0.8rem;
+  }
+  .addToCartButton {
+    font-size: 0.9rem;
+    height: 2rem;
+  }
+  .addToCartIcon {
+    display: flex;
+    margin-left: 1rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .Sidebar_MainContainer.active {
+    min-width: 300px;
+  }
+
+  .lipstickItem {
+    min-width: 50%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .MainWrapper {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .mateContainer {
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+  .addToCartHeading {
+    margin-top: 0rem;
+    font-size: 0.9rem;
+  }
+  .addToCart {
+    margin-top: -10rem;
+    height: 180px;
+  }
+  .CameraImageContainer {
+    width: 45%;
+  }
+  .cartContainer {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .lipstickMobile {
+    display: block;
+    margin: 1rem 0 1rem 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+  }
+
+  .lipstickItem {
+    width: 30% !important;
+  }
+
+  #mate {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .Camera {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 45vh;
+  }
+  .toggle_Navbar {
+    display: flex;
+    align-items: center;
+    font-family: "Goldman", cursive;
+    justify-content: center;
+    width: 100%;
+    height: 10vh;
+  }
+
+  .MainContianer {
+    width: 100%;
+  }
+
+  #videoElement {
+    width: 45%;
+    height: 16rem;
+    justify-content: space-between;
+  }
+  .Sidebar_MainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 0;
+    /* left: -100%;  */
+    width: 300px;
+    height: 100%;
+    background-color: #baabab; 
+    transition: left 0.3s ease;
+  }
+
+  .Sidebar_MainContainer.active {
+    left: 0; /* Show the sidebar when active */
+    width: 45%;
+    height: 100%;
+    z-index: 999;
+  }
+
+  .toggle-button {
+    position: absolute;
+    top: 12px;
+    left: 40px;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .toggle-line {
+    width: 30px;
+    height: 4px;
+    background-color: #000000;
+    margin: 6px 0;
+    border-radius: 2px;
+  }
+
+  .logo_Sidebar {
+    text-align: center;
+  }
+
+  .Conatiner {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .smallScreenHeading {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+  }
+
+  .Sidebar_MainContainer {
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: left 0.3s ease;
+  }
+
+  .Sidebar_InnerContainer {
+    min-height: 100vh;
+  }
+
+  .Sidebar_Footer {
+    bottom: 20px;
+  }
+
+  .lipstikContentNavbar {
+    display: none;
+  }
+
+  .Side_Bar {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .Side_Bar a {
+    margin-bottom: 1rem;
+  }
+
+  .selectedLipstickInfo p {
+    display: flex;
+    align-items: center;
+  }
+  .selectedLipstickInfo h4 {
+    display: flex;
+    align-items: center;
+  }
+  .Comming_Soon img {
+    /* width: 100%; */
+    height: 70%;
+  }
+  .Comming_Soon {
+    width: 90%;
+    height: 45%;
+    text-align: center;
+    margin-top: 24rem;
+  }
+}
+
+@media only screen and (max-width: 1090px) {
+  .lipstickInfo {
+    gap: 0.3em;
+  }
   .mateContainer {
     width: 100%;
     margin: 0 auto;
     display: flex;
   }
   .contentlipstick {
-    width: 70%;
+    /* width: 100%; */
   }
-  .Camera img {
-    width: 16rem;
+  #videoElement {
+    /* width: 13rem; */
     display: flex;
     justify-content: space-between;
   }
   .lipstickItem {
     width: 9rem;
-    margin-right: 1rem;
+    margin-right: -1rem;
   }
   .lipstickItem h3 {
     font-size: 1rem;
@@ -218,39 +618,50 @@ body {
   .lipstickItem p {
     font-size: 0.6rem;
   }
-  .LipstickContainer {
-    overflow-x: hidden;
+  .LipstickContainerCategories {
     font-size: 0.1rem;
     width: 90%;
     flex-wrap: nowrap;
     display: flex;
     justify-content: space-between;
   }
-  .LipstickContainer:hover {
-    overflow-x: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
+  .LipstickContainerCategories a {
+    margin-bottom: 0.5rem;
   }
-  .LipstickContainer::-webkit-scrollbar {
-    width: 0.1rem;
-    height: 0.3rem;
+
+  .Sidebar_MainContainer {
+    width: 14rem;
+    min-height: 100vh;
   }
-  .LipstickContainer::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 0.2rem;
+  .Sidebar_InnerContainer {
+    min-height: 100vh;
   }
-  .LipstickContainer:hover::-webkit-scrollbar-thumb {
-    background-color: #baabab;
+  .Sidebar_Footer {
+    bottom: 20px;
+  }
+  .Navbar_Container {
+    padding: 0 1rem;
+  }
+  .Side_Bar {
+    height: 70%;
   }
 }
 
-@media only screen and (max-width: 1100px) {
-  .LipstickContainer {
+@media only screen and (max-width: 1300px) {
+  .LipstickContainerCategories {
     display: flex;
     justify-content: space-between;
     margin-left: 1rem;
     margin-right: 1rem;
     white-space: nowrap;
     font-size: 1rem;
+  }
+  .contentlipstick {
+    width: 95%;
+  }
+  .lipstickItem {
+    width: 40%;
+    margin-right: -1rem;
+    margin: 0 auto;
   }
 }
