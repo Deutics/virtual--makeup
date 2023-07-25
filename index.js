@@ -222,7 +222,7 @@ function handleLipstickImageClick(img, icon, title, price) {
   if (selectedLipsticksArray.length > 0) {
     selectedLipsticksArray = [];
     const addToCartSection = document.querySelector(".addToCart");
-    addToCartSection.innerHTML = "";  
+    addToCartSection.innerHTML = "";
     localStorage.removeItem("selectedLipsticks"); // Clear local storage
   }
 
@@ -297,7 +297,9 @@ function generateMateLipstickContent() {
 generateMateLipstickContent();
 
 function showScrollOnHover() {
-  const lipstickContainer = document.querySelector(".LipstickContainerCategories");
+  const lipstickContainer = document.querySelector(
+    ".LipstickContainerCategories"
+  );
   const screenSizeThreshold = 1280;
 
   function updateScrollOnHover() {
