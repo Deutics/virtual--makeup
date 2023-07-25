@@ -109,8 +109,6 @@
   width: 100%;
   gap: 1rem;
   overflow: hidden;
-
-  /* flex-wrap: nowrap; */
 }
 
 .LipstickContainerCategories:hover {
@@ -148,18 +146,6 @@
   justify-content: center;
   gap: 0.5rem;
 }
-/* .lippamper {
-  width: 17rem !important;
-}
-.lipglose,
-.stain,
-.mate,
-.glossy,
-.frosted,
-.pearl,
-.creamy {
-  width: 11rem !important;
-} */
 
 /* ..................Countour Container....... */
 .CountourContainer {
@@ -200,10 +186,6 @@
 .mateInnerContainer {
   width: 100%;
 }
-
-/* .Camera {
-  height: 16rem;
-} */
 
 .Camera {
   display: flex;
@@ -285,7 +267,6 @@
 }
 
 /* .................... adTOCart................... */
-/* Add this CSS to your existing styles */
 
 .addToCartHeading {
   display: flex;
@@ -496,7 +477,7 @@
     /* left: -100%;  */
     width: 300px;
     height: 100%;
-    background-color: #baabab; 
+    background-color: #baabab;
     transition: left 0.3s ease;
   }
 
