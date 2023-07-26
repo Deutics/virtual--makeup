@@ -1,72 +1,72 @@
 const lisptickMate = [
   {
     id: 1,
-    img: "/Images/lipstik/lipstik_img1.svg",
-    icon: "/Images/lipstik/lipstick_img1_color.svg",
+    img: "/Images/lipstik/lipstik_img1.png",
+    icon: "/Images/lipstik/lipstick_img1_color.png",
     title: "Powermatte Long Lasting",
     content: "Transfer-resistant, matte lipstick",
     price: "$200",
   },
   {
     id: 2,
-    img: "/Images/lipstik/lipstik_img4.svg",
-    icon: "/Images/lipstik/lipstick_img3_color.svg",
+    img: "/Images/lipstik/lipstik_img4.png",
+    icon: "/Images/lipstik/lipstick_img3_color.png",
     title: "Rouge Refillable Lipstock",
     content: "Buildable lip colour with a blurred, soft-focus effect",
     price: "$200",
   },
   {
     id: 3,
-    img: "/Images/lipstik/lipstik_img2.svg",
-    icon: "/Images/lipstik/lipstick_img1_color.svg",
+    img: "/Images/lipstik/lipstik_img2.png",
+    icon: "/Images/lipstik/lipstick_img1_color.png",
     title: "Matte Refillable Lipstick ",
     content: "Transfer-resistant, matte lipstick ",
     price: "$200",
   },
   {
     id: 4,
-    img: "/Images/lipstik/lipstik_img1.svg",
-    icon: "/Images/lipstik/lipstick_img1_color.svg",
+    img: "/Images/lipstik/lipstik_img1.png",
+    icon: "/Images/lipstik/lipstick_img1_color.png",
     title: "Velvet Matte Lipstick",
     content: "Transfer-resistant, matte lipstick",
     price: "$200",
   },
   {
     id: 5,
-    img: "/Images/lipstik/lipstik_img1.svg",
-    icon: "/Images/lipstik/lipstick_img1_color.svg",
+    img: "/Images/lipstik/lipstik_img1.png",
+    icon: "/Images/lipstik/lipstick_img1_color.png",
     title: "Powermatte Long Lasting",
     content: "Transfer-resistant, matte lipstick",
     price: "$200",
   },
   {
     id: 6,
-    img: "/Images/lipstik/lipstik_img1.svg",
-    icon: "/Images/lipstik/lipstick_img1_color.svg",
+    img: "/Images/lipstik/lipstik_img1.png",
+    icon: "/Images/lipstik/lipstick_img1_color.png",
     title: "Kind Words Matte Lipstick",
     content: "Transfer-resistant, matte lipstick",
     price: "$200",
   },
   {
     id: 7,
-    img: "/Images/lipstik/lipstik_img3.svg",
-    icon: "/Images/lipstik/lipstick_img1_color.svg",
+    img: "/Images/lipstik/lipstik_img3.png",
+    icon: "/Images/lipstik/lipstick_img1_color.png",
     title: "Powermatte Long Lasting",
     content: "Transfer-resistant, matte lipstick",
     price: "$200",
   },
   {
     id: 8,
-    img: "/Images/lipstik/lipstik_img2.svg",
-    icon: "/Images/lipstik/lipstick_img1_color.svg",
+    img: "/Images/lipstik/lipstik_img2.png",
+    icon: "/Images/lipstik/lipstick_img1_color.png",
     title: "Kind Words Matte Lipstick",
     content: "Transfer-resistant, matte lipstick",
     price: "$200",
   },
   {
     id: 9,
-    img: "/Images/lipstik/lipstik_img1.svg",
-    icon: "/Images/lipstik/lipstick_img1_color.svg",
+    img: "/Images/lipstik/lipstik_img1.png",
+    icon: "/Images/lipstik/lipstick_img1_color.png",
     title: "Velvet Matte Lipstick",
     content: "Transfer-resistant, matte lipstick",
     price: "$200",
@@ -147,6 +147,7 @@ function showLipstickSection(sectionId, button, element) {
     button.classList.add("selectedlipstick");
     localStorage.setItem("selectedButtonlipstick", button.getAttribute("href"));
   }
+  window.location.hash = sectionId === "sectionId" ? "" : "aibeauty";
 }
 
 // Store the selectd section and button in local storage
@@ -182,7 +183,7 @@ function displaySelectedLipstick(img, icon, title, price, index) {
       <img class="addToCartIcon" src="${icon}" />
       <h4>${title}</h4>
       <p>${price}</p>
-      <div class="deleteButton" data-index="${index}"><img class="delete_icon" src="/Images/Icons/detele_Icon.svg" /></div>
+      <div class="deleteButton" data-index="${index}"><img class="delete_icon" src="/Images/Icons/detele_Icon.png" /></div>
       </div>
      
   `;
@@ -269,8 +270,6 @@ function displaySelectedLipstickOnLoad() {
     });
   }
 }
-
-// Call the function on page load to display the stored lipsticks
 displaySelectedLipstickOnLoad();
 
 function generateMateLipstickContent() {
@@ -296,56 +295,24 @@ function generateMateLipstickContent() {
 
 generateMateLipstickContent();
 
-function showScrollOnHover() {
-  const lipstickContainer = document.querySelector(
-    ".LipstickContainerCategories"
-  );
-  const screenSizeThreshold = 1280;
-
-  function updateScrollOnHover() {
-    if (window.innerWidth <= screenSizeThreshold) {
-      lipstickContainer.style.overflowX = "scroll";
-    } else {
-      lipstickContainer.style.overflowX = "hidden";
-    }
-  }
-
-  updateScrollOnHover();
-
-  // Update scroll on window resize
-  window.addEventListener("resize", updateScrollOnHover);
-}
-
-function showScrollOnHovermate() {
-  const contentlipstick = document.querySelector(".contentlipstick");
-
-  function updateScrollOnHover() {
-    contentlipstick.style.overflowY = "scroll";
-    contentlipstick.style.overflowY = "hidden";
-  }
-
-  showScrollOnHovermate();
-
-  window.addEventListener("resize", updateScrollOnHover);
-}
-function showScrollOnHoverSidebar() {
-  const Side_Bar = document.querySelector(".Side_Bar");
-
-  function updateScrollOnHover() {
-    Side_Bar.style.overflowY = "scroll";
-    Side_Bar.style.overflowY = "hidden";
-  }
-
-  showScrollOnHoverSidebar();
-}
-
 // Call the function when the DOM is ready
-document.addEventListener(
-  "DOMContentLoaded",
-  showScrollOnHover,
-  showScrollOnHovermate,
-  showScrollOnHoverSidebar
-);
+document.addEventListener("DOMContentLoaded", () => {
+  showSection("aibeauty");
+
+  // Add the border to the default selected button "aibeauty"
+  const defaultSelectedButton = document.querySelector(
+    '.Sidebar_InnerContainer a[href="#aibeauty"]'
+  );
+  defaultSelectedButton.classList.add("selected");
+
+  showLipstickSection("mate");
+
+  // Add the border to the default selectedlipstick buttton "Lipstick"
+  const defaultSelectedlipstick = document.querySelector(
+    '.LipstickContainerCategories a[href="#mate"]'
+  );
+  defaultSelectedlipstick.classList.add("selectedlipstick");
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   const sidebarMainContainer = document.querySelector(".Sidebar_MainContainer");
