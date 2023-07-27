@@ -176,16 +176,25 @@
                   alt="camera_img"
                 />
               </div>
-              <!-- <video
-              autoplay
-              playsinline
-              id="videoElement"
-            ></video> -->
+             
+
               <div class="cartContainer">
                 <div class="addToCartHeading">Current Products</div>
                 <div class="addToCart"></div>
                 <div class="addToCartButton">Add to Cart</div>
               </div>
+
+              <div class="modal" id="cartModal">
+                <div class="modal-content" id="cartModalContent">
+                  <span class="close">&times;</span>
+                  <h2 class="cartHeading">Cart Items</h2>
+                  <div class="cart-items"></div>
+                  <p class="total_Price">Total: <span id="totalPrice">0</span></p>
+                  <div id="placeOrderBtn">Place Order</div>
+                </div>
+              </div>
+              
+
             </div>
           </section>
 

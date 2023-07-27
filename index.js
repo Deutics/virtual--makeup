@@ -86,20 +86,22 @@ function showSection(sectionId, button) {
     btn.classList.remove("selected");
   });
 
-  // Show the selected section
+  // Show the selected SideBar section
   const selectedSection = document.getElementById(sectionId);
   if (selectedSection) {
     selectedSection.style.display = "block";
     localStorage.setItem("selectedSection", sectionId);
   }
 
-  // Add the "selected" class to the clicked button
+  // Add the "selected Side Bar Border Button" class to the clicked button
   if (button) {
     button.classList.add("selected");
     localStorage.setItem("selectedButton", button.getAttribute("href"));
   }
+  //Give the selected path in the URL
+  window.history.pushState(null, null, `#${sectionId}`);
 }
-// Store the selectd section and button in local storage
+// Store the selectd Side Bar section and Selected Side Bar Border button in local storage
 const storedSection = localStorage.getItem("selectedSection");
 const storedButton = localStorage.getItem("selectedButton");
 
@@ -107,7 +109,7 @@ if (storedSection) {
   showSection(storedSection);
 }
 
-// Restore the selected buttons border after the page is refreshed
+// Restore the selected Side Bar  buttons border after the page is refreshed
 if (storedButton) {
   const buttons = document.querySelectorAll(".Sidebar_InnerContainer a");
   buttons.forEach((btn) => {
@@ -117,18 +119,14 @@ if (storedButton) {
   });
 }
 
-function showLipstickSection(sectionId, button, element) {
+function showLipstickSection(sectionId, button) {
   // Hide all sections
   const sections = document.querySelectorAll(".LipstickContent");
   sections.forEach((section) => {
     section.style.display = "none";
   });
-  const sections2 = document.querySelectorAll(".LipstickContent");
-  sections2.forEach((section) => {
-    section.style.display = "none";
-  });
 
-  // Remove the "selected" class from all buttons
+  // Remove the "selected Lipstick Container Categories" class from all buttons
   const buttons = document.querySelectorAll(".LipstickContainerCategories a");
   buttons.forEach((btn) => {
     btn.classList.remove("selectedlipstick");
@@ -138,19 +136,18 @@ function showLipstickSection(sectionId, button, element) {
   const selectedSectionlipstick = document.getElementById(sectionId);
   if (selectedSectionlipstick) {
     selectedSectionlipstick.style.display = "flex";
-
     localStorage.setItem("selectedSectionlipstick", sectionId);
   }
 
-  // Add the "selected" class to the clicked button
+  // Add the "selected  Lipstick Categories" class to the clicked button
   if (button) {
     button.classList.add("selectedlipstick");
     localStorage.setItem("selectedButtonlipstick", button.getAttribute("href"));
   }
-  window.location.hash = sectionId === "sectionId" ? "" : "aibeauty";
+  window.history.pushState(null, `#lipstick-${sectionId}`);
 }
 
-// Store the selectd section and button in local storage
+// Store the selectd  lipstick section and selected listick hover button in local storage
 const storedSectionlipstick = localStorage.getItem("selectedSectionlipstick");
 const storedButtonlipstick = localStorage.getItem("selectedButtonlipstick");
 
@@ -158,7 +155,7 @@ if (storedSectionlipstick) {
   showLipstickSection(storedSectionlipstick);
 }
 
-// Restore the selected buttons border after the page is refreshed
+// Restore the selected Lipstick Container Categories and selected buttons border after the page is refreshed
 if (storedButtonlipstick) {
   const buttons = document.querySelectorAll(".LipstickContainerCategories a");
   buttons.forEach((btn) => {
@@ -181,8 +178,10 @@ function displaySelectedLipstick(img, icon, title, price, index) {
     <div class="lipstickInfo">
       <img class="addToCartImg" src="${img}" />
       <img class="addToCartIcon" src="${icon}" />
+      <div class=" lipstick_Details" >
       <h4>${title}</h4>
-      <p>${price}</p>
+      <p >${price}</p>
+      </div>
       <div class="deleteButton" data-index="${index}"><img class="delete_icon" src="/Images/Icons/detele_Icon.png" /></div>
       </div>
      
@@ -220,12 +219,12 @@ function removeSelectedLipstick(selectedLipstickDiv, indexToRemove) {
 
 function handleLipstickImageClick(img, icon, title, price) {
   // Clear local storage and the UI if a lipstick is already selected
-  if (selectedLipsticksArray.length > 0) {
-    selectedLipsticksArray = [];
-    const addToCartSection = document.querySelector(".addToCart");
-    addToCartSection.innerHTML = "";
-    localStorage.removeItem("selectedLipsticks"); // Clear local storage
-  }
+  // if (selectedLipsticksArray.length > 0) {
+  //   selectedLipsticksArray = [];
+  //   const addToCartSection = document.querySelector(".addToCart");
+  //   addToCartSection.innerHTML = "";
+  //   localStorage.removeItem("selectedLipsticks"); // Clear local storage
+  // }
 
   // Call the function to display the selected lipstick in the addToCart section
   displaySelectedLipstick(
@@ -245,15 +244,17 @@ function handleLipstickImageClick(img, icon, title, price) {
   };
   selectedLipsticksArray.push(selectedLipstickData);
 
-  // Store the updated array in localStorage
+  // Store the updated Add to Cart array in localStorage
   localStorage.setItem(
     "selectedLipsticks",
     JSON.stringify(selectedLipsticksArray)
   );
+
+  generateMateLipstickContent();
 }
 
 function displaySelectedLipstickOnLoad() {
-  // Retrieve the selected lipsticks from localStorage
+  // Retrieve the selected lipsticks Add to Cart from localStorage
   const storedLipsticks = localStorage.getItem("selectedLipsticks");
   if (storedLipsticks) {
     selectedLipsticksArray = JSON.parse(storedLipsticks);
@@ -295,23 +296,71 @@ function generateMateLipstickContent() {
 
 generateMateLipstickContent();
 
+function generateCartModelContent() {
+  const cartItemsContainer = document.querySelector(".cart-items");
+  cartItemsContainer.innerHTML = ""; // Clear previous content
+
+  // Iterate through the selected lipsticks array and create HTML elements for each selected lipstick
+  selectedLipsticksArray.forEach((lipstickData, index) => {
+    const cartItemDiv = document.createElement("div");
+    cartItemDiv.classList.add("cart-item");
+    cartItemDiv.innerHTML = `
+      <div class="cart-item-info">
+        <img class="cart-item-img" src="${lipstickData.img}" />
+        <img class="cart-item-icon" src="${lipstickData.icon}" />
+        <h4  >${lipstickData.title}</h4>
+        <p>${lipstickData.price}</p>
+        <div class="deleteButton" data-index="${index}"><img class="delete_icon" src="/Images/Icons/detele_Icon.png" /></div>
+      </div>
+    `;
+    cartItemsContainer.appendChild(cartItemDiv);
+  });
+
+  // Calculate and display the total price
+  const totalPriceElement = document.getElementById("totalPrice");
+  let totalPrice = 0;
+  selectedLipsticksArray.forEach((lipstick) => {
+    totalPrice += parseInt(lipstick.price.slice(1));
+  });
+  totalPriceElement.textContent = `$${totalPrice}`;
+}
+
 // Call the function when the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-  showSection("aibeauty");
+  const storedSection = localStorage.getItem("selectedSection");
+  const storedButton = localStorage.getItem("selectedButton");
+  if (storedSection && storedButton) {
+    const selectedButton = document.querySelector(
+      `.Sidebar_InnerContainer a[href="${storedButton}"]`
+    );
+    showSection(storedSection, selectedButton);
+  } else {
+    showSection("aibeauty"); // Default selection if no data is stored
 
-  // Add the border to the default selected button "aibeauty"
-  const defaultSelectedButton = document.querySelector(
-    '.Sidebar_InnerContainer a[href="#aibeauty"]'
-  );
-  defaultSelectedButton.classList.add("selected");
+    // Add the border to the default selected button "aibeauty"
+    const defaultSelectedButton = document.querySelector(
+      '.Sidebar_InnerContainer a[href="#aibeauty"]'
+    );
+    defaultSelectedButton.classList.add("selected");
+  }
 
-  showLipstickSection("mate");
+  // For Lipstick Container Categories
 
-  // Add the border to the default selectedlipstick buttton "Lipstick"
-  const defaultSelectedlipstick = document.querySelector(
-    '.LipstickContainerCategories a[href="#mate"]'
-  );
-  defaultSelectedlipstick.classList.add("selectedlipstick");
+  const storedSectionlipstick = localStorage.getItem("selectedSectionlipstick");
+  const storedButtonlipstick = localStorage.getItem("selectedButtonlipstick");
+  if (storedSectionlipstick && storedButtonlipstick) {
+    const selectedButtonlipstick = document.querySelector(
+      `.LipstickContainerCategories a[href="${storedButtonlipstick}"]`
+    );
+    showLipstickSection(storedSectionlipstick, selectedButtonlipstick);
+  } else {
+    showLipstickSection("mate"); // Default selection if no data is stored
+    // Add the border to the default selectedlipstick buttton "Lipstick"
+    const defaultSelectedlipstick = document.querySelector(
+      '.LipstickContainerCategories a[href="#mate"]'
+    );
+    defaultSelectedlipstick.classList.add("selectedlipstick");
+  }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -330,6 +379,53 @@ document.addEventListener("DOMContentLoaded", () => {
     sidebarMainContainer.classList.toggle("active");
   });
 });
+
+// Function to open the cart modal
+function openCartModal() {
+  const cartModal = document.getElementById("cartModal");
+  cartModal.style.display = "block";
+  document.body.style.overflow = "hidden"; // Prevent scrolling while the modal is open
+
+  // Generate cart items content in the modal
+  generateCartModelContent();
+}
+
+// Function to close the cart modal
+function closeCartModal() {
+  const cartModal = document.getElementById("cartModal");
+  cartModal.style.display = "none";
+  document.body.style.overflow = "auto"; // Allow scrolling again
+}
+
+// Event listener to open the modal when the "Add to Cart" button is clicked
+const addToCartButton = document.querySelector(".addToCartButton");
+addToCartButton.addEventListener("click", openCartModal);
+
+// Event listener to close the modal when the "Close" button (x) is clicked
+const closeButton = document.querySelector(".close");
+closeButton.addEventListener("click", closeCartModal);
+
+// Event listener to close the modal when the background is clicked
+window.addEventListener("click", (event) => {
+  const cartModal = document.getElementById("cartModal");
+  if (event.target === cartModal) {
+    closeCartModal();
+  }
+});
+
+// Function to place the order
+// function placeOrder() {
+//   selectedLipsticksArray = [];
+//   const addToCartSection = document.querySelector(".addToCart");
+//   addToCartSection.innerHTML = "";
+//   localStorage.removeItem("selectedLipsticks"); // Clear local storage
+
+//   closeCartModal();
+// }
+
+// Event listener for the "Place Order" button
+// const placeOrderButton = document.getElementById("placeOrderBtn");
+// placeOrderButton.addEventListener("click", placeOrder);
 
 // video = document.getElementById("videoElement");
 // if (navigator.mediaDevices.getUserMedia) {

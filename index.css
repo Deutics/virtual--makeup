@@ -251,6 +251,7 @@
   height: 50%;
   object-fit: fill;
   margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 
 .lipstickItem .icon {
@@ -302,7 +303,11 @@
   font-weight: 600;
   font-family: "Poppins", sans-serif;
   color: white;
-  margin-top: -2rem;
+  /* margin-top: -2rem; */
+  cursor: pointer;
+}
+.addToCartButton:hover {
+  background-color: #cec8c8;
 }
 
 .addToCart:hover {
@@ -343,14 +348,20 @@
   border-radius: 0.5rem;
 }
 
-.selectedLipstickInfo h4 {
+.lipstick_Details {
   display: flex;
   width: 100%;
   font-size: 12px;
   font-weight: 500;
   align-items: center;
+  gap: 2rem;
 }
-
+.lipstick_Details h4 {
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
 .selectedLipstickInfo p {
   font-size: 14px;
   font-weight: 700;
@@ -366,27 +377,198 @@
   top: 8rem;
 }
 
+/* Style for the cart modal container */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  z-index: 1;
+}
+
+/* Style for the modal content */
+.modal-content {
+  padding: 20px;
+}
+.modal-content p {
+  display: flex;
+  justify-content: left;
+  font-family: "Poppins", sans-serif;
+  color: #2f2f2f;
+  font-weight: 600;
+  gap: 0.5rem;
+  font-size: larger;
+}
+
+.total_Price {
+  float: right;
+  margin-top: 0rem;
+}
+/* Style for the close button (X) */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Style for the cart items */
+.cart-items {
+  margin-top: 20px;
+}
+
+.cartHeading {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #000000;
+  font-size: 1.5rem;
+}
+/* Style for each cart item */
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: transparent;
+}
+
+.cart-item-info {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.cart-item-img,
+.cart-item-icon {
+  display: flex;
+  justify-content: space-between;
+  width: 35px;
+  height: 30px;
+  border: 1px solid #947474;
+  border-radius: 0.5rem;
+}
+
+.cart-item h4 {
+  margin: 0;
+  display: flex;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 500;
+  align-items: center;
+}
+
+#totalPrice {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: left;
+  font-family: "Poppins", sans-serif;
+  color: #2f2f2f;
+}
+
+/* Style for the Place Order button */
+#placeOrderBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #baabab;
+  border-radius: 5rem;
+  border-color: transparent;
+  width: 100%;
+  height: 2.5rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#placeOrderBtn:hover {
+  background-color: #cec8c8;
+}
+.deleteButton {
+  cursor: pointer;
+}
+
+/* Style for the blurred background */
+/* body {
+  overflow: hidden;
+} */
+
+.blurred-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+  filter: blur(8px);
+}
+
+.cart-item-info p {
+  font-size: small;
+  display: flex;
+  align-items: center;
+}
+@media only screen and (max-width: 500px) {
+  /* .modal{
+    width: 100% ;
+  } */
+}
 @media screen and (max-width: 660px) {
-  .selectedLipstickInfo h4 {
+  .lipstick_Details {
     margin-top: 2.5rem;
-    margin-left: -5rem;
     height: 15%;
     /* font-size: .8rem; */
   }
 
-  .selectedLipstickInfo p {
+  /* .selectedLipstickInfo p {
     margin-top: 4.6rem;
     margin-left: 0.5rem;
-    position: absolute;
     font-size: 0.8rem;
-  }
+    display: flex;
+    border: 1px solid red;
+  } */
+
+  /* .lipstickInfo_Price {
+    display: flex;
+    flex-direction: row;
+    margin-top: 4.6rem;
+    float: right;
+    border: 1px solid red;
+  } */
   .addToCartButton {
     font-size: 0.9rem;
     height: 2rem;
+    cursor: pointer;
+  }
+  .addToCartButton:hover {
+    background-color: #999393;
   }
   .addToCartIcon {
     display: flex;
     margin-left: 1rem;
+  }
+  .cart-item-info h4 {
+    margin-top: 2.5rem;
+    margin-left: -5rem;
+    height: 15%;
+  }
+
+  .cart-item-info p {
+    margin-top: 4.6rem;
+    margin-left: 0.3rem !important;
+    position: absolute;
+    font-size: 0.8rem;
   }
 }
 
@@ -397,6 +579,9 @@
 
   .lipstickItem {
     min-width: 50%;
+  }
+  .modal {
+    width: 50% !important;
   }
 }
 @media screen and (max-width: 768px) {
@@ -414,7 +599,7 @@
     font-size: 0.9rem;
   }
   .addToCart {
-    margin-top: -10rem;
+    margin-top: -8rem;
     height: 180px;
   }
   .CameraImageContainer {
@@ -557,7 +742,7 @@
     display: flex;
     align-items: center;
   }
-  .selectedLipstickInfo h4 {
+  .lipstick_Details {
     display: flex;
     align-items: center;
   }
@@ -570,6 +755,37 @@
     height: 45%;
     text-align: center;
     margin-top: 24rem;
+  }
+}
+
+@media only screen and (max-width: 775px) {
+  .modal {
+    width: 40%;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .modal {
+    width: 40%;
+  }
+  .cart-item-info h4 {
+    margin-top: 3rem;
+    margin-left: -5.5rem;
+    height: 15%;
+  }
+
+  .cart-item-info p {
+    margin-top: 4rem;
+    margin-left: 0.3rem;
+    position: absolute;
+    font-size: 0.8rem;
+  }
+
+  .addToCartButton:hover {
+    background-color: #999393;
+  }
+  .addToCartIcon {
+    display: flex;
+    margin-left: 1rem;
   }
 }
 
