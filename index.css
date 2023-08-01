@@ -303,7 +303,7 @@
   font-weight: 600;
   font-family: "Poppins", sans-serif;
   color: white;
-  /* margin-top: -2rem; */
+  margin-top: -2rem;
   cursor: pointer;
 }
 .addToCartButton:hover {
@@ -353,14 +353,15 @@
   width: 100%;
   font-size: 12px;
   font-weight: 500;
-  align-items: center;
+  align-items: flex-start;
+  margin-top: 0.4rem;
   gap: 2rem;
 }
 .lipstick_Details h4 {
   font-size: 12px;
   font-weight: 500;
   display: flex;
-  align-items: center;
+  align-items: justify;
 }
 .selectedLipstickInfo p {
   font-size: 14px;
@@ -380,12 +381,12 @@
 /* Style for the cart modal container */
 .modal {
   display: none;
+  background-color: #ffffff;
   position: fixed;
   top: 0;
   right: 0;
   width: 30%;
   height: 100%;
-  background-color: #ffffff;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
   z-index: 1;
@@ -413,22 +414,25 @@
 .close {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 24px;
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
 }
+.ArrowCart {
+  display: none;
+}
 
 /* Style for the cart items */
 .cart-items {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .cartHeading {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   color: #000000;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 /* Style for each cart item */
 .cart-item {
@@ -444,6 +448,7 @@
   display: flex;
   width: 100%;
   gap: 1rem;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -489,21 +494,22 @@
   color: #ffffff;
   font-size: 1rem;
   cursor: pointer;
+  margin-top: 2rem;
 }
 
 #placeOrderBtn:hover {
   background-color: #cec8c8;
 }
-.deleteButton {
+.deleteButton,
+.deleteButtonCart {
   cursor: pointer;
 }
 
-/* Style for the blurred background */
-/* body {
-  overflow: hidden;
-} */
+.blur-background {
+  filter: blur(8px);
+}
 
-.blurred-bg {
+/* .blurred-bg {
   position: fixed;
   top: 0;
   right: 0;
@@ -512,6 +518,22 @@
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 0;
   filter: blur(8px);
+} */
+.arrow-button {
+  /* Customize the styles for the arrow button */
+  width: 40px;
+  font-size: 2rem;
+  margin-left: 5px;
+  margin-top: 0.9rem;
+  cursor: pointer;
+  color: white;
+}
+.modal h1 {
+  display: none;
+}
+
+.arrow_Toggle_Cart_button {
+  display: none;
 }
 
 .cart-item-info p {
@@ -519,33 +541,88 @@
   display: flex;
   align-items: center;
 }
+
 @media only screen and (max-width: 500px) {
-  /* .modal{
-    width: 100% ;
+  #cartModal {
+    width: 100% !important;
+  }
+
+  .cart-item {
+    margin-top: -2rem;
+  }
+  .modal h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+    font-family: "Goldman", cursive;
+    font-weight: 400;
+  }
+  .arrow_Toggle_Cart_button {
+    display: block;
+  }
+  #cartModal.active .toggle-button {
+    display: none;
+  }
+  .close {
+    display: none;
+  }
+  .ArrowCart {
+    display: block;
+    width: 40px;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-top: -2.5rem;
+    cursor: pointer;
+    color: black;
+  }
+
+  /* .arrow-button {
+    color: black;
   } */
+  .CountourContainer {
+    font-size: 1rem;
+  }
+  #placeOrderBtn {
+    width: 55%;
+    margin-top: 3rem;
+    height: 2rem;
+  }
+  .modal-content p {
+    font-size: 1rem;
+  }
+  #totalPrice {
+    font-size: 1rem;
+  }
 }
 @media screen and (max-width: 660px) {
   .lipstick_Details {
     margin-top: 2.5rem;
     height: 15%;
-    /* font-size: .8rem; */
+    margin-left: -5rem;
   }
 
-  /* .selectedLipstickInfo p {
-    margin-top: 4.6rem;
-    margin-left: 0.5rem;
-    font-size: 0.8rem;
-    display: flex;
-    border: 1px solid red;
-  } */
-
-  /* .lipstickInfo_Price {
+  .selectedLipstickInfo {
     display: flex;
     flex-direction: row;
-    margin-top: 4.6rem;
     float: right;
-    border: 1px solid red;
-  } */
+    width: 100%;
+  }
+
+  .selectedLipstickInfo .lipstick_Details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .selectedLipstickInfo h4 {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .selectedLipstickInfo p {
+    margin-top: -2rem;
+  }
+
   .addToCartButton {
     font-size: 0.9rem;
     height: 2rem;
@@ -569,6 +646,9 @@
     margin-left: 0.3rem !important;
     position: absolute;
     font-size: 0.8rem;
+  }
+  .CountourContainer {
+    font-size: 1rem;
   }
 }
 
@@ -670,8 +750,14 @@
   .Sidebar_MainContainer.active {
     left: 0; /* Show the sidebar when active */
     width: 45%;
-    height: 100%;
+    height: 150vh;
     z-index: 999;
+  }
+  .Side_Bar {
+    height: 100% !important;
+  }
+  .Sidebar_InnerContainer {
+    height: auto !important;
   }
 
   .toggle-button {
@@ -745,6 +831,8 @@
   .lipstick_Details {
     display: flex;
     align-items: center;
+    align-items: flex-start;
+    margin-top: 0.4rem;
   }
   .Comming_Soon img {
     /* width: 100%; */
@@ -755,6 +843,9 @@
     height: 45%;
     text-align: center;
     margin-top: 24rem;
+  }
+  .CountourContainer {
+    font-size: 1rem;
   }
 }
 
@@ -768,13 +859,13 @@
     width: 40%;
   }
   .cart-item-info h4 {
-    margin-top: 3rem;
-    margin-left: -5.5rem;
+    margin-top: 5rem;
+    margin-left: -6rem;
     height: 15%;
   }
 
   .cart-item-info p {
-    margin-top: 4rem;
+    margin-top: 7rem;
     margin-left: 0.3rem;
     position: absolute;
     font-size: 0.8rem;
@@ -861,5 +952,157 @@
     width: 40%;
     margin-right: -1rem;
     margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 1900px) {
+  body {
+    font-size: 18px;
+  }
+  .Side_Bar {
+    height: 100%;
+    margin-left: 1rem;
+  }
+  .Side_Bar a img {
+    width: 82%;
+  }
+  .Sidebar_MainContainer {
+    height: 100%;
+    width: 20%;
+  }
+  .Sidebar_InnerContainer {
+    height: 100%;
+  }
+  .Sidebar_Footer {
+    font-size: 2rem;
+    position: relative;
+    /* bottom: 5px; */
+    left: 2rem;
+    margin-left: 1rem;
+  }
+
+  .logo_Sidebar {
+    font-size: 4.188rem;
+    margin-left: 1rem;
+  }
+
+  .Sidebar_InnerContainer a {
+    width: 30rem;
+  }
+  .contentlipstick {
+    height: 100%;
+  }
+  .lipstickItem {
+    width: 13rem;
+  }
+  .lipstickItem h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  .lipstickItem p {
+    font-size: 1.2rem;
+    color: #888;
+  }
+  #videoElement {
+    width: 100%;
+    height: 60%;
+  }
+  .addToCart {
+    margin-top: 2rem;
+    height: 250px;
+  }
+  .lipstick_Details h4 {
+    font-size: 1.5rem;
+  }
+  .selectedLipstickInfo p {
+    font-size: 1.5rem;
+  }
+
+  .addToCartImg,
+  .addToCartIcon {
+    width: 50px;
+    height: 60px;
+  }
+  .delete_icon {
+    width: 50px;
+    height: 60px;
+  }
+  .addToCartHeading {
+    /* margin-top:35rem ; */
+    position: relative;
+    top: 13rem;
+    height: 40%;
+    font-size: 2rem;
+  }
+
+  .addToCartButton {
+    height: 4rem;
+    font-size: 2rem;
+  }
+  /* .addToCart:hover {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
+  } */
+  .cartHeading {
+    font-size: 3rem;
+  }
+  .cart-item h4 {
+    font-size: 1.5rem;
+  }
+
+  .cart-item-img,
+  .cart-item-icon {
+    width: 60px;
+    height: 50px;
+  }
+  .cart-item-info p {
+    font-size: 1.5rem;
+  }
+  .total_Price {
+    font-size: 2.5rem !important;
+  }
+
+  #totalPrice {
+    font-size: 2.5rem;
+  }
+  #placeOrderBtn {
+    height: 4.5rem;
+    font-size: 2rem;
+  }
+  .close {
+    font-size: 3rem;
+  }
+
+  .Navbar_Container {
+    font-size: 3rem;
+  }
+  .navbarSearchContainer {
+    width: 20%;
+  }
+  .navbarSearchContainer img {
+    width: 10%;
+  }
+  .SearchbarInput {
+    font-size: 1.5rem;
+  }
+  .LipstickContainerCategories a {
+    min-width: 10rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+  .LipstickContainerCategories a.selectedlipstick {
+    font-size: 1.7rem;
+    align-items: center;
+    padding: 2rem;
+  }
+  .selectedlipstick img {
+    width: 40px;
+  }
+  .Comming_Soon img {
+    width: 50rem;
+  }
+  .CountourContainer {
+    font-size: 2.5rem;
   }
 }

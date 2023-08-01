@@ -21,15 +21,10 @@
   <body>
     <div class="MainWrapper">
       <div class="toggle_Navbar">
-        <div class="toggle-button">
-          <div class="toggle-line"></div>
-          <div class="toggle-line"></div>
-          <div class="toggle-line"></div>
-        </div>
         <h2 class="smallScreenHeading">beau</h2>
       </div>
-      <div class="Conatiner">
-        <section class="Sidebar_MainContainer">
+      <div class="Conatiner" >
+        <section class="Sidebar_MainContainer blur" >
           <div class="Sidebar_InnerContainer">
             <p class="logo_Sidebar">beau</p>
             <div class="Side_Bar">
@@ -77,11 +72,10 @@
           </section>
           <section class="CountourContainer">Coming Soon!</section>
         </div>
-
-        <div id="lipstik" class="MainContianer">
-          <section class="Navbar_Container lipstikContentNavbar">
+        <div id="lipstik" class="MainContianer ">
+          <section class="Navbar_Container lipstikContentNavbar blur ">
             <p>Lipstick</p>
-            <div class="navbarSearchContainer">
+            <div class="navbarSearchContainer blur">
               <img src="/Images/Icons/Search_Icon.png" alt="" />
               <input
                 type="search"
@@ -91,7 +85,7 @@
             </div>
           </section>
 
-          <section class="LipstickContainerCategories">
+          <section class="LipstickContainerCategories blur">
             <a
               class="mate info"
               href="#mate"
@@ -163,13 +157,13 @@
           </section>
 
           <section class="mateContainer">
-            <div class="mateInnerContainer">
+            <div class="mateInnerContainer blur">
               <h1 class="lipstickMobile">Lipstick</h1>
-              <div id="mate" class="LipstickContent contentlipstick"></div>
+              <div id="mate" class="LipstickContent contentlipstick "></div>
             </div>
 
             <div class="Camera">
-              <div class="CameraImageContainer">
+              <div class="CameraImageContainer blur">
                 <img
                   id="videoElement"
                   src="/Images/OtherImages/creative-set-make-up.avif"
@@ -178,17 +172,20 @@
               </div>
              
 
-              <div class="cartContainer">
+              <div class="cartContainer blur">
                 <div class="addToCartHeading">Current Products</div>
                 <div class="addToCart"></div>
                 <div class="addToCartButton">Add to Cart</div>
               </div>
 
-              <div class="modal" id="cartModal">
+              <div class="modal" id="cartModal"> 
                 <div class="modal-content" id="cartModalContent">
+                  <h1 class="logo_Sidebar_Cart">beau</h1>
+                  <!-- <div class="arrow_Toggle_Cart_button">&#8592;</div> -->
                   <span class="close">&times;</span>
+                  <span class="ArrowCart">&larr;</span>
                   <h2 class="cartHeading">Cart Items</h2>
-                  <div class="cart-items"></div>
+                  <div class="cart-items"></div> 
                   <p class="total_Price">Total: <span id="totalPrice">0</span></p>
                   <div id="placeOrderBtn">Place Order</div>
                 </div>

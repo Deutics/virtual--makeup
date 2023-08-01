@@ -3,7 +3,7 @@ const lisptickMate = [
     id: 1,
     img: "/Images/lipstik/lipstik_img1.png",
     icon: "/Images/lipstik/lipstick_img1_color.png",
-    title: "Powermatte Long Lasting",
+    title: "Powermatte Long Lasting ",
     content: "Transfer-resistant, matte lipstick",
     price: "$200",
   },
@@ -198,6 +198,7 @@ function displaySelectedLipstick(img, icon, title, price, index) {
 
   // Append the div to the addToCartSection
   addToCartSection.appendChild(selectedLipstickDiv);
+  generateCartModelContent();
 }
 let selectedLipsticksArray = [];
 
@@ -206,6 +207,7 @@ function removeSelectedLipstick(selectedLipstickDiv, indexToRemove) {
 
   // Remove the selected lipstick div from the addToCartSection
   addToCartSection.removeChild(selectedLipstickDiv);
+  // cartItemsContainer.removeChild(cartItemDiv);
 
   // Remove the selected lipstick from the array
   selectedLipsticksArray.splice(indexToRemove, 1);
@@ -215,16 +217,44 @@ function removeSelectedLipstick(selectedLipstickDiv, indexToRemove) {
     "selectedLipsticks",
     JSON.stringify(selectedLipsticksArray)
   );
+  generateCartModelContent();
+}
+function removeSelectedCartLipstick(cartItemDiv, indexToRemove) {
+  const cartItemsContainer = document.querySelector(".cart-items");
+  const addToCartSection = document.querySelector(".addToCart");
+
+  // Remove the selected lipstick div from the cart-items section
+  cartItemsContainer.removeChild(cartItemDiv);
+
+  // Remove the selected lipstick div from the addToCart section
+  const addToCartItems = addToCartSection.querySelectorAll(
+    ".selectedLipstickInfo"
+  );
+  if (addToCartItems.length > indexToRemove) {
+    addToCartSection.removeChild(addToCartItems[indexToRemove]);
+  }
+
+  // Remove the selected lipstick from the array
+  selectedLipsticksArray.splice(indexToRemove, 1);
+
+  // Update the stored array in localStorage
+  localStorage.setItem(
+    "selectedLipsticks",
+    JSON.stringify(selectedLipsticksArray)
+  );
+
+  // Regenerate the cart items and update the total price in the modal
+  generateCartModelContent();
 }
 
 function handleLipstickImageClick(img, icon, title, price) {
   // Clear local storage and the UI if a lipstick is already selected
-  // if (selectedLipsticksArray.length > 0) {
-  //   selectedLipsticksArray = [];
-  //   const addToCartSection = document.querySelector(".addToCart");
-  //   addToCartSection.innerHTML = "";
-  //   localStorage.removeItem("selectedLipsticks"); // Clear local storage
-  // }
+  if (selectedLipsticksArray.length > 0) {
+    selectedLipsticksArray = [];
+    const addToCartSection = document.querySelector(".addToCart");
+    addToCartSection.innerHTML = "";
+    localStorage.removeItem("selectedLipsticks"); // Clear local storage
+  }
 
   // Call the function to display the selected lipstick in the addToCart section
   displaySelectedLipstick(
@@ -250,7 +280,8 @@ function handleLipstickImageClick(img, icon, title, price) {
     JSON.stringify(selectedLipsticksArray)
   );
 
-  generateMateLipstickContent();
+  // generateMateLipstickContent();
+  // generateCartModelContent();
 }
 
 function displaySelectedLipstickOnLoad() {
@@ -308,11 +339,24 @@ function generateCartModelContent() {
       <div class="cart-item-info">
         <img class="cart-item-img" src="${lipstickData.img}" />
         <img class="cart-item-icon" src="${lipstickData.icon}" />
-        <h4  >${lipstickData.title}</h4>
+        <h4>${lipstickData.title}</h4>
         <p>${lipstickData.price}</p>
-        <div class="deleteButton" data-index="${index}"><img class="delete_icon" src="/Images/Icons/detele_Icon.png" /></div>
       </div>
-    `;
+      <div class="deleteButtonCart" data-index="${index}"><img class="delete_icon" src="/Images/Icons/detele_Icon.png" /></div>
+    </div>
+  `;
+
+    const deleteCartButton = cartItemDiv.querySelector(".deleteButtonCart");
+    deleteCartButton.addEventListener("click", () => {
+      // Get the index of the selected lipstick from the data-index attribute
+      const indexToRemove = parseInt(
+        deleteCartButton.getAttribute("data-index"),
+        10
+      );
+      // Call the function to remove the selected lipstick from the array and update the display
+      removeSelectedCartLipstick(cartItemDiv, indexToRemove);
+    });
+
     cartItemsContainer.appendChild(cartItemDiv);
   });
 
@@ -361,6 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     defaultSelectedlipstick.classList.add("selectedlipstick");
   }
+  generateCartModelContent();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -375,18 +420,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.body.appendChild(toggleButton);
 
+  function removeToggleLines() {
+    const toggleLines = toggleButton.querySelectorAll(".toggle-line");
+    toggleLines.forEach((line) => {
+      line.style.display = "none";
+    });
+  }
+
+  function addToggleLines() {
+    const toggleLines = toggleButton.querySelectorAll(".toggle-line");
+    toggleLines.forEach((line) => {
+      line.style.display = "block";
+    });
+  }
+
+  function addArrowButton() {
+    const arrowButton = document.createElement("div");
+    arrowButton.classList.add("arrow-button");
+    arrowButton.innerHTML = "&#8592;";
+    toggleButton.appendChild(arrowButton);
+  }
+
+  function removeArrowButton() {
+    const arrowButton = toggleButton.querySelector(".arrow-button");
+    if (arrowButton) {
+      toggleButton.removeChild(arrowButton);
+    }
+  }
+
   toggleButton.addEventListener("click", () => {
     sidebarMainContainer.classList.toggle("active");
+
+    if (sidebarMainContainer.classList.contains("active")) {
+      removeToggleLines();
+      addArrowButton();
+    } else {
+      removeArrowButton();
+      addToggleLines();
+    }
   });
 });
 
+// Function to toggle the blur effect on the background elements
+function toggleBlurBackground() {
+  const cartModal = document.getElementById("cartModal");
+  const backgroundElements = document.querySelectorAll(".blur");
+  if (cartModal.classList.contains("active")) {
+    backgroundElements.forEach((element) => {
+      element.classList.toggle("blur-background");
+    });
+  }
+}
 // Function to open the cart modal
 function openCartModal() {
   const cartModal = document.getElementById("cartModal");
   cartModal.style.display = "block";
-  document.body.style.overflow = "hidden"; // Prevent scrolling while the modal is open
+  document.body.style.overflow = "hidden";
 
-  // Generate cart items content in the modal
+  toggleBlurBackground();
   generateCartModelContent();
 }
 
@@ -394,24 +485,48 @@ function openCartModal() {
 function closeCartModal() {
   const cartModal = document.getElementById("cartModal");
   cartModal.style.display = "none";
-  document.body.style.overflow = "auto"; // Allow scrolling again
+  document.body.style.overflow = "auto";
+  toggleBlurBackground();
+}
+
+
+function toggleCartModal() {
+  const cartModal = document.getElementById("cartModal");
+  const toggleButton = document.querySelector(".toggle-button");
+  cartModal.classList.toggle("active");
+  toggleButton.style.display = cartModal.classList.contains("active") ? "none" : "block";
+
+  if (cartModal.classList.contains("active")) {
+    cartModal.style.display = "block"; // Explicitly set the display property to "block" when opening the modal
+  } else {
+    cartModal.style.display = "none"; // Explicitly set the display property to "none" when closing the modal
+  }
+
+  toggleBlurBackground();
 }
 
 // Event listener to open the modal when the "Add to Cart" button is clicked
 const addToCartButton = document.querySelector(".addToCartButton");
-addToCartButton.addEventListener("click", openCartModal);
+addToCartButton.addEventListener("click", () => {
+  openCartModal();
+  toggleCartModal();
+});
 
 // Event listener to close the modal when the "Close" button (x) is clicked
 const closeButton = document.querySelector(".close");
-closeButton.addEventListener("click", closeCartModal);
-
-// Event listener to close the modal when the background is clicked
-window.addEventListener("click", (event) => {
-  const cartModal = document.getElementById("cartModal");
-  if (event.target === cartModal) {
-    closeCartModal();
-  }
+closeButton.addEventListener("click", () => {
+  closeCartModal();
+  toggleCartModal();
 });
+
+const closeArrowCartButton = document.querySelector(".ArrowCart");
+closeArrowCartButton.addEventListener("click", () => {
+  closeCartModal();
+  toggleCartModal();
+});
+
+
+
 
 // Function to place the order
 // function placeOrder() {
