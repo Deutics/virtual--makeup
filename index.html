@@ -18,12 +18,12 @@
       rel="stylesheet"
     />
   </head>
-  <body>
-    <div class="MainWrapper">
+  <body >
+    <div class="MainWrapper" >
       <div class="toggle_Navbar">
         <h2 class="smallScreenHeading">beau</h2>
       </div>
-      <div class="Conatiner" >
+      <div class="Conatiner" id="bbbb">
         <section class="Sidebar_MainContainer blur" >
           <div class="Sidebar_InnerContainer">
             <p class="logo_Sidebar">beau</p>
@@ -72,7 +72,7 @@
           </section>
           <section class="CountourContainer">Coming Soon!</section>
         </div>
-        <div id="lipstik" class="MainContianer ">
+        <div id="lipstik" class="MainContianer">
           <section class="Navbar_Container lipstikContentNavbar blur ">
             <p>Lipstick</p>
             <div class="navbarSearchContainer blur">
@@ -156,10 +156,10 @@
             </a>
           </section>
 
-          <section class="mateContainer">
-            <div class="mateInnerContainer blur">
+          <section class="mateContainer" >
+            <div class="mateInnerContainer blur" >
               <h1 class="lipstickMobile">Lipstick</h1>
-              <div id="mate" class="LipstickContent contentlipstick "></div>
+              <div id="mate" class="LipstickContent contentlipstick " ></div>
             </div>
 
             <div class="Camera">
@@ -178,7 +178,7 @@
                 <div class="addToCartButton">Add to Cart</div>
               </div>
 
-              <div class="modal" id="cartModal"> 
+              <div class="modal" id="cartModal" onclick="event.stopPropagation();" > 
                 <div class="modal-content" id="cartModalContent">
                   <h1 class="logo_Sidebar_Cart">beau</h1>
                   <!-- <div class="arrow_Toggle_Cart_button">&#8592;</div> -->
@@ -187,9 +187,116 @@
                   <h2 class="cartHeading">Cart Items</h2>
                   <div class="cart-items"></div> 
                   <p class="total_Price">Total: <span id="totalPrice">0</span></p>
-                  <div id="placeOrderBtn">Place Order</div>
+                  <div id="placeOrderBtn" onclick="openOrderModal()">Place Order</div>
                 </div>
               </div>
+
+              <div class="modal" id="orderModal" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                  <span class="close" onclick="closeOrderModal()">&times;</span>
+                  <h2 class="cartHeading">Place Order</h2>
+                  <div class="order-form">
+                    <div class="form-group WrapperEmail">
+                      <label for="email">Email:</label>
+                      <input type=  "email" id="email" placeholder="Enter your country" />
+                    </div>
+                    <h2 class="cartHeading">Shipping Address</h2>
+                    <div class="form-group">
+                      <label for="country">Country:</label>
+                      <input type="text" id="country" placeholder="Enter your country" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth ">
+                      <label for="firstname">First Name:</label>
+                      <input type="text" id="firstname" placeholder="Enter your first name" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="lastname">Last Name:</label>
+                      <input type="text" id="lastname" placeholder="Enter your last name" />
+                    </div>
+                  </div>
+                    <div class="form-group">
+                      <label for="address">Address:</label>
+                      <input id="address" placeholder="Enter your address"></input>
+                    </div>
+                    <div class="form-group">
+                      <label for="city">City:</label>
+                      <input type="text" id="city" placeholder="Enter your city" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth">
+                      <label for="postalcode">Postal Code:</label>
+                      <input type="text" id="postalcode" placeholder="Enter your postal code" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="phone">Phone:</label>
+                      <input type="text" id="phone" placeholder="Enter your phone number" />
+                    </div>
+                  </div>
+              
+                    <button id="submitOrderBtn" onclick="openPaymentModal()">Continue Shipping</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal" id="paymentModal" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                  <span class="close" onclick="closePaymentModal()">&times;</span>
+                  <h2 class="cartHeading">Payment</h2>
+                  <div class="order-form">
+                    <div class="form-group-Container">
+                      <div class="form-group WrapperRadio">
+                        <input id="throughcard" type="radio" name="paymentOption" />
+                        <label for="throughcard" >Pay through card</label>
+                        <input id="ondelivery" type="radio" name="paymentOption" />
+                        <label for="ondelivery">Cash on delivery</label>
+                      </div>
+                     </div>
+                     <div class="form-group WrapperEmail">
+                      <label for="cardnumber">Card Number:</label>
+                      <input type="text" id="cardnumber" placeholder="Enter your Card Number" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth ">
+                      <label for="firstname">First Name:</label>
+                      <input type="text" id="paymentfirstname" placeholder="Enter your first name"/>
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="lastname">Last Name:</label>
+                      <input type="text" id="paymentlastname" placeholder="Enter your last name" />
+                    </div>
+                  </div>
+
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth">
+                      <label for="expirydate">Expiry Date:</label>
+                      <input type="text" id="expirydate" placeholder="Enter your Expiry Date:" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="cvv">CVV:</label>
+                      <input type="text" id="cvv" placeholder="Enter your CVV" />
+                    </div>
+                  </div>
+              
+                    <button id="submitPaymentBtn" onclick="openPaynowModal()">Pay Now</button>
+                  </div>
+                </div>
+              </div>
+              <div class="modal" id="payNow" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                  <span class="close" onclick="closePaynowModal()">&times;</span>
+                  <div class="OrderCompleteMessage">
+                    <h2 class="OrderPlaced">Order Placed </h2>
+                  <h2 class="cartHeadingThankyou">Thank you for shopping. </h2>
+                  <div class="order-form">
+                    <div class="OrderPlaced">
+                      <img src="/Images//OtherImages/OrderPlaced.png" alt="OrderPlaced">
+                    <button id="submitPayNowBtn" onclick="submitPaynowbtn()">Back</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              
               
 
             </div>

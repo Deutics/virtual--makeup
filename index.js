@@ -461,22 +461,54 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+function closeAndToggleCartModal() {
+  closeCartModal();
+  toggleCartModal();
+}
+
 // Function to toggle the blur effect on the background elements
 function toggleBlurBackground() {
   const cartModal = document.getElementById("cartModal");
   const backgroundElements = document.querySelectorAll(".blur");
+
+  function handleBackgroundClick(event) {
+    if (event.target === cartModal) {
+      closeAndToggleCartModal();
+    }
+  }
+
   if (cartModal.classList.contains("active")) {
     backgroundElements.forEach((element) => {
-      element.classList.toggle("blur-background");
+      element.classList.add("blur-background");
+      element.classList.add("unselectable");
+      element.style.pointerEvents = "none";
+      element.addEventListener("click", handleBackgroundClick);
+    });
+  } else {
+    backgroundElements.forEach((element) => {
+      element.classList.remove("blur-background");
+      element.classList.remove("unselectable");
+      element.style.pointerEvents = "auto";
+      element.removeEventListener("click", handleBackgroundClick);
     });
   }
 }
+
+document.addEventListener("click", (event) => {
+  console.log(event.target);
+  const cartModal = document.getElementById("bbbb");
+  // Check if the clicked element is outside the modal
+  if (event.target == cartModal) {
+    closeCartModal();
+    toggleCartModal();
+  }
+});
+
 // Function to open the cart modal
 function openCartModal() {
   const cartModal = document.getElementById("cartModal");
   cartModal.style.display = "block";
   document.body.style.overflow = "hidden";
-
   toggleBlurBackground();
   generateCartModelContent();
 }
@@ -489,17 +521,18 @@ function closeCartModal() {
   toggleBlurBackground();
 }
 
-
 function toggleCartModal() {
   const cartModal = document.getElementById("cartModal");
   const toggleButton = document.querySelector(".toggle-button");
   cartModal.classList.toggle("active");
-  toggleButton.style.display = cartModal.classList.contains("active") ? "none" : "block";
+  toggleButton.style.display = cartModal.classList.contains("active")
+    ? "none"
+    : "block";
 
   if (cartModal.classList.contains("active")) {
-    cartModal.style.display = "block"; // Explicitly set the display property to "block" when opening the modal
+    cartModal.style.display = "block";
   } else {
-    cartModal.style.display = "none"; // Explicitly set the display property to "none" when closing the modal
+    cartModal.style.display = "none";
   }
 
   toggleBlurBackground();
@@ -515,8 +548,7 @@ addToCartButton.addEventListener("click", () => {
 // Event listener to close the modal when the "Close" button (x) is clicked
 const closeButton = document.querySelector(".close");
 closeButton.addEventListener("click", () => {
-  closeCartModal();
-  toggleCartModal();
+  closeAndToggleCartModal();
 });
 
 const closeArrowCartButton = document.querySelector(".ArrowCart");
@@ -525,10 +557,69 @@ closeArrowCartButton.addEventListener("click", () => {
   toggleCartModal();
 });
 
-
-
-
 // Function to place the order
+function openOrderModal() {
+  const orderModal = document.getElementById("orderModal");
+  orderModal.style.display = "block";
+}
+
+function closeOrderModal() {
+  const orderModal = document.getElementById("orderModal");
+  orderModal.style.display = "none";
+}
+
+function submitOrder() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const address = document.getElementById("address").value;
+  closeOrderModal();
+}
+
+function openPaymentModal() {
+  const orderModal = document.getElementById("paymentModal");
+  orderModal.style.display = "block";
+}
+
+function closePaymentModal() {
+  const orderModal = document.getElementById("paymentModal");
+  orderModal.style.display = "none";
+}
+function openPaynowModal() {
+  const orderModal = document.getElementById("payNow");
+  orderModal.style.display = "block";
+}
+
+function closePaynowModal() {
+  const orderModal = document.getElementById("payNow");
+  orderModal.style.display = "none";
+}
+
+function submitPaynowbtn() {
+  const orderModal = document.getElementById("lipstick");
+  orderModal.style.display = "block";
+}
+function submitPayment() {
+  // Get the selected radio button value
+  // const paymentOption = document.querySelector(
+  //   'input[name="paymentOption"]:checked'
+  // );
+
+  // if (paymentOption) {
+  //   // Process the payment option here
+  //   const selectedOption = paymentOption.id; // 'throughcard' or 'ondelivery'
+  //   console.log("Selected Payment Option:", selectedOption);
+  //   // Implement your payment processing logic here.
+  // } else {
+  //   // Handle the case where no option is selected
+  //   console.log("Please select a payment option!");
+  // }
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const address = document.getElementById("address").value;
+  closeOrderModal();
+}
+
 // function placeOrder() {
 //   selectedLipsticksArray = [];
 //   const addToCartSection = document.querySelector(".addToCart");
