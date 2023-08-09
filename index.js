@@ -123,56 +123,7 @@ const EyeshadowMatte = [
     price: "$200",
   },
 ];
-const ConcealerLiquid = [
-  {
-    id: 1,
-    img: "Images/Eyeshadow/Eyeshadow_Img1.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon1.png",
-    title: "Brown Script ",
-    content: "Long Lasting Multi Reflective with Matte",
-    price: "$200",
-  },
-  {
-    id: 2,
-    img: "Images/Eyeshadow/Eyeshadow_Img2.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon2.png",
-    title: "Matte Eyeshadow",
-    content: "Rich Eyeshadow with Matte Finish",
-    price: "$200",
-  },
-  {
-    id: 3,
-    img: "Images/Eyeshadow/Eyeshadow_Img3.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon3.png",
-    title: "Refillable Pro Palette ",
-    content: "Pro Palette Refillable Eyeshadow ",
-    price: "$200",
-  },
-  {
-    id: 4,
-    img: "Images/Eyeshadow/Eyeshadow_Img4.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon4.png",
-    title: "Vanilla Matte",
-    content: "Vanilla Nut Matte Eyeshadow",
-    price: "$200",
-  },
-  {
-    id: 5,
-    img: "Images/Eyeshadow/Eyeshadow_Img5.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon5.png",
-    title: "Colourful Eyeshadow",
-    content: "New Collection Colourful Eyeshadow",
-    price: "$200",
-  },
-  {
-    id: 6,
-    img: "Images/Eyeshadow/Eyeshadow_Img6.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon6.png",
-    title: "Natural Translucent",
-    content: "Buttery Pigment-Rich Matte Foundation",
-    price: "$200",
-  },
-];
+
 const BlushLiquid = [
   {
     id: 1,
@@ -270,6 +221,57 @@ const FoundationLiquid = [
     icon: "Images/Foundation/foundation_Img_Icon6.png",
     title: "Flawless Finish",
     content: "Buttery pigment-rich soft Matte Foundation",
+    price: "$200",
+  },
+];
+
+const ConcealerLiquid = [
+  {
+    id: 1,
+    img: "Images/Eyeshadow/Eyeshadow_Img1.png",
+    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon1.png",
+    title: "Brown Script ",
+    content: "Long Lasting Multi Reflective with Matte",
+    price: "$200",
+  },
+  {
+    id: 2,
+    img: "Images/Eyeshadow/Eyeshadow_Img2.png",
+    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon2.png",
+    title: "Matte Eyeshadow",
+    content: "Rich Eyeshadow with Matte Finish",
+    price: "$200",
+  },
+  {
+    id: 3,
+    img: "Images/Eyeshadow/Eyeshadow_Img3.png",
+    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon3.png",
+    title: "Refillable Pro Palette ",
+    content: "Pro Palette Refillable Eyeshadow ",
+    price: "$200",
+  },
+  {
+    id: 4,
+    img: "Images/Eyeshadow/Eyeshadow_Img4.png",
+    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon4.png",
+    title: "Vanilla Matte",
+    content: "Vanilla Nut Matte Eyeshadow",
+    price: "$200",
+  },
+  {
+    id: 5,
+    img: "Images/Eyeshadow/Eyeshadow_Img5.png",
+    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon5.png",
+    title: "Colourful Eyeshadow",
+    content: "New Collection Colourful Eyeshadow",
+    price: "$200",
+  },
+  {
+    id: 6,
+    img: "Images/Eyeshadow/Eyeshadow_Img6.png",
+    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon6.png",
+    title: "Natural Translucent",
+    content: "Buttery Pigment-Rich Matte Foundation",
     price: "$200",
   },
 ];
@@ -1817,10 +1819,10 @@ function generateLiquidFoundationContent() {
     <div class="lipstickItem"
     onclick="handleFoundationImageClick( '${item.img}',
     '${item.icon}', '${item.title}', '${item.price}')" >
-      <img class="img" src=${item.img}  style="height: 155px;"/>
+      <img class="img" src=${item.img}  />
       <img class="icon" src="${item.icon}"/>
       <h3>${item.title}</h3>
-      <p style="margin-bottom: 2rem;">${item.content}</p>
+      <p >${item.content}</p>
     </div>
   `
   ).join("");
@@ -2413,10 +2415,10 @@ function generateLiquidBlushContent() {
     <div class="lipstickItem"
     onclick="handleBlushImageClick( '${item.img}',
     '${item.icon}', '${item.title}', '${item.price}')" >
-      <img class="img" src=${item.img} " style="height: 155px;"/> 
+      <img class="img" src=${item.img} " /> 
       <img class="icon" src="${item.icon}"/>
       <h3>${item.title}</h3>
-      <p style="margin-bottom: 2rem;">${item.content}</p>
+      <p >${item.content}</p>
     </div>
   `
   ).join("");
@@ -2790,12 +2792,13 @@ function submitPaynowbtnBlush() {
 let selectedConcealerArray = [];
 function showConcealerSection(sectionId, button) {
   // Hide all sections
+
   const sectionsConcealer = document.querySelectorAll(".concealerContent");
   sectionsConcealer.forEach((section) => {
     section.style.display = "none";
   });
 
-  // Remove the "selected Concealer Container Categories" class from all buttons
+  // Remove the "selected Lipstick Container Categories" class from all buttons
   const buttonsConcealer = document.querySelectorAll(
     ".concealerContainerCategories a"
   );
@@ -2821,14 +2824,13 @@ function showConcealerSection(sectionId, button) {
   window.history.pushState(null, `#concealer${sectionId}`);
 }
 
-// Store the selectd  Concealer section and selected Concealer hover button in local storage
+// Store the selectd  lipstick section and selected listick hover button in local storage
 const storedSectionconcealer = localStorage.getItem("selectedSectionConcealer");
 const storedButtonconcealer = localStorage.getItem("selectedButtonconcealer");
 
 if (storedSectionconcealer) {
   showConcealerSection(storedSectionconcealer);
 }
-Concealer;
 
 // Restore the selected Concealer Container Categories and selected buttons border after the page is refreshed
 if (storedButtonconcealer) {
@@ -2855,7 +2857,7 @@ function displaySelectedConcealer(img, icon, title, price, index) {
   // Populate the div with the selected Concealer data
   selectedConcealerDiv.innerHTML = `
     <div class="lipstickInfo">
-      <img class="addToCartImg" src="${img}"/>
+      <img class="addToCartImg" src="${img}" />
       <img class="addToCartIcon" src="${icon}" />
       <div class="Concealer_Details">
         <h4>${title}</h4>
@@ -2892,6 +2894,7 @@ function removeSelectedConcealer(selectedConcealerDiv, indexToRemoveConcealer) {
 
   // Remove the selected Concealer div from the addToCartSection
   addToCartSectionConcealer.removeChild(selectedConcealerDiv);
+  // cartItemsContainer.removeChild(cartItemDiv);
 
   // Remove the selected Concealer from the array
   selectedConcealerArray.splice(indexToRemoveConcealer, 1);
@@ -2922,7 +2925,7 @@ function removeSelectedCartConcealer(
   const addToCartItemsConcealer = addToCartSectionConcealer.querySelectorAll(
     ".selectedConcealerInfo"
   );
-  if (addToCartItemsConcealer?.length > indexToRemoveConcealer) {
+  if (addToCartItemsConcealer.length > indexToRemoveConcealer) {
     addToCartSectionConcealer.removeChild(
       addToCartItemsConcealer[indexToRemoveConcealer]
     );
@@ -2978,18 +2981,18 @@ function handleConcealerImageClick(img, icon, title, price) {
 }
 
 function displaySelectedConcealerOnLoad() {
-  // Retrieve the selected Concealer Add to Cart from localStorage
+  // Retrieve the selected Concealers Add to Cart from localStorage
   const storedConcealer = localStorage.getItem("selectedConcealerArray");
   if (storedConcealer) {
     selectedConcealerArray = JSON.parse(storedConcealer);
 
     // Display each selected Concealer in the addToCart section
-    selectedConcealerArray.forEach((ConcealerData, index) => {
+    selectedConcealerArray.forEach((concealerData, index) => {
       displaySelectedConcealer(
-        ConcealerData.img,
-        ConcealerData.icon,
-        ConcealerData.title,
-        ConcealerData.price,
+        concealerData.img,
+        concealerData.icon,
+        concealerData.title,
+        concealerData.price,
         index
       );
     });
@@ -2998,26 +3001,26 @@ function displaySelectedConcealerOnLoad() {
 
 displaySelectedConcealerOnLoad();
 
-function generateLiquidConcealerContent() {
-  const liquidConcealerContainer = document.getElementById("concealer_liquid");
+function generateMatteConcealerContent() {
+  const matteConcealerContainer = document.getElementById("concealer_liquid");
 
-  const liquidConcealerHTML = ConcealerLiquid.map(
+  const mateConcealerHTML = ConcealerLiquid.map(
     (item) => `
-    <div class="lipstickItem"
+    <div class="lipstickItem"  
     onclick="handleConcealerImageClick( '${item.img}',
     '${item.icon}', '${item.title}', '${item.price}')" >
-      <img class="img" src=${item.img} " style="height: 155px;"/> 
+      <img class="img" src=${item.img} />
       <img class="icon" src="${item.icon}"/>
       <h3>${item.title}</h3>
-      <p style="margin-bottom: 2rem;">${item.content}</p>
+      <p>${item.content}</p>
     </div>
   `
   ).join("");
 
-  liquidConcealerContainer.innerHTML = liquidConcealerHTML;
+  matteConcealerContainer.innerHTML = mateConcealerHTML;
 }
 
-generateLiquidConcealerContent();
+generateMatteConcealerContent();
 
 function generateCartModelConcealerContent() {
   const cartItemsContainerConcealer = document.querySelector(
@@ -3031,7 +3034,7 @@ function generateCartModelConcealerContent() {
     cartItemDivConcealer.classList.add("cart-item-Concealer");
     cartItemDivConcealer.innerHTML = `
       <div class="cart-item-info">
-        <img class="cart-item-img" src="${ItemData.img}"  />
+        <img class="cart-item-img" src="${ItemData.img}" />
         <img class="cart-item-icon" src="${ItemData.icon}" />
         <h4>${ItemData.title}</h4>
         <p>${ItemData.price}</p>
@@ -3049,7 +3052,7 @@ function generateCartModelConcealerContent() {
         deleteCartButtonConcealer.getAttribute("data-index"),
         10
       );
-      // Call the function to remove the selected foundaton from the array and update the display
+      // Call the function to remove the selected Concealer from the array and update the display
       removeSelectedCartConcealer(cartItemDivConcealer, indexToRemoveConcealer);
     });
 
@@ -3069,19 +3072,20 @@ function generateCartModelConcealerContent() {
 
 // Call the function when the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-  // For Concealer Container Categories
+  //   // For Concealer Container Categories
+
   const storedSectionConcealer = localStorage.getItem(
     "selectedSectionConcealer"
   );
-  const storedButtonConcealer = localStorage.getItem("selectedButtonconcealer");
+  const storedButtonConcealer = localStorage.getItem("selectedButtonConcealer");
   if (storedSectionConcealer && storedButtonConcealer) {
-    const selectedButtonconcealer = document.querySelector(
+    const selectedButtonlipstick = document.querySelector(
       `.concealerContainerCategories a[href="${storedButtonConcealer}"]`
     );
-    showConcealerSection(storedSectionConcealer, selectedButtonconcealer);
+    showConcealerSection(storedSectionConcealer, selectedButtonlipstick);
   } else {
     showConcealerSection("concealer_liquid"); // Default selection if no data is stored
-    // Add the border to the default selectedConcealer buttton "Concealer"
+    // Add the border to the default Concealer buttton "Concealer"
     const defaultSelectedConcealer = document.querySelector(
       '.concealerContainerCategories a[href="#concealer_liquid"]'
     );
@@ -3262,7 +3266,7 @@ function toggleCartModalConcealer() {
     : "block";
 
   if (cartModalConcealer.classList.contains("active")) {
-    cartModalConcealer.style.display = "block";
+    cartModal.style.display = "block";
   } else {
     cartModalConcealer.style.display = "none";
   }
@@ -3338,6 +3342,7 @@ closeArrowPaymentButtonConcealer.addEventListener("click", () => {
 
 // Function to place the order
 function openOrderModalConcealer() {
+  // closeCartModal();
   const orderModalConcealer = document.getElementById("orderModalConcealer");
   orderModalConcealer.style.display = "block";
 }
@@ -3355,6 +3360,7 @@ function submitOrderConcealer() {
 }
 
 function openPaymentModalConcealer() {
+  // closeCartModal();
   const orderModalConcealer = document.getElementById("paymentModalConcealer");
   orderModalConcealer.style.display = "block";
 }
@@ -3369,9 +3375,7 @@ function openPaynowModalConcealer() {
 }
 
 function closePaynowModalConcealer() {
-  const orderModalConcealer = document.getElementById(
-    "submitPayNowBtnConcealer"
-  );
+  const orderModalConcealer = document.getElementById("payNowConcealer");
   orderModalConcealer.style.display = "none";
 }
 
