@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Virtual Makeup</title>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,7 +18,8 @@
       rel="stylesheet"
     />
   </head>
-  <body >
+  <body>
+    
     <div class="MainWrapper" >
       <div class="toggle_Navbar">
         <h2 class="smallScreenHeading">beau</h2>
@@ -66,13 +67,32 @@
           <p class="Sidebar_Footer">Powered by beau</p>
         </section>
 
-        <div id="aibeauty" class="MainContianer">
-          <section class="Navbar_Container aibeautyContentNavbar">
-            <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+        <section id="aibeauty" class="MainContianer">
+          <section class="ContentContainer">
+            <div class="Content">
+              <div class="ComingSoonContent">
+                <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                <p>Coming Soon!</p>
+              </div>
+            </div>
+            <div class="CameraCommingSoon">
+              <div class="CameraImageContainerCommingSoon">
+                <img
+                  id="videoElementCommingSoon"
+                  src="/Images/OtherImages/creative-set-make-up.avif"
+                  alt="camera_img"
+                />
+              </div>
+              <div class="cartContainerCommingSoon">
+                <div class="addToCartHeadingCommingSoon">Current Products</div>
+                <div class="addToCartCommingSoon"></div>
+                <div class="addToCartButtonCommingSoon">Add to Cart</div>
+              </div>
+            </div>
           </section>
-          <section class="CountourContainer">Coming Soon!</section>
-        </div>
-        <div id="lipstik" class="MainContianer">
+        </section>
+      
+        <section id="lipstik" class="MainContianer">
           <section class="Navbar_Container lipstikContentNavbar blur ">
             <p>Lipstick</p>
             <div class="navbarSearchContainer blur">
@@ -169,7 +189,7 @@
                   src="/Images/OtherImages/creative-set-make-up.avif"
                   alt="camera_img"
                 />
-              </div>
+            </div>
              
 
               <div class="cartContainer blur">
@@ -178,10 +198,17 @@
                 <div class="addToCartButton">Add to Cart</div>
               </div>
 
+              <!-- Carts Section -->
+              
+              <div id="emptyCartModal" class="empty-cart-modal">
+                <div class="empty-cart-content">
+                  <span class="close-empty-cart-modal" onclick="closeEmptyCartModal()">&times;</span>
+                  <p>Your cart is empty. Please add items to your cart to proceed.</p>
+                </div>
+              </div>
               <div class="modal" id="cartModal" onclick="event.stopPropagation();" > 
                 <div class="modal-content" id="cartModalContent">
                   <h1 class="logo_Sidebar_Cart">beau</h1>
-                  <!-- <div class="arrow_Toggle_Cart_button">&#8592;</div> -->
                   <span class="close">&times;</span>
                   <span class="ArrowCart">&larr;</span>
                   <h2 class="cartHeading">Cart Items</h2>
@@ -193,12 +220,14 @@
 
               <div class="modal" id="orderModal" onclick="event.stopPropagation();">
                 <div class="modal-content">
+                  <h1 class="logo_Sidebar_Cart">beau</h1>
                   <span class="close" onclick="closeOrderModal()">&times;</span>
+                  <span class="ArrowOrder">&larr;</span>
                   <h2 class="cartHeading">Place Order</h2>
                   <div class="order-form">
                     <div class="form-group WrapperEmail">
                       <label for="email">Email:</label>
-                      <input type=  "email" id="email" placeholder="Enter your country" />
+                      <input type=  "email" id="email" placeholder="Enter your Email" />
                     </div>
                     <h2 class="cartHeading">Shipping Address</h2>
                     <div class="form-group">
@@ -241,7 +270,9 @@
 
               <div class="modal" id="paymentModal" onclick="event.stopPropagation();">
                 <div class="modal-content">
+                  <h1 class="logo_Sidebar_Cart">beau</h1>
                   <span class="close" onclick="closePaymentModal()">&times;</span>
+                  <span class="ArrowPyment">&larr;</span>
                   <h2 class="cartHeading">Payment</h2>
                   <div class="order-form">
                     <div class="form-group-Container">
@@ -284,7 +315,9 @@
               </div>
               <div class="modal" id="payNow" onclick="event.stopPropagation();">
                 <div class="modal-content">
+                 
                   <span class="close" onclick="closePaynowModal()">&times;</span>
+                  
                   <div class="OrderCompleteMessage">
                     <h2 class="OrderPlaced">Order Placed </h2>
                   <h2 class="cartHeadingThankyou">Thank you for shopping. </h2>
@@ -299,6 +332,8 @@
               
               
 
+            
+            
             </div>
           </section>
 
@@ -396,59 +431,1310 @@
           </div>
 
           </section>
-        </div>
+        </section>
 
-        <div id="countour" class="MainContianer">
-          <section class="Navbar_Container countourContentNavbar">
-            <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+        <section id="countour" class="MainContianer">
+          <section class="ContentContainer">
+            <div class="Content">
+              <div class="ComingSoonContent">
+                <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                <p>Coming Soon!</p>
+              </div>
+            </div>
+            <div class="CameraCommingSoon">
+              <div class="CameraImageContainerCommingSoon">
+                <img
+                  id="videoElementCommingSoon"
+                  src="/Images/OtherImages/creative-set-make-up.avif"
+                  alt="camera_img"
+                />
+              </div>
+              <div class="cartContainerCommingSoon">
+                <div class="addToCartHeadingCommingSoon">Current Products</div>
+                <div class="addToCartCommingSoon"></div>
+                <div class="addToCartButtonCommingSoon">Add to Cart</div>
+              </div>
+            </div>
           </section>
-          <section class="CountourContainer">Coming Soon!</section>
-        </div>
-        <div id="eyeshadow" class="MainContianer">
-          <section class="Navbar_Container eyeshadowContentNavbar">
-            <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+        </section>
+
+        <section id="eyeshadow" class="MainContianer">
+          <section class="Navbar_Container lipstikContentNavbar blur ">
+            <p>Eye Shadow</p>
+            <div class="navbarSearchContainer blur">
+              <img src="/Images/Icons/Search_Icon.png" alt="" />
+              <input
+                type="search"
+                class="SearchbarInput"
+                placeholder="Search here"
+              />
+            </div>
           </section>
-          <section class="CountourContainer">Coming Soon!</section>
-        </div>
-        <div id="foundation" class="MainContianer">
-          <section class="Navbar_Container foundationContentNavbar">
-            <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+          <section class="eyeshadowContainerCategories blur">
+            <a
+            class="eyeshadow_matte info"
+            href="#eyeshadow_matte"
+            onclick="showEyeshadowSection('eyeshadow_matte', this);"
+          >
+            <p>Matte</p>
+            <img
+              src="/Images/Icons/information_mark_sign_icon.png"
+              alt=""
+              title="Matte eyeshadow is a non-shiny, velvety eye color. Use it for a sophisticated, no-gloss look."
+            />
+            
+          </a>
+          <a
+            class="eyeshadow_stain info"
+            href="#eyeshadow_stain"
+            onclick="showEyeshadowSection('eyeshadow_stain', this);"
+          >
+            <p>Satin</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="eyeshadow_metallic info"
+            href="#eyeshadow_metallic"
+            onclick="showEyeshadowSection('eyeshadow_metallic', this);"
+          >
+            <p>Metallic</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="eyeshadow_shimmer info"
+            href="#eyeshadow_shimmer"
+            onclick="showEyeshadowSection('eyeshadow_shimmer', this);"
+          >
+            <p>Shimmer</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="eyeshadow_glitter info"
+            href="#eyeshadow_glitter"
+            onclick="showEyeshadowSection('eyeshadow_glitter', this);"
+          >
+            <p>Glitter</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="eyeshadow_frost info"
+            href="#eyeshadow_frost"
+            onclick="showEyeshadowSection('eyeshadow_frost', this);"
+          >
+            <p>Frost</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="eyeshadow_luster info"
+            href="#eyeshadow_luster"
+            onclick="showEyeshadowSection('eyeshadow_luster', this);"
+          >
+            <p>Luster</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="eyeshadow_neon info"
+            href="#eyeshadow_neon"
+            onclick="showEyeshadowSection('eyeshadow_neon', this);"
+          >
+            <p>Neon</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
           </section>
-          <section class="CountourContainer">Coming Soon!</section>
-        </div>
-        <div id="blush" class="MainContianer">
-          <section class="Navbar_Container blushContentNavbar">
-            <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+
+          <section class="eyeshadow_matteContainer" >
+            <div class="eyeshadow_matteInnerContainer blur" >
+              <h1 class="eyeshadowMobile">Eye Shadow</h1>
+              <div id="eyeshadow_matte" class="eyeshadowContent contenteyeshadow_matte" ></div>
+            </div>
+
+            <div class="Camera">
+              <div class="CameraImageContainer blur">
+                <img
+                  id="videoElementEyeshadow"
+                  src="/Images/OtherImages/creative-set-make-up.avif"
+                  alt="camera_img"
+                />
+              </div>
+             
+              <!-- Carts  Eyeshadow Section -->
+
+              <div class="cartContainer blur">
+                <div class="addToCartHeading">Current Products</div>
+                <div class="addToCartEyeshadow"></div>
+                <div class="addToCartButtonEyeshadow">Add to Cart</div>
+              </div>
+
+              
+              <div id="emptyCartModalEyeshadow" class="empty-cart-modal">
+                <div class="empty-cart-content">
+                  <span class="close-empty-cart-modal" onclick="closeEmptyCartModalEyeshadow()">&times;</span>
+                  <p>Your cart is empty. Please add items to your cart to proceed.</p>
+                </div>
+              </div>
+              <div class="modal" id="cartModalEyeshadow" onclick="event.stopPropagation();" > 
+                <div class="modal-content" id="cartModalContentEyeshadow">
+                  <h1 class="logo_Sidebar_Cart_Eyeshadow">beau</h1>
+                  <span class="close" id="closeEyeshadow">&times;</span>
+                  <span class="ArrowCartEyeshadow">&larr;</span>
+                  <h2 class="cartHeading">Cart Items</h2>
+                  <div class="cart-items-Eyeshadow"></div> 
+                  <p class="total_Price">Total: <span id="totalPriceeyeshadow">0</span></p>
+                  <div id="placeOrderBtnEyeshadow" onclick="openOrderModalEyeshadow()">Place Order</div>
+                </div>
+              </div>
+
+              <div class="modal" id="orderModalEyeshadow" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                  <h1 class="logo_Sidebar_Cart_Eyeshadow">beau</h1>
+                  <span class="close" onclick="closeOrderModalEyeshadow()">&times;</span>
+                  <span class="ArrowOrderEyeshadow">&larr;</span>
+                  <h2 class="cartHeading">Place Order</h2>
+                  <div class="order-form">
+                    <div class="form-group WrapperEmail">
+                      <label for="emailEyeshadow">Email:</label>
+                      <input type=  "email" id="emailEyeshadow" placeholder="Enter your Email" />
+                    </div>
+                    <h2 class="cartHeading">Shipping Address</h2>
+                    <div class="form-group">
+                      <label for="countryEyeshadow">Country:</label>
+                      <input type="text" id="countryEyeshadow" placeholder="Enter your country" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth ">
+                      <label for="firstnameEyeshadow">First Name:</label>
+                      <input type="text" id="firstnameEyeshadow" placeholder="Enter your first name" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="lastnameEyeshadow">Last Name:</label>
+                      <input type="text" id="lastnameEyeshadow" placeholder="Enter your last name" />
+                    </div>
+                  </div>
+                    <div class="form-group">
+                      <label for="addressEyeshadow">Address:</label>
+                      <input id="addressEyeshadow" placeholder="Enter your address"></input>
+                    </div>
+                    <div class="form-group">
+                      <label for="cityEyeshadow">City:</label>
+                      <input type="text" id="cityEyeshadow" placeholder="Enter your city" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth">
+                      <label for="postalcodeEyeshadow">Postal Code:</label>
+                      <input type="text" id="postalcodeEyeshadow" placeholder="Enter your postal code" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="phoneEyeshadow">Phone:</label>
+                      <input type="text" id="phoneEyeshadow" placeholder="Enter your phone number" />
+                    </div>
+                  </div>
+              
+                    <button id="submitOrderBtnEyeshadow" onclick="openPaymentModalEyeshadow()">Continue Shipping</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal" id="paymentModalEyeshadow" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                  <h1 class="logo_Sidebar_Cart_Eyeshadow">beau</h1>
+                  <span class="close" onclick="closePaymentModalEyeshadow()">&times;</span>
+                  <span class="ArrowPaymentEyeshadow">&larr;</span>
+                  <h2 class="cartHeading">Payment</h2>
+                  <div class="order-form">
+                    <div class="form-group-Container">
+                      <div class="form-group WrapperRadio">
+                        <input id="throughcardEyeshadow" type="radio" name="paymentOptionEyeshadow" />
+                        <label for="throughcardEyeshadow" >Pay through card</label>
+                        <input id="ondeliveryEyeshadow" type="radio" name="paymentOptionEyeshadow" />
+                        <label for="ondeliveryEyeshadow">Cash on delivery</label>
+                      </div>
+                     </div>
+                     <div class="form-group WrapperEmail">
+                      <label for="cardnumberEyeshadow">Card Number:</label>
+                      <input type="text" id="cardnumberEyeshadow" placeholder="Enter your Card Number" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth ">
+                      <label for="paymentfirstnameEyeshadow">First Name:</label>
+                      <input type="text" id="paymentfirstnameEyeshadow" placeholder="Enter your first name"/>
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="paymentlastnameEyeshadow">Last Name:</label>
+                      <input type="text" id="paymentlastnameEyeshadow" placeholder="Enter your last name" />
+                    </div>
+                  </div>
+
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth">
+                      <label for="expirydateEyeshadow">Expiry Date:</label>
+                      <input type="text" id="expirydateEyeshadow" placeholder="Enter your Expiry Date:" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="cvvEyeshadow">CVV:</label>
+                      <input type="text" id="cvvEyeshadow" placeholder="Enter your CVV" />
+                    </div>
+                  </div>
+              
+                    <button id="submitPaymentBtnEyeshadow" onclick="openPaynowModalEyeshadow()">Pay Now</button>
+                  </div>
+                </div>
+              </div>
+              <div class="modal" id="payNowEyeshadow" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                 
+                  <span class="close" onclick="closePaynowModalEyeshadow()">&times;</span>
+                  
+                  <div class="OrderCompleteMessage">
+                    <h2 class="OrderPlaced">Order Placed </h2>
+                  <h2 class="cartHeadingThankyou">Thank you for shopping. </h2>
+                  <div class="order-form">
+                    <div class="OrderPlaced">
+                      <img src="/Images//OtherImages/OrderPlaced.png" alt="OrderPlaced">
+                    <button id="submitPayNowBtnEyeshadow" onclick="submitPaynowbtnEyeshadow()">Back</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+
+            
+            
+            </div>
+
           </section>
-          <section class="CountourContainer">Coming Soon!</section>
-        </div>
-        <div id="mascara" class="MainContianer">
-          <section class="Navbar_Container mascaraContentNavbar">
-            <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+
+          <section class="eyeshadow_stainContainer">
+            <div class="eyeshadow_stainInnerContainer">
+              <!-- <h1 class="lipstickMobile">Eye Shadow</h1> -->
+              <div id="eyeshadow_stain" class="eyeshadowContent contenteyeshadow_stain">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+              </div>
+            </div>
           </section>
-          <section class="CountourContainer">Coming Soon!</section>
-        </div>
-        <div id="eyebropencil" class="MainContianer">
-          <section class="Navbar_Container eyebropencilContentNavbar">
-            <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+
+          <section class="eyeshadow_metallicContainer">
+            <div class="eyeshadow_metallicInnerContainer">
+
+              <div id="eyeshadow_metallic" class="eyeshadowContent contenteyeshadow_metallic">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+              </div>
+            </div>
           </section>
-          <section class="CountourContainer">Coming Soon!</section>
-        </div>
-        <div id="concealer" class="MainContianer">
-          <section class="Navbar_Container concealerContentNavbar">
-            <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+
+          <section class="eyeshadow_shimmerContainer">
+
+            <div class="eyeshadow_shimmerInnerContainer">
+
+              <div  id="eyeshadow_shimmer" class="eyeshadowContent contenteyeshadow_shimmer">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+              </div>
+            </div>
           </section>
-          <section class="CountourContainer">Coming Soon!</section>
-        </div>
-        <div id="haircolor" class="MainContianer">
-          <section class="Navbar_Container haircolorContentNavbar">
-            <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+
+          <section  class="eyeshadow_glitterContainer">
+            
+            <div class="eyeshadow_glitterInnerContainer">
+
+              <div  id="eyeshadow_glitter"class="eyeshadowContent contenteyeshadow_glitter">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+                
+              </div>
+            </div>
           </section>
-          <section class="CountourContainer">Coming Soon!</section>
-        </div>
+
+
+          <section  class="eyeshadow_frostContainer">
+            <div class="eyeshadow_frostInnerContainer">
+
+              <div  id="eyeshadow_frost"class="eyeshadowContent contenteyeshadow_frost">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+                
+              </div>
+          </div>
+          </section>
+
+          <section  class="eyeshadow_lusterContainer">
+            
+            <div class="eyeshadow_lusterInnerContainer">
+
+              <div id="eyeshadow_luster" class="eyeshadowContent contenteyeshadow_luster">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+                
+              </div>
+          </div>
+          </section>
+
+          <section  class="eyeshadow_neonContainer">
+            
+            <div class="eyeshadow_neonInnerContainer">
+
+              <div id="eyeshadow_neon" class="eyeshadowContent contenteyeshadow_neon">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+                
+              </div>
+          </div>
+
+          </section>
+
+        </section>
+
+        <section id="foundation" class="MainContianer">
+          <section class="Navbar_Container lipstikContentNavbar blur ">
+            <p>Foundation</p>
+            <div class="navbarSearchContainer blur">
+              <img src="/Images/Icons/Search_Icon.png" alt="" />
+              <input
+                type="search"
+                class="SearchbarInput"
+                placeholder="Search here"
+              />
+            </div>
+          </section>
+
+          <section class="foundationContainerCategories blur">
+            <a
+            class="foundation_liquid info"
+            href="#foundation_liquid"
+            onclick="showFoundationSection('foundation_liquid', this);"
+          >
+            <p>Liquid</p>
+            <img
+              src="/Images/Icons/information_mark_sign_icon.png"
+              alt=""
+              title="Liquid foundation is used to even out skin tone and provide a smooth base for makeup application. It should be used when you want a seamless, natural-looking complexion."
+            />
+          </a>
+          <a
+            class="foundation_powder info"
+            href="#foundation_powder"
+            onclick="showFoundationSection('foundation_powder', this);"
+          >
+            <p>Powder</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="foundation_cream info"
+            href="#foundation_cream"
+            onclick="showFoundationSection('foundation_cream', this);"
+          >
+            <p>Cream</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="foundation_stick info"
+            href="#foundation_stick"
+            onclick="showFoundationSection('foundation_stick', this);"
+          >
+            <p>Stick</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="foundation_mineral info"
+            href="#foundation_mineral"
+            onclick="showFoundationSection('foundation_mineral', this);"
+          >
+            <p>Mineral</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="foundation_tinted info"
+            href="#foundation_tinted"
+            onclick="showFoundationSection('foundation_tinted', this);"
+          >
+            <p>Tinted</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="foundation_serum info"
+            href="#foundation_serum"
+            onclick="showFoundationSection('foundation_serum', this);"
+          >
+            <p>Serum</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          </section>
+
+          <section class="foundation_liquidContainer" >
+            <div class="foundation_liquidInnerContainer blur" >
+              <h1 class="foundationMobile">Foundation</h1>
+              <div id="foundation_liquid" class="foundationContent contentfoundation_liquid" ></div>
+            </div>
+
+            <div class="Camera">
+              <div class="CameraImageContainer blur">
+                <img
+                  id="videoElementFoundation"
+                  src="/Images/OtherImages/creative-set-make-up.avif"
+                  alt="camera_img"
+                />
+              </div>
+             
+              <!-- Carts  Foundation Section -->
+
+              <div class="cartContainer blur">
+                <div class="addToCartHeading">Current Products</div>
+                <div class="addToCartFoundation"></div>
+                <div class="addToCartButtonFoundation">Add to Cart</div>
+              </div>
+
+              
+              <div id="emptyCartModalFoundation" class="empty-cart-modal">
+                <div class="empty-cart-content">
+                  <span class="close-empty-cart-modal" onclick="closeEmptyCartModalFoundation()">&times;</span>
+                  <p>Your cart is empty. Please add items to your cart to proceed.</p>
+                </div>
+              </div>
+              <div class="modal" id="cartModalFoundation" onclick="event.stopPropagation();" > 
+                <div class="modal-content" id="cartModalContentFoundation">
+                  <h1 class="logo_Sidebar_Cart_Foundation">beau</h1>
+                  <span class="close" id="closeFoundation">&times;</span>
+                  <span class="ArrowCartFoundation">&larr;</span>
+                  <h2 class="cartHeading">Cart Items</h2>
+                  <div class="cart-items-Foundation"></div> 
+                  <p class="total_Price">Total: <span id="totalPricefoundation">0</span></p>
+                  <div id="placeOrderBtnFoundation" onclick="openOrderModalFoundation()">Place Order</div>
+                </div>
+              </div>
+
+              <div class="modal" id="orderModalFoundation" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                  <h1 class="logo_Sidebar_Cart_Foundation">beau</h1>
+                  <span class="close" onclick="closeOrderModalFoundation()">&times;</span>
+                  <span class="ArrowOrderFoundation">&larr;</span>
+                  <h2 class="cartHeading">Place Order</h2>
+                  <div class="order-form">
+                    <div class="form-group WrapperEmail">
+                      <label for="emailFoundation">Email:</label>
+                      <input type=  "email" id="emailFoundation" placeholder="Enter your Email" />
+                    </div>
+                    <h2 class="cartHeading">Shipping Address</h2>
+                    <div class="form-group">
+                      <label for="countryFoundation">Country:</label>
+                      <input type="text" id="countryFoundation" placeholder="Enter your country" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth ">
+                      <label for="firstnameFoundation">First Name:</label>
+                      <input type="text" id="firstnameFoundation" placeholder="Enter your first name" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="lastnameFoundation">Last Name:</label>
+                      <input type="text" id="lastnameFoundation" placeholder="Enter your last name" />
+                    </div>
+                  </div>
+                    <div class="form-group">
+                      <label for="addressFoundation">Address:</label>
+                      <input id="addressFoundation" placeholder="Enter your address"></input>
+                    </div>
+                    <div class="form-group">
+                      <label for="cityFoundation">City:</label>
+                      <input type="text" id="cityFoundation" placeholder="Enter your city" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth">
+                      <label for="postalcodeFoundation">Postal Code:</label>
+                      <input type="text" id="postalcodeFoundation" placeholder="Enter your postal code" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="phoneFoundation">Phone:</label>
+                      <input type="text" id="phoneFoundation" placeholder="Enter your phone number" />
+                    </div>
+                  </div>
+              
+                    <button id="submitOrderBtnFoundation" onclick="openPaymentModalFoundation()">Continue Shipping</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal" id="paymentModalFoundation" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                  <h1 class="logo_Sidebar_Cart_Foundation">beau</h1>
+                  <span class="close" onclick="closePaymentModalFoundation()">&times;</span>
+                  <span class="ArrowPaymentFoundation">&larr;</span>
+                  <h2 class="cartHeading">Payment</h2>
+                  <div class="order-form">
+                    <div class="form-group-Container">
+                      <div class="form-group WrapperRadio">
+                        <input id="throughcardFoundation" type="radio" name="paymentOptionFoundation" />
+                        <label for="throughcardFoundation" >Pay through card</label>
+                        <input id="ondeliveryFoundation" type="radio" name="paymentOptionFoundation" />
+                        <label for="ondeliveryFoundation">Cash on delivery</label>
+                      </div>
+                     </div>
+                     <div class="form-group WrapperEmail">
+                      <label for="cardnumberFoundation">Card Number:</label>
+                      <input type="text" id="cardnumberFoundation" placeholder="Enter your Card Number" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth ">
+                      <label for="paymentfirstnameFoundation">First Name:</label>
+                      <input type="text" id="paymentfirstnameFoundation" placeholder="Enter your first name"/>
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="paymentlastnameFoundation">Last Name:</label>
+                      <input type="text" id="paymentlastnameFoundation" placeholder="Enter your last name" />
+                    </div>
+                  </div>
+
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth">
+                      <label for="expirydateFoundation">Expiry Date:</label>
+                      <input type="text" id="expirydateFoundation" placeholder="Enter your Expiry Date:" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="cvvFoundation">CVV:</label>
+                      <input type="text" id="cvvFoundation" placeholder="Enter your CVV" />
+                    </div>
+                  </div>
+              
+                    <button id="submitPaymentBtnFoundation" onclick="openPaynowModalFoundation()">Pay Now</button>
+                  </div>
+                </div>
+              </div>
+              <div class="modal" id="payNowFoundation" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                 
+                  <span class="close" onclick="closePaynowModalFoundation()">&times;</span>
+                  
+                  <div class="OrderCompleteMessage">
+                    <h2 class="OrderPlaced">Order Placed </h2>
+                  <h2 class="cartHeadingThankyou">Thank you for shopping. </h2>
+                  <div class="order-form">
+                    <div class="OrderPlaced">
+                      <img src="/Images//OtherImages/OrderPlaced.png" alt="OrderPlaced">
+                    <button id="submitPayNowBtnFoundation" onclick="submitPaynowbtnFoundation()">Back</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+
+            
+            
+            </div>
+
+          </section>
+
+          <section class="foundation_powderContainer">
+            <div class="foundation_powderInnerContainer">
+              <div id="foundation_powder" class="foundationContent contentfoundation_powder">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="foundation_creamContainer">
+            <div class="foundation_creamInnerContainer">
+              <div id="foundation_cream" class="foundationContent contentfoundation_cream">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="foundation_stickContainer">
+            <div class="foundation_stickInnerContainer">
+              <div  id="foundation_stick" class="foundationContent contentfoundation_stick">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section  class="foundation_mineralContainer">
+            
+            <div class="foundation_mineralInnerContainer">
+
+              <div  id="foundation_mineral"class="foundationContent contentfoundation_mineral">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+                
+              </div>
+            </div>
+          </section>
+
+          <section  class="foundation_tintedContainer">
+            <div class="foundation_tintedInnerContainer">
+
+              <div  id="foundation_tinted"class="foundationContent contentfoundation_tinted">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+                
+              </div>
+          </div>
+          </section>
+
+          <section  class="foundation_serumContainer">
+            
+            <div class="foundation_serumInnerContainer">
+
+              <div id="foundation_serum" class="foundationContent contentfoundation_serum">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+                
+              </div>
+          </div>
+          </section>
+
+        </section>
+
+        <section id="blush" class="MainContianer">
+          <section class="Navbar_Container lipstikContentNavbar blur ">
+            <p>Blush</p>
+            <div class="navbarSearchContainer blur">
+              <img src="/Images/Icons/Search_Icon.png" alt="" />
+              <input
+                type="search"
+                class="SearchbarInput"
+                placeholder="Search here"
+              />
+            </div>
+          </section>
+  
+          <section class="blushContainerCategories blur">
+            <a
+            class="blush_Pressed info"
+            href="#blush_pressed"
+            onclick="showBlushSection('blush_pressed', this);"
+          >
+            <p>Pressed</p>
+            <img
+              src="/Images/Icons/information_mark_sign_icon.png"
+              alt=""
+              title="Pressed blush is a compact powder blush that gives off a more long-lasting finish. Use it for any occasion to add a pop of color to your cheeks."
+            />
+          </a>
+          <a
+            class="blush_Mineral info"
+            href="#blush_mineral"
+            onclick="showBlushSection('blush_mineral', this);"
+          >
+            <p>Mineral</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="blush_Cream info"
+            href="#blush_cream"
+            onclick="showBlushSection('blush_cream', this);"
+          >
+            <p>Cream</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="blush_Cheektint info"
+            href="#blush_cheektint"
+            onclick="showBlushSection('blush_cheektint', this);"
+          >
+            <p>Cheek Tint</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="blush_Blushstick info"
+            href="#blush_blushstick"
+            onclick="showBlushSection('blush_blushstick', this);"
+          >
+            <p>Blush Stick</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="blush_Liquid info"
+            href="#blush_liquid"
+            onclick="showBlushSection('blush_liquid', this);"
+          >
+            <p>Liquid</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          
+          </section>
+  
+          <section class="blush_pressedContainer" >
+            <div class="blush_pressedInnerContainer blur" >
+              <h1 class="blushMobile">Blush</h1>
+              <div id="blush_pressed" class="blushContent contentblush_pressed" ></div>
+            </div>
+  
+            <div class="Camera">
+              <div class="CameraImageContainer blur">
+                <img
+                  id="videoElementBlush"
+                  src="/Images/OtherImages/creative-set-make-up.avif"
+                  alt="camera_img"
+                />
+              </div>
+             
+              <!-- Carts  Blush Section -->
+  
+              <div class="cartContainer blur">
+                <div class="addToCartHeading">Current Products</div>
+                <div class="addToCartBlush"></div>
+                <div class="addToCartButtonBlush">Add to Cart</div>
+              </div>
+  
+              
+              <div id="emptyCartModalBlush" class="empty-cart-modal">
+                <div class="empty-cart-content">
+                  <span class="close-empty-cart-modal" onclick="closeEmptyCartModalBlush()">&times;</span>
+                  <p>Your cart is empty. Please add items to your cart to proceed.</p>
+                </div>
+              </div>
+              <div class="modal" id="cartModalBlush" onclick="event.stopPropagation();" > 
+                <div class="modal-content" id="cartModalContentBlush">
+                  <h1 class="logo_Sidebar_Cart_Blush">beau</h1>
+                  <span class="close" id="closeBlush">&times;</span>
+                  <span class="ArrowCartBlush">&larr;</span>
+                  <h2 class="cartHeading">Cart Items</h2>
+                  <div class="cart-items-Blush"></div> 
+                  <p class="total_Price">Total: <span id="totalPriceblush">0</span></p>
+                  <div id="placeOrderBtnBlush" onclick="openOrderModalBlush()">Place Order</div>
+                </div>
+              </div>
+  
+              <div class="modal" id="orderModalBlush" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                  <h1 class="logo_Sidebar_Cart_Blush">beau</h1>
+                  <span class="close" onclick="closeOrderModalBlush()">&times;</span>
+                  <span class="ArrowOrderBlush">&larr;</span>
+                  <h2 class="cartHeading">Place Order</h2>
+                  <div class="order-form">
+                    <div class="form-group WrapperEmail">
+                      <label for="emailBlush">Email:</label>
+                      <input type=  "email" id="emailBlush" placeholder="Enter your Email" />
+                    </div>
+                    <h2 class="cartHeading">Shipping Address</h2>
+                    <div class="form-group">
+                      <label for="countryBlush">Country:</label>
+                      <input type="text" id="countryBlush" placeholder="Enter your country" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth ">
+                      <label for="firstnameBlush">First Name:</label>
+                      <input type="text" id="firstnameBlush" placeholder="Enter your first name" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="lastnameBlush">Last Name:</label>
+                      <input type="text" id="lastnameBlush" placeholder="Enter your last name" />
+                    </div>
+                  </div>
+                    <div class="form-group">
+                      <label for="addressBlush">Address:</label>
+                      <input id="addressBlush" placeholder="Enter your address"></input>
+                    </div>
+                    <div class="form-group">
+                      <label for="cityBlush">City:</label>
+                      <input type="text" id="cityBlush" placeholder="Enter your city" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth">
+                      <label for="postalcodeBlush">Postal Code:</label>
+                      <input type="text" id="postalcodeBlush" placeholder="Enter your postal code" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="phoneBlush">Phone:</label>
+                      <input type="text" id="phoneBlush" placeholder="Enter your phone number" />
+                    </div>
+                  </div>
+              
+                    <button id="submitOrderBtnBlush" onclick="openPaymentModalBlush()">Continue Shipping</button>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="modal" id="paymentModalBlush" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                  <h1 class="logo_Sidebar_Cart_Blush">beau</h1>
+                  <span class="close" onclick="closePaymentModalBlush()">&times;</span>
+                  <span class="ArrowPaymentBlush">&larr;</span>
+                  <h2 class="cartHeading">Payment</h2>
+                  <div class="order-form">
+                    <div class="form-group-Container">
+                      <div class="form-group WrapperRadio">
+                        <input id="throughcardBlush" type="radio" name="paymentOptionBlush" />
+                        <label for="throughcardBlush" >Pay through card</label>
+                        <input id="ondeliveryBlush" type="radio" name="paymentOptionBlush" />
+                        <label for="ondeliveryBlush">Cash on delivery</label>
+                      </div>
+                     </div>
+                     <div class="form-group WrapperEmail">
+                      <label for="cardnumberBlush">Card Number:</label>
+                      <input type="text" id="cardnumberBlush" placeholder="Enter your Card Number" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth ">
+                      <label for="paymentfirstnameBlush">First Name:</label>
+                      <input type="text" id="paymentfirstnameBlush" placeholder="Enter your first name"/>
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="paymentlastnameBlush">Last Name:</label>
+                      <input type="text" id="paymentlastnameBlush" placeholder="Enter your last name" />
+                    </div>
+                  </div>
+  
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth">
+                      <label for="expirydateBlush">Expiry Date:</label>
+                      <input type="text" id="expirydateBlush" placeholder="Enter your Expiry Date:" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="cvvBlush">CVV:</label>
+                      <input type="text" id="cvvBlush" placeholder="Enter your CVV" />
+                    </div>
+                  </div>
+              
+                    <button id="submitPaymentBtnBlush" onclick="openPaynowModalBlush()">Pay Now</button>
+                  </div>
+                </div>
+              </div>
+              <div class="modal" id="payNowBlush" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                 
+                  <span class="close" onclick="closePaynowModalBlush()">&times;</span>
+                  
+                  <div class="OrderCompleteMessage">
+                    <h2 class="OrderPlaced">Order Placed </h2>
+                  <h2 class="cartHeadingThankyou">Thank you for shopping. </h2>
+                  <div class="order-form">
+                    <div class="OrderPlaced">
+                      <img src="/Images//OtherImages/OrderPlaced.png" alt="OrderPlaced">
+                    <button id="submitPayNowBtnBlush" onclick="submitPaynowbtnBlush()">Back</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+  
+            
+            
+            </div>
+  
+          </section>
+  
+          <section class="blush_mineralContainer">
+            <div class="blush_mineralInnerContainer">
+              <div id="blush_mineral" class="blushContent contentblush_mineral">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+              </div>
+            </div>
+          </section>
+  
+          <section class="blush_creamContainer">
+            <div class="blush_creamInnerContainer">
+              <div id="blush_cream" class="blushContent contentblush_cream">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+              </div>
+            </div>
+          </section>
+  
+          <section class="blush_cheektintContainer">
+            <div class="blush_cheektintInnerContainer">
+              <div  id="blush_cheektint" class="blushContent contentblush_cheektint">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+              </div>
+            </div>
+          </section>
+  
+          <section  class="blush_blushstickContainer">
+            
+            <div class="blush_blushstickInnerContainer">
+  
+              <div  id="blush_blushstick"class="blushContent contentblush_blushstick">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+                
+              </div>
+            </div>
+          </section>
+  
+          <section  class="blush_liquidContainer">
+            <div class="blush_liquidInnerContainer">
+  
+              <div  id="blush_liquid"class="blushContent contentblush_liquid">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+                
+              </div>
+          </div>
+          </section>
+  
+        </section>
+
+        <section id="mascara" class="MainContianer">
+          <section class="ContentContainer">
+            <div class="Content">
+              <div class="ComingSoonContent">
+                <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                <p>Coming Soon!</p>
+              </div>
+            </div>
+            <div class="CameraCommingSoon">
+              <div class="CameraImageContainerCommingSoon">
+                <img
+                  id="videoElementCommingSoon"
+                  src="/Images/OtherImages/creative-set-make-up.avif"
+                  alt="camera_img"
+                />
+              </div>
+              <div class="cartContainerCommingSoon">
+                <div class="addToCartHeadingCommingSoon">Current Products</div>
+                <div class="addToCartCommingSoon"></div>
+                <div class="addToCartButtonCommingSoon">Add to Cart</div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section id="eyebropencil" class="MainContianer">
+          <section class="ContentContainer">
+            <div class="Content">
+              <div class="ComingSoonContent">
+                <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                <p>Coming Soon!</p>
+              </div>
+            </div>
+            <div class="CameraCommingSoon">
+              <div class="CameraImageContainerCommingSoon">
+                <img
+                  id="videoElementCommingSoon"
+                  src="/Images/OtherImages/creative-set-make-up.avif"
+                  alt="camera_img"
+                />
+              </div>
+              <div class="cartContainerCommingSoon">
+                <div class="addToCartHeadingCommingSoon">Current Products</div>
+                <div class="addToCartCommingSoon"></div>
+                <div class="addToCartButtonCommingSoon">Add to Cart</div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section id="concealer" class="MainContianer">
+          <section class="Navbar_Container lipstikContentNavbar blur ">
+            <p>Concealer</p>
+            <div class="navbarSearchContainer blur">
+              <img src="/Images/Icons/Search_Icon.png" alt="" />
+              <input
+                type="search"
+                class="SearchbarInput"
+                placeholder="Search here"
+              />
+            </div>
+          </section>
+  
+          <section class="concealerContainerCategories blur">
+            <a
+            class="concealer_liquid info"
+            href="#concealer_liquid"
+            onclick="showConcealerSection('concealer_liquid', this);"
+          >
+            <p>Liquid</p>
+            <img
+              src="/Images/Icons/information_mark_sign_icon.png"
+              alt=""
+              title="Liquid concealer is a fluid-based formula for light to medium coverage, ideal for under-eye circles and minor imperfections."
+            />
+          </a>
+          <a
+            class="concealer_cream info"
+            href="#concealer_cream"
+            onclick="showConcealerSection('concealer_cream', this);"
+          >
+            <p>Cream</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="concealer_stick info"
+            href="#concealer_stick"
+            onclick="showConcealerSection('concealer_stick', this);"
+          >
+            <p>Stick</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+          <a
+            class="concealer_balm info"
+            href="#concealer_balm"
+            onclick="showConcealerSection('concealer_balm', this);"
+          >
+            <p>Balm</p>
+            <img src="/Images/Icons/information_mark_sign_icon.png" alt="" />
+          </a>
+      
+          </section>
+  
+          <section class="concealer_liquidContainer" >
+            <div class="concealer_liquidInnerContainer blur" >
+              <h1 class="concealerMobile">Concealer</h1>
+              <div id="concealer_liquid" class="concealerContent contentconcealer_liquid" ></div>
+            </div>
+  
+            <div class="Camera">
+              <div class="CameraImageContainer blur">
+                <img
+                  id="videoElementConcealer"
+                  src="/Images/OtherImages/creative-set-make-up.avif"
+                  alt="camera_img"
+                />
+              </div>
+             
+              <!-- Carts  Concealer Section -->
+  
+              <div class="cartContainer blur">
+                <div class="addToCartHeading">Current Products</div>
+                <div class="addToCartConcealer"></div>
+                <div class="addToCartButtonConcealer">Add to Cart</div>
+              </div>
+  
+              
+              <div id="emptyCartModalConcealer" class="empty-cart-modal">
+                <div class="empty-cart-content">
+                  <span class="close-empty-cart-modal" onclick="closeEmptyCartModalConcealer()">&times;</span>
+                  <p>Your cart is empty. Please add items to your cart to proceed.</p>
+                </div>
+              </div>
+              <div class="modal" id="cartModalConcealer" onclick="event.stopPropagation();" > 
+                <div class="modal-content" id="cartModalContentConcealer">
+                  <h1 class="logo_Sidebar_Cart_Concealer">beau</h1>
+                  <span class="close" id="closeConcealer">&times;</span>
+                  <span class="ArrowCartConcealer">&larr;</span>
+                  <h2 class="cartHeading">Cart Items</h2>
+                  <div class="cart-items-Concealer"></div> 
+                  <p class="total_Price">Total: <span id="totalPriceconcealer">0</span></p>
+                  <div id="placeOrderBtnConcealer" onclick="openOrderModalConcealer()">Place Order</div>
+                </div>
+              </div>
+  
+              <div class="modal" id="orderModalConcealer" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                  <h1 class="logo_Sidebar_Cart_Concealer">beau</h1>
+                  <span class="close" onclick="closeOrderModalConcealer()">&times;</span>
+                  <span class="ArrowOrderConcealer">&larr;</span>
+                  <h2 class="cartHeading">Place Order</h2>
+                  <div class="order-form">
+                    <div class="form-group WrapperEmail">
+                      <label for="emailConcealer">Email:</label>
+                      <input type=  "email" id="emailConcealer" placeholder="Enter your Email" />
+                    </div>
+                    <h2 class="cartHeading">Shipping Address</h2>
+                    <div class="form-group">
+                      <label for="countryConcealer">Country:</label>
+                      <input type="text" id="countryConcealer" placeholder="Enter your country" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth ">
+                      <label for="firstnameConcealer">First Name:</label>
+                      <input type="text" id="firstnameConcealer" placeholder="Enter your first name" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="lastnameConcealer">Last Name:</label>
+                      <input type="text" id="lastnameConcealer" placeholder="Enter your last name" />
+                    </div>
+                  </div>
+                    <div class="form-group">
+                      <label for="addressConcealer">Address:</label>
+                      <input id="addressConcealer" placeholder="Enter your address"></input>
+                    </div>
+                    <div class="form-group">
+                      <label for="cityConcealer">City:</label>
+                      <input type="text" id="cityConcealer" placeholder="Enter your city" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth">
+                      <label for="postalcodeConcealer">Postal Code:</label>
+                      <input type="text" id="postalcodeConcealer" placeholder="Enter your postal code" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="phoneConcealer">Phone:</label>
+                      <input type="text" id="phoneConcealer" placeholder="Enter your phone number" />
+                    </div>
+                  </div>
+              
+                    <button id="submitOrderBtnConcealer" onclick="openPaymentModalConcealer()">Continue Shipping</button>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="modal" id="paymentModalConcealer" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                  <h1 class="logo_Sidebar_Cart_Concealer">beau</h1>
+                  <span class="close" onclick="closePaymentModalConcealer()">&times;</span>
+                  <span class="ArrowPaymentConcealer">&larr;</span>
+                  <h2 class="cartHeading">Payment</h2>
+                  <div class="order-form">
+                    <div class="form-group-Container">
+                      <div class="form-group WrapperRadio">
+                        <input id="throughcardConcealer" type="radio" name="paymentOptionConcealer" />
+                        <label for="throughcardConcealer" >Pay through card</label>
+                        <input id="ondeliveryConcealer" type="radio" name="paymentOptionConcealer" />
+                        <label for="ondeliveryConcealer">Cash on delivery</label>
+                      </div>
+                     </div>
+                     <div class="form-group WrapperEmail">
+                      <label for="cardnumberConcealer">Card Number:</label>
+                      <input type="text" id="cardnumberConcealer" placeholder="Enter your Card Number" />
+                    </div>
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth ">
+                      <label for="paymentfirstnameConcealer">First Name:</label>
+                      <input type="text" id="paymentfirstnameConcealer" placeholder="Enter your first name"/>
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="paymentlastnameConcealer">Last Name:</label>
+                      <input type="text" id="paymentlastnameConcealer" placeholder="Enter your last name" />
+                    </div>
+                  </div>
+  
+                    <div class="form-group-Container">
+                    <div class="form-group WrapperWidth">
+                      <label for="expirydateConcealer">Expiry Date:</label>
+                      <input type="text" id="expirydateConcealer" placeholder="Enter your Expiry Date:" />
+                    </div>
+                    <div class="form-group WrapperWidth">
+                      <label for="cvvConcealer">CVV:</label>
+                      <input type="text" id="cvvConcealer" placeholder="Enter your CVV" />
+                    </div>
+                  </div>
+              
+                    <button id="submitPaymentBtnConcealer" onclick="openPaynowModalConcealer()">Pay Now</button>
+                  </div>
+                </div>
+              </div>
+              <div class="modal" id="payNowConcealer" onclick="event.stopPropagation();">
+                <div class="modal-content">
+                 
+                  <span class="close" onclick="closePaynowModalConcealer()">&times;</span>
+                  
+                  <div class="OrderCompleteMessage">
+                    <h2 class="OrderPlaced">Order Placed </h2>
+                  <h2 class="cartHeadingThankyou">Thank you for shopping. </h2>
+                  <div class="order-form">
+                    <div class="OrderPlaced">
+                      <img src="/Images//OtherImages/OrderPlaced.png" alt="OrderPlaced">
+                    <button id="submitPayNowBtnConcealer" onclick="submitPaynowbtnConcealer()">Back</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+  
+            
+            
+            </div>
+  
+          </section>
+  
+          <section class="concealer_creamContainer">
+            <div class="concealer_creamInnerContainer">
+              <div id="concealer_cream" class="concealerContent contentconcealer_cream">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+              </div>
+            </div>
+          </section>
+  
+          <section class="concealer_stickContainer">
+            <div class="concealer_stickInnerContainer">
+              <div id="concealer_stick" class="concealerContent contentconcealer_stick">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+              </div>
+            </div>
+          </section>
+  
+          <section class="concealer_balmContainer">
+            <div class="concealer_balmInnerContainer">
+              <div  id="concealer_balm" class="concealerContent contentconcealer_balm">
+                <div class="Comming_Soon">
+                  <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                  <p class="CountourContainer">Comming Soon...</p>
+                </div>
+              </div>
+            </div>
+          </section>
+  
+        </section>
+
+        <section id="haircolor" class="MainContianer">
+          <section class="ContentContainer">
+            <div class="Content">
+              <div class="ComingSoonContent">
+                <img src="/Images/OtherImages/CommingSoon_Image.png" alt="" />
+                <p>Coming Soon!</p>
+              </div>
+            </div>
+            <div class="CameraCommingSoon">
+              <div class="CameraImageContainerCommingSoon">
+                <img
+                  id="videoElementCommingSoon"
+                  src="/Images/OtherImages/creative-set-make-up.avif"
+                  alt="camera_img"
+                />
+              </div>
+              <div class="cartContainerCommingSoon">
+                <div class="addToCartHeadingCommingSoon">Current Products</div>
+                <div class="addToCartCommingSoon"></div>
+                <div class="addToCartButtonCommingSoon">Add to Cart</div>
+              </div>
+            </div>
+          </section>
+        </section>
       </section>
     </div>
 
+    
     <script src="/index.js"></script>
   </body>
 </html>
