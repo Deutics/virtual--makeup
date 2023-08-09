@@ -613,9 +613,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const storedSection = localStorage.getItem("selectedSection");
   const storedButton = localStorage.getItem("selectedButton");
   const storedButtonLanding = localStorage.getItem("selectedButtonlandingpage");
-  if (!storedButtonLanding) {
-    window.location.href = "LandingPage.html";
-  }else{
+  // if (!storedButtonLanding) {
+  //   window.location.href = "LandingPage.html";
+  // }else{
+  //   showSection("aibeauty");
+  // }
   if (storedButton && storedSection) {
     const selectedButton = document.querySelector(
       `.Sidebar_InnerContainer a[href="${storedButton}"]`
@@ -631,7 +633,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     defaultSelectedButton.classList.add("selected");
   }
-}
 
   // For Lipstick Container Categories
 
