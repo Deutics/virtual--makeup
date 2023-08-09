@@ -615,7 +615,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const storedButtonLanding = localStorage.getItem("selectedButtonlandingpage");
   if (!storedButtonLanding) {
     window.location.href = "LandingPage.html";
-  }
+  }else{
   if (storedButton && storedSection) {
     const selectedButton = document.querySelector(
       `.Sidebar_InnerContainer a[href="${storedButton}"]`
@@ -631,6 +631,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     defaultSelectedButton.classList.add("selected");
   }
+}
 
   // For Lipstick Container Categories
 
@@ -3071,14 +3072,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const storedSectionConcealer = localStorage.getItem(
     "selectedSectionConcealer"
   );
-  const storedButtonConcealer = localStorage.getItem("selectedButtonConcealer");
+  const storedButtonConcealer = localStorage.getItem("selectedButtonconcealer");
   if (storedSectionConcealer && storedButtonConcealer) {
     const selectedButtonconcealer = document.querySelector(
       `.concealerContainerCategories a[href="${storedButtonConcealer}"]`
     );
     showConcealerSection(storedSectionConcealer, selectedButtonconcealer);
   } else {
-    showConcealerSection("concealer_pressed"); // Default selection if no data is stored
+    showConcealerSection("concealer_liquid"); // Default selection if no data is stored
     // Add the border to the default selectedConcealer buttton "Concealer"
     const defaultSelectedConcealer = document.querySelector(
       '.concealerContainerCategories a[href="#concealer_liquid"]'
