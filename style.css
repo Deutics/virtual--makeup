@@ -3196,7 +3196,6 @@ button#submitOrderBtnConcealer:hover {
 
   #mate {
     width: 100%;
-    height: auto;
     display: flex;
     flex-wrap: wrap;
   }
@@ -3431,7 +3430,6 @@ button#submitOrderBtnConcealer:hover {
 
   #foundation_liquid {
     width: 100%;
-    height: auto;
     display: flex;
     flex-wrap: wrap;
   }
@@ -3505,7 +3503,6 @@ button#submitOrderBtnConcealer:hover {
 
   #blush_pressed {
     width: 100%;
-    height: auto;
     display: flex;
     flex-wrap: wrap;
   }
@@ -3594,7 +3591,6 @@ button#submitOrderBtnConcealer:hover {
 
   #concealer_pressed {
     width: 100%;
-    height: auto;
     display: flex;
     flex-wrap: wrap;
   }
