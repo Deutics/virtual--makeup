@@ -982,6 +982,9 @@ button#submitOrderBtn:hover {
   .addToCartButtonCommingSoon {
     margin-top: -5rem !important;
   }
+  .addToCartButton{
+    margin-bottom: -.8rem;
+  }
   .CameraCommingSoon {
     display: none;
   }
@@ -998,6 +1001,23 @@ button#submitOrderBtn:hover {
     width: 90%;
     margin: 0 auto;
   }
+  .addToCartButtonEyeshadow{
+    margin-bottom: -1rem !important; 
+  }
+  .addToCartButtonFoundation{
+    margin-bottom: -1rem !important; 
+  }
+  .addToCartButtonBlush{
+    margin-bottom: -1rem !important; 
+  }
+  .addToCartButtonConcealer{
+    margin-bottom: -1rem !important; 
+  }
+  .lipstickInfo{
+
+    margin-top: 0rem !important;
+  }
+  
 
   .mateContainer {
     flex-direction: column-reverse;
@@ -2057,7 +2077,7 @@ button#submitOrderBtnEyeshadow:hover {
     justify-content: space-between;
   }
   .addToCartHeading {
-    margin-top: 0rem;
+    /* margin-top: 0.5rem; */
     font-size: 0.9rem;
   }
   .addToCartEyeshadow {
@@ -2065,7 +2085,7 @@ button#submitOrderBtnEyeshadow:hover {
     height: 180px;
   }
   .lipstickItem .img {
-    width: 95%;
+    width: 130px;
     height: 130px;
   }
 
@@ -2828,10 +2848,6 @@ button#submitOrderBtnFoundation:hover {
     flex-direction: column-reverse;
     justify-content: space-between;
   }
-  .addToCartHeading {
-    margin-top: 0rem;
-    font-size: 0.9rem;
-  }
   .addToCartFoundation {
     margin-top: -8rem;
     height: 180px;
@@ -3558,10 +3574,6 @@ button#submitOrderBtnBlush:hover {
     flex-direction: column-reverse;
     justify-content: space-between;
   }
-  .addToCartHeading {
-    margin-top: 0rem;
-    font-size: 0.9rem;
-  }
   .addToCartBlush {
     margin-top: -8rem;
     height: 180px;
@@ -3631,6 +3643,7 @@ button#submitOrderBtnBlush:hover {
   .toggle-line-Blush {
     display: none;
   }
+
 }
 
 @media only screen and (max-width: 775px) {
@@ -4287,10 +4300,6 @@ button#submitOrderBtnConcealer:hover {
   .concealer_liquidContainer {
     flex-direction: column-reverse;
     justify-content: space-between;
-  }
-  .addToCartHeading {
-    margin-top: 0rem;
-    font-size: 0.9rem;
   }
   .addToCartConcealer {
     margin-top: -8rem;
