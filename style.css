@@ -3678,6 +3678,19 @@ button#submitOrderBtnBlush:hover {
   .contentlipstick {
     height: 560px;
   }
+  .contentfoundation_liquid {
+    height: 560px;
+  }
+  .contenteyeshadow_matte {
+    height: 560px;
+  }
+  .contentblush_pressed {
+    height: 560px;
+  }
+  .contentconcealer_liquid {
+    height: 560px;
+  }
+
   .Side_Bar {
     height: 80%;
   }
@@ -3685,7 +3698,18 @@ button#submitOrderBtnBlush:hover {
   #videoElement {
     height: 310px;
   }
-
+  #videoElementEyeshadow {
+    height: 310px;
+  }
+  #videoElementFoundation {
+    height: 310px;
+  }
+  #videoElementBlush {
+    height: 310px;
+  }
+  #videoElementConcealer {
+    height: 310px;
+  }
   .addToCartHeading {
     margin-top: 20rem;
   }
@@ -4586,9 +4610,6 @@ button#submitOrderBtnConcealer:hover {
     width: 230px;
     height: 250px;
   }
-  #videoElementEyeshadow {
-    height: 630px;
-  }
   #videoElementCommingSoon {
     width: 57.87%;
     height: 630px;
@@ -4609,6 +4630,9 @@ button#submitOrderBtnConcealer:hover {
     width: 58%;
   }
   #videoElement {
+    height: 630px;
+  }
+  #videoElementEyeshadow {
     height: 630px;
   }
   #videoElementFoundation {

@@ -49,6 +49,55 @@ const lisptickMate = [
     content: "Transfer-resistant, matte lipstick",
     price: "$200",
   },
+  {
+    id: 2,
+    img: "/Images/lipstik/lipstik_img2.png",
+    icon: "/Images/lipstik/lipstick_img2_color.png",
+    title: "Matte Lipstick",
+    content: "Rich lipstick with high color payoff",
+    price: "$200",
+  },
+ 
+  {
+    id: 4,
+    img: "/Images/lipstik/lipstik_img4.png",
+    icon: "/Images/lipstik/lipstick_img4_color.png",
+    title: "Velvet Matte Lipstick",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 5,
+    img: "Images/lipstik/lipstik_img5.png",
+    icon: "Images/lipstik/lipstick_img5_color.png",
+    title: "Powermatte Long Lasting",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 6,
+    img: "/Images/lipstik/lipstik_img6.png",
+    icon: "/Images/lipstik/lipstick_img3_color.png",
+    title: "Kind Words Matte Lipstick",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 7,
+    img: "/Images/lipstik/lipstik_img7.png",
+    icon: "Images/lipstik/lipstick_img5_color.png",
+    title: "Powermatte Long Lasting",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 8,
+    img: "/Images/lipstik/lipstik_img8.png",
+    icon: "/Images/lipstik/lipstick_img5_color.png",
+    title: "Kind Words Matte Lipstick",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
 ];
 
 const EyeshadowMatte = [
