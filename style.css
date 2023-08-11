@@ -635,11 +635,12 @@
 .arrow-button {
   /* Customize the styles for the arrow button */
   width: 40% !important;
-  font-size: 3rem;
-  margin-left: -10px;
-  margin-top: -0.4rem;
-  cursor: pointer;
-  color: white;
+    font-size: 3rem;
+    margin-left: -10px;
+    margin-top: -0.4rem;
+    cursor: pointer;
+    color: white;
+
 }
 .modal h1 {
   display: none;
@@ -3231,7 +3232,7 @@ button#submitOrderBtnConcealer:hover {
     position: absolute;
     top: 0;
     width: 300px;
-    height: 108vh !important;
+    min-height: 150vh !important;
 
     background-color: #baabab;
     transition: left 0.3s ease;
@@ -3577,7 +3578,7 @@ button#submitOrderBtnConcealer:hover {
     margin-top: -8rem;
     height: 180px;
   }
-  .mateInnerContainer {
+  /* .mateInnerContainer {
     margin-top: -100px;
   }
   .eyeshadow_matteInnerContainer {
@@ -3591,7 +3592,7 @@ button#submitOrderBtnConcealer:hover {
   }
   .concealer_liquidInnerContainer {
     margin-top: -100px;
-  }
+  } */
 
   #concealer_pressed {
     width: 100%;
