@@ -1,5 +1,4 @@
 const lisptickMate = [
- 
   {
     id: 2,
     img: "/Images/lipstik/lipstik_img2.png",
@@ -8,7 +7,7 @@ const lisptickMate = [
     content: "Rich lipstick with high color payoff",
     price: "$200",
   },
- 
+
   {
     id: 4,
     img: "/Images/lipstik/lipstik_img4.png",
@@ -280,7 +279,6 @@ function showLandingPageSection(sectionId, button) {
       button.getAttribute("href")
     );
   }
-
 
   scrollToSection(sectionId);
 }
@@ -694,6 +692,25 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleButton.removeChild(arrowButton);
     }
   }
+
+  function closeSidebar() {
+    sidebarMainContainer.classList.remove("active");
+    removeArrowButton();
+    addToggleLines();
+  }
+
+  function showSectionAndCloseSidebar(sectionId, button) {
+    closeSidebar();
+    showSection(sectionId, button);
+  }
+
+  const sidebarButtons = document.querySelectorAll(".Sidebar_InnerContainer a");
+  sidebarButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const sectionId = button.getAttribute("href").substring(1);
+      showSectionAndCloseSidebar(sectionId, button);
+    });
+  });
 
   toggleButton.addEventListener("click", () => {
     sidebarMainContainer.classList.toggle("active");
@@ -1142,7 +1159,6 @@ function handleEyeshadowImageClick(img, icon, title, price) {
     "selectedEyeshadowArray",
     JSON.stringify(selectedEyeshadowArray)
   );
-  
 }
 
 function displaySelectedEyeshadowOnLoad() {
@@ -1237,7 +1253,7 @@ function generateCartModelEyeshadowContent() {
 
 // Call the function when the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-   // For Eyeshadow Container Categories
+  // For Eyeshadow Container Categories
 
   const storedSectionEyeshadow = localStorage.getItem(
     "selectedSectionEyeshadow"
