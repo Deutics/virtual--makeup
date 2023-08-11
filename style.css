@@ -982,8 +982,8 @@ button#submitOrderBtn:hover {
   .addToCartButtonCommingSoon {
     margin-top: -5rem !important;
   }
-  .addToCartButton{
-    margin-bottom: -.8rem;
+  .addToCartButton {
+    margin-bottom: -0.8rem;
   }
   .CameraCommingSoon {
     display: none;
@@ -996,31 +996,28 @@ button#submitOrderBtn:hover {
     top: 47%;
     width: 18rem;
     margin: 0 auto;
-
   }
-/* asdasdas */
+  /* asdasdas */
 
   .MainWrapper {
     width: 90%;
     margin: 0 auto;
   }
-  .addToCartButtonEyeshadow{
-    margin-bottom: -1rem !important; 
+  .addToCartButtonEyeshadow {
+    margin-bottom: -1rem !important;
   }
-  .addToCartButtonFoundation{
-    margin-bottom: -1rem !important; 
+  .addToCartButtonFoundation {
+    margin-bottom: -1rem !important;
   }
-  .addToCartButtonBlush{
-    margin-bottom: -1rem !important; 
+  .addToCartButtonBlush {
+    margin-bottom: -1rem !important;
   }
-  .addToCartButtonConcealer{
-    margin-bottom: -1rem !important; 
+  .addToCartButtonConcealer {
+    margin-bottom: -1rem !important;
   }
-  .lipstickInfo{
-
+  .lipstickInfo {
     margin-top: 0rem !important;
   }
-  
 
   .mateContainer {
     flex-direction: column-reverse;
@@ -1516,7 +1513,6 @@ button#submitOrderBtn:hover {
     align-items: center;
     padding: 1.7rem;
     min-width: 15rem;
-    
   }
   .selectedlipstick img {
     width: 30px;
@@ -1527,6 +1523,21 @@ button#submitOrderBtn:hover {
   }
   .CountourContainer {
     font-size: 2.5rem;
+  }
+  .contentlipstick{
+    height: 810px;
+  }
+  .contenteyeshadow_matte{
+    height: 810px;
+  }
+  .contentfoundation_liquid{
+    height: 810px;
+  }
+  .contentblush_pressed{
+    height: 810px;
+  }
+  .contentconcealer_liquid{
+    height: 810px;
   }
 }
 
@@ -2176,7 +2187,7 @@ button#submitOrderBtnEyeshadow:hover {
 @media only screen and (max-width: 1090px) {
   .lipstickInfo {
     gap: 0.3em;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
   .eyeshadow_matteContainer {
     width: 100%;
@@ -3646,7 +3657,6 @@ button#submitOrderBtnBlush:hover {
   .toggle-line-Blush {
     display: none;
   }
-
 }
 
 @media only screen and (max-width: 775px) {
@@ -3754,7 +3764,7 @@ button#submitOrderBtnBlush:hover {
     align-items: center;
     padding: 1.7rem;
     border-radius: 1rem;
-}
+  }
   .selectedBlush img {
     width: 30px;
   }
@@ -4480,8 +4490,157 @@ button#submitOrderBtnConcealer:hover {
     align-items: center;
     padding: 1.7rem;
     border-radius: 1rem;
-}
+  }
   .selectedConcealer img {
     width: 30px;
+  }
+}
+
+@media only screen and (min-width: 2500px) {
+  .Side_Bar {
+    /* min-height: 101vh; */
+    margin-left: 1rem;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+  .Side_Bar img {
+    /* width: 100%; */
+    min-height: 7vh;
+  }
+  .Sidebar_InnerContainer a.selected {
+    width: 470px;
+  }
+
+  .Sidebar_Footer {
+    bottom: 0rem;
+  }
+  .blushContainerCategories {
+    justify-content: start;
+    gap: 5rem !important;
+  }
+  .contentlipstick {
+    height: 880px;
+  }
+  .contentfoundation_liquid {
+    height: 880px !important;
+  }
+  .contenteyeshadow_matte {
+    height: 880px !important;
+  }
+  .contentblush_pressed {
+    height: 880px !important;
+  }
+  .contentconcealer_liquid {
+    height: 880px !important;
+  }
+
+  .concealerContainerCategories {
+    gap: 8rem !important;
+  }
+  .Sidebar_MainContainer {
+    height: 100vh;
+    width: 35rem;
+  }
+  .contenteyeshadow_matte {
+    height: 100%;
+    overflow-x: hidden;
+  }
+  .contentfoundation_liquid {
+    height: 100%;
+    overflow-x: hidden;
+  }
+  .contentblush_pressed {
+    height: 100%;
+    overflow-x: hidden;
+  }
+  .contentconcealer_liquid {
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  .lipstickItem .img {
+    width: 230px;
+    height: 250px;
+  }
+  #videoElementEyeshadow {
+    height: 630px;
+  }
+  #videoElementCommingSoon {
+    width: 57.87%;
+    height: 630px;
+    margin-left: 42%;
+    object-fit: contain;
+    margin-top: 13.4rem;
+  }
+
+  .addToCartHeadingCommingSoon {
+    font-size: 1.8rem;
+    margin-left: 42%;
+    margin-top: 1.4rem;
+  }
+  .addToCartButtonCommingSoon {
+    margin-left: 42%;
+    margin-top: 13.5%;
+    height: 6rem;
+    width: 58%;
+  }
+  #videoElement {
+    height: 630px;
+  }
+  #videoElementFoundation {
+    height: 630px;
+  }
+  #videoElementBlush {
+    height: 630px;
+  }
+  #videoElementConcealer {
+    height: 630px;
+  }
+
+  .addToCartHeading {
+    position: relative;
+    top: 52%;
+  }
+
+  .addToCartEyeshadow {
+    margin-top: 10rem;
+    height: 250px;
+  }
+  .addToCartFoundation {
+    margin-top: 10rem;
+    height: 250px;
+  }
+  .addToCartBlush {
+    margin-top: 10rem;
+    height: 250px;
+  }
+  .addToCartConcealer {
+    margin-top: 10rem;
+    height: 250px;
+  }
+  .addToCart {
+    margin-top: 10rem;
+    height: 250px;
+  }
+
+  .addToCartButtonEyeshadow {
+    height: 6rem;
+    font-size: 2rem;
+  }
+  .addToCartButtonFoundation {
+    height: 6rem;
+    font-size: 2rem;
+  }
+  .addToCartButtonBlush {
+    height: 6rem;
+    font-size: 2rem;
+  }
+  .addToCartButtonConcealer {
+    height: 6rem;
+    font-size: 2rem;
+  }
+  .addToCartButton {
+    height: 6rem;
+    font-size: 2rem;
   }
 }
