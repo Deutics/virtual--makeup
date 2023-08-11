@@ -3252,7 +3252,7 @@ button#submitOrderBtnConcealer:hover {
 
   .toggle-button {
     position: absolute;
-    top: 12px;
+    top: 20px;
     left: 40px;
     cursor: pointer;
     z-index: 999;
@@ -3578,19 +3578,19 @@ button#submitOrderBtnConcealer:hover {
     height: 180px;
   }
   .mateInnerContainer {
-    margin-top: -240px;
+    margin-top: -100px;
   }
   .eyeshadow_matteInnerContainer {
-    margin-top: -240px;
+    margin-top: -100px;
   }
   .foundation_liquidInnerContainer {
-    margin-top: -240px;
+    margin-top: -100px;
   }
   .blush_PressedInnerContainer {
-    margin-top: -240px;
+    margin-top: -100px;
   }
   .concealer_liquidInnerContainer {
-    margin-top: -240px;
+    margin-top: -100px;
   }
 
   #concealer_pressed {
