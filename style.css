@@ -3882,7 +3882,7 @@ button#submitOrderBtnConcealer:hover {
     margin: 0 auto;
   }
 }
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1401px) {
   .eyeshadowContainerCategories {
     display: flex;
     justify-content: space-between;
@@ -3891,23 +3891,21 @@ button#submitOrderBtnConcealer:hover {
     white-space: nowrap;
     font-size: 1rem;
   }
-  .contenteyeshadow_matte {
-    width: 101%;
-  }
   .contentlipstick {
-    height: 560px;
+    height: 430px;
   }
   .contentfoundation_liquid {
-    height: 560px;
+    height: 430px;
   }
   .contenteyeshadow_matte {
-    height: 560px;
+    width: 101%;
+    height: 430px;
   }
   .contentblush_pressed {
-    height: 560px;
+    height: 430px;
   }
   .contentconcealer_liquid {
-    height: 560px !important;
+    height: 430px !important;
   }
 
   .foundationContainerCategories {
