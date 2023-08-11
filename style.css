@@ -181,7 +181,7 @@
 
 .MainContianer {
   width: 70%;
-  margin: 0 auto;
+  margin: -50px auto;
 }
 
 .Navbar_Container {
@@ -841,707 +841,6 @@ button#submitOrderBtn:hover {
   color: black;
 }
 
-@media only screen and (max-width: 500px) {
-  #cartModal {
-    width: 100% !important;
-  }
-
-  .modal h1 {
-    display: flex;
-    justify-content: center;
-    font-size: 35px;
-    font-family: "Goldman", cursive;
-    font-weight: 400;
-  }
-  .arrow_Toggle_Cart_button {
-    display: block;
-  }
-  #cartModal.active .toggle-button {
-    display: none;
-  }
-  .close {
-    display: none;
-  }
-  .ArrowCart {
-    display: block;
-    width: 40px;
-    font-size: 2rem;
-    margin-left: 5px;
-    margin-top: -2.5rem;
-    cursor: pointer;
-    color: black;
-  }
-  .ArrowOrder {
-    display: block;
-    width: 40px;
-    font-size: 2rem;
-    margin-left: 5px;
-    margin-top: -2.5rem;
-    cursor: pointer;
-    color: black;
-  }
-  .ArrowPyment {
-    display: block;
-    width: 40px;
-    font-size: 2rem;
-    margin-left: 5px;
-    margin-top: -2.5rem;
-    cursor: pointer;
-    color: black;
-  }
-  .CountourContainer {
-    font-size: 1rem;
-  }
-  #placeOrderBtn {
-    width: 55%;
-    margin-top: 3rem;
-    height: 2rem;
-  }
-  .modal-content .total_Price {
-    font-size: 1rem;
-    margin-right: 1rem;
-  }
-  #totalPrice {
-    font-size: 1rem;
-  }
-  .cart-item-info {
-    margin-top: 0rem !important;
-  }
-
-  #orderModal {
-    width: 100% !important;
-  }
-  #paymentModal {
-    width: 100% !important;
-  }
-  #payNow {
-    width: 100% !important;
-  }
-  .logo_Sidebar_Cart {
-    display: flex !important;
-  }
-}
-@media screen and (max-width: 660px) {
-  .modal {
-    min-width: 60% !important;
-  }
-  .lipstick_Details {
-    margin-top: 2.5rem;
-    height: 15%;
-    margin-left: -5rem;
-  }
-
-  .selectedLipstickInfo {
-    display: flex;
-    flex-direction: row;
-    float: right;
-    width: 100%;
-  }
-
-  .selectedLipstickInfo .lipstick_Details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 2.5rem;
-  }
-
-  .selectedLipstickInfo p {
-    margin-top: -2rem;
-  }
-
-  .addToCartButton {
-    font-size: 0.9rem;
-    height: 2rem;
-    cursor: pointer;
-  }
-  .addToCartButton:hover {
-    background-color: #999393;
-  }
-  .addToCartIcon {
-    display: flex;
-    margin-left: 1rem;
-  }
-  .CountourContainer {
-    font-size: 1rem;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .Sidebar_MainContainer.active {
-    min-width: 300px;
-  }
-
-  .lipstickItem {
-    min-width: 50%;
-  }
-  .modal {
-    width: 50% !important;
-  }
-}
-@media screen and (max-width: 768px) {
-  .addToCartButtonCommingSoon {
-    margin-top: -5rem !important;
-  }
-  .addToCartButton {
-    margin-bottom: -0.8rem;
-  }
-  .CameraCommingSoon {
-    display: none;
-  }
-  .Content {
-    margin: 7rem auto;
-  }
-  .empty-cart-content {
-    position: relative;
-    top: 47%;
-    width: 18rem;
-    margin: 0 auto;
-  }
-  /* asdasdas */
-
-  .MainWrapper {
-    width: 90%;
-    margin: 0 auto;
-  }
-  .addToCartButtonEyeshadow {
-    margin-bottom: -1rem !important;
-  }
-  .addToCartButtonFoundation {
-    margin-bottom: -1rem !important;
-  }
-  .addToCartButtonBlush {
-    margin-bottom: -1rem !important;
-  }
-  .addToCartButtonConcealer {
-    margin-bottom: -1rem !important;
-  }
-  .lipstickInfo {
-    margin-top: 0rem !important;
-  }
-
-  .mateContainer {
-    flex-direction: column-reverse;
-    justify-content: space-between;
-  }
-  .addToCartHeading {
-    margin-top: 0rem;
-    font-size: 0.9rem;
-  }
-  .addToCart {
-    margin-top: -8rem;
-    height: 180px;
-  }
-  .CameraImageContainer {
-    width: 45%;
-  }
-  .cartContainer {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-between; */
-    height: 15rem;
-  }
-
-  .lipstickMobile {
-    display: block;
-    margin: 1rem 0 1rem 0;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-  }
-
-  .lipstickItem {
-    width: 30% !important;
-  }
-
-  #mate {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .Camera {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: 45vh;
-  }
-  .toggle_Navbar {
-    display: flex;
-    align-items: center;
-    font-family: "Goldman", cursive;
-    justify-content: center;
-    width: 100%;
-    height: 10vh;
-  }
-
-  .MainContianer {
-    width: 100%;
-  }
-
-  #videoElement {
-    width: 45%;
-    height: 16rem;
-    justify-content: space-between;
-  }
-  .Sidebar_MainContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: absolute;
-    top: 0;
-    width: 300px;
-    min-height: 150vh !important;
-
-    background-color: #baabab;
-    transition: left 0.3s ease;
-  }
-
-  .Sidebar_MainContainer.active {
-    left: 0; /* Show the sidebar when active */
-    width: 45%;
-    height: 150vh;
-    z-index: 999;
-  }
-  .Side_Bar {
-    height: 100% !important;
-  }
-  .Sidebar_InnerContainer {
-    height: auto !important;
-  }
-
-  .toggle-button {
-    position: absolute;
-    top: 12px;
-    left: 40px;
-    cursor: pointer;
-    z-index: 999;
-  }
-
-  .toggle-line {
-    width: 30px;
-    height: 4px;
-    background-color: #000000;
-    margin: 6px 0;
-    border-radius: 2px;
-  }
-
-  .logo_Sidebar {
-    text-align: center;
-  }
-
-  .Conatiner {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .smallScreenHeading {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 35px;
-  }
-
-  .Sidebar_MainContainer {
-    width: 100%;
-    min-height: 100vh;
-    position: absolute;
-    top: 0;
-    left: -100%;
-    transition: left 0.3s ease;
-  }
-
-  .Sidebar_InnerContainer {
-    min-height: 100vh;
-  }
-
-  .Sidebar_Footer {
-    /* bottom: 20px; */
-    margin-bottom: -0.6rem;
-  }
-
-  .lipstikContentNavbar {
-    display: none;
-  }
-
-  .Side_Bar {
-    height: auto;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .Side_Bar a {
-    margin-bottom: 1rem;
-  }
-
-  .selectedLipstickInfo p {
-    display: flex;
-    align-items: center;
-  }
-  .lipstick_Details {
-    display: flex;
-    align-items: center;
-    align-items: flex-start;
-    margin-top: 0.4rem;
-  }
-  .Comming_Soon img {
-    margin-left: -2rem;
-    margin-top: -3rem;
-  }
-  .Comming_Soon {
-    height: 45%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-  }
-  .CountourContainer {
-    font-size: 1rem;
-  }
-}
-
-@media only screen and (max-width: 775px) {
-  .modal {
-    width: 50% !important;
-  }
-}
-@media only screen and (max-width: 1000px) {
-  .modal {
-    width: 40%;
-  }
-  .addToCartButton:hover {
-    background-color: #999393;
-  }
-}
-
-@media only screen and (max-width: 1090px) {
-  .lipstickInfo {
-    gap: 0.3em;
-  }
-  .mateContainer {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-  }
-  #videoElement {
-    display: flex;
-    justify-content: space-between;
-  }
-  .lipstickItem {
-    width: 9rem;
-    margin-right: -1rem;
-  }
-  .lipstickItem h3 {
-    font-size: 1rem;
-  }
-  .lipstickItem p {
-    font-size: 0.6rem;
-  }
-  .LipstickContainerCategories {
-    font-size: 0.1rem;
-    width: 90%;
-    flex-wrap: nowrap;
-    display: flex;
-    justify-content: space-between;
-  }
-  .LipstickContainerCategories a {
-    margin-bottom: 0.5rem;
-  }
-
-  .Sidebar_MainContainer {
-    width: 16rem;
-    min-height: 102vh;
-  }
-  .Sidebar_InnerContainer {
-    min-height: 100vh;
-  }
-  .Sidebar_Footer {
-    bottom: 20px;
-  }
-  .Navbar_Container {
-    padding: 0 1rem;
-  }
-  .Side_Bar {
-    height: 70%;
-  }
-  .addToCartButtonCommingSoon {
-    margin-top: -3rem !important;
-  }
-  .addToCartButtonEyeshadow {
-    margin-top: 1rem !important;
-  }
-  .addToCartButton {
-    margin-top: 1rem !important;
-  }
-}
-
-@media only screen and (max-width: 1300px) {
-  .LipstickContainerCategories {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    white-space: nowrap;
-    font-size: 1rem;
-  }
-  .contentlipstick {
-    width: 95%;
-  }
-  .lipstickItem {
-    width: 40%;
-    margin-right: -1rem;
-    margin: 0 auto;
-  }
-}
-
-@media only screen and (min-width: 1900px) {
-  body {
-    font-size: 18px;
-  }
-
-  .empty-cart-content {
-    margin-top: 1rem;
-    width: 52%;
-    /* height: 25%; */
-    font-size: 2rem;
-    text-align: center;
-  }
-  .ComingSoonContent img {
-    width: 350px;
-  }
-  .Comming_Soon_Image {
-    margin: -5rem 7rem !important;
-  }
-  .lipstickItem .img {
-    width: 240px;
-    height: 250px;
-  }
-  .Side_Bar {
-    height: 80vh;
-    margin-left: 1rem;
-    overflow-y: hidden;
-    overflow-x: hidden;
-  }
-  .Side_Bar:hover {
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: #e0e0e0;
-  }
-  .Side_Bar::-webkit-scrollbar {
-    width: 0.5rem;
-  }
-  .LipstickContainerCategories {
-    width: 100%;
-  }
-  .Side_Bar::-webkit-scrollbar-thumb {
-    background-color: #e0e0e0;
-    border-radius: 0.2rem;
-  }
-  .Side_Bar:hover::-webkit-scrollbar-thumb {
-    background-color: #e0e0e0;
-  }
-  .Side_Bar img {
-    min-width: 95%;
-  }
-  .Sidebar_InnerContainer a {
-    /* width: 10%; */
-  }
-  .Sidebar_MainContainer {
-    min-height: 65rem;
-    width: 26rem;
-  }
-  .Sidebar_InnerContainer {
-    min-height: 92%;
-  }
-  .Sidebar_Footer {
-    font-size: 2rem;
-    position: relative;
-    left: 2rem;
-    margin-left: 1rem;
-  }
-
-  .logo_Sidebar {
-    font-size: 4.188rem;
-    margin-left: 1rem;
-  }
-
-  .Sidebar_InnerContainer a.selected {
-    width: 355px;
-  }
-  #videoElementCommingSoon {
-    border: 1px solid black;
-    border-radius: 1rem;
-    margin-top: 13rem;
-    margin-left: 36%;
-    width: 63.5%;
-    height: 30rem;
-  }
-  .addToCartHeadingCommingSoon {
-    font-size: 1.8rem;
-    margin-left: 36%;
-  }
-  .contentlipstick {
-    height: 650px;
-    overflow-x: hidden;
-  }
-  .contentlipstick:hover {
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
-  }
-  .contentlipstick::-webkit-scrollbar {
-    width: 0.6rem;
-    /* height: 1rem; */
-  }
-  .contentlipstick::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 0.2rem;
-  }
-  .contentlipstick:hover::-webkit-scrollbar-thumb {
-    background-color: #baabab;
-  }
-  .lipstickItem {
-    width: 250px;
-  }
-  .lipstickItem h3 {
-    font-size: 1.6rem;
-    margin-bottom: 1.5rem;
-  }
-  .lipstickItem p {
-    font-size: 1.2rem;
-    color: #888;
-  }
-  .lipstickInfo {
-    margin-top: 1rem;
-  }
-  #videoElement {
-    width: 100%;
-    height: 30rem;
-  }
-  .addToCart {
-    margin-top: 2rem;
-    height: 250px;
-  }
-  .lipstick_Details h4 {
-    font-size: 1.5rem;
-  }
-  .selectedLipstickInfo p {
-    font-size: 1.5rem;
-  }
-
-  .addToCartImg,
-  .addToCartIcon {
-    width: 50px;
-    height: 60px;
-  }
-  .delete_icon {
-    width: 50px;
-    height: 60px;
-  }
-  .addToCartHeading {
-    position: relative;
-    top: 38%;
-    display: flex;
-    height: 40%;
-    font-size: 1.8rem;
-  }
-
-  .addToCartButtonCommingSoon {
-    height: 4rem;
-    font-size: 2rem;
-    width: 64%;
-    font-family: "Poppins", sans-serif;
-    color: white;
-    cursor: pointer;
-    margin-left: 36%;
-    margin-top: 17%;
-  }
-  .addToCartButton {
-    height: 4rem;
-    font-size: 2rem;
-  }
-  .cartHeading {
-    font-size: 3rem;
-  }
-  .cart-item h4 {
-    font-size: 1.5rem;
-  }
-
-  .cart-item-img,
-  .cart-item-icon {
-    width: 60px;
-    height: 50px;
-  }
-  .cart-item-info p {
-    font-size: 1.5rem;
-  }
-  .total_Price {
-    font-size: 2.5rem !important;
-  }
-
-  #totalPrice {
-    font-size: 2.5rem;
-  }
-  #placeOrderBtn {
-    height: 4.5rem;
-    font-size: 2rem;
-  }
-  .close {
-    font-size: 3rem;
-  }
-
-  .Navbar_Container {
-    font-size: 3rem;
-  }
-  .navbarSearchContainer {
-    width: 35%;
-  }
-  .navbarSearchContainer img {
-    width: 10%;
-  }
-  .SearchbarInput {
-    font-size: 1.5rem;
-  }
-  .LipstickContainerCategories a {
-    min-width: 13rem;
-    height: 3rem;
-    font-size: 1.5rem;
-  }
-  .LipstickContainerCategories a.selectedlipstick {
-    font-size: 1.5rem;
-    align-items: center;
-    padding: 1.7rem;
-    min-width: 15rem;
-  }
-  .selectedlipstick img {
-    width: 30px;
-  }
-  .Comming_Soon img {
-    width: 470px;
-    margin-top: -7rem;
-  }
-  .CountourContainer {
-    font-size: 2.5rem;
-    /* dfghjhgfgvhj */
-  }
-  .contentlipstick {
-    height: 810px;
-  }
-  .contenteyeshadow_matte {
-    height: 810px;
-  }
-  .contentfoundation_liquid {
-    height: 810px;
-  }
-  .contentblush_pressed {
-    height: 810px;
-  }
-  .contentconcealer_liquid {
-    height: 810px;
-  }
-}
-
 /* ...........................Eye Shadow Css here.................. */
 
 .eyeshadowContainerCategories {
@@ -1977,345 +1276,6 @@ button#submitOrderBtnEyeshadow:hover {
   margin-top: 2rem;
 }
 
-@media only screen and (max-width: 500px) {
-  #cartModalEyeshadow {
-    width: 100% !important;
-  }
-
-  #cartModalEyeshadow.active .toggle-button-Eyeshadow {
-    display: none;
-  }
-  .closeEyeshadow {
-    display: flex;
-  }
-  .ArrowCartEyeshadow {
-    display: block;
-    width: 40px;
-    font-size: 2rem;
-    margin-left: 5px;
-    margin-top: -2.5rem;
-    cursor: pointer;
-    color: black;
-  }
-
-  .ArrowOrderEyeshadow {
-    display: block;
-    width: 40px;
-    font-size: 2rem;
-    margin-left: 5px;
-    margin-top: -2.5rem;
-    cursor: pointer;
-    color: black;
-  }
-  .ArrowPaymentEyeshadow {
-    display: block;
-    width: 40px;
-    font-size: 2rem;
-    margin-left: 5px;
-    margin-top: -2.5rem;
-    cursor: pointer;
-    color: black;
-  }
-  .logo_Sidebar_Cart_Eyeshadow {
-    display: flex !important;
-  }
-  .arrow-button-Eyeshadow {
-    color: black;
-  }
-  #placeOrderBtnEyeshadow {
-    width: 55%;
-    margin-top: 3rem;
-    height: 2rem;
-  }
-  #totalPriceeyeshadow {
-    font-size: 1rem;
-  }
-  .cart-item-info {
-    margin-top: 0rem !important;
-  }
-
-  #orderModalEyeshadow {
-    width: 100% !important;
-  }
-  #paymentModalEyeshadow {
-    width: 100% !important;
-  }
-  #payNowEyeshadow {
-    width: 100% !important;
-  }
-}
-@media screen and (max-width: 660px) {
-  .Eyeshadow_Details {
-    margin-top: 2.5rem;
-    height: 15%;
-    margin-left: -5rem;
-  }
-  .selectedEyeshadowInfo {
-    display: flex;
-    flex-direction: row;
-    float: right;
-    width: 100%;
-  }
-
-  .selectedEyeshadowInfo .Eyeshadow_Details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 2.5rem;
-  }
-
-  .selectedEyeshadowInfo p {
-    margin-top: -2rem;
-  }
-
-  .addToCartButtonEyeshadow {
-    font-size: 0.9rem;
-    height: 2rem;
-    cursor: pointer;
-  }
-  .addToCartButtonEyeshadow:hover {
-    background-color: #999393;
-  }
-  .CountourContainer {
-    font-size: 1rem;
-  }
-}
-@media only screen and (max-width: 900px) {
-  .lipstickItem .img {
-    height: 130px;
-    width: 100%;
-  }
-}
-@media screen and (max-width: 768px) {
-  .eyeshadow_matteContainer {
-    flex-direction: column-reverse;
-    justify-content: space-between;
-  }
-  .addToCartHeading {
-    /* margin-top: 0.5rem; */
-    font-size: 0.9rem;
-  }
-  .addToCartEyeshadow {
-    margin-top: -8rem;
-    height: 180px;
-  }
-  .lipstickItem .img {
-    width: 130px;
-    height: 130px;
-  }
-
-  #eyeshadow_matte {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .toggle-button-Eyeshadow {
-    position: absolute;
-    top: 12px;
-    left: 40px;
-    cursor: pointer;
-    z-index: 999;
-  }
-
-  .toggle-line-Eyeshadow {
-    width: 30px;
-    height: 4px;
-    background-color: #000000;
-    margin: 6px 0;
-    border-radius: 2px;
-  }
-
-  .eyeshadowMobile {
-    display: block;
-    margin: 1rem 0 1rem 0;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-  }
-
-  #videoElementEyeshadow {
-    width: 45%;
-    height: 16rem;
-    justify-content: space-between;
-  }
-
-  .toggle-button-Eyeshadow {
-    position: absolute;
-    top: 12px;
-    left: 40px;
-    cursor: pointer;
-    z-index: 999;
-  }
-
-  .toggle-line-Eyeshadow {
-    width: 30px;
-    height: 4px;
-    background-color: #000000;
-    margin: 6px 0;
-    /* border-radius: 2px; */
-  }
-
-  .selectedEyeshadowInfo p {
-    display: flex;
-    align-items: center;
-  }
-  .Eyeshadow_Details {
-    display: flex;
-    align-items: center;
-    align-items: flex-start;
-  }
-
-  .toggle-line-Eyeshadow {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 775px) {
-  .modal {
-    width: 50% !important;
-  }
-}
-@media only screen and (max-width: 1000px) {
-  .modal {
-    width: 40%;
-  }
-
-  .addToCartButtonEyeshadow:hover {
-    background-color: #999393;
-  }
-}
-
-@media only screen and (max-width: 1090px) {
-  .lipstickInfo {
-    gap: 0.3em;
-    margin-top: 0.5rem;
-  }
-  .eyeshadow_matteContainer {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-  }
-
-  #videoElementEyeshadow {
-    /* width: 13rem; */
-    display: flex;
-    justify-content: space-between;
-  }
-
-  #videoElementCommingSoon {
-    margin-top: 6.8rem;
-    margin-left: 3rem;
-    width: 75%;
-  }
-  .addToCartHeadingCommingSoon {
-    margin-left: 20%;
-  }
-
-  .ComingSoonContent img {
-    width: 100%;
-    margin: 3rem auto !important;
-  }
-  .addToCartButtonCommingSoon {
-    width: 70%;
-    margin-left: 18%;
-  }
-
-  .eyeshadowContainerCategories {
-    font-size: 0.1rem;
-    width: 90%;
-    flex-wrap: nowrap;
-    display: flex;
-    justify-content: space-between;
-  }
-  .eyeshadowContainerCategories a {
-    margin-bottom: 0.5rem;
-  }
-}
-
-@media only screen and (max-width: 1400px) {
-  .eyeshadowContainerCategories {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    white-space: nowrap;
-    font-size: 1rem;
-  }
-  .contenteyeshadow_matte {
-    width: 101%;
-  }
-}
-
-@media only screen and (min-width: 1900px) {
-  .contenteyeshadow_matte {
-    height: 90%;
-    overflow-x: hidden;
-  }
-  .contenteyeshadow_matte:hover {
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
-  }
-  .contenteyeshadow_matte::-webkit-scrollbar {
-    width: 0.6rem;
-  }
-  .contenteyeshadow_matte::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 0.2rem;
-  }
-  .contenteyeshadow_matte:hover::-webkit-scrollbar-thumb {
-    background-color: #baabab;
-  }
-
-  #videoElementEyeshadow {
-    width: 100%;
-    height: 30rem;
-  }
-  .addToCartEyeshadow {
-    margin-top: 2rem;
-    height: 250px;
-  }
-
-  .selectedEyeshadowInfo p {
-    font-size: 1.5rem;
-  }
-  .Eyeshadow_Details h4 {
-    font-size: 1.5rem;
-  }
-
-  .addToCartButtonEyeshadow {
-    height: 4rem;
-    font-size: 2rem;
-  }
-
-  .cart-item-Eyeshadow h4 {
-    font-size: 1.5rem;
-  }
-
-  #totalPriceeyeshadow {
-    font-size: 2.5rem;
-  }
-  #placeOrderBtnEyeshadow {
-    height: 4.5rem;
-    font-size: 2rem;
-  }
-
-  .eyeshadowContainerCategories a {
-    min-width: 13rem;
-    height: 3rem;
-    font-size: 1.5rem;
-  }
-  .eyeshadowContainerCategories a.selectedEyeshadow {
-    font-size: 1.5rem;
-    align-items: center;
-    padding: 1.7rem;
-    border-radius: 0.8rem;
-  }
-  .selectedEyeshadow img {
-    width: 30px;
-  }
-}
-
 /* ....................Foundation Css Here................... */
 
 .foundationContainerCategories {
@@ -2749,297 +1709,6 @@ button#submitOrderBtnFoundation:hover {
   font-size: 1rem;
   cursor: pointer;
   margin-top: 2rem;
-}
-
-@media only screen and (max-width: 500px) {
-  #cartModalFoundation {
-    width: 100% !important;
-  }
-
-  #cartModalFoundation.active .toggle-button-Foundation {
-    display: none;
-  }
-  .closeFoundation {
-    display: flex;
-  }
-  .ArrowCartFoundation {
-    display: block;
-    width: 40px;
-    font-size: 2rem;
-    margin-left: 5px;
-    margin-top: -2.5rem;
-    cursor: pointer;
-    color: black;
-  }
-
-  .ArrowOrderFoundation {
-    display: block;
-    width: 40px;
-    font-size: 2rem;
-    margin-left: 5px;
-    margin-top: -2.5rem;
-    cursor: pointer;
-    color: black;
-  }
-  .ArrowPaymentFoundation {
-    display: block;
-    width: 40px;
-    font-size: 2rem;
-    margin-left: 5px;
-    margin-top: -2.5rem;
-    cursor: pointer;
-    color: black;
-  }
-  .logo_Sidebar_Cart_Foundation {
-    display: flex !important;
-  }
-  .arrow-button-Foundation {
-    color: black;
-  }
-  #placeOrderBtnFoundation {
-    width: 55%;
-    margin-top: 3rem;
-    height: 2rem;
-  }
-  #totalPricefoundation {
-    font-size: 1rem;
-  }
-  .cart-item-info {
-    margin-top: 0rem !important;
-  }
-
-  #orderModalFoundation {
-    width: 100% !important;
-  }
-  #paymentModalFoundation {
-    width: 100% !important;
-  }
-  #payNowFoundation {
-    width: 100% !important;
-  }
-}
-@media screen and (max-width: 660px) {
-  .Foundation_Details {
-    margin-top: 2.5rem;
-    height: 15%;
-    margin-left: -5rem;
-  }
-  .selectedFoundationInfo {
-    display: flex;
-    flex-direction: row;
-    float: right;
-    width: 100%;
-  }
-
-  .selectedFoundationInfo .Foundation_Details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 2.5rem;
-  }
-
-  .selectedFoundationInfo p {
-    margin-top: -2rem;
-  }
-
-  .addToCartButtonFoundation {
-    font-size: 0.9rem;
-    height: 2rem;
-    cursor: pointer;
-  }
-  .addToCartButtonFoundation:hover {
-    background-color: #999393;
-  }
-  .CountourContainer {
-    font-size: 1rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .foundation_liquidContainer {
-    flex-direction: column-reverse;
-    justify-content: space-between;
-  }
-  .addToCartFoundation {
-    margin-top: -8rem;
-    height: 180px;
-  }
-
-  #foundation_liquid {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .toggle-button-Foundation {
-    position: absolute;
-    top: 12px;
-    left: 40px;
-    cursor: pointer;
-    z-index: 999;
-  }
-
-  .toggle-line-Foundation {
-    width: 30px;
-    height: 4px;
-    background-color: #000000;
-    margin: 6px 0;
-    border-radius: 2px;
-  }
-
-  .foundationMobile {
-    display: block;
-    margin: 1rem 0 1rem 0;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-  }
-
-  #videoElementFoundation {
-    width: 45%;
-    height: 16rem;
-    justify-content: space-between;
-  }
-
-  .toggle-button-Foundation {
-    position: absolute;
-    top: 12px;
-    left: 40px;
-    cursor: pointer;
-    z-index: 999;
-  }
-
-  .toggle-line-Foundation {
-    width: 30px;
-    height: 4px;
-    background-color: #000000;
-    margin: 6px 0;
-    /* border-radius: 2px; */
-  }
-
-  .selectedFoundationInfo p {
-    display: flex;
-    align-items: center;
-  }
-  .Foundation_Details {
-    display: flex;
-    align-items: center;
-    align-items: flex-start;
-  }
-
-  .toggle-line-Foundation {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 775px) {
-  .modal {
-    width: 50% !important;
-  }
-}
-@media only screen and (max-width: 1000px) {
-  .modal {
-    width: 40%;
-  }
-
-  .addToCartButtonFoundation:hover {
-    background-color: #999393;
-  }
-}
-
-@media only screen and (max-width: 1090px) {
-  .lipstickInfo {
-    gap: 0.3em;
-  }
-  .foundation_liquidContainer {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-  }
-
-  #videoElementFoundation {
-    /* width: 13rem; */
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .foundationContainerCategories {
-    font-size: 0.1rem;
-    width: 90%;
-    flex-wrap: nowrap;
-    display: flex;
-    justify-content: space-between;
-  }
-  .foundationContainerCategories a {
-    margin-bottom: 0.5rem;
-  }
-}
-
-@media only screen and (max-width: 1400px) {
-  .foundationContainerCategories {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    white-space: nowrap;
-    font-size: 1rem;
-  }
-  .contentfoundation_liquid {
-    width: 101%;
-  }
-}
-
-@media only screen and (min-width: 1900px) {
-  .contentfoundation_liquid {
-    height: 100%;
-  }
-
-  #videoElementFoundation {
-    width: 100%;
-    height: 30rem;
-  }
-  .addToCartFoundation {
-    margin-top: 2rem;
-    height: 250px;
-  }
-
-  .selectedFoundationInfo p {
-    font-size: 1.5rem;
-  }
-  .Foundation_Details h4 {
-    font-size: 1.5rem;
-  }
-
-  .addToCartButtonFoundation {
-    height: 4rem;
-    font-size: 2rem;
-  }
-
-  .cart-item-Foundation h4 {
-    font-size: 1.5rem;
-  }
-
-  #totalPricefoundation {
-    font-size: 2.5rem;
-  }
-  #placeOrderBtnFoundation {
-    height: 4.5rem;
-    font-size: 2rem;
-  }
-
-  .foundationContainerCategories a {
-    min-width: 13rem;
-    height: 3rem;
-    font-size: 1.5rem;
-  }
-  .foundationContainerCategories a.selectedFoundation {
-    font-size: 1.5rem;
-    align-items: center;
-    padding: 1.7rem;
-    border-radius: 0.8rem;
-  }
-  .selectedFoundation img {
-    width: 30px;
-  }
 }
 
 /* ................... Blush CSS Here..................................... */
@@ -3478,357 +2147,6 @@ button#submitOrderBtnBlush:hover {
   margin-top: 2rem;
 }
 
-@media only screen and (max-width: 500px) {
-  #cartModalBlush {
-    width: 100% !important;
-  }
-
-  #cartModalBlush.active .toggle-button-Blush {
-    display: none;
-  }
-  .closeBlush {
-    display: flex;
-  }
-  .ArrowCartBlush {
-    display: block;
-    width: 40px;
-    font-size: 2rem;
-    margin-left: 5px;
-    margin-top: -2.5rem;
-    cursor: pointer;
-    color: black;
-  }
-
-  .ArrowOrderBlush {
-    display: block;
-    width: 40px;
-    font-size: 2rem;
-    margin-left: 5px;
-    margin-top: -2.5rem;
-    cursor: pointer;
-    color: black;
-  }
-  .ArrowPaymentBlush {
-    display: block;
-    width: 40px;
-    font-size: 2rem;
-    margin-left: 5px;
-    margin-top: -2.5rem;
-    cursor: pointer;
-    color: black;
-  }
-  .logo_Sidebar_Cart_Blush {
-    display: flex !important;
-  }
-  .arrow-button-Blush {
-    color: black;
-  }
-  #placeOrderBtnBlush {
-    width: 55%;
-    margin-top: 3rem;
-    height: 2rem;
-  }
-  #totalPriceblush {
-    font-size: 1rem;
-  }
-  .cart-item-info {
-    margin-top: 0rem !important;
-  }
-
-  #orderModalBlush {
-    width: 100% !important;
-  }
-  #paymentModalBlush {
-    width: 100% !important;
-  }
-  #payNowBlush {
-    width: 100% !important;
-  }
-}
-@media screen and (max-width: 660px) {
-  .Blush_Details {
-    margin-top: 2.5rem;
-    height: 15%;
-    margin-left: -5rem;
-  }
-  .selectedBlushInfo {
-    display: flex;
-    flex-direction: row;
-    float: right;
-    width: 100%;
-  }
-
-  .selectedBlushInfo .Blush_Details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 2.5rem;
-  }
-
-  .selectedBlushInfo p {
-    margin-top: -2rem;
-  }
-
-  .addToCartButtonBlush {
-    font-size: 0.9rem;
-    height: 2rem;
-    cursor: pointer;
-  }
-  .addToCartButtonBlush:hover {
-    background-color: #999393;
-  }
-  .CountourContainer {
-    font-size: 1rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .blush_pressedContainer {
-    flex-direction: column-reverse;
-    justify-content: space-between;
-  }
-  .addToCartBlush {
-    margin-top: -8rem;
-    height: 180px;
-  }
-
-  #blush_pressed {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .toggle-button-Blush {
-    position: absolute;
-    top: 12px;
-    left: 40px;
-    cursor: pointer;
-    z-index: 999;
-  }
-
-  .toggle-line-Blush {
-    width: 30px;
-    height: 4px;
-    background-color: #000000;
-    margin: 6px 0;
-    border-radius: 2px;
-  }
-
-  .blushMobile {
-    display: block;
-    margin: 1rem 0 1rem 0;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-  }
-
-  #videoElementBlush {
-    width: 45%;
-    height: 16rem;
-    justify-content: space-between;
-  }
-
-  .toggle-button-Blush {
-    position: absolute;
-    top: 12px;
-    left: 40px;
-    cursor: pointer;
-    z-index: 999;
-  }
-
-  .toggle-line-Blush {
-    width: 30px;
-    height: 4px;
-    background-color: #000000;
-    margin: 6px 0;
-    /* border-radius: 2px; */
-  }
-
-  .selectedBlushInfo p {
-    display: flex;
-    align-items: center;
-  }
-  .Blush_Details {
-    display: flex;
-    align-items: center;
-    align-items: flex-start;
-  }
-
-  .toggle-line-Blush {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 775px) {
-  .modal {
-    width: 50% !important;
-  }
-}
-@media only screen and (max-width: 1000px) {
-  .modal {
-    width: 40%;
-  }
-
-  .addToCartButtonBlush:hover {
-    background-color: #999393;
-  }
-}
-@media only screen and (min-width: 1400px) {
-  .contentlipstick {
-    height: 560px;
-  }
-  .contentfoundation_liquid {
-    height: 560px;
-  }
-  .contenteyeshadow_matte {
-    height: 560px;
-  }
-  .contentblush_pressed {
-    height: 560px;
-  }
-  .contentconcealer_liquid {
-    height: 560px !important;
-  }
-
-  .Side_Bar {
-    height: 80%;
-  }
-
-  #videoElement {
-    height: 310px;
-  }
-  #videoElementEyeshadow {
-    height: 310px;
-  }
-  #videoElementFoundation {
-    height: 310px;
-  }
-  #videoElementBlush {
-    height: 310px;
-  }
-  #videoElementConcealer {
-    height: 310px !important;
-  }
-  .addToCartHeading {
-    margin-top: 20rem;
-  }
-
-  .Sidebar_InnerContainer {
-    height: 100vh;
-  }
-  .Sidebar_MainContainer {
-    height: 100vh;
-  }
-  #videoElementCommingSoon {
-    margin-left: 37%;
-    width: 63%;
-    height: 310px;
-    object-fit: scale-down;
-}
-.addToCartHeadingCommingSoon{
-  margin-top: 0.4rem;
-  margin-left: 37.5%;
-}
-.addToCartButtonCommingSoon{
-  margin-top: -.5rem;
-}
-}
-
-@media only screen and (max-width: 1090px) {
-  .lipstickInfo {
-    gap: 0.3em;
-  }
-  .blush_pressedContainer {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-  }
-
-  #videoElementBlush {
-    /* width: 13rem; */
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .blushContainerCategories {
-    font-size: 0.1rem;
-    width: 90%;
-    flex-wrap: nowrap;
-    display: flex;
-    justify-content: space-between;
-  }
-  .blushContainerCategories a {
-    margin-bottom: 0.5rem;
-  }
-}
-
-@media only screen and (max-width: 1400px) {
-  .blushContainerCategories {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    white-space: nowrap;
-    font-size: 1rem;
-  }
-  .contentblush_pressed {
-    width: 101%;
-  }
-}
-
-@media only screen and (min-width: 1900px) {
-  .contentblush_pressed {
-    height: 100%;
-  }
-
-  #videoElementBlush {
-    width: 100%;
-    height: 30rem;
-  }
-  .addToCartBlush {
-    margin-top: 2rem;
-    height: 250px;
-  }
-  .Blush_Details h4 {
-    font-size: 1.5rem;
-  }
-
-  .selectedBlushInfo p {
-    font-size: 1.5rem;
-  }
-
-  .addToCartButtonBlush {
-    height: 4rem;
-    font-size: 2rem;
-  }
-
-  .cart-item-Blush h4 {
-    font-size: 1.5rem;
-  }
-
-  #totalPriceblush {
-    font-size: 2.5rem;
-  }
-  #placeOrderBtnBlush {
-    height: 4.5rem;
-    font-size: 2rem;
-  }
-
-  .blushContainerCategories a {
-    min-width: 13rem;
-    height: 3rem;
-    font-size: 1.5rem;
-  }
-  .blushContainerCategories a.selectedBlush {
-    font-size: 1.5rem;
-    align-items: center;
-    padding: 1.7rem;
-    border-radius: 0.8rem;
-  }
-  .selectedBlush img {
-    width: 30px;
-  }
-}
-
 /* ................... Concealer CSS Here..................................... */
 
 .concealerContainerCategories {
@@ -4265,6 +2583,281 @@ button#submitOrderBtnConcealer:hover {
 }
 
 @media only screen and (max-width: 500px) {
+  #cartModal {
+    width: 100% !important;
+  }
+
+  .modal h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+    font-family: "Goldman", cursive;
+    font-weight: 400;
+  }
+  .arrow_Toggle_Cart_button {
+    display: block;
+  }
+  #cartModal.active .toggle-button {
+    display: none;
+  }
+  .close {
+    display: none;
+  }
+  .ArrowCart {
+    display: block;
+    width: 40px;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-top: -2.5rem;
+    cursor: pointer;
+    color: black;
+  }
+  .ArrowOrder {
+    display: block;
+    width: 40px;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-top: -2.5rem;
+    cursor: pointer;
+    color: black;
+  }
+  .ArrowPyment {
+    display: block;
+    width: 40px;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-top: -2.5rem;
+    cursor: pointer;
+    color: black;
+  }
+  .CountourContainer {
+    font-size: 1rem;
+  }
+  #placeOrderBtn {
+    width: 55%;
+    margin-top: 3rem;
+    height: 2rem;
+  }
+  .modal-content .total_Price {
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
+  #totalPrice {
+    font-size: 1rem;
+  }
+  .cart-item-info {
+    margin-top: 0rem !important;
+  }
+
+  #orderModal {
+    width: 100% !important;
+  }
+  #paymentModal {
+    width: 100% !important;
+  }
+  #payNow {
+    width: 100% !important;
+  }
+  .logo_Sidebar_Cart {
+    display: flex !important;
+  }
+  #cartModalEyeshadow {
+    width: 100% !important;
+  }
+
+  #cartModalEyeshadow.active .toggle-button-Eyeshadow {
+    display: none;
+  }
+  .closeEyeshadow {
+    display: flex;
+  }
+  .ArrowCartEyeshadow {
+    display: block;
+    width: 40px;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-top: -2.5rem;
+    cursor: pointer;
+    color: black;
+  }
+
+  .ArrowOrderEyeshadow {
+    display: block;
+    width: 40px;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-top: -2.5rem;
+    cursor: pointer;
+    color: black;
+  }
+  .ArrowPaymentEyeshadow {
+    display: block;
+    width: 40px;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-top: -2.5rem;
+    cursor: pointer;
+    color: black;
+  }
+  .logo_Sidebar_Cart_Eyeshadow {
+    display: flex !important;
+  }
+  .arrow-button-Eyeshadow {
+    color: black;
+  }
+  #placeOrderBtnEyeshadow {
+    width: 55%;
+    margin-top: 3rem;
+    height: 2rem;
+  }
+  #totalPriceeyeshadow {
+    font-size: 1rem;
+  }
+  .cart-item-info {
+    margin-top: 0rem !important;
+  }
+
+  #orderModalEyeshadow {
+    width: 100% !important;
+  }
+  #paymentModalEyeshadow {
+    width: 100% !important;
+  }
+  #payNowEyeshadow {
+    width: 100% !important;
+  }
+  #cartModalFoundation {
+    width: 100% !important;
+  }
+
+  #cartModalFoundation.active .toggle-button-Foundation {
+    display: none;
+  }
+  .closeFoundation {
+    display: flex;
+  }
+  .ArrowCartFoundation {
+    display: block;
+    width: 40px;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-top: -2.5rem;
+    cursor: pointer;
+    color: black;
+  }
+
+  .ArrowOrderFoundation {
+    display: block;
+    width: 40px;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-top: -2.5rem;
+    cursor: pointer;
+    color: black;
+  }
+  .ArrowPaymentFoundation {
+    display: block;
+    width: 40px;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-top: -2.5rem;
+    cursor: pointer;
+    color: black;
+  }
+  .logo_Sidebar_Cart_Foundation {
+    display: flex !important;
+  }
+  .arrow-button-Foundation {
+    color: black;
+  }
+  #placeOrderBtnFoundation {
+    width: 55%;
+    margin-top: 3rem;
+    height: 2rem;
+  }
+  #totalPricefoundation {
+    font-size: 1rem;
+  }
+  .cart-item-info {
+    margin-top: 0rem !important;
+  }
+
+  #orderModalFoundation {
+    width: 100% !important;
+  }
+  #paymentModalFoundation {
+    width: 100% !important;
+  }
+  #payNowFoundation {
+    width: 100% !important;
+  }
+
+  #cartModalBlush {
+    width: 100% !important;
+  }
+
+  #cartModalBlush.active .toggle-button-Blush {
+    display: none;
+  }
+  .closeBlush {
+    display: flex;
+  }
+  .ArrowCartBlush {
+    display: block;
+    width: 40px;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-top: -2.5rem;
+    cursor: pointer;
+    color: black;
+  }
+
+  .ArrowOrderBlush {
+    display: block;
+    width: 40px;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-top: -2.5rem;
+    cursor: pointer;
+    color: black;
+  }
+  .ArrowPaymentBlush {
+    display: block;
+    width: 40px;
+    font-size: 2rem;
+    margin-left: 5px;
+    margin-top: -2.5rem;
+    cursor: pointer;
+    color: black;
+  }
+  .logo_Sidebar_Cart_Blush {
+    display: flex !important;
+  }
+  .arrow-button-Blush {
+    color: black;
+  }
+  #placeOrderBtnBlush {
+    width: 55%;
+    margin-top: 3rem;
+    height: 2rem;
+  }
+  #totalPriceblush {
+    font-size: 1rem;
+  }
+  .cart-item-info {
+    margin-top: 0rem !important;
+  }
+
+  #orderModalBlush {
+    width: 100% !important;
+  }
+  #paymentModalBlush {
+    width: 100% !important;
+  }
+  #payNowBlush {
+    width: 100% !important;
+  }
+
   #cartModalConcealer {
     width: 100% !important;
   }
@@ -4332,6 +2925,152 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 @media screen and (max-width: 660px) {
+  .modal {
+    min-width: 60% !important;
+  }
+  .lipstick_Details {
+    margin-top: 2.5rem;
+    height: 15%;
+    margin-left: -5rem;
+  }
+
+  .selectedLipstickInfo {
+    display: flex;
+    flex-direction: row;
+    float: right;
+    width: 100%;
+  }
+
+  .selectedLipstickInfo .lipstick_Details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2.5rem;
+  }
+
+  .selectedLipstickInfo p {
+    margin-top: -2rem;
+  }
+
+  .addToCartButton {
+    font-size: 0.9rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+  .addToCartButton:hover {
+    background-color: #999393;
+  }
+  .addToCartIcon {
+    display: flex;
+    margin-left: 1rem;
+  }
+  .CountourContainer {
+    font-size: 1rem;
+  }
+  .Eyeshadow_Details {
+    margin-top: 2.5rem;
+    height: 15%;
+    margin-left: -5rem;
+  }
+  .selectedEyeshadowInfo {
+    display: flex;
+    flex-direction: row;
+    float: right;
+    width: 100%;
+  }
+
+  .selectedEyeshadowInfo .Eyeshadow_Details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2.5rem;
+  }
+
+  .selectedEyeshadowInfo p {
+    margin-top: -2rem;
+  }
+
+  .addToCartButtonEyeshadow {
+    font-size: 0.9rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+  .addToCartButtonEyeshadow:hover {
+    background-color: #999393;
+  }
+  .CountourContainer {
+    font-size: 1rem;
+  }
+  .Foundation_Details {
+    margin-top: 2.5rem;
+    height: 15%;
+    margin-left: -5rem;
+  }
+  .selectedFoundationInfo {
+    display: flex;
+    flex-direction: row;
+    float: right;
+    width: 100%;
+  }
+
+  .selectedFoundationInfo .Foundation_Details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2.5rem;
+  }
+
+  .selectedFoundationInfo p {
+    margin-top: -2rem;
+  }
+
+  .addToCartButtonFoundation {
+    font-size: 0.9rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+  .addToCartButtonFoundation:hover {
+    background-color: #999393;
+  }
+  .CountourContainer {
+    font-size: 1rem;
+  }
+
+  .Blush_Details {
+    margin-top: 2.5rem;
+    height: 15%;
+    margin-left: -5rem;
+  }
+  .selectedBlushInfo {
+    display: flex;
+    flex-direction: row;
+    float: right;
+    width: 100%;
+  }
+
+  .selectedBlushInfo .Blush_Details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2.5rem;
+  }
+
+  .selectedBlushInfo p {
+    margin-top: -2rem;
+  }
+
+  .addToCartButtonBlush {
+    font-size: 0.9rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+  .addToCartButtonBlush:hover {
+    background-color: #999393;
+  }
+  .CountourContainer {
+    font-size: 1rem;
+  }
+
   .Concealer_Details {
     margin-top: 2.5rem;
     height: 15%;
@@ -4368,7 +3107,469 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 
+@media only screen and (max-width: 600px) {
+  .Sidebar_MainContainer.active {
+    min-width: 300px;
+  }
+
+  .lipstickItem {
+    min-width: 50%;
+  }
+  .modal {
+    width: 50% !important;
+  }
+}
 @media screen and (max-width: 768px) {
+  .addToCartButtonCommingSoon {
+    margin-top: -5rem !important;
+  }
+  .addToCartButton {
+    margin-bottom: -0.8rem;
+  }
+  .CameraCommingSoon {
+    display: none;
+  }
+  .Content {
+    margin: 7rem auto;
+  }
+  .empty-cart-content {
+    position: relative;
+    top: 47%;
+    width: 18rem;
+    margin: 0 auto;
+  }
+  /* asdasdas */
+
+  .MainWrapper {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .addToCartButtonEyeshadow {
+    margin-bottom: -1rem !important;
+  }
+  .addToCartButtonFoundation {
+    margin-bottom: -1rem !important;
+  }
+  .addToCartButtonBlush {
+    margin-bottom: -1rem !important;
+  }
+  .addToCartButtonConcealer {
+    margin-bottom: -1rem !important;
+  }
+  .lipstickInfo {
+    margin-top: 0rem !important;
+  }
+
+  .mateContainer {
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+  .addToCartHeading {
+    margin-top: 0rem;
+    font-size: 0.9rem;
+  }
+  .addToCart {
+    margin-top: -8rem;
+    height: 180px;
+  }
+  .CameraImageContainer {
+    width: 45%;
+  }
+  .cartContainer {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    height: 15rem;
+  }
+
+  .lipstickMobile {
+    display: block;
+    margin: 1rem 0 1rem 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+  }
+
+  .lipstickItem {
+    width: 30% !important;
+  }
+
+  #mate {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .Camera {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 45vh;
+  }
+  .toggle_Navbar {
+    display: flex;
+    align-items: center;
+    font-family: "Goldman", cursive;
+    justify-content: center;
+    width: 100%;
+    height: 10vh;
+  }
+
+  .MainContianer {
+    width: 100%;
+  }
+
+  #videoElement {
+    width: 45%;
+    height: 16rem;
+    justify-content: space-between;
+  }
+  .Sidebar_MainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 0;
+    width: 300px;
+    min-height: 150vh !important;
+
+    background-color: #baabab;
+    transition: left 0.3s ease;
+  }
+
+  .Sidebar_MainContainer.active {
+    left: 0; /* Show the sidebar when active */
+    width: 45%;
+    height: 150vh;
+    z-index: 999;
+  }
+  .Side_Bar {
+    height: 100% !important;
+  }
+  .Sidebar_InnerContainer {
+    height: auto !important;
+  }
+
+  .toggle-button {
+    position: absolute;
+    top: 12px;
+    left: 40px;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .toggle-line {
+    width: 30px;
+    height: 4px;
+    background-color: #000000;
+    margin: 6px 0;
+    border-radius: 2px;
+  }
+
+  .logo_Sidebar {
+    text-align: center;
+  }
+
+  .Conatiner {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .smallScreenHeading {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    margin-bottom: 3rem;
+  }
+
+  .Sidebar_MainContainer {
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: left 0.3s ease;
+  }
+
+  .Sidebar_InnerContainer {
+    min-height: 100vh;
+  }
+
+  .Sidebar_Footer {
+    /* bottom: 20px; */
+    margin-bottom: -0.6rem;
+  }
+
+  .lipstikContentNavbar {
+    display: none;
+  }
+
+  .Side_Bar {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .Side_Bar a {
+    margin-bottom: 1rem;
+  }
+
+  .selectedLipstickInfo p {
+    display: flex;
+    align-items: center;
+  }
+  .lipstick_Details {
+    display: flex;
+    align-items: center;
+    align-items: flex-start;
+    margin-top: 0.4rem;
+  }
+  .Comming_Soon img {
+    margin-left: -2rem;
+    margin-top: -3rem;
+  }
+  .Comming_Soon {
+    height: 45%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  .CountourContainer {
+    font-size: 1rem;
+  }
+  .eyeshadow_matteContainer {
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+  .addToCartHeading {
+    /* margin-top: 0.5rem; */
+    font-size: 0.9rem;
+  }
+  .addToCartEyeshadow {
+    margin-top: -8rem;
+    height: 180px;
+  }
+  .lipstickItem .img {
+    width: 130px;
+    height: 130px;
+  }
+
+  #eyeshadow_matte {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .toggle-button-Eyeshadow {
+    position: absolute;
+    top: 12px;
+    left: 40px;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .toggle-line-Eyeshadow {
+    width: 30px;
+    height: 4px;
+    background-color: #000000;
+    margin: 6px 0;
+    border-radius: 2px;
+  }
+
+  .eyeshadowMobile {
+    display: block;
+    margin: 1rem 0 1rem 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+  }
+
+  #videoElementEyeshadow {
+    width: 45%;
+    height: 16rem;
+    justify-content: space-between;
+  }
+
+  .toggle-button-Eyeshadow {
+    position: absolute;
+    top: 12px;
+    left: 40px;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .toggle-line-Eyeshadow {
+    width: 30px;
+    height: 4px;
+    background-color: #000000;
+    margin: 6px 0;
+    /* border-radius: 2px; */
+  }
+
+  .selectedEyeshadowInfo p {
+    display: flex;
+    align-items: center;
+  }
+  .Eyeshadow_Details {
+    display: flex;
+    align-items: center;
+    align-items: flex-start;
+  }
+
+  .toggle-line-Eyeshadow {
+    display: none;
+  }
+
+  .foundation_liquidContainer {
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+  .addToCartFoundation {
+    margin-top: -8rem;
+    height: 180px;
+  }
+
+  #foundation_liquid {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .toggle-button-Foundation {
+    position: absolute;
+    top: 12px;
+    left: 40px;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .toggle-line-Foundation {
+    width: 30px;
+    height: 4px;
+    background-color: #000000;
+    margin: 6px 0;
+    border-radius: 2px;
+  }
+
+  .foundationMobile {
+    display: block;
+    margin: 1rem 0 1rem 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+  }
+
+  #videoElementFoundation {
+    width: 45%;
+    height: 16rem;
+    justify-content: space-between;
+  }
+
+  .toggle-button-Foundation {
+    position: absolute;
+    top: 12px;
+    left: 40px;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .toggle-line-Foundation {
+    width: 30px;
+    height: 4px;
+    background-color: #000000;
+    margin: 6px 0;
+    /* border-radius: 2px; */
+  }
+
+  .selectedFoundationInfo p {
+    display: flex;
+    align-items: center;
+  }
+  .Foundation_Details {
+    display: flex;
+    align-items: center;
+    align-items: flex-start;
+  }
+
+  .toggle-line-Foundation {
+    display: none;
+  }
+
+  .blush_pressedContainer {
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+  .addToCartBlush {
+    margin-top: -8rem;
+    height: 180px;
+  }
+
+  #blush_pressed {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .toggle-button-Blush {
+    position: absolute;
+    top: 12px;
+    left: 40px;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .toggle-line-Blush {
+    width: 30px;
+    height: 4px;
+    background-color: #000000;
+    margin: 6px 0;
+    border-radius: 2px;
+  }
+
+  .blushMobile {
+    display: block;
+    margin: 1rem 0 1rem 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+  }
+
+  #videoElementBlush {
+    width: 45%;
+    height: 16rem;
+    justify-content: space-between;
+  }
+
+  .toggle-button-Blush {
+    position: absolute;
+    top: 12px;
+    left: 40px;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .toggle-line-Blush {
+    width: 30px;
+    height: 4px;
+    background-color: #000000;
+    margin: 6px 0;
+    /* border-radius: 2px; */
+  }
+
+  .selectedBlushInfo p {
+    display: flex;
+    align-items: center;
+  }
+  .Blush_Details {
+    display: flex;
+    align-items: center;
+    align-items: flex-start;
+  }
+
+  .toggle-line-Blush {
+    display: none;
+  }
+
   .concealer_liquidContainer {
     flex-direction: column-reverse;
     justify-content: space-between;
@@ -4376,6 +3577,21 @@ button#submitOrderBtnConcealer:hover {
   .addToCartConcealer {
     margin-top: -8rem;
     height: 180px;
+  }
+  .mateInnerContainer {
+    margin-top: -240px;
+  }
+  .eyeshadow_matteInnerContainer {
+    margin-top: -240px;
+  }
+  .foundation_liquidInnerContainer {
+    margin-top: -240px;
+  }
+  .blush_PressedInnerContainer {
+    margin-top: -240px;
+  }
+  .concealer_liquidInnerContainer {
+    margin-top: -240px;
   }
 
   #concealer_pressed {
@@ -4449,20 +3665,182 @@ button#submitOrderBtnConcealer:hover {
     width: 50% !important;
   }
 }
+@media only screen and (max-width: 900px) {
+  .lipstickItem .img {
+    height: 130px;
+    /* width: 100%; */
+  }
+}
 @media only screen and (max-width: 1000px) {
   .modal {
     width: 40%;
   }
-
+  .addToCartButton:hover {
+    background-color: #999393;
+  }
+  .addToCartButtonEyeshadow:hover {
+    background-color: #999393;
+  }
+  .addToCartButtonFoundation:hover {
+    background-color: #999393;
+  }
+  .addToCartButtonBlush:hover {
+    background-color: #999393;
+  }
   .addToCartButtonConcealer:hover {
     background-color: #999393;
   }
 }
 
 @media only screen and (max-width: 1090px) {
+  .mateContainer {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+  }
+  #videoElement {
+    display: flex;
+    justify-content: space-between;
+  }
+  .lipstickItem {
+    width: 9rem;
+    margin-right: -1rem;
+  }
+  .lipstickItem h3 {
+    font-size: 1rem;
+  }
+  .lipstickItem p {
+    font-size: 0.6rem;
+  }
+  .LipstickContainerCategories {
+    font-size: 0.1rem;
+    width: 90%;
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: space-between;
+  }
+  .LipstickContainerCategories a {
+    margin-bottom: 0.5rem;
+  }
+
+  .Sidebar_MainContainer {
+    width: 16rem;
+    min-height: 102vh;
+  }
+  .Sidebar_InnerContainer {
+    min-height: 100vh;
+  }
+  .Sidebar_Footer {
+    bottom: 20px;
+  }
+  .Navbar_Container {
+    padding: 0 1rem;
+  }
+  .Side_Bar {
+    height: 70%;
+  }
+  .addToCartButtonCommingSoon {
+    margin-top: -3rem !important;
+  }
+  .addToCartButtonEyeshadow {
+    margin-top: 1rem !important;
+  }
+  .addToCartButton {
+    margin-top: 1rem !important;
+  }
+  .lipstickInfo {
+    gap: 0.3em;
+    margin-top: 0.5rem;
+  }
+  .eyeshadow_matteContainer {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+  }
+
+  #videoElementEyeshadow {
+    /* width: 13rem; */
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #videoElementCommingSoon {
+    margin-top: 6.8rem;
+    margin-left: 3rem;
+    width: 75%;
+  }
+  .addToCartHeadingCommingSoon {
+    margin-left: 20%;
+  }
+
+  .ComingSoonContent img {
+    width: 100%;
+    margin: 3rem auto !important;
+  }
+  .addToCartButtonCommingSoon {
+    width: 70%;
+    margin-left: 18%;
+  }
+
+  .eyeshadowContainerCategories {
+    font-size: 0.1rem;
+    width: 90%;
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: space-between;
+  }
+  .eyeshadowContainerCategories a {
+    margin-bottom: 0.5rem;
+  }
+  .foundation_liquidContainer {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+  }
+
+  #videoElementFoundation {
+    /* width: 13rem; */
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .foundationContainerCategories {
+    font-size: 0.1rem;
+    width: 90%;
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: space-between;
+  }
+  .foundationContainerCategories a {
+    margin-bottom: 0.5rem;
+  }
+
   .lipstickInfo {
     gap: 0.3em;
   }
+  .blush_pressedContainer {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+  }
+
+  #videoElementBlush {
+    /* width: 13rem; */
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .blushContainerCategories {
+    font-size: 0.1rem;
+    width: 90%;
+    flex-wrap: nowrap;
+    display: flex;
+    justify-content: space-between;
+  }
+  .blushContainerCategories a {
+    margin-bottom: 0.5rem;
+  }
+
   .concealer_liquidContainer {
     width: 100%;
     margin: 0 auto;
@@ -4487,7 +3865,76 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 
+@media only screen and (max-width: 1300px) {
+  .LipstickContainerCategories {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    white-space: nowrap;
+    font-size: 1rem;
+  }
+  .contentlipstick {
+    width: 95%;
+  }
+  .lipstickItem {
+    width: 40%;
+    margin-right: -1rem;
+    margin: 0 auto;
+  }
+}
 @media only screen and (max-width: 1400px) {
+  .eyeshadowContainerCategories {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    white-space: nowrap;
+    font-size: 1rem;
+  }
+  .contenteyeshadow_matte {
+    width: 101%;
+  }
+  .contentlipstick {
+    height: 560px;
+  }
+  .contentfoundation_liquid {
+    height: 560px;
+  }
+  .contenteyeshadow_matte {
+    height: 560px;
+  }
+  .contentblush_pressed {
+    height: 560px;
+  }
+  .contentconcealer_liquid {
+    height: 560px !important;
+  }
+
+  .foundationContainerCategories {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    white-space: nowrap;
+    font-size: 1rem;
+  }
+  .contentfoundation_liquid {
+    width: 101%;
+  }
+
+  .blushContainerCategories {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    white-space: nowrap;
+    font-size: 1rem;
+  }
+  .contentblush_pressed {
+    width: 101%;
+  }
+
   .concealerContainerCategories {
     display: flex;
     justify-content: start;
@@ -4501,7 +3948,480 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 
+@media only screen and (min-width: 1400px) {
+  .contentlipstick {
+    height: 560px;
+  }
+  .contentfoundation_liquid {
+    height: 560px;
+  }
+  .contenteyeshadow_matte {
+    height: 560px;
+  }
+  .contentblush_pressed {
+    height: 560px;
+  }
+  .contentconcealer_liquid {
+    height: 560px;
+  }
+
+  .Side_Bar {
+    height: 80%;
+  }
+  .Sidebar_InnerContainer {
+    height: 100vh;
+  }
+  .Sidebar_MainContainer {
+    height: 100vh;
+  }
+
+  /* #videoElement {
+    height: 310px;
+  }
+  #videoElementEyeshadow {
+    height: 310px;
+  }
+  #videoElementFoundation {
+    height: 310px;
+  }
+  #videoElementBlush {
+    height: 310px;
+  }
+  #videoElementConcealer {
+    height: 310px !important;
+  } */
+  /* .addToCartHeading {
+    margin-top: 20rem;
+  } */
+
+  #videoElementCommingSoon {
+    margin-left: 40%;
+    width: 61%;
+    height: 230px;
+    object-fit: scale-down;
+  }
+  .addToCartHeadingCommingSoon {
+    margin-top: 0.4rem;
+    margin-left: 40%;
+  }
+  .addToCartButtonCommingSoon {
+    margin-top: -0.5rem;
+  }
+}
 @media only screen and (min-width: 1900px) {
+  body {
+    font-size: 18px;
+  }
+
+  .empty-cart-content {
+    margin-top: 1rem;
+    width: 52%;
+    /* height: 25%; */
+    font-size: 2rem;
+    text-align: center;
+  }
+  .ComingSoonContent img {
+    width: 350px;
+  }
+  .Comming_Soon_Image {
+    margin: -5rem 7rem !important;
+  }
+  .lipstickItem .img {
+    width: 240px;
+    height: 250px;
+  }
+  .Side_Bar {
+    height: 80vh;
+    margin-left: 1rem;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+  .Side_Bar:hover {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #e0e0e0;
+  }
+  .Side_Bar::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  .LipstickContainerCategories {
+    width: 100%;
+  }
+  .Side_Bar::-webkit-scrollbar-thumb {
+    background-color: #e0e0e0;
+    border-radius: 0.2rem;
+  }
+  .Side_Bar:hover::-webkit-scrollbar-thumb {
+    background-color: #e0e0e0;
+  }
+  .Side_Bar img {
+    min-width: 95%;
+  }
+  .Sidebar_InnerContainer a {
+    /* width: 10%; */
+  }
+  .Sidebar_MainContainer {
+    min-height: 65rem;
+    width: 26rem;
+  }
+  .Sidebar_InnerContainer {
+    min-height: 92%;
+  }
+  .Sidebar_Footer {
+    font-size: 2rem;
+    position: relative;
+    left: 2rem;
+    margin-left: 1rem;
+  }
+
+  .logo_Sidebar {
+    font-size: 4.188rem;
+    margin-left: 1rem;
+  }
+
+  .Sidebar_InnerContainer a.selected {
+    width: 355px;
+  }
+  #videoElementCommingSoon {
+    border: 1px solid black;
+    border-radius: 1rem;
+    margin-top: 13rem;
+    margin-left: 36% !important;
+    height: 30rem !important;
+  }
+  .addToCartHeadingCommingSoon {
+    font-size: 1.8rem;
+    margin-left: 36% !important;
+  }
+  .contentlipstick {
+    height: 650px;
+    overflow-x: hidden;
+  }
+  .contentlipstick:hover {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
+  }
+  .contentlipstick::-webkit-scrollbar {
+    width: 0.6rem;
+    /* height: 1rem; */
+  }
+  .contentlipstick::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.2rem;
+  }
+  .contentlipstick:hover::-webkit-scrollbar-thumb {
+    background-color: #baabab;
+  }
+  .lipstickItem {
+    width: 250px;
+  }
+  .lipstickItem h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  .lipstickItem p {
+    font-size: 1.2rem;
+    color: #888;
+  }
+  .lipstickInfo {
+    margin-top: 1rem;
+  }
+  #videoElement {
+    width: 100%;
+    height: 30rem;
+  }
+  .addToCart {
+    margin-top: 2rem;
+    height: 250px;
+  }
+  .lipstick_Details h4 {
+    font-size: 1.5rem;
+  }
+  .selectedLipstickInfo p {
+    font-size: 1.5rem;
+  }
+
+  .addToCartImg,
+  .addToCartIcon {
+    width: 50px;
+    height: 60px;
+  }
+  .delete_icon {
+    width: 50px;
+    height: 60px;
+  }
+  .addToCartHeading {
+    position: relative;
+    top: 38%;
+    display: flex;
+    height: 40%;
+    font-size: 1.8rem;
+  }
+
+  .addToCartButtonCommingSoon {
+    height: 4rem;
+    font-size: 2rem;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    cursor: pointer;
+    margin-left: 36%;
+    margin-top: 17% !important;
+  }
+  .addToCartButton {
+    height: 4rem;
+    font-size: 2rem;
+  }
+  .cartHeading {
+    font-size: 3rem;
+  }
+  .cart-item h4 {
+    font-size: 1.5rem;
+  }
+
+  .cart-item-img,
+  .cart-item-icon {
+    width: 60px;
+    height: 50px;
+  }
+  .cart-item-info p {
+    font-size: 1.5rem;
+  }
+  .total_Price {
+    font-size: 2.5rem !important;
+  }
+
+  #totalPrice {
+    font-size: 2.5rem;
+  }
+  #placeOrderBtn {
+    height: 4.5rem;
+    font-size: 2rem;
+  }
+  .close {
+    font-size: 3rem;
+  }
+
+  .Navbar_Container {
+    font-size: 3rem;
+  }
+  .navbarSearchContainer {
+    width: 35%;
+  }
+  .navbarSearchContainer img {
+    width: 10%;
+  }
+  .SearchbarInput {
+    font-size: 1.5rem;
+  }
+  .LipstickContainerCategories a {
+    min-width: 13rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+  .LipstickContainerCategories a.selectedlipstick {
+    font-size: 1.5rem;
+    align-items: center;
+    padding: 1.7rem;
+    min-width: 15rem;
+  }
+  .selectedlipstick img {
+    width: 30px;
+  }
+  .Comming_Soon img {
+    width: 470px;
+    margin-top: -7rem;
+  }
+  .CountourContainer {
+    font-size: 2.5rem;
+  }
+  .contentlipstick {
+    height: 810px !important;
+  }
+  .contenteyeshadow_matte {
+    height: 810px !important;
+  }
+  .contentfoundation_liquid {
+    height: 810px !important;
+  }
+  .contentblush_pressed {
+    height: 810px !important;
+  }
+  .contentconcealer_liquid {
+    height: 810px !important;
+  }
+
+  .contenteyeshadow_matte {
+    height: 90%;
+    overflow-x: hidden;
+  }
+  .contenteyeshadow_matte:hover {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
+  }
+  .contenteyeshadow_matte::-webkit-scrollbar {
+    width: 0.6rem;
+  }
+  .contenteyeshadow_matte::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.2rem;
+  }
+  .contenteyeshadow_matte:hover::-webkit-scrollbar-thumb {
+    background-color: #baabab;
+  }
+
+  #videoElementEyeshadow {
+    width: 100%;
+    height: 30rem;
+  }
+  .addToCartEyeshadow {
+    margin-top: 2rem;
+    height: 250px;
+  }
+
+  .selectedEyeshadowInfo p {
+    font-size: 1.5rem;
+  }
+  .Eyeshadow_Details h4 {
+    font-size: 1.5rem;
+  }
+
+  .addToCartButtonEyeshadow {
+    height: 4rem;
+    font-size: 2rem;
+  }
+
+  .cart-item-Eyeshadow h4 {
+    font-size: 1.5rem;
+  }
+
+  #totalPriceeyeshadow {
+    font-size: 2.5rem;
+  }
+  #placeOrderBtnEyeshadow {
+    height: 4.5rem;
+    font-size: 2rem;
+  }
+
+  .eyeshadowContainerCategories a {
+    min-width: 13rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+  .eyeshadowContainerCategories a.selectedEyeshadow {
+    font-size: 1.5rem;
+    align-items: center;
+    padding: 1.7rem;
+    border-radius: 0.8rem;
+  }
+  .selectedEyeshadow img {
+    width: 30px;
+  }
+  .contentfoundation_liquid {
+    height: 100%;
+  }
+
+  #videoElementFoundation {
+    width: 100%;
+    height: 30rem;
+  }
+  .addToCartFoundation {
+    margin-top: 2rem;
+    height: 250px;
+  }
+
+  .selectedFoundationInfo p {
+    font-size: 1.5rem;
+  }
+  .Foundation_Details h4 {
+    font-size: 1.5rem;
+  }
+
+  .addToCartButtonFoundation {
+    height: 4rem;
+    font-size: 2rem;
+  }
+
+  .cart-item-Foundation h4 {
+    font-size: 1.5rem;
+  }
+
+  #totalPricefoundation {
+    font-size: 2.5rem;
+  }
+  #placeOrderBtnFoundation {
+    height: 4.5rem;
+    font-size: 2rem;
+  }
+
+  .foundationContainerCategories a {
+    min-width: 13rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+  .foundationContainerCategories a.selectedFoundation {
+    font-size: 1.5rem;
+    align-items: center;
+    padding: 1.7rem;
+    border-radius: 0.8rem;
+  }
+  .selectedFoundation img {
+    width: 30px;
+  }
+
+  .contentblush_pressed {
+    height: 100%;
+  }
+
+  #videoElementBlush {
+    width: 100%;
+    height: 30rem;
+  }
+  .addToCartBlush {
+    margin-top: 2rem;
+    height: 250px;
+  }
+  .Blush_Details h4 {
+    font-size: 1.5rem;
+  }
+
+  .selectedBlushInfo p {
+    font-size: 1.5rem;
+  }
+
+  .addToCartButtonBlush {
+    height: 4rem;
+    font-size: 2rem;
+  }
+
+  .cart-item-Blush h4 {
+    font-size: 1.5rem;
+  }
+
+  #totalPriceblush {
+    font-size: 2.5rem;
+  }
+  #placeOrderBtnBlush {
+    height: 4.5rem;
+    font-size: 2rem;
+  }
+
+  .blushContainerCategories a {
+    min-width: 13rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+  .blushContainerCategories a.selectedBlush {
+    font-size: 1.5rem;
+    align-items: center;
+    padding: 1.7rem;
+    border-radius: 0.8rem;
+  }
+  .selectedBlush img {
+    width: 30px;
+  }
+
   .contentconcealer_liquid {
     height: 100%;
   }
