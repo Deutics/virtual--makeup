@@ -181,7 +181,7 @@
 
 .MainContianer {
   width: 70%;
-  margin: -50px auto;
+  margin: 0 auto;
 }
 
 .Navbar_Container {
@@ -3281,7 +3281,6 @@ button#submitOrderBtnConcealer:hover {
     justify-content: center;
     align-items: center;
     font-size: 35px;
-    margin-bottom: 3rem;
   }
 
   .Sidebar_MainContainer {
