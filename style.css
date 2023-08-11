@@ -3231,7 +3231,7 @@ button#submitOrderBtnConcealer:hover {
     position: absolute;
     top: 0;
     width: 300px;
-    min-height: 150vh !important;
+    height: 108vh !important;
 
     background-color: #baabab;
     transition: left 0.3s ease;
