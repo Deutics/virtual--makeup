@@ -634,10 +634,10 @@
 
 .arrow-button {
   /* Customize the styles for the arrow button */
-  width: 40px;
-  font-size: 2rem;
-  margin-left: 5px;
-  margin-top: 0.5rem;
+  width: 40% !important;
+  font-size: 3rem;
+  margin-left: -10px;
+  margin-top: -0.4rem;
   cursor: pointer;
   color: white;
 }
