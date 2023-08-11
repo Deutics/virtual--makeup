@@ -3674,7 +3674,7 @@ button#submitOrderBtnBlush:hover {
     background-color: #999393;
   }
 }
-@media only screen and (min-width: 1600px) {
+@media only screen and (min-width: 1400px) {
   .contentlipstick {
     height: 560px;
   }
