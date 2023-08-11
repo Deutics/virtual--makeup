@@ -635,12 +635,11 @@
 .arrow-button {
   /* Customize the styles for the arrow button */
   width: 40% !important;
-    font-size: 3rem;
-    margin-left: -10px;
-    margin-top: -0.4rem;
-    cursor: pointer;
-    color: white;
-
+  font-size: 3rem;
+  margin-left: -10px;
+  margin-top: -0.4rem;
+  cursor: pointer;
+  color: white;
 }
 .modal h1 {
   display: none;
@@ -2607,27 +2606,27 @@ button#submitOrderBtnConcealer:hover {
   .ArrowCart {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
   .ArrowOrder {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
   .ArrowPyment {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
@@ -2675,9 +2674,9 @@ button#submitOrderBtnConcealer:hover {
   .ArrowCartEyeshadow {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
@@ -2685,18 +2684,18 @@ button#submitOrderBtnConcealer:hover {
   .ArrowOrderEyeshadow {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
   .ArrowPaymentEyeshadow {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
@@ -2740,9 +2739,9 @@ button#submitOrderBtnConcealer:hover {
   .ArrowCartFoundation {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
@@ -2750,18 +2749,18 @@ button#submitOrderBtnConcealer:hover {
   .ArrowOrderFoundation {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
   .ArrowPaymentFoundation {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
@@ -2806,9 +2805,9 @@ button#submitOrderBtnConcealer:hover {
   .ArrowCartBlush {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
@@ -2816,18 +2815,18 @@ button#submitOrderBtnConcealer:hover {
   .ArrowOrderBlush {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
   .ArrowPaymentBlush {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
@@ -2872,9 +2871,9 @@ button#submitOrderBtnConcealer:hover {
   .ArrowCartConcealer {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
@@ -2882,18 +2881,18 @@ button#submitOrderBtnConcealer:hover {
   .ArrowOrderConcealer {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
   .ArrowPaymentConcealer {
     display: block;
     width: 40px;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -2.5rem;
+    margin-top: -3.3rem;
     cursor: pointer;
     color: black;
   }
