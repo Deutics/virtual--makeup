@@ -32,16 +32,18 @@
 #videoElementCommingSoon {
   border: 1px solid black;
   border-radius: 1rem;
-  margin-top: 4rem;
-  margin-left: 40%;
-  width: 55%;
-  height: 350px;
+  margin-top: 9.8rem;
+  margin-left: 38%;
+  width: 64.5%;
+  height: 230px;
+  object-fit: contain;
+  background-color: #000;
 }
 .addToCartHeadingCommingSoon {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-left: 41%;
+  margin-left: 38%;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   color: #000;
@@ -57,11 +59,12 @@
   border-radius: 5rem;
   height: 2.5rem;
   font-weight: 600;
-  width: 55%;
+  width: 62%;
   font-family: "Poppins", sans-serif;
   color: white;
   cursor: pointer;
-  margin-left: 41%;
+  margin-left: 38%;
+  margin-top: 1%;
 }
 .ComingSoonContent {
   font-size: 1.5rem;
@@ -129,7 +132,7 @@
   font-weight: 400;
   font-size: 1rem;
   position: absolute;
-  bottom: 20px;
+  bottom: 2rem;
   left: 2rem;
 }
 
@@ -140,7 +143,7 @@
   font-family: "Poppins", sans-serif;
   width: 16rem;
   background-color: #baabab;
-  max-height: 100%;
+  min-height: 100vh;
 }
 .Sidebar_InnerContainer {
   margin: 0.5rem 0 2rem 2rem;
@@ -262,7 +265,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   overflow-x: hidden;
-  height: 430px;
+  height: 390px;
 }
 
 .contentlipstick:hover {
@@ -391,7 +394,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-top: -7rem;
+  margin-top: -8rem;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   color: #000;
@@ -480,8 +483,8 @@
 }
 
 .Comming_Soon {
-  margin-top: -25rem;
-  margin-left: 5rem;
+  margin-top: -30rem;
+  margin-left: 1rem;
   height: 50%;
 }
 
@@ -1015,7 +1018,8 @@ button#submitOrderBtn:hover {
     width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    height: 15rem;
   }
 
   .lipstickMobile {
@@ -1162,7 +1166,8 @@ button#submitOrderBtn:hover {
     margin-top: 0.4rem;
   }
   .Comming_Soon img {
-    height: 70%;
+    margin-left: -2rem;
+    margin-top: -3rem;
   }
   .Comming_Soon {
     height: 45%;
@@ -1275,11 +1280,25 @@ button#submitOrderBtn:hover {
     font-size: 18px;
   }
 
+  .empty-cart-content {
+    margin-top: 1rem;
+    width: 52%;
+    /* height: 25%; */
+    font-size: 2rem;
+    text-align: center;
+  }
   .ComingSoonContent img {
     width: 350px;
   }
+  .Comming_Soon_Image {
+    margin: -5rem 7rem !important;
+  }
+  .lipstickItem .img {
+    width: 240px;
+    height: 250px;
+  }
   .Side_Bar {
-    height: 100%;
+    height: 80vh;
     margin-left: 1rem;
     overflow-y: hidden;
     overflow-x: hidden;
@@ -1293,7 +1312,7 @@ button#submitOrderBtn:hover {
     width: 0.5rem;
   }
   .LipstickContainerCategories {
-    width: 115%;
+    width: 100%;
   }
   .Side_Bar::-webkit-scrollbar-thumb {
     background-color: #e0e0e0;
@@ -1303,17 +1322,17 @@ button#submitOrderBtn:hover {
     background-color: #e0e0e0;
   }
   .Side_Bar img {
-    min-width: 100%;
+    min-width: 95%;
   }
   .Sidebar_InnerContainer a {
     /* width: 10%; */
   }
   .Sidebar_MainContainer {
-    min-height: 80rem;
-    width: 20%;
+    min-height: 65rem;
+    width: 26rem;
   }
   .Sidebar_InnerContainer {
-    height: 100%;
+    min-height: 92%;
   }
   .Sidebar_Footer {
     font-size: 2rem;
@@ -1328,18 +1347,19 @@ button#submitOrderBtn:hover {
   }
 
   .Sidebar_InnerContainer a.selected {
-    /* width: 33rem; */
+    width: 355px;
   }
   #videoElementCommingSoon {
     border: 1px solid black;
     border-radius: 1rem;
-    margin-top: 4rem;
-    margin-left: 40%;
-    width: 56%;
-    height: 550px;
+    margin-top: 13rem;
+    margin-left: 36%;
+    width: 63.5%;
+    height: 30rem;
   }
   .addToCartHeadingCommingSoon {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin-left: 36%;
   }
   .contentlipstick {
     height: 650px;
@@ -1362,7 +1382,7 @@ button#submitOrderBtn:hover {
     background-color: #baabab;
   }
   .lipstickItem {
-    width: 13rem;
+    width: 250px;
   }
   .lipstickItem h3 {
     font-size: 1.6rem;
@@ -1408,8 +1428,14 @@ button#submitOrderBtn:hover {
   }
 
   .addToCartButtonCommingSoon {
-    height: 4.5rem;
+    height: 4rem;
     font-size: 2rem;
+    width: 64%;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    cursor: pointer;
+    margin-left: 36%;
+    margin-top: 17%;
   }
   .addToCartButton {
     height: 4rem;
@@ -1449,7 +1475,7 @@ button#submitOrderBtn:hover {
     font-size: 3rem;
   }
   .navbarSearchContainer {
-    width: 20%;
+    width: 35%;
   }
   .navbarSearchContainer img {
     width: 10%;
@@ -1458,21 +1484,23 @@ button#submitOrderBtn:hover {
     font-size: 1.5rem;
   }
   .LipstickContainerCategories a {
-    min-width: 10rem;
+    min-width: 13rem;
     height: 3rem;
     font-size: 1.5rem;
   }
   .LipstickContainerCategories a.selectedlipstick {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     align-items: center;
-    padding: 2rem;
+    padding: 1.7rem;
+    min-width: 15rem;
+    
   }
   .selectedlipstick img {
-    width: 40px;
+    width: 30px;
   }
   .Comming_Soon img {
-    width: 50rem;
-    margin-top: -20rem;
+    width: 470px;
+    margin-top: -7rem;
   }
   .CountourContainer {
     font-size: 2.5rem;
@@ -1558,7 +1586,7 @@ button#submitOrderBtn:hover {
   flex-direction: row;
   flex-wrap: wrap;
   overflow-x: hidden;
-  height: 430px;
+  height: 390px;
 }
 .contenteyeshadow_matte:hover {
   overflow-y: scroll;
@@ -1691,7 +1719,7 @@ button#submitOrderBtnEyeshadow:hover {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-top: -7rem;
+  margin-top: -8rem;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   color: #000;
@@ -2017,7 +2045,12 @@ button#submitOrderBtnEyeshadow:hover {
     font-size: 1rem;
   }
 }
-
+@media only screen and (max-width: 900px) {
+  .lipstickItem .img {
+    height: 130px;
+    width: 100%;
+  }
+}
 @media screen and (max-width: 768px) {
   .eyeshadow_matteContainer {
     flex-direction: column-reverse;
@@ -2030,6 +2063,10 @@ button#submitOrderBtnEyeshadow:hover {
   .addToCartEyeshadow {
     margin-top: -8rem;
     height: 180px;
+  }
+  .lipstickItem .img {
+    width: 95%;
+    height: 130px;
   }
 
   #eyeshadow_matte {
@@ -2116,6 +2153,7 @@ button#submitOrderBtnEyeshadow:hover {
 @media only screen and (max-width: 1090px) {
   .lipstickInfo {
     gap: 0.3em;
+    margin-top: .5rem;
   }
   .eyeshadow_matteContainer {
     width: 100%;
@@ -2127,6 +2165,24 @@ button#submitOrderBtnEyeshadow:hover {
     /* width: 13rem; */
     display: flex;
     justify-content: space-between;
+  }
+
+  #videoElementCommingSoon {
+    margin-top: 6.8rem;
+    margin-left: 3rem;
+    width: 75%;
+  }
+  .addToCartHeadingCommingSoon {
+    margin-left: 20%;
+  }
+
+  .ComingSoonContent img {
+    width: 100%;
+    margin: 3rem auto !important;
+  }
+  .addToCartButtonCommingSoon {
+    width: 70%;
+    margin-left: 18%;
   }
 
   .eyeshadowContainerCategories {
@@ -2210,17 +2266,17 @@ button#submitOrderBtnEyeshadow:hover {
   }
 
   .eyeshadowContainerCategories a {
-    min-width: 10rem;
+    min-width: 13rem;
     height: 3rem;
     font-size: 1.5rem;
   }
   .eyeshadowContainerCategories a.selectedEyeshadow {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     align-items: center;
-    padding: 2rem;
+    padding: 1.7rem;
   }
   .selectedEyeshadow img {
-    width: 40px;
+    width: 30px;
   }
 }
 
@@ -2307,7 +2363,7 @@ button#submitOrderBtnEyeshadow:hover {
   flex-direction: row;
   flex-wrap: wrap;
   overflow-x: hidden;
-  height: 430px;
+  height: 390px;
 }
 .contentfoundation_liquid:hover {
   overflow-y: scroll;
@@ -2943,17 +2999,17 @@ button#submitOrderBtnFoundation:hover {
   }
 
   .foundationContainerCategories a {
-    min-width: 10rem;
+    min-width: 13rem;
     height: 3rem;
     font-size: 1.5rem;
   }
   .foundationContainerCategories a.selectedFoundation {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     align-items: center;
-    padding: 2rem;
+    padding: 1.7rem;
   }
   .selectedFoundation img {
-    width: 40px;
+    width: 30px;
   }
 }
 
@@ -3021,10 +3077,7 @@ button#submitOrderBtnFoundation:hover {
   background-color: #baabab;
   color: white;
   font-size: 0.8rem;
-  -webkit-border-radius: 0.8rem;
-  -moz-border-radius: 0.8rem;
-  -ms-border-radius: 0.8rem;
-  -o-border-radius: 0.8rem;
+  border-radius: 1.5rem;
 }
 
 .blush_pressedContainer {
@@ -3040,7 +3093,7 @@ button#submitOrderBtnFoundation:hover {
   flex-direction: row;
   flex-wrap: wrap;
   overflow-x: hidden;
-  height: 430px;
+  height: 390px;
 }
 .contentblush_pressed:hover {
   overflow-y: scroll;
@@ -3173,7 +3226,7 @@ button#submitOrderBtnBlush:hover {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-top: -7rem;
+  margin-top: -8rem;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   color: #000;
@@ -3676,17 +3729,18 @@ button#submitOrderBtnBlush:hover {
   }
 
   .blushContainerCategories a {
-    min-width: 10rem;
+    min-width: 13rem;
     height: 3rem;
     font-size: 1.5rem;
   }
   .blushContainerCategories a.selectedBlush {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     align-items: center;
-    padding: 2rem;
-  }
+    padding: 1.7rem;
+    border-radius: 1rem;
+}
   .selectedBlush img {
-    width: 40px;
+    width: 30px;
   }
 }
 
@@ -3695,7 +3749,7 @@ button#submitOrderBtnBlush:hover {
 .concealerContainerCategories {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   margin: 2rem auto;
   width: 100%;
@@ -3748,16 +3802,12 @@ button#submitOrderBtnBlush:hover {
 }
 
 .concealerContainerCategories a.selectedConcealer {
-  border-radius: 0.8rem;
+  border-radius: 1rem;
   padding: 0.5rem;
   text-align: center;
   background-color: #baabab;
   color: white;
   font-size: 0.8rem;
-  -webkit-border-radius: 0.8rem;
-  -moz-border-radius: 0.8rem;
-  -ms-border-radius: 0.8rem;
-  -o-border-radius: 0.8rem;
 }
 
 .concealer_liquidContainer {
@@ -3773,7 +3823,7 @@ button#submitOrderBtnBlush:hover {
   flex-direction: row;
   flex-wrap: wrap;
   overflow-x: hidden;
-  height: 430px;
+  height: 390px;
 }
 .contentconcealer_liquid:hover {
   overflow-y: scroll;
@@ -3906,7 +3956,7 @@ button#submitOrderBtnConcealer:hover {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-top: -7rem;
+  margin-top: -8rem;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   color: #000;
@@ -4359,7 +4409,7 @@ button#submitOrderBtnConcealer:hover {
 @media only screen and (max-width: 1400px) {
   .concealerContainerCategories {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     margin-left: 1rem;
     margin-right: 1rem;
     white-space: nowrap;
@@ -4409,16 +4459,17 @@ button#submitOrderBtnConcealer:hover {
   }
 
   .concealerContainerCategories a {
-    min-width: 10rem;
+    min-width: 13rem;
     height: 3rem;
     font-size: 1.5rem;
   }
   .concealerContainerCategories a.selectedConcealer {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     align-items: center;
-    padding: 2rem;
-  }
+    padding: 1.7rem;
+    border-radius: 1rem;
+}
   .selectedConcealer img {
-    width: 40px;
+    width: 30px;
   }
 }

@@ -1,12 +1,5 @@
 const lisptickMate = [
-  {
-    id: 1,
-    img: "/Images/lipstik/lipstik_img1.png",
-    icon: "/Images/lipstik/lipstick_img1_color.png",
-    title: "Powermatte Long Lasting ",
-    content: "Transfer-resistant, matte lipstick",
-    price: "$200",
-  },
+ 
   {
     id: 2,
     img: "/Images/lipstik/lipstik_img2.png",
@@ -15,14 +8,7 @@ const lisptickMate = [
     content: "Rich lipstick with high color payoff",
     price: "$200",
   },
-  {
-    id: 3,
-    img: "Images/lipstik/lipstick_img10.png",
-    icon: "Images/lipstik/lipstick_img10_color.png",
-    title: "Matte Refillable Lipstick ",
-    content: "Transfer-resistant, matte lipstick ",
-    price: "$200",
-  },
+ 
   {
     id: 4,
     img: "/Images/lipstik/lipstik_img4.png",
@@ -60,14 +46,6 @@ const lisptickMate = [
     img: "/Images/lipstik/lipstik_img8.png",
     icon: "/Images/lipstik/lipstick_img5_color.png",
     title: "Kind Words Matte Lipstick",
-    content: "Transfer-resistant, matte lipstick",
-    price: "$200",
-  },
-  {
-    id: 9,
-    img: "Images/lipstik/lipstick_img11.png",
-    icon: "/Images/lipstik/lipstick_img11_color.png",
-    title: "Velvet Matte Lipstick",
     content: "Transfer-resistant, matte lipstick",
     price: "$200",
   },
@@ -228,50 +206,50 @@ const FoundationLiquid = [
 const ConcealerLiquid = [
   {
     id: 1,
-    img: "Images/Eyeshadow/Eyeshadow_Img1.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon1.png",
-    title: "Brown Script ",
-    content: "Long Lasting Multi Reflective with Matte",
+    img: "Images/Concealer/Concealer_Img1.png",
+    icon: "Images/Concealer/Concealer_Img_Icon1.png",
+    title: "Neverending Long Lasting ",
+    content: "Cure Long Lasting Concealer",
     price: "$200",
   },
   {
     id: 2,
-    img: "Images/Eyeshadow/Eyeshadow_Img2.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon2.png",
-    title: "Matte Eyeshadow",
-    content: "Rich Eyeshadow with Matte Finish",
+    img: "Images/Concealer/Concealer_Img2.png",
+    icon: "Images/Concealer/Concealer_Img_Icon2.png",
+    title: "Make-Up Lift Effect",
+    content: "Make-Up Lift Effect Concealer",
     price: "$200",
   },
   {
     id: 3,
-    img: "Images/Eyeshadow/Eyeshadow_Img3.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon3.png",
-    title: "Refillable Pro Palette ",
-    content: "Pro Palette Refillable Eyeshadow ",
+    img: "Images/Concealer/Concealer_Img3.png",
+    icon: "Images/Concealer/Concealer_Img_Icon3.png",
+    title: "Waterproof Natural ",
+    content: "Natural Dark Acne Mark Concealer ",
     price: "$200",
   },
   {
     id: 4,
-    img: "Images/Eyeshadow/Eyeshadow_Img4.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon4.png",
-    title: "Vanilla Matte",
-    content: "Vanilla Nut Matte Eyeshadow",
+    img: "Images/Concealer/Concealer_Img4.png",
+    icon: "Images/Concealer/Concealer_Img_Icon4.png",
+    title: "Liquid Concealer",
+    content: "Vivid Tone with Natural Finish",
     price: "$200",
   },
   {
     id: 5,
-    img: "Images/Eyeshadow/Eyeshadow_Img5.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon5.png",
-    title: "Colourful Eyeshadow",
-    content: "New Collection Colourful Eyeshadow",
+    img: "Images/Concealer/Concealer_Img5.png",
+    icon: "Images/Concealer/Concealer_Img_Icon5.png",
+    title: "HD Photogenic Liquid Concealer",
+    content: "Buildable lip colour with a blurred, soft-focus effect",
     price: "$200",
   },
   {
     id: 6,
-    img: "Images/Eyeshadow/Eyeshadow_Img6.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon6.png",
-    title: "Natural Translucent",
-    content: "Buttery Pigment-Rich Matte Foundation",
+    img: "Images/Concealer/Concealer_Img6.png",
+    icon: "Images/Concealer/Concealer_Img_Icon6.png",
+    title: "Liquid Concealer",
+    content: "Buttery Pigment-rich Soft Liquid Concealer",
     price: "$200",
   },
 ];
@@ -303,7 +281,6 @@ function showLandingPageSection(sectionId, button) {
     );
   }
 
-  window.history.pushState(null, null, `#${sectionId}`);
 
   scrollToSection(sectionId);
 }
@@ -487,6 +464,11 @@ function removeSelectedCartLipstick(cartItemDiv, indexToRemove) {
   generateCartModelContent();
 }
 
+function mergeCartArrays(...arrays) {
+  return arrays.reduce((mergedArray, currentArray) => {
+    return mergedArray.concat(currentArray);
+  }, []);
+}
 // Responsibale to send data in the cart
 function handleLipstickImageClick(img, icon, title, price) {
   // Clear local storage and the UI if a lipstick is already selected
@@ -1160,6 +1142,7 @@ function handleEyeshadowImageClick(img, icon, title, price) {
     "selectedEyeshadowArray",
     JSON.stringify(selectedEyeshadowArray)
   );
+  
 }
 
 function displaySelectedEyeshadowOnLoad() {
@@ -1254,12 +1237,12 @@ function generateCartModelEyeshadowContent() {
 
 // Call the function when the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-  //   // For Eyeshadow Container Categories
+   // For Eyeshadow Container Categories
 
   const storedSectionEyeshadow = localStorage.getItem(
     "selectedSectionEyeshadow"
   );
-  const storedButtonEyeshadow = localStorage.getItem("selectedButtonEyeshadow");
+  const storedButtonEyeshadow = localStorage.getItem("selectedButtoneyeshadow");
   if (storedSectionEyeshadow && storedButtonEyeshadow) {
     const selectedButtonlipstick = document.querySelector(
       `.eyeshadowContainerCategories a[href="${storedButtonEyeshadow}"]`
@@ -1890,7 +1873,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "selectedSectionFoundation"
   );
   const storedButtonFoundation = localStorage.getItem(
-    "selectedButtonFoundation"
+    "selectedButtonfoundation"
   );
   if (storedSectionFoundation && storedButtonFoundation) {
     const selectedButtonfoundation = document.querySelector(
@@ -2476,7 +2459,7 @@ function generateCartModelBlushContent() {
 document.addEventListener("DOMContentLoaded", () => {
   // For Blush Container Categories
   const storedSectionBlush = localStorage.getItem("selectedSectionBlush");
-  const storedButtonBlush = localStorage.getItem("selectedButtonBlush");
+  const storedButtonBlush = localStorage.getItem("selectedButtonblush");
   if (storedSectionBlush && storedButtonBlush) {
     const selectedButtonblush = document.querySelector(
       `.blushContainerCategories a[href="${storedButtonBlush}"]`
@@ -3077,7 +3060,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const storedSectionConcealer = localStorage.getItem(
     "selectedSectionConcealer"
   );
-  const storedButtonConcealer = localStorage.getItem("selectedButtonConcealer");
+  const storedButtonConcealer = localStorage.getItem("selectedButtonconcealer");
   if (storedSectionConcealer && storedButtonConcealer) {
     const selectedButtonlipstick = document.querySelector(
       `.concealerContainerCategories a[href="${storedButtonConcealer}"]`
