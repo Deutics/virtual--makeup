@@ -1525,19 +1525,19 @@ button#submitOrderBtn:hover {
     font-size: 2.5rem;
     /* dfghjhgfgvhj */
   }
-  .contentlipstick{
+  .contentlipstick {
     height: 810px;
   }
-  .contenteyeshadow_matte{
+  .contenteyeshadow_matte {
     height: 810px;
   }
-  .contentfoundation_liquid{
+  .contentfoundation_liquid {
     height: 810px;
   }
-  .contentblush_pressed{
+  .contentblush_pressed {
     height: 810px;
   }
-  .contentconcealer_liquid{
+  .contentconcealer_liquid {
     height: 810px;
   }
 }
@@ -3672,6 +3672,29 @@ button#submitOrderBtnBlush:hover {
 
   .addToCartButtonBlush:hover {
     background-color: #999393;
+  }
+}
+@media only screen and (max-width: 1600px) {
+  .contentlipstick {
+    height: 560px;
+  }
+  .Side_Bar {
+    height: 80%;
+  }
+
+  #videoElement {
+    height: 310px;
+  }
+
+  .addToCartHeading {
+    margin-top: 20rem;
+  }
+
+  .Sidebar_InnerContainer {
+    height: 100vh;
+  }
+  .Sidebar_MainContainer {
+    height: 100vh;
   }
 }
 
