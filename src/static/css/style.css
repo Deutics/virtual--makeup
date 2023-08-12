@@ -8,10 +8,6 @@ body {
     font-family: visbyround;
 }
 
-/* .canvas {
-    width: 100px;
-    height: 100px;
-} */
 .outerWrapper {
     width: 100vw;
     display: flex;
@@ -19,19 +15,30 @@ body {
 
 .processedImg {
     width: 100%;
-    height: 100vh;
+    height: 50vh;
     object-fit: cover;
 }
-.mainImage {
-    background-color: rgb(85, 38, 38);
-    height: 100vh;
-    width: 75vw;
+.page {
+    background-color: #ffffff;
+
+    width: 80vw;
+
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
     text-align: center;
 
     /* background-image: url("../img/samples.jpg"); */
+}
+
+.page_innerWrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.contentContainer {
+    display: flex;
+    justify-content: space-between;
 }
 
 .mainImage_innerWrapper {
@@ -44,17 +51,54 @@ body {
 }
 
 .container {
-    width: 100%;
+    background-color: #f5eded;
+    width: 50%;
     height: 100%;
 }
 
-.mainImage > img {
+.products {
+    width: 50%;
+
+    background-color: azure;
+}
+
+.header {
+    padding: 1em 0;
+    font-size: 1.3em;
+    text-align: left;
+    align-items: center;
+    display: flex;
+    text-transform: capitalize;
+}
+
+.shades {
+    height: 10%;
+    padding: 1em 0;
+
+    display: flex;
+}
+.shade {
+    margin-right: 10px;
+    padding: 0.7em 1.5em;
+    background-color: #f5f6f6;
+    text-transform: capitalize;
+    border-radius: 5px;
+    color: #828282;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+.shade:hover {
+    background-color: #947474;
+    color: #f5f6f6;
+}
+
+.page > img {
     object-fit: fill;
 }
 
 .sideBar {
     max-width: 70vw;
-    width: 25vw;
+    width: 20vw;
     height: 20vh;
     display: none;
     z-index: 4;
@@ -128,47 +172,39 @@ body {
 .closed {
     font-family: visbyround;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     box-sizing: border-box;
-    border: 1px solid #d3d3d3;
-    height: 16.66666vh;
+    height: 9vh;
     cursor: pointer;
-    background-color: #1f2022;
-    color: #d3d3d3;
-    text-transform: uppercase;
-
+    background-color: #baabab;
+    color: #ffffff;
+    text-transform: capitalize;
+    text-align: center;
+    align-items: center;
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 0.95em;
     line-height: 31px;
-    text-align: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
-.expanded {
-    min-height: 70vh;
-    display: none;
-    flex-direction: column;
+
+.branding {
+    display: flex;
+    font-family: 'Goldman';
     justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    border: 1px solid #d3d3d3;
+    font-size: 1.2em;
+    height: 5vh;
+}
+.closed > p {
+    margin-left: 10%;
+}
 
-    cursor: pointer;
-    background-color: #1f2022;
-    color: #d3d3d3;
-    text-transform: uppercase;
+.borderForSidebar {
+    border: 2px solid #947474;
+}
 
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 25px;
-    text-align: center;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+.closed > img {
+    margin-left: 15%;
+    height: 40px;
+    width: 40px;
 }
 
 .expanded > span {
@@ -197,44 +233,6 @@ body {
 
 .taptotry {
     font-size: 8px;
-}
-
-#closed1 {
-    background-image: url("../img/concealer.png");
-}
-#closed2 {
-    background-image: url("../img/lipstick.png");
-}
-#closed3 {
-    background-image: url("../img/foundation.png");
-}
-#closed4 {
-    background-image: url("../img/blush.png");
-}
-#closed5 {
-    background-image: url("../img/eyebrow.png");
-}
-#closed6 {
-    background-image: url("../img/aiart.png");
-}
-
-#expanded1 {
-    background-image: url("../img/concealer.png");
-}
-#expanded2 {
-    background-image: url("../img/lipstick.png");
-}
-#expanded3 {
-    background-image: url("../img/foundation.png");
-}
-#expanded4 {
-    background-image: url("../img/blush.png");
-}
-#expanded5 {
-    background-image: url("../img/eyebrow.png");
-}
-#expanded6 {
-    background-image: url("../img/aiart.png");
 }
 
 .hamburger {

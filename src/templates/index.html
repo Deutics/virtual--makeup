@@ -14,7 +14,10 @@
             href="{{ url_for('static', filename='css/style.css') }}"
         />
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-
+        <link
+            href="https://fonts.googleapis.com/css?family=Goldman"
+            rel="stylesheet"
+        />
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
             rel="stylesheet"
@@ -33,401 +36,165 @@
         <div class="outerWrapper">
             <div class="sideBar" id="sideBar">
                 <div>
-                    <div
-                        class="expanded"
-                        id="expanded6"
-                        style="background-image: url('{{ url_for('static',  filename='img/aiart.png')}}')"
-                    >
-                        <span>ai artist </span>
-                        <div class="aiRec" id="aiRec">
-                            <div class="black_race" id="black_race">
-                                <span> a </span>
-
-                                <div class="line mt-20">
-                                    <p>foundation</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    199,
-                                                    166,
-                                                    134
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <p>eye shadow</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    174,
-                                                    86,
-                                                    28
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <p>concealer</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    199,
-                                                    166,
-                                                    134
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <p>blush</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    205,
-                                                    141,
-                                                    107
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <p>lipstick</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    150,
-                                                    25,
-                                                    25
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="brown_race" id="brown_race">
-                                <span> b </span>
-
-                                <div class="line mt-20">
-                                    <p>foundation</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    233,
-                                                    211,
-                                                    199
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <p>eye shadow</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    187,
-                                                    42,
-                                                    107
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <p>concealer</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    210,
-                                                    165,
-                                                    140
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <p>blush</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    219,
-                                                    54,
-                                                    86
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <p>lipstick</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    210,
-                                                    4,
-                                                    45
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="white_race" id="white_race">
-                                <span> c </span>
-
-                                <div class="line mt-20">
-                                    <p>foundation</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    248,
-                                                    224,
-                                                    212
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <p>eye shadow</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    255,
-                                                    192,
-                                                    203
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <p>concealer</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    255,
-                                                    229,
-                                                    180
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <p>blush</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    244,
-                                                    194,
-                                                    194
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div class="line">
-                                    <p>lipstick</p>
-                                    <div class="colors">
-                                        <div
-                                            class="color"
-                                            id="color"
-                                            style="
-                                                background-color: rgb(
-                                                    224,
-                                                    17,
-                                                    95
-                                                );
-                                            "
-                                        ></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    <div class="closed branding">beau</div>
+                </div>
+                <div>
                     <div
                         class="closed"
-                        style="background-image: url('{{ url_for('static',  filename='img/aiart.png')}}')"
-                        id="closed6"
-                        onclick="handlerClosed(6)"
+                        id="ai Beauty"
+                        onclick="sideBarItemClick('ai Beauty')"
                     >
-                        ai artist
+                        <img src="../static/img/aibeauty_sidebar.png" />
+                        <p>AI Beauty</p>
                     </div>
                 </div>
                 <div>
                     <div
-                        class="expanded"
-                        id="expanded3"
-                        style="background-image: url('{{ url_for('static',  filename='img/foundation.png')}}')"
-                    >
-                        <span>foundation </span>
-                        <div id="foundationShades"></div>
-                    </div>
-
-                    <div
+                        id="lipstick"
                         class="closed"
-                        style="background-image: url('{{ url_for('static',  filename='img/foundation.png')}}')"
-                        id="closed3"
-                        onclick="handlerClosed(3)"
+                        onclick="sideBarItemClick('lipstick')"
                     >
-                        foundation
-                    </div>
-                </div>
-                <div>
-                    <div
-                        class="expanded"
-                        id="expanded5"
-                        style="background-image: url('{{ url_for('static',  filename='img/eyebrow.png')}}')"
-                    >
-                        <span>eye shadow </span>
-                        <div id="eyeShadowShades"></div>
-                    </div>
-
-                    <div
-                        class="closed"
-                        style="background-image: url('{{ url_for('static',  filename='img/eyebrow.png')}}')"
-                        id="closed5"
-                        onclick="handlerClosed(5)"
-                    >
-                        eye shadow
+                        <img src="../static/img/lipstick_sidebar.png" />
+                        <p>lipstick</p>
                     </div>
                 </div>
                 <div class="item__sidebar">
                     <div
-                        class="expanded"
-                        id="expanded1"
-                        style="background-image: url('{{ url_for('static',  filename='img/concealer.png')}}')"
-                    >
-                        <span>concealer </span>
-                        <div id="concealerShades"></div>
-                    </div>
-
-                    <div
                         class="closed"
-                        style="background-image: url('{{ url_for('static',  filename='img/concealer.png')}}')"
-                        id="closed1"
-                        onclick="handlerClosed(1)"
+                        id="contour"
+                        onclick="sideBarItemClick('contour')"
                     >
-                        concealer
+                        <img src="../static/img/concealer_sidebar.png" />
+                        <p>contour</p>
                     </div>
                 </div>
 
                 <div>
                     <div
-                        class="expanded"
-                        id="expanded4"
-                        style="background-image: url('{{ url_for('static',  filename='img/blush.png')}}')"
-                    >
-                        <span>blush </span>
-                        <div id="blushShades"></div>
-                    </div>
-
-                    <div
                         class="closed"
-                        style="background-image: url('{{ url_for('static',  filename='img/blush.png')}}')"
-                        id="closed4"
-                        onclick="handlerClosed(4)"
+                        id="eye shadow"
+                        onclick="sideBarItemClick('eye shadow')"
                     >
-                        blush
+                        <img src="../static/img/eyeshadow_sidebar.png" />
+                        <p>eye shadow</p>
                     </div>
                 </div>
                 <div>
                     <div
-                        class="expanded"
-                        id="expanded2"
-                        style="background-image: url('{{ url_for('static',  filename='img/lipstick.png')}}')"
+                        class="closed"
+                        id="foundation"
+                        onclick="sideBarItemClick('foundation')"
                     >
-                        <span>lipstick </span>
-                        <div id="lipstickShades"></div>
+                        <img src="../static/img/foundation_sidebar.png" />
+                        <p>foundation</p>
                     </div>
+                </div>
+                <div class="item__sidebar">
                     <div
                         class="closed"
-                        style="background-image: url('{{ url_for('static',  filename='img/lipstick.png')}}')"
-                        id="closed2"
-                        onclick="handlerClosed(2)"
+                        id="blush"
+                        onclick="sideBarItemClick('blush')"
                     >
-                        lipstick
+                        <img src="../static/img/blush_sidebar.png" />
+                        <p>blush</p>
                     </div>
+                </div>
+                <div>
+                    <div
+                        class="closed"
+                        id="mascara"
+                        onclick="sideBarItemClick('mascara')"
+                    >
+                        <img src="../static/img/mascara_sidebar.png" />
+                        <p>mascara</p>
+                    </div>
+                </div>
+                <div>
+                    <div
+                        class="closed"
+                        id="eye brow pencil"
+                        onclick="sideBarItemClick('eye brow pencil')"
+                    >
+                        <img src="../static/img/eyebrowpencil_sidebar.png" />
+                        <p>eye brow pencil</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div
+                        class="closed"
+                        id="concealer"
+                        onclick="sideBarItemClick('concealer')"
+                    >
+                        <img src="../static/img/concealer_sidebar.png" />
+                        <p>concealer</p>
+                    </div>
+                </div>
+                <div>
+                    <div
+                        class="closed"
+                        id="hair color"
+                        onclick="sideBarItemClick('hair color')"
+                    >
+                        <img src="../static/img/haircolor_sidebar.png" />
+                        <p>Hair color</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="closed branding">powered by beau</div>
                 </div>
             </div>
-            <div class="mainImage">
-                <div id="container" style="position: relative">
-                    <img
-                        id="photo"
-                        class="processedImg"
-                        style="position: absolute; top: 0; left: 0; z-index: 0"
-                    />
-                    <video
-                        autoplay
-                        playsinline
-                        id="videoElement"
-                        style="position: absolute; top: 0; left: 0; z-index: -2"
-                    ></video>
-                    <canvas
-                        id="canvas"
-                        class="canvas"
-                        style="position: absolute; top: 0; left: 0; z-index: -3"
-                    ></canvas>
-                </div>
 
-                <div class="mainImage_innerWrapper">
-                    <div style="height: 90vh"></div>
-                    <div
-                        id="backButton"
-                        class="backButton"
-                        style="background-image: url('{{ url_for('static',  filename='img/back.svg')}}')"
-                        onclick="reset()"
-                    ></div>
+            <div class="page">
+                <div class="page_innerWrapper">
+                    <div>
+                        <div class="header" id="header">Header</div>
+                        <div class="shades" id="shades"></div>
+                    </div>
+                    <div class="contentContainer">
+                        <div class="products"></div>
+                        <div id="container">
+                            <img
+                                id="photo"
+                                class="processedImg"
+                                src="../static/img/white-denim-jacket-front-view-streetwear-fashion.jpg"
+                            />
+                            <video
+                                autoplay
+                                playsinline
+                                id="videoElement"
+                                style="
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    z-index: -2;
+                                "
+                            ></video>
+                            <canvas
+                                id="canvas"
+                                class="canvas"
+                                style="
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    z-index: -3;
+                                "
+                            ></canvas>
+                        </div>
+                    </div>
+
+                    <!-- <div class="mainImage_innerWrapper">
+                        <div style="height: 90vh"></div>
+                        <div
+                            id="backButton"
+                            class="backButton"
+                            style="background-image: url('{{ url_for('static',  filename='img/back.svg')}}')"
+                            onclick="reset()"
+                        >
+                            <img src="../static/img/back.svg" alt="" />
+                        </div>
+                    </div> -->
                 </div>
             </div>
             <div id="selectedColors" class="selectedColors"></div>
