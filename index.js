@@ -162,7 +162,7 @@ const FoundationLiquid = [
   },
   {
     id: 2,
-    img: "Images/Foundation/foundation_Img2.png",
+    img:"Images/Foundation/foundation_Img5.png",
     icon: "Images/Foundation/foundation_Img_Icon2.png",
     title: "New York",
     content: "Fit Me Matte + Poreless Foundation",
@@ -287,7 +287,8 @@ function setSelectedSection(sectionId, button) {
   showSection(sectionId, button);
 }
 
-let selectedLipsticksArray = [];
+let selectedItesmsArray =
+  JSON.parse(localStorage.getItem("selectedItesmsArray")) || [];
 
 function showSection(sectionId, button) {
   // Hide all sections
@@ -425,12 +426,12 @@ function removeSelectedLipstick(selectedLipstickDiv, indexToRemove) {
   // cartItemsContainer.removeChild(cartItemDiv);
 
   // Remove the selected lipstick from the array
-  selectedLipsticksArray.splice(indexToRemove, 1);
+  selectedItesmsArray.splice(indexToRemove, 1);
 
   // Update the stored array in localStorage
   localStorage.setItem(
-    "selectedLipsticksArray",
-    JSON.stringify(selectedLipsticksArray)
+    "selectedItesmsArray",
+    JSON.stringify(selectedItesmsArray)
   );
   generateCartModelContent();
 }
@@ -450,69 +451,74 @@ function removeSelectedCartLipstick(cartItemDiv, indexToRemove) {
   }
 
   // Remove the selected lipstick from the array
-  selectedLipsticksArray.splice(indexToRemove, 1);
+  selectedItesmsArray.splice(indexToRemove, 1);
 
   // Update the stored array in localStorage
   localStorage.setItem(
-    "selectedLipsticksArray",
-    JSON.stringify(selectedLipsticksArray)
+    "selectedItesmsArray",
+    JSON.stringify(selectedItesmsArray)
   );
 
   // Regenerate the cart items and update the total price in the modal
   generateCartModelContent();
 }
 
-function mergeCartArrays(...arrays) {
-  return arrays.reduce((mergedArray, currentArray) => {
-    return mergedArray.concat(currentArray);
-  }, []);
-}
-// Responsibale to send data in the cart
-function handleLipstickImageClick(img, icon, title, price) {
-  // Clear local storage and the UI if a lipstick is already selected
-  if (selectedLipsticksArray?.length > 0) {
-    selectedLipsticksArray = [];
-    const addToCartSection = document.querySelector(".addToCart");
-    addToCartSection.innerHTML = "";
-    localStorage.removeItem("selectedLipsticksArray"); // Clear local storage
-  }
-
-  // Call the function to display the selected lipstick in the addToCart section
-  displaySelectedLipstick(
-    img,
-    icon,
-    title,
-    price,
-    selectedLipsticksArray.length
+function updateSelectionInAllSections(
+  selectedItemData,
+  sectionClassName,
+  displayFunction
+) {
+  // Filter out items from the same section and clear UI if more than 1 item selected of the specified section
+  selectedItesmsArray = selectedItesmsArray.filter(
+    (item) => item.sectionClassName !== sectionClassName
   );
 
-  // Add the selected lipstick data to the array
+  // Display the selected item in the specified section
+  const addToCartSection = document.querySelector("." + sectionClassName);
+  addToCartSection.innerHTML = "";
+  displayFunction(
+    selectedItemData.img,
+    selectedItemData.icon,
+    selectedItemData.title,
+    selectedItemData.price,
+    selectedItesmsArray.length,
+    addToCartSection
+  );
+
+  // Add sectionClassName to the data
+  selectedItemData.sectionClassName = sectionClassName; 
+  selectedItesmsArray.push(selectedItemData);
+
+  // Store the updated Add to Cart array in localStorage
+  localStorage.setItem(
+    "selectedItesmsArray",
+    JSON.stringify(selectedItesmsArray)
+  );
+}
+
+// Responsibale to send data in the cart
+function handleLipstickImageClick(img, icon, title, price) {
   const selectedItemData = {
     img: img,
     icon: icon,
     title: title,
     price: price,
   };
-  selectedLipsticksArray.push(selectedItemData);
-
-  // Store the updated Add to Cart array in localStorage
-  localStorage.setItem(
-    "selectedLipsticksArray",
-    JSON.stringify(selectedLipsticksArray)
+  updateSelectionInAllSections(
+    selectedItemData,
+    "addToCart",
+    displaySelectedLipstick
   );
-
-  // generateMateLipstickContent();
-  // generateCartModelContent();
 }
 
 function displaySelectedLipstickOnLoad() {
   // Retrieve the selected lipsticks Add to Cart from localStorage
-  const storedLipsticks = localStorage.getItem("selectedLipsticksArray");
+  const storedLipsticks = localStorage.getItem("selectedItesmsArray");
   if (storedLipsticks) {
-    selectedLipsticksArray = JSON.parse(storedLipsticks);
+    selectedItesmsArray = JSON.parse(storedLipsticks);
 
     // Display each selected lipstick in the addToCart section
-    selectedLipsticksArray.forEach((lipstickData, index) => {
+    selectedItesmsArray.forEach((lipstickData, index) => {
       displaySelectedLipstick(
         lipstickData.img,
         lipstickData.icon,
@@ -553,7 +559,7 @@ function generateCartModelContent() {
   cartItemsContainer.innerHTML = ""; // Clear previous content
 
   // Iterate through the selected lipsticks array and create HTML elements for each selected lipstick
-  selectedLipsticksArray.forEach((ItemData, index) => {
+  selectedItesmsArray.forEach((ItemData, index) => {
     const cartItemDiv = document.createElement("div");
     cartItemDiv.classList.add("cart-item");
     cartItemDiv.innerHTML = `
@@ -584,7 +590,7 @@ function generateCartModelContent() {
   // Calculate and display the total price
   const totalPriceElement = document.getElementById("totalPrice");
   let totalPrice = 0;
-  selectedLipsticksArray.forEach((lipstick) => {
+  selectedItesmsArray.forEach((lipstick) => {
     totalPrice += parseInt(lipstick.price.slice(1));
   });
   totalPriceElement.textContent = `$${totalPrice}`;
@@ -638,7 +644,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Event listener to open the modal when the "Add to Cart" button is clicked
   const addToCartButton = document.querySelector(".addToCartButton");
   addToCartButton.addEventListener("click", () => {
-    if (selectedLipsticksArray?.length === 0) {
+    if (selectedItesmsArray?.length === 0) {
       const emptyCartMessage = document.getElementById("emptyCartMessage");
       emptyCartMessage.style.display = "block";
 
@@ -702,6 +708,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function showSectionAndCloseSidebar(sectionId, button) {
     closeSidebar();
     showSection(sectionId, button);
+
+    window.location.reload();
   }
 
   const sidebarButtons = document.querySelectorAll(".Sidebar_InnerContainer a");
@@ -785,7 +793,7 @@ function closeEmptyCartModal() {
 document.addEventListener("DOMContentLoaded", () => {
   const addToCartButton = document.querySelector(".addToCartButton");
   addToCartButton.addEventListener("click", () => {
-    if (selectedLipsticksArray.length <= 0) {
+    if (selectedItesmsArray.length <= 0) {
       const emptyCartModal = document.getElementById("emptyCartModal");
       emptyCartModal.style.display = "block";
 
@@ -941,10 +949,10 @@ function submitPaynowbtn() {
   });
 
   // Clear the selected lipsticks array and remove the lipsticks from the addToCart section
-  selectedLipsticksArray = [];
+  selectedItesmsArray = [];
   const addToCartSection = document.querySelector(".addToCart");
   addToCartSection.innerHTML = "";
-  localStorage.removeItem("selectedLipsticksArray"); // Clear local storage
+  localStorage.removeItem("selectedItesmsArray"); // Clear local storage
 
   toggleCartModal();
 }
@@ -971,7 +979,7 @@ function submitPaynowbtn() {
 
 // ...................eyeshadow js here ................//
 
-let selectedEyeshadowArray = [];
+// let selectedItesmsArray = [];
 function showEyeshadowSection(sectionId, button) {
   // Hide all sections
   const sectionsEyeshadow = document.querySelectorAll(".eyeshadowContent");
@@ -1078,12 +1086,12 @@ function removeSelectedEyeshadow(selectedEyeshadowDiv, indexToRemoveEyeshadow) {
   // cartItemsContainer.removeChild(cartItemDiv);
 
   // Remove the selected Eyeshadow from the array
-  selectedEyeshadowArray.splice(indexToRemoveEyeshadow, 1);
+  selectedItesmsArray.splice(indexToRemoveEyeshadow, 1);
 
   // Update the stored array in localStorage
   localStorage.setItem(
-    "selectedEyeshadowArray",
-    JSON.stringify(selectedEyeshadowArray)
+    "selectedItesmsArray",
+    JSON.stringify(selectedItesmsArray)
   );
   generateCartModelEyeshadowContent();
 }
@@ -1113,12 +1121,12 @@ function removeSelectedCartEyeshadow(
   }
 
   // Remove the selected Eyeshadow from the array
-  selectedEyeshadowArray.splice(indexToRemoveEyeshadow, 1);
+  selectedItesmsArray.splice(indexToRemoveEyeshadow, 1);
 
   // Update the stored array in localStorage
   localStorage.setItem(
-    "selectedEyeshadowArray",
-    JSON.stringify(selectedEyeshadowArray)
+    "selectedItesmsArray",
+    JSON.stringify(selectedItesmsArray)
   );
 
   // Regenerate the cart items and update the total price in the modal
@@ -1126,49 +1134,27 @@ function removeSelectedCartEyeshadow(
 }
 
 function handleEyeshadowImageClick(img, icon, title, price) {
-  // Clear local storage and the UI if a Eyeshadow is already selected
-  if (selectedEyeshadowArray?.length > 0) {
-    selectedEyeshadowArray = [];
-    const addToCartSectionEyeshadow = document.querySelector(
-      ".addToCartEyeshadow"
-    );
-    addToCartSectionEyeshadow.innerHTML = "";
-    localStorage.removeItem("selectedEyeshadowArray"); // Clear local storage
-  }
-
-  // Call the function to display the selected Eyeshadow in the addToCart section
-  displaySelectedEyeshadow(
-    img,
-    icon,
-    title,
-    price,
-    selectedEyeshadowArray.length
-  );
-
-  // Add the selected Eyeshadow data to the array
   const selectedItemData = {
     img: img,
     icon: icon,
     title: title,
     price: price,
   };
-  selectedEyeshadowArray.push(selectedItemData);
-
-  // Store the updated Add to Cart array in localStorage
-  localStorage.setItem(
-    "selectedEyeshadowArray",
-    JSON.stringify(selectedEyeshadowArray)
+  updateSelectionInAllSections(
+    selectedItemData,
+    "addToCartEyeshadow",
+    displaySelectedEyeshadow
   );
 }
 
 function displaySelectedEyeshadowOnLoad() {
   // Retrieve the selected eyeshadows Add to Cart from localStorage
-  const storedEyeshadow = localStorage.getItem("selectedEyeshadowArray");
+  const storedEyeshadow = localStorage.getItem("selectedItesmsArray");
   if (storedEyeshadow) {
-    selectedEyeshadowArray = JSON.parse(storedEyeshadow);
+    selectedItesmsArray = JSON.parse(storedEyeshadow);
 
     // Display each selected eyeshadow in the addToCart section
-    selectedEyeshadowArray.forEach((eyeshadowData, index) => {
+    selectedItesmsArray.forEach((eyeshadowData, index) => {
       displaySelectedEyeshadow(
         eyeshadowData.img,
         eyeshadowData.icon,
@@ -1210,7 +1196,7 @@ function generateCartModelEyeshadowContent() {
   cartItemsContainerEyeshadow.innerHTML = ""; // Clear previous content
 
   // Iterate through the selected Eyeshadow array and create HTML elements for each selected Eyeshadow
-  selectedEyeshadowArray.forEach((ItemData, index) => {
+  selectedItesmsArray.forEach((ItemData, index) => {
     const cartItemDivEyeshadow = document.createElement("div");
     cartItemDivEyeshadow.classList.add("cart-item-Eyeshadow");
     cartItemDivEyeshadow.innerHTML = `
@@ -1245,7 +1231,7 @@ function generateCartModelEyeshadowContent() {
     "totalPriceeyeshadow"
   );
   let totalPriceEyeshadow = 0;
-  selectedEyeshadowArray.forEach((Eyeshadow) => {
+  selectedItesmsArray.forEach((Eyeshadow) => {
     totalPriceEyeshadow += parseInt(Eyeshadow.price.slice(1));
   });
   totalPriceElementEyeshadow.textContent = `$${totalPriceEyeshadow}`;
@@ -1279,7 +1265,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ".addToCartButtonEyeshadow"
   );
   addToCartButtonEyeshadow.addEventListener("click", () => {
-    if (selectedEyeshadowArray?.length === 0) {
+    if (selectedItesmsArray?.length === 0) {
       const emptyCartMessage = document.getElementById(
         "emptyCartModalEyeshadow"
       );
@@ -1415,7 +1401,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ".addToCartButtonEyeshadow"
   );
   addToCartButtonEyeshadow.addEventListener("click", () => {
-    if (selectedEyeshadowArray.length <= 0) {
+    if (selectedItesmsArray.length <= 0) {
       const emptyCartModalEyeshadow = document.getElementById(
         "emptyCartModalEyeshadow"
       );
@@ -1582,19 +1568,19 @@ function submitPaynowbtnEyeshadow() {
   });
 
   // Clear the selected Eyeshadow array and remove the Eyeshadow from the addToCart section
-  selectedEyeshadowArray = [];
+  selectedItesmsArray = [];
   const addToCartSectionEyeshadow = document.querySelector(
     ".addToCartEyeshadow"
   );
   addToCartSectionEyeshadow.innerHTML = "";
-  localStorage.removeItem("selectedEyeshadowArray"); // Clear local storage
+  localStorage.removeItem("selectedItesmsArray"); // Clear local storage
 
   toggleCartModalEyeshadow();
 }
 
 // ..................Foundation js Here.............//
 
-let selectedFoundationArray = [];
+// let selectedItesmsArray = [];
 function showFoundationSection(sectionId, button) {
   // Hide all sections
   const sectionsFoundation = document.querySelectorAll(".foundationContent");
@@ -1705,12 +1691,12 @@ function removeSelectedFoundation(
   addToCartSectionFoundation.removeChild(selectedFoundationDiv);
 
   // Remove the selected Foundation from the array
-  selectedFoundationArray.splice(indexToRemoveFoundation, 1);
+  selectedItesmsArray.splice(indexToRemoveFoundation, 1);
 
   // Update the stored array in localStorage
   localStorage.setItem(
-    "selectedFoundationArray",
-    JSON.stringify(selectedFoundationArray)
+    "selectedItesmsArray",
+    JSON.stringify(selectedItesmsArray)
   );
   generateCartModelFoundationContent();
 }
@@ -1740,12 +1726,12 @@ function removeSelectedCartFoundation(
   }
 
   // Remove the selected foundation from the array
-  selectedFoundationArray.splice(indexToRemoveFoundation, 1);
+  selectedItesmsArray.splice(indexToRemoveFoundation, 1);
 
   // Update the stored array in localStorage
   localStorage.setItem(
-    "selectedFoundationArray",
-    JSON.stringify(selectedFoundationArray)
+    "selectedItesmsArray",
+    JSON.stringify(selectedItesmsArray)
   );
 
   // Regenerate the cart items and update the total price in the modal
@@ -1753,25 +1739,6 @@ function removeSelectedCartFoundation(
 }
 
 function handleFoundationImageClick(img, icon, title, price) {
-  // Clear local storage and the UI if a foundation is already selected
-  if (selectedFoundationArray?.length > 0) {
-    selectedFoundationArray = [];
-    const addToCartSectionFoundation = document.querySelector(
-      ".addToCartFoundation"
-    );
-    addToCartSectionFoundation.innerHTML = "";
-    localStorage.removeItem("selectedFoundationArray"); // Clear local storage
-  }
-
-  // Call the function to display the selected Foundation in the addToCart section
-  displaySelectedFoundation(
-    img,
-    icon,
-    title,
-    price,
-    selectedFoundationArray.length
-  );
-
   // Add the selected Foundation data to the array
   const selectedItemData = {
     img: img,
@@ -1779,23 +1746,21 @@ function handleFoundationImageClick(img, icon, title, price) {
     title: title,
     price: price,
   };
-  selectedFoundationArray.push(selectedItemData);
-
-  // Store the updated Add to Cart array in localStorage
-  localStorage.setItem(
-    "selectedFoundationArray",
-    JSON.stringify(selectedFoundationArray)
+  updateSelectionInAllSections(
+    selectedItemData,
+    "addToCartFoundation",
+    displaySelectedFoundation
   );
 }
 
 function displaySelectedFoundationOnLoad() {
   // Retrieve the selected foundation Add to Cart from localStorage
-  const storedFoundation = localStorage.getItem("selectedFoundationArray");
+  const storedFoundation = localStorage.getItem("selectedItesmsArray");
   if (storedFoundation) {
-    selectedFoundationArray = JSON.parse(storedFoundation);
+    selectedItesmsArray = JSON.parse(storedFoundation);
 
     // Display each selected foundation in the addToCart section
-    selectedFoundationArray.forEach((foundationData, index) => {
+    selectedItesmsArray.forEach((foundationData, index) => {
       displaySelectedFoundation(
         foundationData.img,
         foundationData.icon,
@@ -1838,7 +1803,7 @@ function generateCartModelFoundationContent() {
   cartItemsContainerFoundation.innerHTML = ""; // Clear previous content
 
   // Iterate through the selected Foundation array and create HTML elements for each selected Foundation
-  selectedFoundationArray.forEach((ItemData, index) => {
+  selectedItesmsArray.forEach((ItemData, index) => {
     const cartItemDivFoundation = document.createElement("div");
     cartItemDivFoundation.classList.add("cart-item-Foundation");
     cartItemDivFoundation.innerHTML = `
@@ -1876,7 +1841,7 @@ function generateCartModelFoundationContent() {
     "totalPricefoundation"
   );
   let totalPriceFoundation = 0;
-  selectedFoundationArray.forEach((Foundation) => {
+  selectedItesmsArray.forEach((Foundation) => {
     totalPriceFoundation += parseInt(Foundation.price.slice(1));
   });
   totalPriceElementFoundation.textContent = `$${totalPriceFoundation}`;
@@ -1911,7 +1876,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ".addToCartButtonFoundation"
   );
   addToCartButtonFoundation.addEventListener("click", () => {
-    if (selectedFoundationArray?.length === 0) {
+    if (selectedItesmsArray?.length === 0) {
       const emptyCartMessage = document.getElementById(
         "emptyCartModalFoundation"
       );
@@ -2047,7 +2012,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ".addToCartButtonFoundation"
   );
   addToCartButtonFoundation.addEventListener("click", () => {
-    if (selectedFoundationArray.length <= 0) {
+    if (selectedItesmsArray.length <= 0) {
       const emptyCartModalFoundation = document.getElementById(
         "emptyCartModalFoundation"
       );
@@ -2214,19 +2179,19 @@ function submitPaynowbtnFoundation() {
   });
 
   // Clear the selected foundation array and remove the foundation from the addToCart section
-  selectedFoundationArray = [];
+  selectedItesmsArray = [];
   const addToCartSectionFoundation = document.querySelector(
     ".addToCartFoundation"
   );
   addToCartSectionFoundation.innerHTML = "";
-  localStorage.removeItem("selectedFoundationArray"); // Clear local storage
+  localStorage.removeItem("selectedItesmsArray"); // Clear local storage
 
   toggleCartModalFoundation();
 }
 
 // .......................Blush Js Here........................//
 
-let selectedBlushArray = [];
+// let selectedItesmsArray = [];
 function showBlushSection(sectionId, button) {
   // Hide all sections
   const sectionsBlush = document.querySelectorAll(".blushContent");
@@ -2320,12 +2285,12 @@ function removeSelectedBlush(selectedBlushDiv, indexToRemoveBlush) {
   addToCartSectionBlush.removeChild(selectedBlushDiv);
 
   // Remove the selected Blush from the array
-  selectedBlushArray.splice(indexToRemoveBlush, 1);
+  selectedItesmsArray.splice(indexToRemoveBlush, 1);
 
   // Update the stored array in localStorage
   localStorage.setItem(
-    "selectedBlushArray",
-    JSON.stringify(selectedBlushArray)
+    "selectedItesmsArray",
+    JSON.stringify(selectedItesmsArray)
   );
   generateCartModelBlushContent();
 }
@@ -2345,12 +2310,12 @@ function removeSelectedCartBlush(cartItemBlushDiv, indexToRemoveBlush) {
   }
 
   // Remove the selected Blush from the array
-  selectedBlushArray.splice(indexToRemoveBlush, 1);
+  selectedItesmsArray.splice(indexToRemoveBlush, 1);
 
   // Update the stored array in localStorage
   localStorage.setItem(
-    "selectedBlushArray",
-    JSON.stringify(selectedBlushArray)
+    "selectedItesmsArray",
+    JSON.stringify(selectedItesmsArray)
   );
 
   // Regenerate the cart items and update the total price in the modal
@@ -2358,41 +2323,27 @@ function removeSelectedCartBlush(cartItemBlushDiv, indexToRemoveBlush) {
 }
 
 function handleBlushImageClick(img, icon, title, price) {
-  // Clear local storage and the UI if a Blush is already selected
-  if (selectedBlushArray?.length > 0) {
-    selectedBlushArray = [];
-    const addToCartSectionBlush = document.querySelector(".addToCartBlush");
-    addToCartSectionBlush.innerHTML = "";
-    localStorage.removeItem("selectedBlushArray"); // Clear local storage
-  }
-
-  // Call the function to display the selected Blush in the addToCart section
-  displaySelectedBlush(img, icon, title, price, selectedBlushArray.length);
-
-  // Add the selected Blush data to the array
   const selectedItemData = {
     img: img,
     icon: icon,
     title: title,
     price: price,
   };
-  selectedBlushArray.push(selectedItemData);
-
-  // Store the updated Add to Cart array in localStorage
-  localStorage.setItem(
-    "selectedBlushArray",
-    JSON.stringify(selectedBlushArray)
+  updateSelectionInAllSections(
+    selectedItemData,
+    "addToCartBlush",
+    displaySelectedBlush
   );
 }
 
 function displaySelectedBlushOnLoad() {
   // Retrieve the selected Blush Add to Cart from localStorage
-  const storedBlush = localStorage.getItem("selectedBlushArray");
+  const storedBlush = localStorage.getItem("selectedItesmsArray");
   if (storedBlush) {
-    selectedBlushArray = JSON.parse(storedBlush);
+    selectedItesmsArray = JSON.parse(storedBlush);
 
     // Display each selected Blush in the addToCart section
-    selectedBlushArray.forEach((BlushData, index) => {
+    selectedItesmsArray.forEach((BlushData, index) => {
       displaySelectedBlush(
         BlushData.img,
         BlushData.icon,
@@ -2432,7 +2383,7 @@ function generateCartModelBlushContent() {
   cartItemsContainerBlush.innerHTML = ""; // Clear previous content
 
   // Iterate through the selected Blush array and create HTML elements for each selected Blush
-  selectedBlushArray.forEach((ItemData, index) => {
+  selectedItesmsArray.forEach((ItemData, index) => {
     const cartItemDivBlush = document.createElement("div");
     cartItemDivBlush.classList.add("cart-item-Blush");
     cartItemDivBlush.innerHTML = `
@@ -2465,7 +2416,7 @@ function generateCartModelBlushContent() {
   // Calculate and display the total price
   const totalPriceElementBlush = document.getElementById("totalPriceblush");
   let totalPriceBlush = 0;
-  selectedBlushArray.forEach((Blush) => {
+  selectedItesmsArray.forEach((Blush) => {
     totalPriceBlush += parseInt(Blush.price.slice(1));
   });
   totalPriceElementBlush.textContent = `$${totalPriceBlush}`;
@@ -2494,7 +2445,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //   // Event listener to open the modal when the "Add to Cart" button is clicked
   const addToCartButtonBlush = document.querySelector(".addToCartButtonBlush");
   addToCartButtonBlush.addEventListener("click", () => {
-    if (selectedBlushArray?.length === 0) {
+    if (selectedItesmsArray?.length === 0) {
       const emptyCartMessage = document.getElementById("emptyCartModalBlush");
       emptyCartMessage.style.display = "block";
 
@@ -2622,7 +2573,7 @@ function closeEmptyCartModalBlush() {
 document.addEventListener("DOMContentLoaded", () => {
   const addToCartButtonBlush = document.querySelector(".addToCartButtonBlush");
   addToCartButtonBlush.addEventListener("click", () => {
-    if (selectedBlushArray.length <= 0) {
+    if (selectedItesmsArray.length <= 0) {
       const emptyCartModalBlush = document.getElementById(
         "emptyCartModalBlush"
       );
@@ -2778,17 +2729,17 @@ function submitPaynowbtnBlush() {
   });
 
   // Clear the selected Blush array and remove the Blush from the addToCart section
-  selectedBlushArray = [];
+  selectedItesmsArray = [];
   const addToCartSectionBlush = document.querySelector(".addToCartBlush");
   addToCartSectionBlush.innerHTML = "";
-  localStorage.removeItem("selectedBlushArray"); // Clear local storage
+  localStorage.removeItem("selectedItesmsArray"); // Clear local storage
 
   toggleCartModalBlush();
 }
 
 //............................ Concealer Js Here...........................//
 
-let selectedConcealerArray = [];
+// let selectedItesmsArray = [];
 function showConcealerSection(sectionId, button) {
   // Hide all sections
 
@@ -2896,12 +2847,12 @@ function removeSelectedConcealer(selectedConcealerDiv, indexToRemoveConcealer) {
   // cartItemsContainer.removeChild(cartItemDiv);
 
   // Remove the selected Concealer from the array
-  selectedConcealerArray.splice(indexToRemoveConcealer, 1);
+  selectedItesmsArray.splice(indexToRemoveConcealer, 1);
 
   // Update the stored array in localStorage
   localStorage.setItem(
-    "selectedConcealerArray",
-    JSON.stringify(selectedConcealerArray)
+    "selectedItesmsArray",
+    JSON.stringify(selectedItesmsArray)
   );
   generateCartModelConcealerContent();
 }
@@ -2931,12 +2882,12 @@ function removeSelectedCartConcealer(
   }
 
   // Remove the selected Concealer from the array
-  selectedConcealerArray.splice(indexToRemoveConcealer, 1);
+  selectedItesmsArray.splice(indexToRemoveConcealer, 1);
 
   // Update the stored array in localStorage
   localStorage.setItem(
-    "selectedConcealerArray",
-    JSON.stringify(selectedConcealerArray)
+    "selectedItesmsArray",
+    JSON.stringify(selectedItesmsArray)
   );
 
   // Regenerate the cart items and update the total price in the modal
@@ -2944,49 +2895,27 @@ function removeSelectedCartConcealer(
 }
 
 function handleConcealerImageClick(img, icon, title, price) {
-  // Clear local storage and the UI if a Concealer is already selected
-  if (selectedConcealerArray?.length > 0) {
-    selectedConcealerArray = [];
-    const addToCartSectionConcealer = document.querySelector(
-      ".addToCartConcealer"
-    );
-    addToCartSectionConcealer.innerHTML = "";
-    localStorage.removeItem("selectedConcealerArray"); // Clear local storage
-  }
-
-  // Call the function to display the selected Concealer in the addToCart section
-  displaySelectedConcealer(
-    img,
-    icon,
-    title,
-    price,
-    selectedConcealerArray.length
-  );
-
-  // Add the selected Concealer data to the array
   const selectedItemData = {
     img: img,
     icon: icon,
     title: title,
     price: price,
   };
-  selectedConcealerArray.push(selectedItemData);
-
-  // Store the updated Add to Cart array in localStorage
-  localStorage.setItem(
-    "selectedConcealerArray",
-    JSON.stringify(selectedConcealerArray)
+  updateSelectionInAllSections(
+    selectedItemData,
+    "addToCartConcealer",
+    displaySelectedConcealer
   );
 }
 
 function displaySelectedConcealerOnLoad() {
   // Retrieve the selected Concealers Add to Cart from localStorage
-  const storedConcealer = localStorage.getItem("selectedConcealerArray");
+  const storedConcealer = localStorage.getItem("selectedItesmsArray");
   if (storedConcealer) {
-    selectedConcealerArray = JSON.parse(storedConcealer);
+    selectedItesmsArray = JSON.parse(storedConcealer);
 
     // Display each selected Concealer in the addToCart section
-    selectedConcealerArray.forEach((concealerData, index) => {
+    selectedItesmsArray.forEach((concealerData, index) => {
       displaySelectedConcealer(
         concealerData.img,
         concealerData.icon,
@@ -3028,7 +2957,7 @@ function generateCartModelConcealerContent() {
   cartItemsContainerConcealer.innerHTML = ""; // Clear previous content
 
   // Iterate through the selected Concealer array and create HTML elements for each selected Concealer
-  selectedConcealerArray.forEach((ItemData, index) => {
+  selectedItesmsArray.forEach((ItemData, index) => {
     const cartItemDivConcealer = document.createElement("div");
     cartItemDivConcealer.classList.add("cart-item-Concealer");
     cartItemDivConcealer.innerHTML = `
@@ -3063,7 +2992,7 @@ function generateCartModelConcealerContent() {
     "totalPriceconcealer"
   );
   let totalPriceConcealer = 0;
-  selectedConcealerArray.forEach((Concealer) => {
+  selectedItesmsArray.forEach((Concealer) => {
     totalPriceConcealer += parseInt(Concealer.price.slice(1));
   });
   totalPriceElementConcealer.textContent = `$${totalPriceConcealer}`;
@@ -3097,7 +3026,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ".addToCartButtonConcealer"
   );
   addToCartButtonConcealer.addEventListener("click", () => {
-    if (selectedConcealerArray?.length === 0) {
+    if (selectedItesmsArray?.length === 0) {
       const emptyCartMessage = document.getElementById(
         "emptyCartModalConcealer"
       );
@@ -3233,7 +3162,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ".addToCartButtonConcealer"
   );
   addToCartButtonConcealer.addEventListener("click", () => {
-    if (selectedConcealerArray.length <= 0) {
+    if (selectedItesmsArray.length <= 0) {
       const emptyCartModalConcealer = document.getElementById(
         "emptyCartModalConcealer"
       );
@@ -3400,12 +3329,12 @@ function submitPaynowbtnConcealer() {
   });
 
   // Clear the selected Concealer array and remove the Concealer from the addToCart section
-  selectedConcealerArray = [];
+  selectedItesmsArray = [];
   const addToCartSectionConcealer = document.querySelector(
     ".addToCartConcealer"
   );
   addToCartSectionConcealer.innerHTML = "";
-  localStorage.removeItem("selectedConcealerArray"); // Clear local storage
+  localStorage.removeItem("selectedItesmsArray"); // Clear local storage
 
   toggleCartModalConcealer();
 }

@@ -3223,15 +3223,11 @@ button#submitOrderBtnConcealer:hover {
     justify-content: space-between;
   }
   .Sidebar_MainContainer {
-    display: flex;
-    flex-direction: column;
     align-items: flex-start;
     position: absolute;
     top: 0;
     width: 300px;
     min-height: 150vh !important;
-
-    background-color: #baabab;
     transition: left 0.3s ease;
   }
 
@@ -3965,25 +3961,6 @@ button#submitOrderBtnConcealer:hover {
     height: 100vh;
   }
 
-  /* #videoElement {
-    height: 310px;
-  }
-  #videoElementEyeshadow {
-    height: 310px;
-  }
-  #videoElementFoundation {
-    height: 310px;
-  }
-  #videoElementBlush {
-    height: 310px;
-  }
-  #videoElementConcealer {
-    height: 310px !important;
-  } */
-  /* .addToCartHeading {
-    margin-top: 20rem;
-  } */
-
   #videoElementCommingSoon {
     margin-left: 40%;
     width: 61%;
@@ -4046,9 +4023,6 @@ button#submitOrderBtnConcealer:hover {
   }
   .Side_Bar img {
     min-width: 95%;
-  }
-  .Sidebar_InnerContainer a {
-    /* width: 10%; */
   }
   .Sidebar_MainContainer {
     min-height: 65rem;
