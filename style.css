@@ -4441,13 +4441,11 @@ button#submitOrderBtnConcealer:hover {
 
 @media only screen and (min-width: 2500px) {
   .Side_Bar {
-    /* min-height: 101vh; */
     margin-left: 1rem;
     overflow-y: hidden;
     overflow-x: hidden;
   }
   .Side_Bar img {
-    /* width: 100%; */
     min-height: 7vh;
   }
   .Sidebar_InnerContainer a.selected {
@@ -4520,49 +4518,49 @@ button#submitOrderBtnConcealer:hover {
   }
   .addToCartButtonCommingSoon {
     margin-left: 42%;
-    margin-top: 13.5%;
+    margin-top: 7.5% !important;
     height: 6rem;
     width: 58%;
   }
   #videoElement {
-    height: 630px;
+    height: 440px;
   }
   #videoElementEyeshadow {
-    height: 630px;
+    height: 440px;
   }
   #videoElementFoundation {
-    height: 630px;
+    height: 440px;
   }
   #videoElementBlush {
-    height: 630px;
+    height: 440px;
   }
   #videoElementConcealer {
-    height: 630px;
+    height: 440px;
   }
 
   .addToCartHeading {
     position: relative;
-    top: 52%;
+    top: 33%;
   }
 
   .addToCartEyeshadow {
-    margin-top: 10rem;
+    margin-top: 0rem;
     height: 250px;
   }
   .addToCartFoundation {
-    margin-top: 10rem;
+    margin-top: 0rem;
     height: 250px;
   }
   .addToCartBlush {
-    margin-top: 10rem;
+    margin-top: 0rem;
     height: 250px;
   }
   .addToCartConcealer {
-    margin-top: 10rem;
+    margin-top: 0rem;
     height: 250px;
   }
   .addToCart {
-    margin-top: 10rem;
+    margin-top: 0rem;
     height: 250px;
   }
 
