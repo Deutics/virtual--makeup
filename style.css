@@ -3983,7 +3983,6 @@ button#submitOrderBtnConcealer:hover {
   .empty-cart-content {
     margin-top: 1rem;
     width: 52%;
-    /* height: 25%; */
     font-size: 2rem;
     text-align: center;
   }
