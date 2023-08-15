@@ -401,6 +401,7 @@ function displaySelectedLipstick(img, icon, title, price, index) {
       </div>
       <div class="deleteButton" data-index="${index}"><img class="delete_icon" src="/Images/Icons/detele_Icon.png" /></div>
       </div>
+
   `;
 
   const deleteButton = selectedLipstickDiv.querySelector(".deleteButton");
