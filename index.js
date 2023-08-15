@@ -162,7 +162,7 @@ const FoundationLiquid = [
   },
   {
     id: 2,
-    img:"Images/Foundation/foundation_Img5.png",
+    img: "Images/Foundation/foundation_Img5.png",
     icon: "Images/Foundation/foundation_Img_Icon2.png",
     title: "New York",
     content: "Fit Me Matte + Poreless Foundation",
@@ -389,7 +389,6 @@ function displaySelectedLipstick(img, icon, title, price, index) {
   // Create a new div to hold each selected lipstick
   const selectedLipstickDiv = document.createElement("div");
   selectedLipstickDiv.classList.add("selectedLipstickInfo");
-
   // Populate the div with the selected lipstick data
   selectedLipstickDiv.innerHTML = `
     <div class="lipstickInfo">
@@ -401,7 +400,6 @@ function displaySelectedLipstick(img, icon, title, price, index) {
       </div>
       <div class="deleteButton" data-index="${index}"><img class="delete_icon" src="/Images/Icons/detele_Icon.png" /></div>
       </div>
-
   `;
 
   const deleteButton = selectedLipstickDiv.querySelector(".deleteButton");
@@ -486,7 +484,7 @@ function updateSelectionInAllSections(
   );
 
   // Add sectionClassName to the data
-  selectedItemData.sectionClassName = sectionClassName; 
+  selectedItemData.sectionClassName = sectionClassName;
   selectedItesmsArray.push(selectedItemData);
 
   // Store the updated Add to Cart array in localStorage
@@ -709,7 +707,7 @@ document.addEventListener("DOMContentLoaded", () => {
     closeSidebar();
     showSection(sectionId, button);
 
-    window.location.reload();
+    // window.location.reload();
   }
 
   const sidebarButtons = document.querySelectorAll(".Sidebar_InnerContainer a");
