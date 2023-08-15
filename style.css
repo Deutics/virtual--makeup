@@ -368,7 +368,6 @@
   justify-content: center;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  margin-left: 2rem;
   font-size: 1.5rem;
 }
 
@@ -3294,20 +3293,12 @@ button#submitOrderBtnConcealer:hover {
   }
   .Comming_Soon img {
     margin-top: -3rem;
-    margin-left: 3rem;
   }
   .Comming_Soon {
-    /* height: 45%; */
-    /* text-align: center; */
-    /* display: flex; */
     flex-direction: column;
-    /* margin: 0 auto; */
     width: 100%;
-    /* text-align: center; */
     position: relative;
-    /* top: -55%; */
-    left: -7%;
-    /* margin-left: 4rem; */
+    left: 3%;
   }
   .CountourContainer {
     font-size: 1rem;
