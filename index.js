@@ -707,7 +707,7 @@ document.addEventListener("DOMContentLoaded", () => {
     closeSidebar();
     showSection(sectionId, button);
 
-    window.location.reload();
+    // window.location.reload();
   }
 
   const sidebarButtons = document.querySelectorAll(".Sidebar_InnerContainer a");
