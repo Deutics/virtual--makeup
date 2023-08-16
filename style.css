@@ -3842,8 +3842,6 @@ button#submitOrderBtnConcealer:hover {
   .lipstickItem {
     display: flex;
     flex-direction: column;
-    width: 25%;
-    /* margin-left: -0.5rem; */
     align-items: center;
     text-align: center;
   }
