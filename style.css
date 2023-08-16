@@ -10,8 +10,11 @@
 }
 
 .Content {
-  margin-left: 10%;
-  margin-top: 15%;
+  position: absolute;
+  top: 46%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .ComingSoonContent {
@@ -21,8 +24,7 @@
   background-color: #94747426;
   border: 1px solid transparent;
   border-radius: 2rem;
-  width: 250px;
-  margin: 0 auto !important;
+  height: 250px;
 }
 .CameraCommingSoon {
   width: 100%;
@@ -500,11 +502,18 @@
   display: none;
 }
 
+.Comming_Soon img {
+  background-color: #94747426;
+  border: 1px solid transparent;
+  border-radius: 2rem;
+  height: 230px;
+}
 .Comming_Soon {
-  height: 50%;
   position: absolute;
-  top: 24%;
-  left: 30%;
+  top: 50%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 /* Style for the cart modal container */
@@ -3129,7 +3138,11 @@ button#submitOrderBtnConcealer:hover {
     display: none;
   }
   .Content {
-    margin: 7rem auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
   }
   .empty-cart-content {
     position: relative;
@@ -3318,13 +3331,17 @@ button#submitOrderBtnConcealer:hover {
     align-items: flex-start;
   }
   .Comming_Soon img {
-    margin-top: -3rem;
+    background-color: #94747426;
+    border: 1px solid transparent;
+    border-radius: 2rem;
+    height: 230px;
   }
   .Comming_Soon {
-    flex-direction: column;
-    width: 100%;
-    position: relative;
-    left: 3%;
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
   }
   .CountourContainer {
     font-size: 1rem;
@@ -3724,9 +3741,12 @@ button#submitOrderBtnConcealer:hover {
     margin-left: 20%;
   }
 
-  .ComingSoonContent img {
-    width: 100%;
-    margin: 3rem auto !important;
+  .Content {
+    /* position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    text-align: center; */
   }
   .addToCartButtonCommingSoon {
     width: 70%;
@@ -3839,6 +3859,26 @@ button#submitOrderBtnConcealer:hover {
 }
 
 @media only screen and (min-width: 1900px) {
+  .Content {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .ComingSoonContent img {
+    height: 300px;
+  }
+  .Comming_Soon img {
+    height: 300px;
+  }
+  .Comming_Soon {
+    position: absolute;
+    top: 50%;
+    left: 36%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
   .lipstickItem {
     display: flex;
     flex-direction: column;
