@@ -334,14 +334,14 @@
 .lipstickItem h3 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  width: 70%;
+  width: 100%;
 }
 
 .lipstickItem p {
   font-size: 0.8rem;
   color: #888;
   margin-bottom: 1rem;
-  width: 70%;
+  width: 100%;
 }
 
 .Navbar_Container img {
