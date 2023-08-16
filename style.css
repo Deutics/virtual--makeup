@@ -3338,10 +3338,11 @@ button#submitOrderBtnConcealer:hover {
   }
   .Comming_Soon {
     position: absolute;
-    top: 120%;
+    top: 10rem;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 22rem);
     text-align: center;
+}
   }
   .CountourContainer {
     font-size: 1rem;
