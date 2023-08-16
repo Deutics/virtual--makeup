@@ -3337,12 +3337,8 @@ button#submitOrderBtnConcealer:hover {
     height: 230px;
   }
   .Comming_Soon {
-    position: absolute;
-    /* top: 50%; */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 22rem;
-    text-align: center;
+    left: 50% !important;
+    margin-top: 100% !important;
   }
   .CountourContainer {
     font-size: 1rem;
