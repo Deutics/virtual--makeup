@@ -516,6 +516,11 @@
   text-align: center;
 }
 
+
+
+
+
+
 /* Style for the cart modal container */
 .modal {
   display: none;
@@ -3128,6 +3133,7 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 @media screen and (max-width: 768px) {
+  
   .addToCartButtonCommingSoon {
     margin-top: -5rem !important;
   }
@@ -3330,15 +3336,9 @@ button#submitOrderBtnConcealer:hover {
     align-items: center;
     align-items: flex-start;
   }
-  .Comming_Soon img {
-    background-color: #94747426;
-    border: 1px solid transparent;
-    border-radius: 2rem;
-    height: 230px;
-  }
+ 
   .Comming_Soon {
-    left: 50% !important;
-    margin-top: 100% !important;
+    
   }
   .CountourContainer {
     font-size: 1rem;
