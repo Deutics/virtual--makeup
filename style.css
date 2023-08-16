@@ -29,13 +29,28 @@
   height: 45vh;
 }
 
+.icon_Img {
+  background-color: #947474;
+  padding: 0px;
+  border-radius: 8px;
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.Side_Bar_Tittle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 #videoElementCommingSoon {
   border: 1px solid black;
   border-radius: 1rem;
-  margin-top: 9.8rem;
-  margin-left: 38%;
+  margin-top: 9rem;
+  margin-left: 36%;
   width: 64.5%;
-  height: 230px;
+  height: 256px;
   object-fit: contain;
   background-color: #000;
 }
@@ -43,7 +58,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-left: 38%;
+  margin-left: 36%;
+  margin-top: 0.5rem;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   color: #000;
@@ -59,12 +75,12 @@
   border-radius: 5rem;
   height: 2.5rem;
   font-weight: 600;
-  width: 62%;
+  width: 64%;
   font-family: "Poppins", sans-serif;
   color: white;
   cursor: pointer;
-  margin-left: 38%;
-  margin-top: 1%;
+  margin-left: 36%;
+  margin-top: -2.5%;
 }
 .ComingSoonContent {
   font-size: 1.5rem;
@@ -161,6 +177,13 @@
   overflow-x: hidden;
   height: 75%;
 }
+
+.Side_Bar a {
+  text-decoration: none;
+  gap: 1rem;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+}
 .Side_Bar {
   overflow-y: scroll;
   scrollbar-width: thin;
@@ -247,7 +270,7 @@
   border-radius: 1rem;
   padding: 0.2rem;
   text-align: center;
-  min-width: 8rem;
+  min-width: 7rem;
   margin-bottom: 0.5rem;
 }
 .info {
@@ -261,11 +284,11 @@
   border-radius: 0.8rem;
 }
 .contentlipstick {
-  width: 101%;
+  width: 100%;
   flex-direction: row;
   flex-wrap: wrap;
   overflow-x: hidden;
-  height: 390px;
+  height: 410px;
 }
 
 .contentlipstick {
@@ -309,12 +332,14 @@
 .lipstickItem h3 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
+  width: 70%;
 }
 
 .lipstickItem p {
   font-size: 0.8rem;
   color: #888;
   margin-bottom: 1rem;
+  width: 70%;
 }
 
 .Navbar_Container img {
@@ -355,7 +380,7 @@
 
 #videoElement {
   width: 100%;
-  height: 18rem;
+  height: 16rem;
   object-fit: contain;
   border-radius: 15px;
   background-color: black;
@@ -378,6 +403,7 @@
   flex-direction: column;
   gap: 0.5rem;
   margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   color: #000;
@@ -855,7 +881,7 @@ button#submitOrderBtn:hover {
 
 .eyeshadowContainerCategories::-webkit-scrollbar {
   width: 0.1rem;
-  height: 0.3rem;
+  height: 0rem;
 }
 .eyeshadowContainerCategories::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.8);
@@ -881,7 +907,7 @@ button#submitOrderBtn:hover {
 
 #videoElementEyeshadow {
   width: 100%;
-  height: 18rem;
+  height: 16rem;
   object-fit: contain;
   border-radius: 15px;
   background-color: black;
@@ -909,7 +935,7 @@ button#submitOrderBtn:hover {
   flex-direction: row;
   flex-wrap: wrap;
   overflow-x: hidden;
-  height: 390px;
+  height: 410px;
 }
 .contenteyeshadow_matte {
   overflow-y: scroll;
@@ -1285,7 +1311,7 @@ button#submitOrderBtnEyeshadow:hover {
 
 .foundationContainerCategories::-webkit-scrollbar {
   width: 0.1rem;
-  height: 0.3rem;
+  height: 0rem;
 }
 .foundationContainerCategories::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.8);
@@ -1311,7 +1337,7 @@ button#submitOrderBtnEyeshadow:hover {
 
 #videoElementFoundation {
   width: 100%;
-  height: 18rem;
+  height: 16rem;
   object-fit: contain;
   border-radius: 15px;
   background-color: black;
@@ -1339,7 +1365,7 @@ button#submitOrderBtnEyeshadow:hover {
   flex-direction: row;
   flex-wrap: wrap;
   overflow-x: hidden;
-  height: 390px;
+  height: 410px;
 }
 .contentfoundation_liquid {
   overflow-y: scroll;
@@ -1715,7 +1741,7 @@ button#submitOrderBtnFoundation:hover {
 
 .blushContainerCategories::-webkit-scrollbar {
   width: 0.1rem;
-  height: 0.3rem;
+  height: 0rem;
 }
 .blushContainerCategories::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.8);
@@ -1741,7 +1767,7 @@ button#submitOrderBtnFoundation:hover {
 
 #videoElementBlush {
   width: 100%;
-  height: 18rem;
+  height: 16rem;
   object-fit: contain;
   border-radius: 15px;
   background-color: black;
@@ -1770,7 +1796,7 @@ button#submitOrderBtnFoundation:hover {
   flex-direction: row;
   flex-wrap: wrap;
   overflow-x: hidden;
-  height: 390px;
+  height: 410px;
 }
 .contentblush_pressed {
   overflow-y: scroll;
@@ -2146,7 +2172,7 @@ button#submitOrderBtnBlush:hover {
 
 .concealerContainerCategories::-webkit-scrollbar {
   width: 0.1rem;
-  height: 0.3rem;
+  height: 0rem;
 }
 .concealerContainerCategories::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.8);
@@ -2172,7 +2198,7 @@ button#submitOrderBtnBlush:hover {
 
 #videoElementConcealer {
   width: 100%;
-  height: 18rem;
+  height: 16rem;
   object-fit: contain;
   border-radius: 15px;
   background-color: black;
@@ -2200,7 +2226,7 @@ button#submitOrderBtnBlush:hover {
   flex-direction: row;
   flex-wrap: wrap;
   overflow-x: hidden;
-  height: 390px;
+  height: 410px;
 }
 .contentconcealer_liquid {
   overflow-y: scroll;
@@ -3190,8 +3216,8 @@ button#submitOrderBtnConcealer:hover {
   }
 
   #videoElement {
-    width: 90%;
-    height: 16rem;
+    width: 100%;
+    height: 16rem !important;
     justify-content: space-between;
   }
   .Sidebar_MainContainer {
@@ -3212,6 +3238,7 @@ button#submitOrderBtnConcealer:hover {
   .Side_Bar {
     height: 100% !important;
   }
+
   .Sidebar_InnerContainer {
     height: auto !important;
   }
@@ -3278,7 +3305,7 @@ button#submitOrderBtnConcealer:hover {
   }
 
   .Side_Bar a {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   .selectedLipstickInfo p {
@@ -3289,7 +3316,6 @@ button#submitOrderBtnConcealer:hover {
     display: flex;
     align-items: center;
     align-items: flex-start;
-    margin-top: 0.4rem;
   }
   .Comming_Soon img {
     margin-top: -3rem;
@@ -3348,8 +3374,8 @@ button#submitOrderBtnConcealer:hover {
   }
 
   #videoElementEyeshadow {
-    width: 90%;
-    height: 16rem;
+    width: 100%;
+    height: 16rem !important;
     justify-content: space-between;
   }
 
@@ -3420,8 +3446,8 @@ button#submitOrderBtnConcealer:hover {
   }
 
   #videoElementFoundation {
-    width: 90%;
-    height: 16rem;
+    width: 100%;
+    height: 16rem !important;
     justify-content: space-between;
   }
 
@@ -3492,8 +3518,8 @@ button#submitOrderBtnConcealer:hover {
   }
 
   #videoElementBlush {
-    width: 90%;
-    height: 16rem;
+    width: 100%;
+    height: 16rem !important;
     justify-content: space-between;
   }
 
@@ -3534,21 +3560,6 @@ button#submitOrderBtnConcealer:hover {
   .addToCartConcealer {
     height: 180px;
   }
-  /* .mateInnerContainer {
-    margin-top: -100px;
-  }
-  .eyeshadow_matteInnerContainer {
-    margin-top: -100px;
-  }
-  .foundation_liquidInnerContainer {
-    margin-top: -100px;
-  }
-  .blush_PressedInnerContainer {
-    margin-top: -100px;
-  }
-  .concealer_liquidInnerContainer {
-    margin-top: -100px;
-  } */
 
   #concealer_pressed {
     width: 100%;
@@ -3579,8 +3590,8 @@ button#submitOrderBtnConcealer:hover {
   }
 
   #videoElementConcealer {
-    width: 90%;
-    height: 16rem;
+    width: 100%;
+    height: 16rem !important;
     justify-content: space-between;
   }
 
@@ -3615,20 +3626,10 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 
-@media only screen and (max-width: 775px) {
-  .modal {
-    width: 50% !important;
-  }
-}
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1024px) {
   .lipstickItem .img {
     height: 130px;
     width: 130px;
-  }
-}
-@media only screen and (max-width: 1000px) {
-  .modal {
-    width: 40%;
   }
   .addToCartButton:hover {
     background-color: #999393;
@@ -3645,9 +3646,9 @@ button#submitOrderBtnConcealer:hover {
   .addToCartButtonConcealer:hover {
     background-color: #999393;
   }
-}
-
-@media only screen and (max-width: 1090px) {
+  .modal {
+    width: 40%;
+  }
   .mateContainer {
     width: 100%;
     margin: 0 auto;
@@ -3656,13 +3657,11 @@ button#submitOrderBtnConcealer:hover {
   #videoElement {
     display: flex;
     justify-content: space-between;
+    height: 12rem;
   }
   .lipstickItem {
     width: 9rem;
     margin-right: -1rem;
-  }
-  .lipstickItem h3 {
-    font-size: 1rem;
   }
   .lipstickItem p {
     font-size: 0.6rem;
@@ -3711,6 +3710,7 @@ button#submitOrderBtnConcealer:hover {
 
   #videoElementEyeshadow {
     /* width: 13rem; */
+    height: 12rem;
     display: flex;
     justify-content: space-between;
   }
@@ -3751,6 +3751,7 @@ button#submitOrderBtnConcealer:hover {
 
   #videoElementFoundation {
     /* width: 13rem; */
+    height: 12rem;
     display: flex;
     justify-content: space-between;
   }
@@ -3777,6 +3778,7 @@ button#submitOrderBtnConcealer:hover {
 
   #videoElementBlush {
     /* width: 13rem; */
+    height: 12rem;
     display: flex;
     justify-content: space-between;
   }
@@ -3800,6 +3802,7 @@ button#submitOrderBtnConcealer:hover {
 
   #videoElementConcealer {
     /* width: 13rem; */
+    height: 12rem;
     display: flex;
     justify-content: space-between;
   }
@@ -3834,106 +3837,85 @@ button#submitOrderBtnConcealer:hover {
     margin: 0 auto;
   }
 }
-@media only screen and (max-width: 1401px) {
-  .eyeshadowContainerCategories {
+
+@media only screen and (min-width: 1900px) {
+  .lipstickItem {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    width: 25%;
+    /* margin-left: -0.5rem; */
+    align-items: center;
+    text-align: center;
+  }
+  #videoElement {
+    height: 30rem;
+  }
+  #videoElementEyeshadow {
+    height: 30rem;
+  }
+  #videoElementBlush {
+    height: 30rem;
+  }
+  #videoElementFoundation {
+    height: 30rem;
+  }
+  #videoElementConcealer {
+    height: 30rem;
+  }
+
+  .lipstickInfo {
     width: 100%;
-    white-space: nowrap;
-    font-size: 1rem;
+  }
+
+  .addToCart {
+    height: 201px;
+  }
+  .addToCartEyeshadow {
+    height: 201px;
+  }
+  .addToCartBlush {
+    height: 201px;
+  }
+  .addToCartFoundation {
+    height: 201px;
+  }
+  .addToCartConcealer {
+    height: 201px;
   }
   .contentlipstick {
-    height: 390px;
+    height: 840px;
   }
   .contentfoundation_liquid {
-    height: 430px;
+    height: 840px;
   }
   .contenteyeshadow_matte {
-    width: 100%;
-    height: 430px;
+    height: 840px;
   }
   .contentblush_pressed {
-    height: 430px;
+    height: 840px;
   }
   .contentconcealer_liquid {
-    height: 430px !important;
+    height: 840px;
   }
-
-  .foundationContainerCategories {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    white-space: nowrap;
-    font-size: 1rem;
-  }
-  .contentfoundation_liquid {
-    width: 100%;
-  }
-
-  .blushContainerCategories {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    white-space: nowrap;
-    font-size: 1rem;
-  }
-  .contentblush_pressed {
-    width: 100%;
-  }
-
-  .concealerContainerCategories {
-    display: flex;
-    justify-content: start;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    white-space: nowrap;
-    font-size: 1rem;
-  }
-  .contentconcealer_liquid {
-    width: 100%;
-  }
-}
-
-@media only screen and (min-width: 1400px) {
-  /* .contentlipstick {
-    height: 560px;
-  }
-  .contentfoundation_liquid {
-    height: 560px;
-  }
-  .contenteyeshadow_matte {
-    height: 560px;
-  }
-  .contentblush_pressed {
-    height: 560px;
-  }
-  .contentconcealer_liquid {
-    height: 560px;
-  } */
-
-  .Side_Bar {
-    height: 80%;
-  }
-  .Sidebar_InnerContainer {
-    height: 100vh;
-  }
-  .Sidebar_MainContainer {
-    height: 100vh;
+  .Sidebar_InnerContainer a {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
   #videoElementCommingSoon {
-    margin-left: 40%;
-    width: 61%;
-    height: 230px;
-    object-fit: scale-down;
+    margin-top: 9.2rem;
+    margin-left: 43%;
+    width: 57%;
+    height: 30rem;
   }
   .addToCartHeadingCommingSoon {
-    margin-top: 0.4rem;
-    margin-left: 40%;
+    margin-left: 43%;
+    margin-top: 0.5rem;
   }
+
   .addToCartButtonCommingSoon {
-    margin-top: -0.5rem;
+    width: 57%;
+    margin-left: 43%;
+    margin-top: 4%;
   }
 }
