@@ -640,6 +640,8 @@ if (storedButton) {
   });
 }
 
+
+
 function showLipstickSection(sectionId, button) {
   // Hide all sections
   const sections = document.querySelectorAll(".LipstickContent");
@@ -667,7 +669,6 @@ function showLipstickSection(sectionId, button) {
   }
   window.history.pushState(null, `#lipstick-${sectionId}`);
 }
-
 // Store the selectd  lipstick section and selected listick hover button in local storage
 const storedSectionlipstick = localStorage.getItem("selectedSectionlipstick");
 const storedButtonlipstick = localStorage.getItem("selectedButtonlipstick");
@@ -833,14 +834,14 @@ function displaySelectedLipstickOnLoad() {
 }
 displaySelectedLipstickOnLoad();
 
-function generateMateLipstickContent() {
-  const mateLipstickContainer = document.getElementById("mate");
+function generateAllImagesContent(containerId, items, clickHandler) {
+  const container = document.getElementById(containerId);
 
-  const mateLipstickHTML = lisptickMate
+  const contentHTML = items
     .map(
       (item) => `
-    <div class="lipstickItem"  
-    onclick="handleLipstickImageClick( '${item.img}',
+    <div class="lipstickItem"
+    onclick="${clickHandler}( '${item.img}',
     '${item.icon}', '${item.title}', '${item.price}')" >
       <img class="img" src=${item.img} />
       <img class="icon" src="${item.icon}"/>
@@ -851,10 +852,13 @@ function generateMateLipstickContent() {
     )
     .join("");
 
-  mateLipstickContainer.innerHTML = mateLipstickHTML;
+  container.innerHTML = contentHTML;
 }
-
-generateMateLipstickContent();
+generateAllImagesContent("mate", lisptickMate, "handleLipstickImageClick");
+generateAllImagesContent("eyeshadow_matte", EyeshadowMatte, "handleEyeshadowImageClick");
+generateAllImagesContent("foundation_liquid", FoundationLiquid, "handleFoundationImageClick");
+generateAllImagesContent("blush_pressed", BlushLiquid, "handleBlushImageClick");
+generateAllImagesContent("concealer_liquid", ConcealerLiquid, "handleConcealerImageClick");
 
 function generateCartModelContent() {
   const cartItemsContainer = document.querySelector(".cart-items");
@@ -1259,25 +1263,6 @@ function submitPaynowbtn() {
   toggleCartModal();
 }
 
-// video = document.getElementById("videoElement");
-// if (navigator.mediaDevices.getUserMedia) {
-//   navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
-//     video.srcObject = stream;
-//   });
-// }
-
-// // run face-mesh model once the video is ready for processing
-// main();
-
-// function main() {
-//   // check if the video is loaded and ready for processing
-//   if (video.readyState == 4) {
-//     get_facemesh();
-//     sendFrame();
-//   } else {
-//     setTimeout(main, 1000 / 60);
-//   }
-// }
 
 // ...................eyeshadow js here ................//
 
@@ -1470,26 +1455,6 @@ function displaySelectedEyeshadowOnLoad() {
 
 displaySelectedEyeshadowOnLoad();
 
-function generateMatteEyeshadowContent() {
-  const matteEyeshadowContainer = document.getElementById("eyeshadow_matte");
-
-  const mateEyeshadowHTML = EyeshadowMatte.map(
-    (item) => `
-    <div class="lipstickItem"  
-    onclick="handleEyeshadowImageClick( '${item.img}',
-    '${item.icon}', '${item.title}', '${item.price}')" >
-      <img class="img" src=${item.img} />
-      <img class="icon" src="${item.icon}"/>
-      <h3>${item.title}</h3>
-      <p>${item.content}</p>
-    </div>
-  `
-  ).join("");
-
-  matteEyeshadowContainer.innerHTML = mateEyeshadowHTML;
-}
-
-generateMatteEyeshadowContent();
 
 function generateCartModelEyeshadowContent() {
   const cartItemsContainerEyeshadow = document.querySelector(
@@ -2076,27 +2041,7 @@ function displaySelectedFoundationOnLoad() {
 
 displaySelectedFoundationOnLoad();
 
-function generateLiquidFoundationContent() {
-  const liquidFoundationContainer =
-    document.getElementById("foundation_liquid");
 
-  const liquidFoundationHTML = FoundationLiquid.map(
-    (item) => `
-    <div class="lipstickItem"
-    onclick="handleFoundationImageClick( '${item.img}',
-    '${item.icon}', '${item.title}', '${item.price}')" >
-      <img class="img" src=${item.img}  />
-      <img class="icon" src="${item.icon}"/>
-      <h3>${item.title}</h3>
-      <p >${item.content}</p>
-    </div>
-  `
-  ).join("");
-
-  liquidFoundationContainer.innerHTML = liquidFoundationHTML;
-}
-
-generateLiquidFoundationContent();
 
 function generateCartModelFoundationContent() {
   const cartItemsContainerFoundation = document.querySelector(
@@ -2659,26 +2604,26 @@ function displaySelectedBlushOnLoad() {
 
 displaySelectedBlushOnLoad();
 
-function generateLiquidBlushContent() {
-  const liquidBlushContainer = document.getElementById("blush_pressed");
+// function generateLiquidBlushContent() {
+//   const liquidBlushContainer = document.getElementById("blush_pressed");
 
-  const liquidBlushHTML = BlushLiquid.map(
-    (item) => `
-    <div class="lipstickItem"
-    onclick="handleBlushImageClick( '${item.img}',
-    '${item.icon}', '${item.title}', '${item.price}')" >
-      <img class="img" src=${item.img} " /> 
-      <img class="icon" src="${item.icon}"/>
-      <h3>${item.title}</h3>
-      <p >${item.content}</p>
-    </div>
-  `
-  ).join("");
+//   const liquidBlushHTML = BlushLiquid.map(
+//     (item) => `
+//     <div class="lipstickItem"
+//     onclick="handleBlushImageClick( '${item.img}',
+//     '${item.icon}', '${item.title}', '${item.price}')" >
+//       <img class="img" src=${item.img} " /> 
+//       <img class="icon" src="${item.icon}"/>
+//       <h3>${item.title}</h3>
+//       <p >${item.content}</p>
+//     </div>
+//   `
+//   ).join("");
 
-  liquidBlushContainer.innerHTML = liquidBlushHTML;
-}
+//   liquidBlushContainer.innerHTML = liquidBlushHTML;
+// }
 
-generateLiquidBlushContent();
+// generateLiquidBlushContent();
 
 function generateCartModelBlushContent() {
   const cartItemsContainerBlush = document.querySelector(".cart-items-Blush");
@@ -3230,27 +3175,6 @@ function displaySelectedConcealerOnLoad() {
 }
 
 displaySelectedConcealerOnLoad();
-
-function generateMatteConcealerContent() {
-  const matteConcealerContainer = document.getElementById("concealer_liquid");
-
-  const mateConcealerHTML = ConcealerLiquid.map(
-    (item) => `
-    <div class="lipstickItem"  
-    onclick="handleConcealerImageClick( '${item.img}',
-    '${item.icon}', '${item.title}', '${item.price}')" >
-      <img class="img" src=${item.img} />
-      <img class="icon" src="${item.icon}"/>
-      <h3>${item.title}</h3>
-      <p>${item.content}</p>
-    </div>
-  `
-  ).join("");
-
-  matteConcealerContainer.innerHTML = mateConcealerHTML;
-}
-
-generateMatteConcealerContent();
 
 function generateCartModelConcealerContent() {
   const cartItemsContainerConcealer = document.querySelector(
