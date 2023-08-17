@@ -501,6 +501,21 @@
 .smallScreenHeading {
   display: none;
 }
+.Comming_Soon {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 35%;
+  left: 35%;
+}
+
+.Comming_Soon_Image {
+  max-width: 100%;
+  background-color: #94747426;
+  border: 1px solid transparent;
+  border-radius: 2rem;
+  height: 230px;
+}
 
 /* .Comming_Soon img {
   background-color: #94747426;
@@ -534,9 +549,6 @@
 .CountourContainer {
   margin-top: 20px; 
 } */
-
-
-
 
 /* Style for the cart modal container */
 .modal {
@@ -3150,22 +3162,23 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 @media screen and (max-width: 768px) {
-
   .Comming_Soon {
     text-align: center;
-    margin: 0 auto;
-    /* padding: 52px;  */
+    margin: 300px -2px auto;
   }
-  
+
   .Comming_Soon_Image {
-    max-width: 100%; 
-    background-color: #94747426;
-  border: 1px solid transparent;
-  border-radius: 2rem;
+    height: auto;
+    margin: 0 -47px auto;
   }
-  
+
   .CountourContainer {
-    font-size: 16px; 
+    text-align: center;
+    margin-left: -4rem;
+  }
+
+  .CountourContainer {
+    font-size: 16px;
     margin-top: 10px;
   }
   .addToCartButtonCommingSoon {
@@ -3370,7 +3383,7 @@ button#submitOrderBtnConcealer:hover {
     align-items: center;
     align-items: flex-start;
   }
- 
+
   .CountourContainer {
     font-size: 1rem;
   }
