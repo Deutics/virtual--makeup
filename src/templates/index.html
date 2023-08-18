@@ -30,6 +30,12 @@
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
             rel="stylesheet"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,200;10..48,700&display=swap"
+            rel="stylesheet"
+        />
         <title>Virtual Makeup</title>
     </head>
     <body>
@@ -153,7 +159,7 @@
                         <div class="shades" id="shades"></div>
                     </div>
                     <div class="contentContainer">
-                        <div class="products"></div>
+                        <div class="products" id="products"></div>
                         <div id="container">
                             <img
                                 id="photo"
@@ -161,15 +167,10 @@
                                 src="../static/img/white-denim-jacket-front-view-streetwear-fashion.jpg"
                             />
                             <video
-                                autoplay
                                 playsinline
+                                autoplay
+                                muted
                                 id="videoElement"
-                                style="
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                    z-index: -2;
-                                "
                             ></video>
                             <canvas
                                 id="canvas"
@@ -181,10 +182,11 @@
                                     z-index: -3;
                                 "
                             ></canvas>
+                            <div id="cart" class="cart"></div>
                         </div>
                     </div>
-
-                    <!-- <div class="mainImage_innerWrapper">
+                    <!-- 
+                    <div class="mainImage_innerWrapper">
                         <div style="height: 90vh"></div>
                         <div
                             id="backButton"

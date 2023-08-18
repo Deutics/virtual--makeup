@@ -5,7 +5,8 @@
 
 body {
     margin: 0;
-    font-family: visbyround;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background-color: #faf9f6;
 }
 
 .outerWrapper {
@@ -19,7 +20,7 @@ body {
     object-fit: cover;
 }
 .page {
-    background-color: #ffffff;
+    background-color: #faf9f6;
 
     width: 80vw;
 
@@ -39,6 +40,7 @@ body {
 .contentContainer {
     display: flex;
     justify-content: space-between;
+    padding-top: 1.5em;
 }
 
 .mainImage_innerWrapper {
@@ -56,10 +58,14 @@ body {
     height: 100%;
 }
 
-.products {
-    width: 50%;
-
-    background-color: azure;
+.comingSoonToggle {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.comingSoonToggle div {
+    font-size: x-large;
+    margin-top: 10px;
 }
 
 .header {
@@ -92,8 +98,175 @@ body {
     color: #f5f6f6;
 }
 
+.selectedShade {
+    background-color: #947474;
+    color: #f5f6f6;
+}
+
 .page > img {
     object-fit: fill;
+}
+
+.products {
+    display: flex;
+    width: 50%;
+    height: 70dvh;
+    flex-wrap: wrap;
+    margin-top: 10px;
+
+    justify-content: left;
+    overflow-y: scroll;
+}
+
+.product {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 250px;
+    cursor: pointer;
+    margin: 0.2em;
+    background-color: #fff;
+    border-radius: 8px;
+}
+.product:hover {
+    outline: 2px solid #947474;
+}
+.productBorder {
+    outline: 2px solid #947474;
+}
+
+.product img {
+    width: 90px;
+    height: 90px;
+}
+
+.product__title {
+    height: 10%;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.product__content {
+    font-size: 0.7em;
+    color: #828282;
+    margin-bottom: 10px;
+}
+.comingSoon {
+    background-color: #baabab80;
+    height: fit-content;
+    border-radius: 20%;
+}
+
+.color {
+    width: 18px;
+    margin: 0.3em 0;
+    border-radius: 50%;
+    height: 18px;
+    cursor: pointer;
+    box-shadow: inset 1px 1px 1px 1px #272727;
+}
+
+/* On screens that are 992px wide or less, the background color is blue */
+@media screen and (max-width: 1440px) {
+    .product img {
+        width: 90px;
+        height: 90px;
+    }
+    .product__title {
+        height: 10%;
+        font-weight: bold;
+        font-size: 0.7rem;
+        padding: 0.5em 0 0 0;
+    }
+
+    .product__content {
+        font-size: 0.5em;
+        color: #828282;
+    }
+    .color {
+        width: 16px;
+
+        height: 16px;
+    }
+    .product {
+        width: 150px;
+    }
+}
+
+/* On screens that are 992px wide or less, the background color is blue */
+@media screen and (max-width: 1240px) {
+    .product img {
+        width: 75px;
+        height: 75px;
+    }
+    .product__title {
+        height: 10%;
+        font-weight: bold;
+        font-size: 0.7rem;
+        padding: 0.5em 0 0 0;
+    }
+
+    .product__content {
+        font-size: 0.5em;
+        color: #828282;
+    }
+    .product {
+        width: 140px;
+    }
+    .color {
+        width: 16px;
+
+        height: 16px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .product img {
+        width: 90px;
+        height: 90px;
+    }
+    .product__title {
+        height: 10%;
+        font-weight: bold;
+        font-size: 0.7rem;
+        padding: 0.5em 0 0 0;
+    }
+
+    .product__content {
+        font-size: 0.5em;
+        color: #828282;
+    }
+    .product {
+    }
+    .color {
+        width: 16px;
+
+        height: 16px;
+    }
+}
+
+/* On screens that are 600px wide or less, the background color is olive */
+@media screen and (max-width: 2560px) {
+    .product img {
+        width: 50%;
+    }
+}
+
+.cart__item {
+    display: flex;
+}
+.cart__item img {
+    width: 50px;
+    height: 50px;
+}
+
+.comingSoon {
+    background-color: #baabab80;
+    height: fit-content;
+    border-radius: 20%;
 }
 
 .sideBar {
@@ -119,21 +292,6 @@ body {
 }
 .line > p {
     margin: -12px 0px 0px 0;
-}
-
-.colors {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 12%;
-}
-
-.color {
-    width: 21px;
-    margin-left: 10px;
-    border-radius: 50%;
-    height: 21px;
-    cursor: pointer;
-    box-shadow: inset 1px 1px 1px 1px #272727;
 }
 
 .addborder {
