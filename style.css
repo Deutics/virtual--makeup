@@ -3897,7 +3897,59 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 
-@media only screen and (min-width: 1900px) {
+@media only screen and ((min-width:1500px) and (max-width:1900px)){
+  #videoElement {
+    height: 25rem;
+  }
+  #videoElementEyeshadow {
+    height: 25rem;
+  }
+  #videoElementBlush {
+    height: 25rem;
+  }
+  #videoElementFoundation {
+    height: 25rem;
+  }
+  #videoElementConcealer {
+    height: 25rem;
+  }
+  
+  .lipstickInfo {
+    width: 100%;
+  }
+
+  .addToCart {
+    height: 201px;
+  }
+  .addToCartEyeshadow {
+    height: 201px;
+  }
+  .addToCartBlush {
+    height: 201px;
+  }
+  .addToCartFoundation {
+    height: 201px;
+  }
+  .addToCartConcealer {
+    height: 201px;
+  }
+  .contentlipstick {
+    height: 715px;
+  }
+  .contentfoundation_liquid {
+    height: 715px;
+  }
+  .contenteyeshadow_matte {
+    height: 715px;
+  }
+  .contentblush_pressed {
+    height: 715px;
+  }
+  .contentconcealer_liquid {
+    height: 715px;
+  }
+}
+@media only screen and (min-width: 1901px) {
   .Content {
     position: absolute;
     top: 50%;
