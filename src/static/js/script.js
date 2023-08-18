@@ -3,7 +3,7 @@ var black_race = {}
 var brown_race = {}
 var white_race = {}
 
-var default_race = 'black'
+var default_race = 'white'
 var suggested_race = null
 
 // function to convert to rgb
@@ -90,6 +90,8 @@ const productsForRaces = {
         {
             src: '../static/img/eyeshadow/eyeshadow_img1.png',
             color: '#EDA96A',
+            productType: 'eye shadow',
+
             title: 'Powermatte Long Lasting ',
             type: 'matte',
             content: 'Transfer-resistant, matte lipstick',
@@ -98,6 +100,8 @@ const productsForRaces = {
         {
             src: '../static/img/foundation/foundation_img1.png',
             color: '#E6BF9E',
+            productType: 'foundation',
+
             title: 'Powermatte Long Lasting ',
             type: 'matte',
             content: 'Transfer-resistant, matte lipstick',
@@ -106,6 +110,8 @@ const productsForRaces = {
         {
             src: '../static/img/blush/blush_img1.png',
             color: '#EDC3B6',
+            productType: 'blush',
+
             title: 'Powermatte Long Lasting ',
             type: 'matte',
             content: 'Transfer-resistant, matte lipstick',
@@ -114,6 +120,8 @@ const productsForRaces = {
         {
             src: '../static/img/concealer/concealer_img1.png',
             color: '#996C52',
+            productType: 'concealer',
+
             title: 'Powermatte Long Lasting ',
             type: 'matte',
             content: 'Transfer-resistant, matte lipstick',
@@ -208,7 +216,18 @@ const productsForRaces = {
 
 var cartItems = {}
 
-Object.keys(productsForRaces).forEach((key) => {})
+const updateCartItems = () => {
+    Object.keys(productsForRaces).forEach((key) => {
+        let selectedRace = suggested_race ? suggested_race : default_race
+        if (selectedRace === key) {
+            productsForRaces[key].forEach((item) => {
+                cartItems[item.productType] = item
+            })
+        }
+    })
+}
+
+updateCartItems()
 
 // all products
 const products = {
@@ -216,10 +235,12 @@ const products = {
         {
             src: '../static/img/lipstik/lipstick_img1.png',
             color: '#C08C80',
+            productType: 'lipstick',
             title: 'Powermatte Long Lasting ',
             type: 'matte',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img2.png',
@@ -228,6 +249,7 @@ const products = {
             title: 'Matte Lipstick',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img3.png',
@@ -236,6 +258,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img4.png',
@@ -244,6 +267,7 @@ const products = {
             title: 'Velvet Matte Lipstick',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img5.png',
@@ -252,6 +276,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'frosted',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img6.png',
@@ -260,6 +285,7 @@ const products = {
             title: 'Kind Words Matte Lipstick',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img1.png',
@@ -271,6 +297,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
 
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img2.png',
@@ -280,6 +307,7 @@ const products = {
             title: 'Matte Lipstick',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img3.png',
@@ -288,6 +316,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img4.png',
@@ -296,6 +325,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'matte',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img5.png',
@@ -304,6 +334,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'frosted',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img6.png',
@@ -312,6 +343,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'matte',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img1.png',
@@ -320,6 +352,7 @@ const products = {
             title: 'Powermatte Long Lasting',
 
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img2.png',
@@ -328,6 +361,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img3.png',
@@ -336,6 +370,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img4.png',
@@ -344,6 +379,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img5.png',
@@ -352,6 +388,7 @@ const products = {
             type: 'frosted',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img6.png',
@@ -360,6 +397,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'lipstick',
         },
         {
             src: '../static/img/lipstik/lipstick_img1.png',
@@ -368,6 +406,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'lipstick',
         },
     ],
     'eye shadow': [
@@ -378,6 +417,7 @@ const products = {
             type: 'matte',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img2.png',
@@ -386,6 +426,7 @@ const products = {
             title: 'Matte Lipstick',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img3.png',
@@ -394,6 +435,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img4.png',
@@ -402,6 +444,7 @@ const products = {
             title: 'Velvet Matte Lipstick',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img5.png',
@@ -410,6 +453,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'frosted',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img6.png',
@@ -418,6 +462,7 @@ const products = {
             title: 'Kind Words Matte Lipstick',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img1.png',
@@ -429,6 +474,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
 
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img2.png',
@@ -438,6 +484,7 @@ const products = {
             title: 'Matte Lipstick',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img3.png',
@@ -446,6 +493,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img4.png',
@@ -454,6 +502,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'matte',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img5.png',
@@ -462,6 +511,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'frosted',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img6.png',
@@ -470,6 +520,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'matte',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img1.png',
@@ -478,6 +529,7 @@ const products = {
             title: 'Powermatte Long Lasting',
 
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img2.png',
@@ -486,6 +538,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img3.png',
@@ -494,6 +547,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img4.png',
@@ -502,6 +556,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img5.png',
@@ -510,6 +565,7 @@ const products = {
             type: 'frosted',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img6.png',
@@ -518,6 +574,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'eye shadow',
         },
         {
             src: '../static/img/eyeshadow/eyeshadow_img1.png',
@@ -526,6 +583,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'eye shadow',
         },
     ],
     'foundation': [
@@ -536,6 +594,7 @@ const products = {
             type: 'matte',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img2.png',
@@ -544,6 +603,7 @@ const products = {
             title: 'Matte Lipstick',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img3.png',
@@ -552,6 +612,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img4.png',
@@ -560,6 +621,7 @@ const products = {
             title: 'Velvet Matte Lipstick',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img5.png',
@@ -568,6 +630,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'frosted',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img6.png',
@@ -576,6 +639,7 @@ const products = {
             title: 'Kind Words Matte Lipstick',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img1.png',
@@ -587,6 +651,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
 
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img2.png',
@@ -596,6 +661,7 @@ const products = {
             title: 'Matte Lipstick',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img3.png',
@@ -604,6 +670,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img4.png',
@@ -612,6 +679,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'matte',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img5.png',
@@ -620,6 +688,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'frosted',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img6.png',
@@ -628,6 +697,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'matte',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img1.png',
@@ -636,6 +706,7 @@ const products = {
             title: 'Powermatte Long Lasting',
 
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img2.png',
@@ -644,6 +715,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img3.png',
@@ -652,6 +724,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img4.png',
@@ -660,6 +733,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img5.png',
@@ -668,6 +742,7 @@ const products = {
             type: 'frosted',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img6.png',
@@ -676,6 +751,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img1.png',
@@ -684,6 +760,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'foundation',
         },
     ],
     'blush': [
@@ -694,6 +771,7 @@ const products = {
             type: 'matte',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img2.png',
@@ -702,6 +780,7 @@ const products = {
             title: 'Matte Lipstick',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img3.png',
@@ -710,6 +789,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img4.png',
@@ -718,6 +798,7 @@ const products = {
             title: 'Velvet Matte Lipstick',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img5.png',
@@ -726,6 +807,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'frosted',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img6.png',
@@ -734,6 +816,7 @@ const products = {
             title: 'Kind Words Matte Lipstick',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img1.png',
@@ -745,6 +828,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
 
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img2.png',
@@ -754,6 +838,7 @@ const products = {
             title: 'Matte Lipstick',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img3.png',
@@ -762,6 +847,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img4.png',
@@ -770,6 +856,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'matte',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img5.png',
@@ -778,6 +865,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'frosted',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img6.png',
@@ -786,6 +874,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'matte',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img1.png',
@@ -794,6 +883,7 @@ const products = {
             title: 'Powermatte Long Lasting',
 
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img2.png',
@@ -802,6 +892,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img3.png',
@@ -810,6 +901,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img4.png',
@@ -818,6 +910,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img5.png',
@@ -826,6 +919,7 @@ const products = {
             type: 'frosted',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img6.png',
@@ -834,6 +928,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img1.png',
@@ -842,6 +937,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'blush',
         },
     ],
     'concealer': [
@@ -852,6 +948,7 @@ const products = {
             type: 'matte',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img2.png',
@@ -860,6 +957,7 @@ const products = {
             title: 'Matte Lipstick',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img3.png',
@@ -868,6 +966,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img4.png',
@@ -876,6 +975,7 @@ const products = {
             title: 'Velvet Matte Lipstick',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img5.png',
@@ -884,6 +984,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'frosted',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img6.png',
@@ -892,6 +993,7 @@ const products = {
             title: 'Kind Words Matte Lipstick',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img1.png',
@@ -900,6 +1002,7 @@ const products = {
             title: 'Powermatte Long Lasting ',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img2.png',
@@ -909,6 +1012,7 @@ const products = {
             title: 'Matte Lipstick',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img3.png',
@@ -917,6 +1021,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img4.png',
@@ -925,6 +1030,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'matte',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img5.png',
@@ -933,6 +1039,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'frosted',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img6.png',
@@ -941,6 +1048,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'matte',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img1.png',
@@ -949,6 +1057,7 @@ const products = {
             title: 'Powermatte Long Lasting',
 
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img2.png',
@@ -957,6 +1066,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img3.png',
@@ -965,6 +1075,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img4.png',
@@ -973,6 +1084,7 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img5.png',
@@ -981,6 +1093,7 @@ const products = {
             type: 'frosted',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img6.png',
@@ -989,6 +1102,7 @@ const products = {
             title: 'Matte Refillable Lipstick ',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img1.png',
@@ -997,12 +1111,12 @@ const products = {
             content: 'Transfer-resistant, matte lipstick',
             type: 'glossy',
             price: '$200',
+            productType: 'concealer',
         },
     ],
     'contour': [],
     'mascara': [],
     'eye brow pencil': [],
-
     'hair color': [],
 }
 
@@ -1038,6 +1152,46 @@ const comingsoonImage = () => {
     document.getElementById('products').classList.add('comingSoonToggle')
 }
 
+// list Items in cart
+const listItemsInCart = () => {
+    document.getElementById('cart').innerHTML = ''
+    if (Object.keys(cartItems).length === 0) {
+        document.getElementById('cart').innerHTML = 'Your Cart is Empty.'
+    } else {
+        Object.keys(cartItems).forEach((item) => {
+            let cart = document.getElementById('cart')
+            let cartItem = document.createElement('div')
+            cartItem.classList.add('cart__item')
+            let itemImg = document.createElement('img')
+            itemImg.classList.add('cart__item__img')
+            itemImg.src = cartItems[item].src
+            let itemColor = document.createElement('div')
+            itemColor.classList.add('color')
+            itemColor.style.background = cartItems[item].color
+            let itemTitle = document.createElement('div')
+            itemTitle.classList.add('cart__item__title')
+            itemTitle.innerHTML = cartItems[item].title
+            let itemPrice = document.createElement('div')
+            itemPrice.innerHTML = cartItems[item].price
+            itemPrice.classList.add('cart__item__price')
+
+            cartItem.appendChild(itemImg)
+            cartItem.appendChild(itemColor)
+            cartItem.appendChild(itemTitle)
+            cartItem.appendChild(itemPrice)
+            let remove = document.createElement('img')
+            remove.classList.add('remove')
+            remove.addEventListener('click', () => {
+                delete cartItems[cartItems[item].productType]
+                listItemsInCart()
+            })
+            remove.src = '../static/img/remove.svg'
+            cartItem.appendChild(remove)
+
+            cart.appendChild(cartItem)
+        })
+    }
+}
 // list all product
 const listAllProducts = (shade = 'matte') => {
     document.getElementById('products').innerHTML = ''
@@ -1062,6 +1216,11 @@ const listAllProducts = (shade = 'matte') => {
 
                         // add click event listener to each color div
                         product.addEventListener('click', function () {
+                            //adding to cart
+                            cartItems[item.productType] = item
+                            console.log(cartItems)
+                            listItemsInCart()
+
                             i > 6 && product.scrollIntoView()
                             document
                                 .querySelectorAll('#product')
@@ -1201,36 +1360,7 @@ window.onload = function () {
     // fetch person's race & show all products
     getPersonRace()
     listAllProducts()
-
-    productsForRaces[suggested_race ? suggested_race : default_race].forEach(
-        (item) => {
-            let cart = document.getElementById('cart')
-            let cartItem = document.createElement('div')
-            cartItem.classList.add('cart__item')
-            let itemImg = document.createElement('img')
-            itemImg.src = item.src
-            let itemColor = document.createElement('div')
-            itemColor.classList.add('color')
-            itemColor.style.background = item.color
-            let itemTitle = document.createElement('div')
-            itemTitle.innerHTML = item.title
-            let itemPrice = document.createElement('div')
-            itemPrice.innerHTML = item.price
-
-            cartItem.appendChild(itemImg)
-            cartItem.appendChild(itemColor)
-            cartItem.appendChild(itemTitle)
-            cartItem.appendChild(itemPrice)
-            let remove = document.createElement('img')
-            remove.addEventListener('click', () => {
-                console.log('first')
-            })
-            remove.src = '../static/img/remove.svg'
-            cartItem.appendChild(remove)
-
-            cart.appendChild(cartItem)
-        }
-    )
+    listItemsInCart()
 
     // rendering all shades
     shades.forEach((item) => {
@@ -1271,7 +1401,7 @@ window.onload = function () {
     video.width = '1'
     video.height = '1'
 
-    //  setting src for video
+    //setting src for video
     if (navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices
             .getUserMedia({
