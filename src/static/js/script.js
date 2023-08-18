@@ -1294,22 +1294,22 @@ const listAllProducts = (shade = 'matte') => {
 
 // fetch person race
 function getPersonRace() {
-    // fetch('/get_person_race', { method: 'POST' })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //         console.log('race from backend', data)
-    //         white_race.classList.remove('race-selected')
-    //         black_race.classList.remove('race-selected')
-    //         brown_race.classList.remove('race-selected')
-    //          suggested_race = data.race
-    //         if (data.race === 'white') {
-    //             white_race.classList.add('race-selected')
-    //         } else if (data.race === 'black') {
-    //             black_race.classList.add('race-selected')
-    //         } else {
-    //             brown_race.classList.add('race-selected')
-    //         }
-    //     })
+    fetch('/get_person_race', { method: 'POST' })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('race from backend', data)
+            white_race.classList.remove('race-selected')
+            black_race.classList.remove('race-selected')
+            brown_race.classList.remove('race-selected')
+             suggested_race = data.race
+            if (data.race === 'white') {
+                white_race.classList.add('race-selected')
+            } else if (data.race === 'black') {
+                black_race.classList.add('race-selected')
+            } else {
+                brown_race.classList.add('race-selected')
+            }
+        })
 }
 
 // sidebar items click handler
