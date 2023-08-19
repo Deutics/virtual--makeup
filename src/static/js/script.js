@@ -236,11 +236,14 @@ var suggested_race = null
 
 // function to convert to rgb
 String.prototype.convertToRGB = function () {
-    var aRgbHex = this.match(/.{1,2}/g)
-    return `[${parseInt(aRgbHex[0], 16)}, ${parseInt(
-        aRgbHex[1],
-        16
-    )}, ${parseInt(aRgbHex[2], 16)}]`
+    const r = parseInt(this.slice(1, 3), 16)
+    const g = parseInt(this.slice(3, 5), 16)
+    const b = parseInt(this.slice(5, 7), 16)
+    console.log(r, g, b)
+
+    return [r,g,b]
+
+
 }
 
 // recommended products for ai
@@ -1505,23 +1508,28 @@ const listAllProducts = (shade = 'matte') => {
 
                                 if (item.productType === 'lipstick') {
                                     setLipstickColor(
-                                        item.color.slice(1).convertToRGB()
+                                        item.color
+                                        .convertToRGB()
                                     )
                                 } else if (item.productType === 'eye shadow') {
                                     setEyeshadeColor(
-                                        item.color.slice(1).convertToRGB()
+                                        item.color
+                                        .convertToRGB()
                                     )
                                 } else if (item.productType === 'foundation') {
                                     setFoundationColor(
-                                        item.color.slice(1).convertToRGB()
+                                        item.color
+                                        .convertToRGB()
                                     )
                                 } else if (item.productType === 'blush') {
                                     setBlushColor(
-                                        item.color.slice(1).convertToRGB()
+                                        item.color
+                                        .convertToRGB()
                                     )
                                 } else if (item.productType === 'concealer') {
                                     setConcealerColor(
-                                        item.color.slice(1).convertToRGB()
+                                        item.color
+                                        .convertToRGB()
                                     )
                                 }
                             }
