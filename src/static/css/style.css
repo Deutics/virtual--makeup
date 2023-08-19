@@ -14,6 +14,11 @@ body {
     display: flex;
 }
 
+.loader {
+    width: 30%;
+    height: 30%;
+}
+
 .processedImg {
     width: 100%;
     height: 50vh;
@@ -91,6 +96,16 @@ body {
     border-radius: 5px;
     color: #828282;
     cursor: pointer;
+    font-size: 0.8rem;
+}
+.raceHeader {
+    margin-right: 10px;
+    padding: 0.7em 1.5em;
+    background-color: #f5f6f6;
+    text-transform: capitalize;
+    border-radius: 5px;
+    color: #828282;
+
     font-size: 0.8rem;
 }
 .shade:hover {

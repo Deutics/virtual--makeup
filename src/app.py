@@ -121,12 +121,13 @@ class MakeupRecommendationApp:
 
     # receives image and then send processed image back
     def receive_image(self, image):
+        print("Inside")
         image = self.base64_to_image(image)
         if image is not None:
-            masked_image = self.apply_makeup(image)
-            encoded_image = self.encode_image(masked_image)
-            if encoded_image is not None:
-                self.socketio.emit("processed_image", encoded_image)
+            cv2.imwrite("image.jpg", image)
+            race = self.analyze_person_race_in_thread(image)
+            print(race)
+            self.socketio.emit("race", race)
 
     def apply_makeup(self, frame):
         face_landmarks = self._landmarks_extractor.extract_landmarks(frame)

@@ -18,6 +18,8 @@
             href="https://fonts.googleapis.com/css?family=Goldman"
             rel="stylesheet"
         />
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/facemesh"></script>
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
             rel="stylesheet"
@@ -47,8 +49,8 @@
                 <div>
                     <div
                         class="closed"
-                        id="ai Beauty"
-                        onclick="sideBarItemClick('ai Beauty')"
+                        id="ai beauty"
+                        onclick="sideBarItemClick('ai beauty')"
                     >
                         <img src="../static/img/aibeauty_sidebar.png" />
                         <p>AI Beauty</p>
@@ -164,15 +166,9 @@
                             <img
                                 id="photo"
                                 class="processedImg"
-                                src="../static/img/white-denim-jacket-front-view-streetwear-fashion.jpg"
+                                src="../static/img/loader.svg"
                             />
-                            <div
-                                id="backButton"
-                                class="backButton"
-                                onclick="reset()"
-                            >
-                                <img src="../static/img/back.svg" alt="" />
-                            </div>
+
                             <video
                                 playsinline
                                 autoplay
@@ -213,5 +209,6 @@
                 </div>
             </div>
         </div>
+        <script></script>
     </body>
 </html>
