@@ -1402,19 +1402,19 @@ window.onload = function () {
     video.height = '1'
 
     //setting src for video
-    if (navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices
-            .getUserMedia({
-                video: true,
-            })
-            .then(function (stream) {
-                video.srcObject = stream
-                video.play()
-            })
-            .catch(function (err) {
-                console.log('error in media devices', err)
-            })
-    }
+    // if (navigator.mediaDevices.getUserMedia) {
+    //     navigator.mediaDevices
+    //         .getUserMedia({
+    //             video: true,
+    //         })
+    //         .then(function (stream) {
+    //             video.srcObject = stream
+    //             video.play()
+    //         })
+    //         .catch(function (err) {
+    //             console.log('error in media devices', err)
+    //         })
+    // }
 
     // sending a frame after 100ms
     setInterval(() => {

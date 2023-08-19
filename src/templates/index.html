@@ -166,6 +166,13 @@
                                 class="processedImg"
                                 src="../static/img/white-denim-jacket-front-view-streetwear-fashion.jpg"
                             />
+                            <div
+                                id="backButton"
+                                class="backButton"
+                                onclick="reset()"
+                            >
+                                <img src="../static/img/back.svg" alt="" />
+                            </div>
                             <video
                                 playsinline
                                 autoplay
@@ -189,18 +196,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- 
-                    <div class="mainImage_innerWrapper">
-                        <div style="height: 90vh"></div>
-                        <div
-                            id="backButton"
-                            class="backButton"
-                            style="background-image: url('{{ url_for('static',  filename='img/back.svg')}}')"
-                            onclick="reset()"
-                        >
-                            <img src="../static/img/back.svg" alt="" />
-                        </div>
-                    </div> -->
                 </div>
             </div>
             <div id="selectedColors" class="selectedColors"></div>
