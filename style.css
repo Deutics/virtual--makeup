@@ -3168,6 +3168,11 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 @media screen and (max-width: 768px) {
+  .LipstickItemselected {
+      padding: 2px 1px 2px 0px;
+      margin-bottom: 10px !important;
+  }
+  
   .Comming_Soon {
     text-align: center;
     margin: 300px -2px auto;
