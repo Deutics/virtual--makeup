@@ -799,8 +799,21 @@ function updateSelectionInAllSections(
   );
 }
 
+let selectedImageElement = null;
+
 // Responsibale to send data in the cart
 function handleLipstickImageClick(img, icon, title, price) {
+
+  const clickedImage = event.currentTarget;
+
+  if (selectedImageElement) {
+    selectedImageElement.classList.remove("LipstickItemselected"); 
+  }
+
+  clickedImage.classList.add("LipstickItemselected"); 
+  selectedImageElement = clickedImage; 
+
+
   const selectedItemData = {
     img: img,
     icon: icon,
@@ -897,7 +910,7 @@ function generateCartModelContent() {
   const totalPriceElement = document.getElementById("totalPrice");
   let totalPrice = 0;
   selectedItesmsArray.forEach((lipstick) => {
-    totalPrice += parseInt(lipstick.price.slice(1));
+    totalPrice += parseInt(lipstick.price?.slice(1));
   });
   totalPriceElement.textContent = `$${totalPrice}`;
 }
@@ -1421,6 +1434,16 @@ function removeSelectedCartEyeshadow(
 }
 
 function handleEyeshadowImageClick(img, icon, title, price) {
+
+  const clickedImage = event.currentTarget;
+
+  if (selectedImageElement) {
+    selectedImageElement.classList.remove("LipstickItemselected"); 
+  }
+
+  clickedImage.classList.add("LipstickItemselected"); 
+  selectedImageElement = clickedImage; 
+
   const selectedItemData = {
     img: img,
     icon: icon,
@@ -1499,7 +1522,7 @@ function generateCartModelEyeshadowContent() {
   );
   let totalPriceEyeshadow = 0;
   selectedItesmsArray.forEach((Eyeshadow) => {
-    totalPriceEyeshadow += parseInt(Eyeshadow.price.slice(1));
+    totalPriceEyeshadow += parseInt(Eyeshadow.price?.slice(1));
   });
   totalPriceElementEyeshadow.textContent = `$${totalPriceEyeshadow}`;
 }
@@ -2006,6 +2029,16 @@ function removeSelectedCartFoundation(
 }
 
 function handleFoundationImageClick(img, icon, title, price) {
+
+  const clickedImage = event.currentTarget;
+
+  if (selectedImageElement) {
+    selectedImageElement.classList.remove("LipstickItemselected"); 
+  }
+
+  clickedImage.classList.add("LipstickItemselected"); 
+  selectedImageElement = clickedImage; 
+
   // Add the selected Foundation data to the array
   const selectedItemData = {
     img: img,
@@ -2089,7 +2122,7 @@ function generateCartModelFoundationContent() {
   );
   let totalPriceFoundation = 0;
   selectedItesmsArray.forEach((Foundation) => {
-    totalPriceFoundation += parseInt(Foundation.price.slice(1));
+    totalPriceFoundation += parseInt(Foundation.price?.slice(1));
   });
   totalPriceElementFoundation.textContent = `$${totalPriceFoundation}`;
 }
@@ -2570,6 +2603,15 @@ function removeSelectedCartBlush(cartItemBlushDiv, indexToRemoveBlush) {
 }
 
 function handleBlushImageClick(img, icon, title, price) {
+
+  const clickedImage = event.currentTarget;
+
+  if (selectedImageElement) {
+    selectedImageElement.classList.remove("LipstickItemselected"); 
+  }
+
+  clickedImage.classList.add("LipstickItemselected"); 
+  selectedImageElement = clickedImage; 
   const selectedItemData = {
     img: img,
     icon: icon,
@@ -2664,7 +2706,7 @@ function generateCartModelBlushContent() {
   const totalPriceElementBlush = document.getElementById("totalPriceblush");
   let totalPriceBlush = 0;
   selectedItesmsArray.forEach((Blush) => {
-    totalPriceBlush += parseInt(Blush.price.slice(1));
+    totalPriceBlush += parseInt(Blush.price?.slice(1));
   });
   totalPriceElementBlush.textContent = `$${totalPriceBlush}`;
 }
@@ -3142,6 +3184,15 @@ function removeSelectedCartConcealer(
 }
 
 function handleConcealerImageClick(img, icon, title, price) {
+
+  const clickedImage = event.currentTarget;
+
+  if (selectedImageElement) {
+    selectedImageElement.classList.remove("LipstickItemselected"); 
+  }
+
+  clickedImage.classList.add("LipstickItemselected"); 
+  selectedImageElement = clickedImage; 
   const selectedItemData = {
     img: img,
     icon: icon,
@@ -3219,7 +3270,7 @@ function generateCartModelConcealerContent() {
   );
   let totalPriceConcealer = 0;
   selectedItesmsArray.forEach((Concealer) => {
-    totalPriceConcealer += parseInt(Concealer.price.slice(1));
+    totalPriceConcealer += parseInt(Concealer.price?.slice(1));
   });
   totalPriceElementConcealer.textContent = `$${totalPriceConcealer}`;
 }
