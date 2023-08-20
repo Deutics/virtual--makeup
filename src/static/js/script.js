@@ -10,8 +10,9 @@ var lipstick_data = {
             317, 14, 87, 178, 88, 95, 78,
         ],
     ],
-    beta_value: 0.2,
+    beta_value: 0.35,
     color: [0, 0, 0],
+    blur : 'blur(3px) opacity(90%)',
 }
 
 var concealer_data = {
@@ -25,8 +26,9 @@ var concealer_data = {
             359, 263, 249, 390, 373, 374, 380, 381, 382,
         ],
     ],
-    beta_value: 0.05,
+    beta_value: 0.15,
     color: [0, 0, 0],
+    blur : 'blur(4px) opacity(90%)',
 }
 
 var foundation_data = {
@@ -42,8 +44,9 @@ var foundation_data = {
             67, 109, 10, 338, 297, 332, 284,
         ],
     ],
-    beta_value: 0.05,
+    beta_value: 0.07,
     color: [0, 0, 0],
+    blur : 'blur(5px) opacity(80%)',
 }
 
 var blush_data = {
@@ -51,8 +54,9 @@ var blush_data = {
         [101, 117, 34, 227, 137, 207],
         [330, 264, 366, 427],
     ],
-    beta_value: 0.06,
+    beta_value: 0.1,
     color: [0, 0, 0],
+    blur : 'blur(5px) opacity(90%)',
 }
 
 var eyeshade_data = {
@@ -66,8 +70,9 @@ var eyeshade_data = {
             386, 384, 398, 362, 463,
         ],
     ],
-    beta_value: 0.1,
+    beta_value: 0.3,
     color: [0, 0, 0],
+    blur : 'blur(5px) opacity(90%)',
 }
 
 ////////////////////////////
@@ -164,6 +169,7 @@ function createMakeupMask(faceLandmarks, makeup_data) {
             for (let k = 1; k < points.length; k++) {
                 ctx.lineTo(points[k].x, points[k].y)
             }
+            ctx.filter = makeup_data.blur
             ctx.closePath()
             ctx.fill()
         }
