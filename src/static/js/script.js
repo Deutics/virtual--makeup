@@ -170,6 +170,8 @@ function createMakeupMask(faceLandmarks, makeup_data) {
     }
 }
 
+let photo = document.get
+
 async function get_facemesh() {
     // load HTML canvas
     var canvas = document.getElementById('canvas')
@@ -180,6 +182,12 @@ async function get_facemesh() {
 
     // load facemesh model
     const model = await facemesh.load((maxFaces = 1))
+
+    let photo = document.getElementById('photo')
+    photo.style.display = 'block'
+
+    let loader = document.getElementById('loader')
+    loader.style.display = 'none'
 
     // process input stream frame by frame
     while (1) {
@@ -1419,7 +1427,7 @@ const listItemsInCart = () => {
             remove.classList.add('remove')
             remove.addEventListener('click', () => {
                 document
-                    .querySelectorAll('#product')
+                    .querySelectorAll(`.${cartItems[item].productTypex}`)
                     .forEach((item) => item.classList.remove('productBorder'))
 
                 if (cartItems[item].productType === 'lipstick') {
@@ -1465,6 +1473,7 @@ const listAllProducts = (shade = 'matte') => {
                         let productTitle = document.createElement('div')
                         let productContent = document.createElement('div')
                         product.setAttribute('id', 'product')
+                        product.classList.add(item.productType)
 
                         // add click event listener to each color div
                         product.addEventListener('click', function () {
