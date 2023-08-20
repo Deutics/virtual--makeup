@@ -1399,6 +1399,7 @@ const comingsoonImage = () => {
 // list Items in cart
 const listItemsInCart = () => {
     document.getElementById('cart').innerHTML = ''
+    console.log(Object.keys(cartItems))
     if (Object.keys(cartItems).length === 0) {
         document.getElementById('cart').innerHTML = 'Your Cart is Empty.'
     } else {
@@ -1452,6 +1453,7 @@ const listItemsInCart = () => {
         })
     }
 }
+
 // list all product
 const listAllProducts = (shade = 'matte') => {
     document.getElementById('products').innerHTML = ''
@@ -1690,6 +1692,7 @@ window.onload = function () {
 
     listAllProducts()
     renderShadesOrRaces()
+    listItemsInCart()
 
     // Periodically update the race every 30 seconds
     setInterval(getPersonRace, 30000)
