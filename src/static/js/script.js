@@ -241,9 +241,7 @@ String.prototype.convertToRGB = function () {
     const b = parseInt(this.slice(5, 7), 16)
     console.log(r, g, b)
 
-    return [r,g,b]
-
-
+    return [r, g, b]
 }
 
 // recommended products for ai
@@ -1507,30 +1505,17 @@ const listAllProducts = (shade = 'matte') => {
                                 product.classList.add('productBorder')
 
                                 if (item.productType === 'lipstick') {
-                                    setLipstickColor(
-                                        item.color
-                                        .convertToRGB()
-                                    )
+                                    setLipstickColor(item.color.convertToRGB())
                                 } else if (item.productType === 'eye shadow') {
-                                    setEyeshadeColor(
-                                        item.color
-                                        .convertToRGB()
-                                    )
+                                    setEyeshadeColor(item.color.convertToRGB())
                                 } else if (item.productType === 'foundation') {
                                     setFoundationColor(
-                                        item.color
-                                        .convertToRGB()
+                                        item.color.convertToRGB()
                                     )
                                 } else if (item.productType === 'blush') {
-                                    setBlushColor(
-                                        item.color
-                                        .convertToRGB()
-                                    )
+                                    setBlushColor(item.color.convertToRGB())
                                 } else if (item.productType === 'concealer') {
-                                    setConcealerColor(
-                                        item.color
-                                        .convertToRGB()
-                                    )
+                                    setConcealerColor(item.color.convertToRGB())
                                 }
                             }
                         })
