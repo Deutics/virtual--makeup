@@ -5,7 +5,7 @@ import cv2
 class MakeupApplier:
     def __init__(self):
         self._person_race = None
-        self._makeup_items_data = {"Concealer": {"color": (0, 0, 0),
+        self._makeup_items_data = {"concealer": {"color": (0, 0, 0),
                                                  "landmarks_id": [[133, 243, 244, 128, 121, 120, 119, 118, 117, 111,
                                                                    35, 226, 130, 163, 144, 145, 153, 154, 155],
                                                                   [362, 463, 464, 357, 350, 349, 348, 347, 346, 340,
@@ -13,19 +13,19 @@ class MakeupApplier:
                                                                    381, 382]],
                                                  "alpha": 0.95, "beta": 0.05},
 
-                                   "Lipstick": {"color": (0, 0, 0),
+                                   "lipstick": {"color": (0, 0, 0),
                                                 "landmarks_id": [[61, 185, 40, 39, 37, 0, 267, 269, 270, 409, 291, 308,
                                                                   415, 310, 311, 312, 13, 82, 81, 80, 191, 78],
                                                                  [61, 146, 91, 181, 84, 17, 314, 405, 321, 375, 291,
                                                                   324, 318, 402, 317, 14, 87, 178, 88, 95, 78]],
                                                 "alpha": 0.8, "beta": 0.2},
 
-                                   "Blush": {"color": (0, 0, 0),
+                                   "blush": {"color": (0, 0, 0),
                                              "landmarks_id": [[101, 117, 34, 227, 137, 207],
                                                               [330, 264, 366, 427]],
                                              "alpha": 0.95, "beta": 0.05},
 
-                                   "Foundation": {"color": (0, 0, 0),
+                                   "foundation": {"color": (0, 0, 0),
                                                   "landmarks_id": [[251, 389, 356, 454, 323, 361, 288, 397, 365,
                                                                     379, 378, 400, 377, 152, 148, 176, 149, 150,
                                                                     136, 172, 58, 132, 127, 162, 21, 54, 103, 67, 109,
@@ -36,7 +36,7 @@ class MakeupApplier:
                                                                     297, 332, 284]],
                                                   "alpha": 0.95, "beta": 0.05},
 
-                                   "Eye_shade": {"color": (0, 0, 0),
+                                   "eye_shade": {"color": (0, 0, 0),
                                                  "landmarks_id": [[226, 113, 225, 224, 223, 222, 221, 189, 244, 243,
                                                                    173, 157, 158, 159, 160, 161, 246, 130],
                                                                   [464, 413, 441, 442, 443, 444, 445, 342, 446, 263,
@@ -121,11 +121,8 @@ class MakeupApplier:
         return mask
 
     def recommend_makeup_colors(self):
-        self._makeup_items_data["Concealer"]["color"] = self._ai_colors_recommendations[self._person_race]["concealer"]
-        self._makeup_items_data["Lipstick"]["color"] = self._ai_colors_recommendations[self._person_race]["lipstick"]
-        self._makeup_items_data["Eye_shade"]["color"] = self._ai_colors_recommendations[self._person_race]["eye_shade"]
-        self._makeup_items_data["Blush"]["color"] = self._ai_colors_recommendations[self._person_race]["blush"]
-        self._makeup_items_data["Foundation"]["color"] = self._ai_colors_recommendations[self._person_race]["foundation"]
+        for items in self._makeup_items_data:
+            self._makeup_items_data[items]["color"] = self._ai_colors_recommendations[self._person_race][items]
 
     def ai_recommended_colors(self):
         return self._ai_colors_recommendations[self._person_race]

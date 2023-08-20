@@ -3,7 +3,7 @@ from deepface import DeepFace
 import base64
 import cv2
 import numpy as np
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO, emit
 from config import settings
 from Streamer.Streamer import Streamer
@@ -24,7 +24,7 @@ colors = {
 
 class MakeupRecommendationApp:
     def __init__(self, source=0):
-        self._streamer = Streamer(source=source)
+        # self._streamer = Streamer(source=source)
         self._landmarks_extractor = LandmarksExtractor()
         self._apply_makeup = MakeupApplier()
         self._image_saver = ImageSaver()
@@ -34,16 +34,14 @@ class MakeupRecommendationApp:
         self.app = Flask(__name__, static_folder="./static")
         # self.app = Flask(__name__,template_folder='templates')
         self.app.config["SECRET_KEY"] = "secret!"
-        self.socketio = SocketIO(self.app, async_mode="eventlet")
+        self.socketio = SocketIO(self.app, async_mode="eventlet", cors_allowed_origins=settings.CORS_ALLOWED_ORIGINS)
 
         # # Routes
         self.app.route("/")(self.index)
         self.socketio.on("connect")(self.test_connect)
         self.socketio.on("image")(self.receive_image)
-        self.app.add_url_rule('/recommendation', view_func=self.recommendation)
-        self.app.add_url_rule('/recommendation_mask', view_func=self.recommendation_mask)
-        self.app.add_url_rule('/get_person_race', view_func=self.get_person_race, methods=['POST'])
         self.app.add_url_rule('/recommendation_data', view_func=self.recommendation_data, methods=['POST'])
+        self.app.add_url_rule('/get_person_race', view_func=self.get_person_race, methods=['POST'])
         self.app.add_url_rule('/start_ai', view_func=self.start_ai, methods=['POST'])
 
     def run(self):
@@ -67,9 +65,7 @@ class MakeupRecommendationApp:
     @staticmethod
     def encode_image(image):
         try:
-            # Check if the image is empty or None
-            if image is None:
-                return None
+            # check for image
 
             result, frame_encoded = cv2.imencode(".jpg", image)
 
@@ -90,19 +86,11 @@ class MakeupRecommendationApp:
         print("Connected")
         emit("my response", {"data": "Connected"})
 
-    @staticmethod
-    def recommendation():
-        return render_template('recommendation.html')
-
+    # To apply ai recommended makeup
     def start_ai(self):
-        # self._apply_makeup.recommend_makeup_colors()
         self._apply_makeup.recommend_makeup_colors()
         self.update_global_colors()
         return "MakeUp Applied"
-
-    @staticmethod
-    def recommendation_mask():
-        return redirect('/recommendation')
 
     @staticmethod
     def get_rgb_color(color, index):
@@ -110,8 +98,11 @@ class MakeupRecommendationApp:
             color = tuple(map(int, color.strip("()").split(",")))
             colors[index] = color[::-1]
 
+    # sends person's race
     def get_person_race(self):
-        return self._apply_makeup.person_race
+        race = self._apply_makeup.person_race
+        # Return a JSON response with the race information
+        return jsonify({'race': race})
 
     def recommendation_data(self):
         self.get_rgb_color(request.form.get("lipstick_color"), "lipstick")
@@ -120,21 +111,23 @@ class MakeupRecommendationApp:
         self.get_rgb_color(request.form.get("concealer_color"), "concealer")
         self.get_rgb_color(request.form.get("foundation_color"), "foundation")
 
-        self._apply_makeup.makeup_items_data["Concealer"]["color"] = colors["concealer"]
-        self._apply_makeup.makeup_items_data["Lipstick"]["color"] = colors["lipstick"]
-        self._apply_makeup.makeup_items_data["Eye_shade"]["color"] = colors["eye_shade"]
-        self._apply_makeup.makeup_items_data["Blush"]["color"] = colors["blush"]
-        self._apply_makeup.makeup_items_data["Foundation"]["color"] = colors["foundation"]
+        self._apply_makeup.makeup_items_data["concealer"]["color"] = colors["concealer"]
+        self._apply_makeup.makeup_items_data["lipstick"]["color"] = colors["lipstick"]
+        self._apply_makeup.makeup_items_data["eye_shade"]["color"] = colors["eye_shade"]
+        self._apply_makeup.makeup_items_data["blush"]["color"] = colors["blush"]
+        self._apply_makeup.makeup_items_data["foundation"]["color"] = colors["foundation"]
 
         return "Data Received"
 
+    # receives image and then send processed image back
     def receive_image(self, image):
+        print("Inside")
         image = self.base64_to_image(image)
         if image is not None:
-            masked_image = self.apply_makeup(image)
-            encoded_image = self.encode_image(masked_image)
-            if encoded_image is not None:
-                self.socketio.emit("processed_image", encoded_image)
+            cv2.imwrite("image.jpg", image)
+            race = self.analyze_person_race_in_thread(image)
+            print(race)
+            self.socketio.emit("race", race)
 
     def apply_makeup(self, frame):
         face_landmarks = self._landmarks_extractor.extract_landmarks(frame)
@@ -159,12 +152,9 @@ class MakeupRecommendationApp:
         return thread.join()
 
     def update_global_colors(self):
-        ai_colors = self._apply_makeup.ai_recommended_colors()
-        colors["concealer"] = ai_colors["concealer"]
-        colors["lipstick"] = ai_colors["lipstick"]
-        colors["blush"] = ai_colors["blush"]
-        colors["eye_shade"] = ai_colors["eye_shade"]
-        colors["foundation"] = ai_colors["foundation"]
+        ai_recommended_colors = self._apply_makeup.ai_recommended_colors()
+        for item in ai_recommended_colors:
+            colors[item] = ai_recommended_colors[item]
 
 
 def analyze_person_race(frame):
