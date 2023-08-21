@@ -1,8 +1,8 @@
 const lisptickMate = [
   {
     id: 2,
-    img: "/Images/lipstik/lipstik_img2.png",
-    icon: "/Images/lipstik/lipstick_img2_color.png",
+    img: "/Images/lipstik/lipstik_img1.png",
+    icon: "#B8050F",
     title: "Matte Lipstick",
     content: "Rich lipstick with high color payoff",
     price: "$200",
@@ -10,121 +10,41 @@ const lisptickMate = [
 
   {
     id: 4,
-    img: "/Images/lipstik/lipstik_img4.png",
-    icon: "/Images/lipstik/lipstick_img4_color.png",
+    img: "/Images/lipstik/lipstik_img2.png",
+    icon: "#C45251",
     title: "Velvet Matte Lipstick",
     content: "Transfer-resistant, matte lipstick",
     price: "$200",
   },
   {
     id: 5,
-    img: "Images/lipstik/lipstik_img5.png",
-    icon: "Images/lipstik/lipstick_img5_color.png",
+    img: "Images/lipstik/lipstik_img3.png",
+    icon: "#B8050F",
     title: "Powermatte Long Lasting",
     content: "Transfer-resistant, matte lipstick",
     price: "$200",
   },
   {
     id: 6,
+    img: "/Images/lipstik/lipstik_img4.png",
+    icon: "#A53D38",
+    title: "Kind Words Matte Lipstick",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 7,
+    img: "/Images/lipstik/lipstik_img5.png",
+    icon: "#A53D38",
+    title: "Powermatte Long Lasting",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 8,
     img: "/Images/lipstik/lipstik_img6.png",
-    icon: "/Images/lipstik/lipstick_img3_color.png",
+    icon: "#A53D38",
     title: "Kind Words Matte Lipstick",
-    content: "Transfer-resistant, matte lipstick",
-    price: "$200",
-  },
-  {
-    id: 7,
-    img: "/Images/lipstik/lipstik_img7.png",
-    icon: "Images/lipstik/lipstick_img5_color.png",
-    title: "Powermatte Long Lasting",
-    content: "Transfer-resistant, matte lipstick",
-    price: "$200",
-  },
-  {
-    id: 8,
-    img: "/Images/lipstik/lipstik_img8.png",
-    icon: "/Images/lipstik/lipstick_img5_color.png",
-    title: "Kind Words Matte Lipstick",
-    content: "Transfer-resistant, matte lipstick",
-    price: "$200",
-  },
-  {
-    id: 5,
-    img: "Images/lipstik/lipstik_img5.png",
-    icon: "Images/lipstik/lipstick_img5_color.png",
-    title: "Powermatte Long Lasting",
-    content: "Transfer-resistant, matte lipstick",
-    price: "$200",
-  },
-  {
-    id: 6,
-    img: "/Images/lipstik/lipstik_img6.png",
-    icon: "/Images/lipstik/lipstick_img3_color.png",
-    title: "Kind Words Matte Lipstick",
-    content: "Transfer-resistant, matte lipstick",
-    price: "$200",
-  },
-  {
-    id: 7,
-    img: "/Images/lipstik/lipstik_img7.png",
-    icon: "Images/lipstik/lipstick_img5_color.png",
-    title: "Powermatte Long Lasting",
-    content: "Transfer-resistant, matte lipstick",
-    price: "$200",
-  },
-  {
-    id: 8,
-    img: "/Images/lipstik/lipstik_img8.png",
-    icon: "/Images/lipstik/lipstick_img5_color.png",
-    title: "Kind Words Matte Lipstick",
-    content: "Transfer-resistant, matte lipstick",
-    price: "$200",
-  },
-  {
-    id: 7,
-    img: "/Images/lipstik/lipstik_img7.png",
-    icon: "Images/lipstik/lipstick_img5_color.png",
-    title: "Powermatte Long Lasting",
-    content: "Transfer-resistant, matte lipstick",
-    price: "$200",
-  },
-  {
-    id: 8,
-    img: "/Images/lipstik/lipstik_img8.png",
-    icon: "/Images/lipstik/lipstick_img5_color.png",
-    title: "Kind Words Matte Lipstick",
-    content: "Transfer-resistant, matte lipstick",
-    price: "$200",
-  },
-  {
-    id: 7,
-    img: "/Images/lipstik/lipstik_img7.png",
-    icon: "Images/lipstik/lipstick_img5_color.png",
-    title: "Powermatte Long Lasting",
-    content: "Transfer-resistant, matte lipstick",
-    price: "$200",
-  },
-  {
-    id: 8,
-    img: "/Images/lipstik/lipstik_img8.png",
-    icon: "/Images/lipstik/lipstick_img5_color.png",
-    title: "Kind Words Matte Lipstick",
-    content: "Transfer-resistant, matte lipstick",
-    price: "$200",
-  },
-  {
-    id: 7,
-    img: "/Images/lipstik/lipstik_img7.png",
-    icon: "Images/lipstik/lipstick_img5_color.png",
-    title: "Powermatte Long Lasting",
-    content: "Transfer-resistant, matte lipstick",
-    price: "$200",
-  },
-  {
-    id: 7,
-    img: "/Images/lipstik/lipstik_img7.png",
-    icon: "Images/lipstik/lipstick_img5_color.png",
-    title: "Powermatte Long Lasting",
     content: "Transfer-resistant, matte lipstick",
     price: "$200",
   },
@@ -134,7 +54,7 @@ const EyeshadowMatte = [
   {
     id: 1,
     img: "Images/Eyeshadow/Eyeshadow_Img1.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon1.png",
+    icon: "#EDA96A",
     title: "Brown Script ",
     content: "Long Lasting Multi Reflective with Matte",
     price: "$200",
@@ -142,7 +62,7 @@ const EyeshadowMatte = [
   {
     id: 2,
     img: "Images/Eyeshadow/Eyeshadow_Img2.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon2.png",
+    icon: "#CEA598",
     title: "Matte Eyeshadow",
     content: "Rich Eyeshadow with Matte Finish",
     price: "$200",
@@ -150,7 +70,7 @@ const EyeshadowMatte = [
   {
     id: 3,
     img: "Images/Eyeshadow/Eyeshadow_Img3.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon3.png",
+    icon: "#E2AD9B",
     title: "Refillable Pro Palette ",
     content: "Pro Palette Refillable Eyeshadow ",
     price: "$200",
@@ -158,7 +78,7 @@ const EyeshadowMatte = [
   {
     id: 4,
     img: "Images/Eyeshadow/Eyeshadow_Img4.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon4.png",
+    icon: "#F5AC94",
     title: "Vanilla Matte",
     content: "Vanilla Nut Matte Eyeshadow",
     price: "$200",
@@ -166,7 +86,7 @@ const EyeshadowMatte = [
   {
     id: 5,
     img: "Images/Eyeshadow/Eyeshadow_Img5.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon5.png",
+    icon: "#E08459",
     title: "Colourful Eyeshadow",
     content: "New Collection Colourful Eyeshadow",
     price: "$200",
@@ -174,87 +94,7 @@ const EyeshadowMatte = [
   {
     id: 6,
     img: "Images/Eyeshadow/Eyeshadow_Img6.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon6.png",
-    title: "Natural Translucent",
-    content: "Buttery Pigment-Rich Matte Foundation",
-    price: "$200",
-  },
-  {
-    id: 1,
-    img: "Images/Eyeshadow/Eyeshadow_Img1.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon1.png",
-    title: "Brown Script ",
-    content: "Long Lasting Multi Reflective with Matte",
-    price: "$200",
-  },
-  {
-    id: 2,
-    img: "Images/Eyeshadow/Eyeshadow_Img2.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon2.png",
-    title: "Matte Eyeshadow",
-    content: "Rich Eyeshadow with Matte Finish",
-    price: "$200",
-  },
-  {
-    id: 3,
-    img: "Images/Eyeshadow/Eyeshadow_Img3.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon3.png",
-    title: "Refillable Pro Palette ",
-    content: "Pro Palette Refillable Eyeshadow ",
-    price: "$200",
-  },
-  {
-    id: 4,
-    img: "Images/Eyeshadow/Eyeshadow_Img4.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon4.png",
-    title: "Vanilla Matte",
-    content: "Vanilla Nut Matte Eyeshadow",
-    price: "$200",
-  },
-  {
-    id: 5,
-    img: "Images/Eyeshadow/Eyeshadow_Img5.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon5.png",
-    title: "Colourful Eyeshadow",
-    content: "New Collection Colourful Eyeshadow",
-    price: "$200",
-  },
-  {
-    id: 6,
-    img: "Images/Eyeshadow/Eyeshadow_Img6.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon6.png",
-    title: "Natural Translucent",
-    content: "Buttery Pigment-Rich Matte Foundation",
-    price: "$200",
-  },
-  {
-    id: 3,
-    img: "Images/Eyeshadow/Eyeshadow_Img3.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon3.png",
-    title: "Refillable Pro Palette ",
-    content: "Pro Palette Refillable Eyeshadow ",
-    price: "$200",
-  },
-  {
-    id: 4,
-    img: "Images/Eyeshadow/Eyeshadow_Img4.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon4.png",
-    title: "Vanilla Matte",
-    content: "Vanilla Nut Matte Eyeshadow",
-    price: "$200",
-  },
-  {
-    id: 5,
-    img: "Images/Eyeshadow/Eyeshadow_Img5.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon5.png",
-    title: "Colourful Eyeshadow",
-    content: "New Collection Colourful Eyeshadow",
-    price: "$200",
-  },
-  {
-    id: 6,
-    img: "Images/Eyeshadow/Eyeshadow_Img6.png",
-    icon: "Images/Eyeshadow/Eyeshadow_Img_Icon6.png",
+    icon: "#714851",
     title: "Natural Translucent",
     content: "Buttery Pigment-Rich Matte Foundation",
     price: "$200",
@@ -265,7 +105,7 @@ const BlushLiquid = [
   {
     id: 1,
     img: "Images/Blush/blush_Img1.png",
-    icon: "Images/Blush/blush_Img_Icon1.png",
+    icon: "#EDC3B6",
     title: "Pure Pressed Blush",
     content: "Refreshing Wash of Colour",
     price: "$200",
@@ -273,7 +113,7 @@ const BlushLiquid = [
   {
     id: 2,
     img: "Images/Blush/blush_Img2.png",
-    icon: "Images/Blush/blush_Img_Icon2.png",
+    icon: "#C57A67",
     title: "Blush Cashmere Pressed",
     content: "Prestige Blend of Natural",
     price: "$200",
@@ -281,7 +121,7 @@ const BlushLiquid = [
   {
     id: 3,
     img: "Images/Blush/blush_Img3.png",
-    icon: "Images/Blush/blush_Img_Icon3.png",
+    icon: "#FFBBBB",
     title: "Matte High Pigment Pressed",
     content: "Long-lasting Colorful, Blends Easily, Lightweight",
     price: "$200",
@@ -289,7 +129,7 @@ const BlushLiquid = [
   {
     id: 4,
     img: "Images/Blush/blush_Img4.png",
-    icon: "Images/Blush/blush_Img_Icon4.png",
+    icon: "#FAAB92",
     title: "Pressed Blush Peach",
     content: "Highly Pigmented; Kind to Skin",
     price: "$200",
@@ -297,7 +137,7 @@ const BlushLiquid = [
   {
     id: 5,
     img: "Images/Blush/blush_Img5.png",
-    icon: "Images/Blush/blush_Img_Icon5.png",
+    icon: "#F18F8F",
     title: "Rouge Red Pressed",
     content: "Sheer-To-Buildable Powder Blush",
     price: "$200",
@@ -305,55 +145,7 @@ const BlushLiquid = [
   {
     id: 6,
     img: "Images/Blush/blush_Img6.png",
-    icon: "Images/Blush/blush_Img_Icon6.png",
-    title: "Pressed Mineral",
-    content: "Natural Pigment Long Lasting Blush",
-    price: "$200",
-  },
-  {
-    id: 1,
-    img: "Images/Blush/blush_Img1.png",
-    icon: "Images/Blush/blush_Img_Icon1.png",
-    title: "Pure Pressed Blush",
-    content: "Refreshing Wash of Colour",
-    price: "$200",
-  },
-  {
-    id: 2,
-    img: "Images/Blush/blush_Img2.png",
-    icon: "Images/Blush/blush_Img_Icon2.png",
-    title: "Blush Cashmere Pressed",
-    content: "Prestige Blend of Natural",
-    price: "$200",
-  },
-  {
-    id: 3,
-    img: "Images/Blush/blush_Img3.png",
-    icon: "Images/Blush/blush_Img_Icon3.png",
-    title: "Matte High Pigment Pressed",
-    content: "Long-lasting Colorful, Blends Easily, Lightweight",
-    price: "$200",
-  },
-  {
-    id: 4,
-    img: "Images/Blush/blush_Img4.png",
-    icon: "Images/Blush/blush_Img_Icon4.png",
-    title: "Pressed Blush Peach",
-    content: "Highly Pigmented; Kind to Skin",
-    price: "$200",
-  },
-  {
-    id: 5,
-    img: "Images/Blush/blush_Img5.png",
-    icon: "Images/Blush/blush_Img_Icon5.png",
-    title: "Rouge Red Pressed",
-    content: "Sheer-To-Buildable Powder Blush",
-    price: "$200",
-  },
-  {
-    id: 6,
-    img: "Images/Blush/blush_Img6.png",
-    icon: "Images/Blush/blush_Img_Icon6.png",
+    icon: "#DBACA1",
     title: "Pressed Mineral",
     content: "Natural Pigment Long Lasting Blush",
     price: "$200",
@@ -363,7 +155,7 @@ const FoundationLiquid = [
   {
     id: 1,
     img: "Images/Foundation/foundation_Img1.png",
-    icon: "Images/Foundation/foundation_Img_Icon1.png",
+    icon: "#E6BF9E",
     title: "Dream Radiant",
     content: "Transfer-resistant, liquid foundation",
     price: "$200",
@@ -371,7 +163,7 @@ const FoundationLiquid = [
   {
     id: 2,
     img: "Images/Foundation/foundation_Img5.png",
-    icon: "Images/Foundation/foundation_Img_Icon2.png",
+    icon: "#EDCDB8",
     title: "New York",
     content: "Fit Me Matte + Poreless Foundation",
     price: "$200",
@@ -379,7 +171,7 @@ const FoundationLiquid = [
   {
     id: 3,
     img: "Images/Foundation/foundation_Img3.png",
-    icon: "Images/Foundation/foundation_Img_Icon3.png",
+    icon: "#E3BF9E",
     title: "Sheer Foundation",
     content: "Hydrating Natural Foundation ",
     price: "$200",
@@ -387,7 +179,7 @@ const FoundationLiquid = [
   {
     id: 4,
     img: "Images/Foundation/foundation_Img4.png",
-    icon: "Images/Foundation/foundation_Img_Icon4.png",
+    icon: "#BA8255",
     title: "Catrice Liquid Coverage",
     content: "HD Liquid Mattifying Foundation",
     price: "$200",
@@ -395,7 +187,7 @@ const FoundationLiquid = [
   {
     id: 5,
     img: "Images/Foundation/foundation_Img5.png",
-    icon: "Images/Foundation/foundation_Img_Icon5.png",
+    icon: "#EABFAB",
     title: "Flawless Liquid",
     content: "Matte Flawless Foundation",
     price: "$200",
@@ -403,55 +195,7 @@ const FoundationLiquid = [
   {
     id: 6,
     img: "Images/Foundation/foundation_Img6.png",
-    icon: "Images/Foundation/foundation_Img_Icon6.png",
-    title: "Flawless Finish",
-    content: "Buttery pigment-rich soft Matte Foundation",
-    price: "$200",
-  },
-  {
-    id: 1,
-    img: "Images/Foundation/foundation_Img1.png",
-    icon: "Images/Foundation/foundation_Img_Icon1.png",
-    title: "Dream Radiant",
-    content: "Transfer-resistant, liquid foundation",
-    price: "$200",
-  },
-  {
-    id: 2,
-    img: "Images/Foundation/foundation_Img5.png",
-    icon: "Images/Foundation/foundation_Img_Icon2.png",
-    title: "New York",
-    content: "Fit Me Matte + Poreless Foundation",
-    price: "$200",
-  },
-  {
-    id: 3,
-    img: "Images/Foundation/foundation_Img3.png",
-    icon: "Images/Foundation/foundation_Img_Icon3.png",
-    title: "Sheer Foundation",
-    content: "Hydrating Natural Foundation ",
-    price: "$200",
-  },
-  {
-    id: 4,
-    img: "Images/Foundation/foundation_Img4.png",
-    icon: "Images/Foundation/foundation_Img_Icon4.png",
-    title: "Catrice Liquid Coverage",
-    content: "HD Liquid Mattifying Foundation",
-    price: "$200",
-  },
-  {
-    id: 5,
-    img: "Images/Foundation/foundation_Img5.png",
-    icon: "Images/Foundation/foundation_Img_Icon5.png",
-    title: "Flawless Liquid",
-    content: "Matte Flawless Foundation",
-    price: "$200",
-  },
-  {
-    id: 6,
-    img: "Images/Foundation/foundation_Img6.png",
-    icon: "Images/Foundation/foundation_Img_Icon6.png",
+    icon: "#D7B085",
     title: "Flawless Finish",
     content: "Buttery pigment-rich soft Matte Foundation",
     price: "$200",
@@ -462,7 +206,7 @@ const ConcealerLiquid = [
   {
     id: 1,
     img: "Images/Concealer/Concealer_Img1.png",
-    icon: "Images/Concealer/Concealer_Img_Icon1.png",
+    icon: "#996C52",
     title: "Neverending Long Lasting ",
     content: "Cure Long Lasting Concealer",
     price: "$200",
@@ -470,7 +214,7 @@ const ConcealerLiquid = [
   {
     id: 2,
     img: "Images/Concealer/Concealer_Img2.png",
-    icon: "Images/Concealer/Concealer_Img_Icon2.png",
+    icon: "#EDC0A7",
     title: "Make-Up Lift Effect",
     content: "Make-Up Lift Effect Concealer",
     price: "$200",
@@ -478,7 +222,7 @@ const ConcealerLiquid = [
   {
     id: 3,
     img: "Images/Concealer/Concealer_Img3.png",
-    icon: "Images/Concealer/Concealer_Img_Icon3.png",
+    icon: "#F4D0AE",
     title: "Waterproof Natural ",
     content: "Natural Dark Acne Mark Concealer ",
     price: "$200",
@@ -486,7 +230,7 @@ const ConcealerLiquid = [
   {
     id: 4,
     img: "Images/Concealer/Concealer_Img4.png",
-    icon: "Images/Concealer/Concealer_Img_Icon4.png",
+    icon: "#FADDCD",
     title: "Liquid Concealer",
     content: "Vivid Tone with Natural Finish",
     price: "$200",
@@ -494,7 +238,7 @@ const ConcealerLiquid = [
   {
     id: 5,
     img: "Images/Concealer/Concealer_Img5.png",
-    icon: "Images/Concealer/Concealer_Img_Icon5.png",
+    icon: "#FFF0E5",
     title: "HD Photogenic Liquid Concealer",
     content: "Buildable lip colour with a blurred, soft-focus effect",
     price: "$200",
@@ -502,55 +246,7 @@ const ConcealerLiquid = [
   {
     id: 6,
     img: "Images/Concealer/Concealer_Img6.png",
-    icon: "Images/Concealer/Concealer_Img_Icon6.png",
-    title: "Liquid Concealer",
-    content: "Buttery Pigment-rich Soft Liquid Concealer",
-    price: "$200",
-  },
-  {
-    id: 1,
-    img: "Images/Concealer/Concealer_Img1.png",
-    icon: "Images/Concealer/Concealer_Img_Icon1.png",
-    title: "Neverending Long Lasting ",
-    content: "Cure Long Lasting Concealer",
-    price: "$200",
-  },
-  {
-    id: 2,
-    img: "Images/Concealer/Concealer_Img2.png",
-    icon: "Images/Concealer/Concealer_Img_Icon2.png",
-    title: "Make-Up Lift Effect",
-    content: "Make-Up Lift Effect Concealer",
-    price: "$200",
-  },
-  {
-    id: 3,
-    img: "Images/Concealer/Concealer_Img3.png",
-    icon: "Images/Concealer/Concealer_Img_Icon3.png",
-    title: "Waterproof Natural ",
-    content: "Natural Dark Acne Mark Concealer ",
-    price: "$200",
-  },
-  {
-    id: 4,
-    img: "Images/Concealer/Concealer_Img4.png",
-    icon: "Images/Concealer/Concealer_Img_Icon4.png",
-    title: "Liquid Concealer",
-    content: "Vivid Tone with Natural Finish",
-    price: "$200",
-  },
-  {
-    id: 5,
-    img: "Images/Concealer/Concealer_Img5.png",
-    icon: "Images/Concealer/Concealer_Img_Icon5.png",
-    title: "HD Photogenic Liquid Concealer",
-    content: "Buildable lip colour with a blurred, soft-focus effect",
-    price: "$200",
-  },
-  {
-    id: 6,
-    img: "Images/Concealer/Concealer_Img6.png",
-    icon: "Images/Concealer/Concealer_Img_Icon6.png",
+    icon: "#7D492A",
     title: "Liquid Concealer",
     content: "Buttery Pigment-rich Soft Liquid Concealer",
     price: "$200",
@@ -640,8 +336,6 @@ if (storedButton) {
   });
 }
 
-
-
 function showLipstickSection(sectionId, button) {
   // Hide all sections
   const sections = document.querySelectorAll(".LipstickContent");
@@ -688,7 +382,7 @@ if (storedButtonlipstick) {
 }
 
 // Helper function to display the selected lipstick in the addToCart section
-function displaySelectedLipstick(img, icon, title, price, index) {
+function displaySelectedLipstick(img, icon, title, price) {
   const addToCartSection = document.querySelector(".addToCart");
 
   // Create a new div to hold each selected lipstick
@@ -698,12 +392,12 @@ function displaySelectedLipstick(img, icon, title, price, index) {
   selectedLipstickDiv.innerHTML = `
     <div class="lipstickInfo">
       <img class="addToCartImg" src="${img}" />
-      <img class="addToCartIcon" src="${icon}" />
+      <img class="addToCartIcon icon-color" style="background-color: ${icon};" />
       <div class=" lipstick_Details" >
       <h4>${title}</h4>
       <p >${price}</p>
       </div>
-      <div class="deleteButton" data-index="${index}"><img class="delete_icon" src="/Images/Icons/detele_Icon.png" /></div>
+      <div class="deleteButton" onclick="removeSelectedItem(this.parentNode)"><img class="delete_icon" src="/Images/Icons/detele_Icon.png" /></div>
       </div>
   `;
 
@@ -713,7 +407,7 @@ function displaySelectedLipstick(img, icon, title, price, index) {
     const indexToRemove = parseInt(deleteButton.getAttribute("data-index"), 10);
 
     // Call the function to remove the selected lipstick from the array and update the display
-    removeSelectedLipstick(selectedLipstickDiv, indexToRemove);
+    removeSelectedItem(selectedLipstickDiv, indexToRemove);
   });
 
   // Append the div to the addToCartSection
@@ -721,23 +415,63 @@ function displaySelectedLipstick(img, icon, title, price, index) {
   generateCartModelContent();
 }
 
-function removeSelectedLipstick(selectedLipstickDiv, indexToRemove) {
-  const addToCartSection = document.querySelector(".addToCart");
+function removeSelectedItem(selectedDiv, indexToRemove) {
+  const sectionClassName = selectedDiv.parentNode.className;
+  const addToCartSection = document.querySelector("." + sectionClassName);
 
-  // Remove the selected lipstick div from the addToCartSection
-  addToCartSection.removeChild(selectedLipstickDiv);
-  // cartItemsContainer.removeChild(cartItemDiv);
-
-  // Remove the selected lipstick from the array
+  addToCartSection.removeChild(selectedDiv);
   selectedItesmsArray.splice(indexToRemove, 1);
 
-  // Update the stored array in localStorage
   localStorage.setItem(
     "selectedItesmsArray",
     JSON.stringify(selectedItesmsArray)
   );
+
   generateCartModelContent();
+  generateCartModelEyeshadowContent();
+  generateCartModelFoundationContent();
+  generateCartModelBlushContent();
+  generateCartModelConcealerContent();
 }
+
+function updateSelectionInAllSections(
+  selectedItemData,
+  sectionClassName,
+  displayFunction
+) {
+  // Filter out items from the same section and clear UI if more than 1 item selected of the specified section
+  selectedItesmsArray = selectedItesmsArray.filter(
+    (item) => item.sectionClassName !== sectionClassName
+  );
+
+  // Add sectionClassName to the data
+  selectedItemData.sectionClassName = sectionClassName;
+  selectedItesmsArray.push(selectedItemData);
+
+  // Store the updated Add to Cart array in localStorage
+  localStorage.setItem(
+    "selectedItesmsArray",
+    JSON.stringify(selectedItesmsArray)
+  );
+
+  // Display the selected item in the specified section
+  const addToCartSection = document.querySelector("." + sectionClassName);
+
+  if (selectedItesmsArray.length === 0) {
+    addToCartSection.innerHTML = "Your cart is empty"; // Show the empty cart message
+  } else {
+    addToCartSection.innerHTML = ""; // Clear the cart content
+    displayFunction(
+      selectedItemData.img,
+      selectedItemData.icon,
+      selectedItemData.title,
+      selectedItemData.price,
+      selectedItesmsArray.length,
+      addToCartSection
+    );
+  }
+}
+
 function removeSelectedCartLipstick(cartItemDiv, indexToRemove) {
   const cartItemsContainer = document.querySelector(".cart-items");
   const addToCartSection = document.querySelector(".addToCart");
@@ -766,53 +500,20 @@ function removeSelectedCartLipstick(cartItemDiv, indexToRemove) {
   generateCartModelContent();
 }
 
-function updateSelectionInAllSections(
-  selectedItemData,
-  sectionClassName,
-  displayFunction
-) {
-  // Filter out items from the same section and clear UI if more than 1 item selected of the specified section
-  selectedItesmsArray = selectedItesmsArray.filter(
-    (item) => item.sectionClassName !== sectionClassName
-  );
-
-  // Display the selected item in the specified section
-  const addToCartSection = document.querySelector("." + sectionClassName);
-  addToCartSection.innerHTML = "";
-  displayFunction(
-    selectedItemData.img,
-    selectedItemData.icon,
-    selectedItemData.title,
-    selectedItemData.price,
-    selectedItesmsArray.length,
-    addToCartSection
-  );
-
-  // Add sectionClassName to the data
-  selectedItemData.sectionClassName = sectionClassName;
-  selectedItesmsArray.push(selectedItemData);
-
-  // Store the updated Add to Cart array in localStorage
-  localStorage.setItem(
-    "selectedItesmsArray",
-    JSON.stringify(selectedItesmsArray)
-  );
-}
-
 let selectedImageElement = null;
 
-// Responsibale to send data in the cart
+// Responsible for sending data to the cart
 function handleLipstickImageClick(img, icon, title, price) {
-
   const clickedImage = event.currentTarget;
 
   if (selectedImageElement) {
-    selectedImageElement.classList.remove("LipstickItemselected"); 
+    selectedImageElement.classList.remove("LipstickItemselected");
   }
 
-  clickedImage.classList.add("LipstickItemselected"); 
-  selectedImageElement = clickedImage; 
+  clickedImage.classList.add("LipstickItemselected");
+  selectedImageElement = clickedImage;
 
+  console.log("clickedImage", selectedImageElement);
 
   const selectedItemData = {
     img: img,
@@ -820,6 +521,7 @@ function handleLipstickImageClick(img, icon, title, price) {
     title: title,
     price: price,
   };
+
   updateSelectionInAllSections(
     selectedItemData,
     "addToCart",
@@ -857,7 +559,7 @@ function generateAllImagesContent(containerId, items, clickHandler) {
     onclick="${clickHandler}( '${item.img}',
     '${item.icon}', '${item.title}', '${item.price}')" >
       <img class="img" src=${item.img} />
-      <img class="icon" src="${item.icon}"/>
+      <img class="icon" style="background-color: ${item.icon};">
       <h3>${item.title}</h3>
       <p>${item.content}</p>
     </div>
@@ -867,11 +569,27 @@ function generateAllImagesContent(containerId, items, clickHandler) {
 
   container.innerHTML = contentHTML;
 }
-generateAllImagesContent("mate", lisptickMate, "handleLipstickImageClick");
-generateAllImagesContent("eyeshadow_matte", EyeshadowMatte, "handleEyeshadowImageClick");
-generateAllImagesContent("foundation_liquid", FoundationLiquid, "handleFoundationImageClick");
+generateAllImagesContent(
+  "lipstik_mate",
+  lisptickMate,
+  "handleLipstickImageClick"
+);
+generateAllImagesContent(
+  "eyeshadow_matte",
+  EyeshadowMatte,
+  "handleEyeshadowImageClick"
+);
+generateAllImagesContent(
+  "foundation_liquid",
+  FoundationLiquid,
+  "handleFoundationImageClick"
+);
 generateAllImagesContent("blush_pressed", BlushLiquid, "handleBlushImageClick");
-generateAllImagesContent("concealer_liquid", ConcealerLiquid, "handleConcealerImageClick");
+generateAllImagesContent(
+  "concealer_liquid",
+  ConcealerLiquid,
+  "handleConcealerImageClick"
+);
 
 function generateCartModelContent() {
   const cartItemsContainer = document.querySelector(".cart-items");
@@ -884,7 +602,7 @@ function generateCartModelContent() {
     cartItemDiv.innerHTML = `
       <div class="cart-item-info">
         <img class="cart-item-img" src="${ItemData.img}" />
-        <img class="cart-item-icon" src="${ItemData.icon}" />
+        <img class="addToCartIcon icon-color" style="background-color: ${ItemData.icon};" />
         <h4>${ItemData.title}</h4>
         <p>${ItemData.price}</p>
       </div>
@@ -951,10 +669,10 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     showLipstickSection(storedSectionlipstick, selectedButtonlipstick);
   } else {
-    showLipstickSection("mate"); // Default selection if no data is stored
+    showLipstickSection("lipstik_mate"); // Default selection if no data is stored
     // Add the border to the default selectedlipstick buttton "Lipstick"
     const defaultSelectedlipstick = document.querySelector(
-      '.LipstickContainerCategories a[href="#mate"]'
+      '.LipstickContainerCategories a[href="#lipstik_mate"]'
     );
     defaultSelectedlipstick.classList.add("selectedlipstick");
   }
@@ -1276,7 +994,6 @@ function submitPaynowbtn() {
   toggleCartModal();
 }
 
-
 // ...................eyeshadow js here ................//
 
 // let selectedItesmsArray = [];
@@ -1347,12 +1064,12 @@ function displaySelectedEyeshadow(img, icon, title, price, index) {
   selectedEyeshadowDiv.innerHTML = `
     <div class="lipstickInfo">
       <img class="addToCartImg" src="${img}" />
-      <img class="addToCartIcon" src="${icon}" />
+      <img class="addToCartIcon" style="background-color: ${icon};" />
       <div class="Eyeshadow_Details">
         <h4>${title}</h4>
         <p>${price}</p>
       </div>
-      <div class="deleteButtoneyeshadow" data-index="${index}">
+      <div class="deleteButtoneyeshadow" onclick="removeSelectedItem(this.parentNode)">
         <img class="delete_icon" src="/Images/Icons/detele_Icon.png" />
       </div>
     </div>
@@ -1369,31 +1086,11 @@ function displaySelectedEyeshadow(img, icon, title, price, index) {
     );
 
     // Remove the selected eyeshadow from the array and update the display
-    removeSelectedEyeshadow(selectedEyeshadowDiv, indexToRemoveEyeshadow);
+    removeSelectedItem(selectedEyeshadowDiv, indexToRemoveEyeshadow);
   });
 
   // Append the div to the addToCartSection
   addToCartSectionEyeshadow.appendChild(selectedEyeshadowDiv);
-}
-
-function removeSelectedEyeshadow(selectedEyeshadowDiv, indexToRemoveEyeshadow) {
-  const addToCartSectionEyeshadow = document.querySelector(
-    ".addToCartEyeshadow"
-  );
-
-  // Remove the selected Eyeshadow div from the addToCartSection
-  addToCartSectionEyeshadow.removeChild(selectedEyeshadowDiv);
-  // cartItemsContainer.removeChild(cartItemDiv);
-
-  // Remove the selected Eyeshadow from the array
-  selectedItesmsArray.splice(indexToRemoveEyeshadow, 1);
-
-  // Update the stored array in localStorage
-  localStorage.setItem(
-    "selectedItesmsArray",
-    JSON.stringify(selectedItesmsArray)
-  );
-  generateCartModelEyeshadowContent();
 }
 
 function removeSelectedCartEyeshadow(
@@ -1434,15 +1131,14 @@ function removeSelectedCartEyeshadow(
 }
 
 function handleEyeshadowImageClick(img, icon, title, price) {
-
   const clickedImage = event.currentTarget;
 
   if (selectedImageElement) {
-    selectedImageElement.classList.remove("LipstickItemselected"); 
+    selectedImageElement.classList.remove("LipstickItemselected");
   }
 
-  clickedImage.classList.add("LipstickItemselected"); 
-  selectedImageElement = clickedImage; 
+  clickedImage.classList.add("LipstickItemselected");
+  selectedImageElement = clickedImage;
 
   const selectedItemData = {
     img: img,
@@ -1478,7 +1174,6 @@ function displaySelectedEyeshadowOnLoad() {
 
 displaySelectedEyeshadowOnLoad();
 
-
 function generateCartModelEyeshadowContent() {
   const cartItemsContainerEyeshadow = document.querySelector(
     ".cart-items-Eyeshadow"
@@ -1492,7 +1187,7 @@ function generateCartModelEyeshadowContent() {
     cartItemDivEyeshadow.innerHTML = `
       <div class="cart-item-info">
         <img class="cart-item-img" src="${ItemData.img}" />
-        <img class="cart-item-icon" src="${ItemData.icon}" />
+        <img class="cart-item-icon" style="background-color: ${ItemData.icon};" />
         <h4>${ItemData.title}</h4>
         <p>${ItemData.price}</p>
       </div>
@@ -1940,12 +1635,12 @@ function displaySelectedFoundation(img, icon, title, price, index) {
   selectedFoundationDiv.innerHTML = `
     <div class="lipstickInfo">
       <img class="addToCartImg" src="${img}"/>
-      <img class="addToCartIcon" src="${icon}" />
+      <img class="addToCartIcon" style="background-color: ${icon};" />
       <div class="Foundation_Details">
         <h4>${title}</h4>
         <p>${price}</p>
       </div>
-      <div class="deleteButtonfoundation" data-index="${index}">
+      <div class="deleteButtonfoundation" onclick="removeSelectedItem(this.parentNode)">
         <img class="delete_icon" src="/Images/Icons/detele_Icon.png" />
       </div>
     </div>
@@ -1962,33 +1657,11 @@ function displaySelectedFoundation(img, icon, title, price, index) {
     );
 
     // Remove the selected foundation from the array and update the display
-    removeSelectedFoundation(selectedFoundationDiv, indexToRemoveFoundation);
+    removeSelectedItem(selectedFoundationDiv, indexToRemoveFoundation);
   });
 
   // Append the div to the addToCartSection
   addToCartSectionFoundation.appendChild(selectedFoundationDiv);
-}
-
-function removeSelectedFoundation(
-  selectedFoundationDiv,
-  indexToRemoveFoundation
-) {
-  const addToCartSectionFoundation = document.querySelector(
-    ".addToCartFoundation"
-  );
-
-  // Remove the selected foundation div from the addToCartSection
-  addToCartSectionFoundation.removeChild(selectedFoundationDiv);
-
-  // Remove the selected Foundation from the array
-  selectedItesmsArray.splice(indexToRemoveFoundation, 1);
-
-  // Update the stored array in localStorage
-  localStorage.setItem(
-    "selectedItesmsArray",
-    JSON.stringify(selectedItesmsArray)
-  );
-  generateCartModelFoundationContent();
 }
 
 function removeSelectedCartFoundation(
@@ -2029,15 +1702,14 @@ function removeSelectedCartFoundation(
 }
 
 function handleFoundationImageClick(img, icon, title, price) {
-
   const clickedImage = event.currentTarget;
 
   if (selectedImageElement) {
-    selectedImageElement.classList.remove("LipstickItemselected"); 
+    selectedImageElement.classList.remove("LipstickItemselected");
   }
 
-  clickedImage.classList.add("LipstickItemselected"); 
-  selectedImageElement = clickedImage; 
+  clickedImage.classList.add("LipstickItemselected");
+  selectedImageElement = clickedImage;
 
   // Add the selected Foundation data to the array
   const selectedItemData = {
@@ -2074,8 +1746,6 @@ function displaySelectedFoundationOnLoad() {
 
 displaySelectedFoundationOnLoad();
 
-
-
 function generateCartModelFoundationContent() {
   const cartItemsContainerFoundation = document.querySelector(
     ".cart-items-Foundation"
@@ -2089,7 +1759,7 @@ function generateCartModelFoundationContent() {
     cartItemDivFoundation.innerHTML = `
       <div class="cart-item-info">
         <img class="cart-item-img" src="${ItemData.img}"  />
-        <img class="cart-item-icon" src="${ItemData.icon}" />
+        <img class="cart-item-icon" style="background-color: ${ItemData.icon};" />
         <h4>${ItemData.title}</h4>
         <p>${ItemData.price}</p>
       </div>
@@ -2530,12 +2200,12 @@ function displaySelectedBlush(img, icon, title, price, index) {
   selectedBlushDiv.innerHTML = `
     <div class="lipstickInfo">
       <img class="addToCartImg" src="${img}"/>
-      <img class="addToCartIcon" src="${icon}" />
+      <img class="addToCartIcon" style="background-color: ${icon};" />
       <div class="Blush_Details">
         <h4>${title}</h4>
         <p>${price}</p>
       </div>
-      <div class="deleteButtonblush" data-index="${index}">
+      <div class="deleteButtonblush" onclick="removeSelectedItem(this.parentNode)">
         <img class="delete_icon" src="/Images/Icons/detele_Icon.png" />
       </div>
     </div>
@@ -2551,28 +2221,11 @@ function displaySelectedBlush(img, icon, title, price, index) {
     );
 
     // Remove the selected Blush from the array and update the display
-    removeSelectedBlush(selectedBlushDiv, indexToRemoveBlush);
+    removeSelectedItem(selectedBlushDiv, indexToRemoveBlush);
   });
 
   // Append the div to the addToCartSection
   addToCartSectionBlush.appendChild(selectedBlushDiv);
-}
-
-function removeSelectedBlush(selectedBlushDiv, indexToRemoveBlush) {
-  const addToCartSectionBlush = document.querySelector(".addToCartBlush");
-
-  // Remove the selected Blush div from the addToCartSection
-  addToCartSectionBlush.removeChild(selectedBlushDiv);
-
-  // Remove the selected Blush from the array
-  selectedItesmsArray.splice(indexToRemoveBlush, 1);
-
-  // Update the stored array in localStorage
-  localStorage.setItem(
-    "selectedItesmsArray",
-    JSON.stringify(selectedItesmsArray)
-  );
-  generateCartModelBlushContent();
 }
 
 function removeSelectedCartBlush(cartItemBlushDiv, indexToRemoveBlush) {
@@ -2603,15 +2256,14 @@ function removeSelectedCartBlush(cartItemBlushDiv, indexToRemoveBlush) {
 }
 
 function handleBlushImageClick(img, icon, title, price) {
-
   const clickedImage = event.currentTarget;
 
   if (selectedImageElement) {
-    selectedImageElement.classList.remove("LipstickItemselected"); 
+    selectedImageElement.classList.remove("LipstickItemselected");
   }
 
-  clickedImage.classList.add("LipstickItemselected"); 
-  selectedImageElement = clickedImage; 
+  clickedImage.classList.add("LipstickItemselected");
+  selectedImageElement = clickedImage;
   const selectedItemData = {
     img: img,
     icon: icon,
@@ -2646,27 +2298,6 @@ function displaySelectedBlushOnLoad() {
 
 displaySelectedBlushOnLoad();
 
-// function generateLiquidBlushContent() {
-//   const liquidBlushContainer = document.getElementById("blush_pressed");
-
-//   const liquidBlushHTML = BlushLiquid.map(
-//     (item) => `
-//     <div class="lipstickItem"
-//     onclick="handleBlushImageClick( '${item.img}',
-//     '${item.icon}', '${item.title}', '${item.price}')" >
-//       <img class="img" src=${item.img} " /> 
-//       <img class="icon" src="${item.icon}"/>
-//       <h3>${item.title}</h3>
-//       <p >${item.content}</p>
-//     </div>
-//   `
-//   ).join("");
-
-//   liquidBlushContainer.innerHTML = liquidBlushHTML;
-// }
-
-// generateLiquidBlushContent();
-
 function generateCartModelBlushContent() {
   const cartItemsContainerBlush = document.querySelector(".cart-items-Blush");
   cartItemsContainerBlush.innerHTML = ""; // Clear previous content
@@ -2678,7 +2309,7 @@ function generateCartModelBlushContent() {
     cartItemDivBlush.innerHTML = `
       <div class="cart-item-info">
         <img class="cart-item-img" src="${ItemData.img}"  />
-        <img class="cart-item-icon" src="${ItemData.icon}" />
+        <img class="cart-item-icon" style="background-color: ${ItemData.icon};" />
         <h4>${ItemData.title}</h4>
         <p>${ItemData.price}</p>
       </div>
@@ -3097,12 +2728,12 @@ function displaySelectedConcealer(img, icon, title, price, index) {
   selectedConcealerDiv.innerHTML = `
     <div class="lipstickInfo">
       <img class="addToCartImg" src="${img}" />
-      <img class="addToCartIcon" src="${icon}" />
+      <img class="addToCartIcon" style="background-color: ${icon};" />
       <div class="Concealer_Details">
         <h4>${title}</h4>
         <p>${price}</p>
       </div>
-      <div class="deleteButtonconcealer" data-index="${index}">
+      <div class="deleteButtonconcealer" onclick="removeSelectedItem(this.parentNode)">
         <img class="delete_icon" src="/Images/Icons/detele_Icon.png" />
       </div>
     </div>
@@ -3119,31 +2750,11 @@ function displaySelectedConcealer(img, icon, title, price, index) {
     );
 
     // Remove the selected Concealer from the array and update the display
-    removeSelectedConcealer(selectedConcealerDiv, indexToRemoveConcealer);
+    removeSelectedItem(selectedConcealerDiv, indexToRemoveConcealer);
   });
 
   // Append the div to the addToCartSection
   addToCartSectionConcealer.appendChild(selectedConcealerDiv);
-}
-
-function removeSelectedConcealer(selectedConcealerDiv, indexToRemoveConcealer) {
-  const addToCartSectionConcealer = document.querySelector(
-    ".addToCartConcealer"
-  );
-
-  // Remove the selected Concealer div from the addToCartSection
-  addToCartSectionConcealer.removeChild(selectedConcealerDiv);
-  // cartItemsContainer.removeChild(cartItemDiv);
-
-  // Remove the selected Concealer from the array
-  selectedItesmsArray.splice(indexToRemoveConcealer, 1);
-
-  // Update the stored array in localStorage
-  localStorage.setItem(
-    "selectedItesmsArray",
-    JSON.stringify(selectedItesmsArray)
-  );
-  generateCartModelConcealerContent();
 }
 
 function removeSelectedCartConcealer(
@@ -3184,15 +2795,14 @@ function removeSelectedCartConcealer(
 }
 
 function handleConcealerImageClick(img, icon, title, price) {
-
   const clickedImage = event.currentTarget;
 
   if (selectedImageElement) {
-    selectedImageElement.classList.remove("LipstickItemselected"); 
+    selectedImageElement.classList.remove("LipstickItemselected");
   }
 
-  clickedImage.classList.add("LipstickItemselected"); 
-  selectedImageElement = clickedImage; 
+  clickedImage.classList.add("LipstickItemselected");
+  selectedImageElement = clickedImage;
   const selectedItemData = {
     img: img,
     icon: icon,
@@ -3240,7 +2850,7 @@ function generateCartModelConcealerContent() {
     cartItemDivConcealer.innerHTML = `
       <div class="cart-item-info">
         <img class="cart-item-img" src="${ItemData.img}" />
-        <img class="cart-item-icon" src="${ItemData.icon}" />
+        <img class="cart-item-icon" style="background-color: ${ItemData.icon};" />
         <h4>${ItemData.title}</h4>
         <p>${ItemData.price}</p>
       </div>

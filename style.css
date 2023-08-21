@@ -3,18 +3,21 @@
   padding: 0;
   box-sizing: border-box;
 }
-.LipstickItemselected {
-  border: 2px solid #947474;
+.LipstickItemselected .img {
+  border: 3px solid #947474 !important;
   border-radius: 1rem;
-    padding: 2px .5px 2px 0px;
-    margin-bottom: 6px;
+}
+.icon {
+  width: 15%;
+  min-height: 10%;
+  border: 1px solid black;
+  border-radius: 1rem;
 }
 
 /* Comming Soon Conatiner */
 .ContentContainer {
   display: flex;
 }
-
 .Content {
   position: absolute;
   top: 46%;
@@ -321,6 +324,7 @@
   width: 11rem;
   align-items: center;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 .lipstickItem .img {
@@ -476,8 +480,8 @@
 .addToCartIcon {
   display: flex;
   justify-content: space-between;
-  width: 35px;
-  height: 30px;
+  width: 3.9rem;
+  height: 2rem;
   border: 1px solid #947474;
   border-radius: 0.5rem;
 }
@@ -640,7 +644,7 @@
 .cart-item-icon {
   display: flex;
   justify-content: space-between;
-  width: 35px;
+  width: 4rem;
   height: 30px;
   border: 1px solid #947474;
   border-radius: 0.5rem;
@@ -685,9 +689,26 @@
   background-color: #cec8c8;
 }
 .deleteButton,
+.deleteButtonBlush,
+.deleteButtonCartConcealer,
+.deleteButtonCartFoundation,
+.deleteButtonCartEyeshadow,
+.deleteButtonfoundation,
+.deleteButtonconcealer,
+.deleteButtoneyeshadow,
+.deleteButtonblush,
 .deleteButtonCart {
   cursor: pointer;
 }
+/* .addToCartEyeshadow ,
+.addTooCart,
+.addToCartBlush,
+.addToCartFoundation,
+.addToCartConcealer
+{
+  text-align: center;
+  color: #828282 !important;
+} */
 
 .blur-background {
   filter: blur(8px);
@@ -3010,7 +3031,7 @@ button#submitOrderBtnConcealer:hover {
   }
   .addToCartIcon {
     display: flex;
-    margin-left: 1rem;
+    /* margin-left: 1rem; */
   }
   .CountourContainer {
     font-size: 1rem;
@@ -3162,17 +3183,21 @@ button#submitOrderBtnConcealer:hover {
 
   .lipstickItem {
     min-width: 50%;
+    margin-bottom: 1rem !important;
   }
   .modal {
     width: 50% !important;
   }
 }
 @media screen and (max-width: 768px) {
-  .LipstickItemselected {
-      padding: 2px 1px 2px 0px;
-      margin-bottom: 10px !important;
+  .addToCartImg, .addToCartIcon{
+    width: 3rem !important;
   }
-  
+  .LipstickItemselected {
+    padding: 2px 1px 2px 0px;
+    margin-bottom: 10px !important;
+  }
+
   .Comming_Soon {
     text-align: center;
     margin: 300px -2px auto;
@@ -3908,7 +3933,7 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 
-@media only screen and ((min-width:1500px) and (max-width:1900px)){
+@media only screen and ((min-width: 1500px) and (max-width:1900px)) {
   #videoElement {
     height: 25rem;
   }
@@ -3924,7 +3949,7 @@ button#submitOrderBtnConcealer:hover {
   #videoElementConcealer {
     height: 25rem;
   }
-  
+
   .lipstickInfo {
     width: 100%;
   }
