@@ -48,6 +48,86 @@ const lisptickMate = [
     content: "Transfer-resistant, matte lipstick",
     price: "$200",
   },
+  {
+    id: 5,
+    img: "Images/lipstik/lipstik_img3.png",
+    icon: "#B8050F",
+    title: "Powermatte Long Lasting",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 6,
+    img: "/Images/lipstik/lipstik_img4.png",
+    icon: "#A53D38",
+    title: "Kind Words Matte Lipstick",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 7,
+    img: "/Images/lipstik/lipstik_img5.png",
+    icon: "#A53D38",
+    title: "Powermatte Long Lasting",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 8,
+    img: "/Images/lipstik/lipstik_img6.png",
+    icon: "#A53D38",
+    title: "Kind Words Matte Lipstick",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 5,
+    img: "Images/lipstik/lipstik_img3.png",
+    icon: "#B8050F",
+    title: "Powermatte Long Lasting",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 6,
+    img: "/Images/lipstik/lipstik_img4.png",
+    icon: "#A53D38",
+    title: "Kind Words Matte Lipstick",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 7,
+    img: "/Images/lipstik/lipstik_img5.png",
+    icon: "#A53D38",
+    title: "Powermatte Long Lasting",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 8,
+    img: "/Images/lipstik/lipstik_img6.png",
+    icon: "#A53D38",
+    title: "Kind Words Matte Lipstick",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 5,
+    img: "Images/lipstik/lipstik_img3.png",
+    icon: "#B8050F",
+    title: "Powermatte Long Lasting",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
+  {
+    id: 6,
+    img: "/Images/lipstik/lipstik_img4.png",
+    icon: "#A53D38",
+    title: "Kind Words Matte Lipstick",
+    content: "Transfer-resistant, matte lipstick",
+    price: "$200",
+  },
 ];
 
 const EyeshadowMatte = [
@@ -73,6 +153,54 @@ const EyeshadowMatte = [
     icon: "#E2AD9B",
     title: "Refillable Pro Palette ",
     content: "Pro Palette Refillable Eyeshadow ",
+    price: "$200",
+  },
+  {
+    id: 4,
+    img: "Images/Eyeshadow/Eyeshadow_Img4.png",
+    icon: "#F5AC94",
+    title: "Vanilla Matte",
+    content: "Vanilla Nut Matte Eyeshadow",
+    price: "$200",
+  },
+  {
+    id: 2,
+    img: "Images/Eyeshadow/Eyeshadow_Img2.png",
+    icon: "#CEA598",
+    title: "Matte Eyeshadow",
+    content: "Rich Eyeshadow with Matte Finish",
+    price: "$200",
+  },
+  {
+    id: 3,
+    img: "Images/Eyeshadow/Eyeshadow_Img3.png",
+    icon: "#E2AD9B",
+    title: "Refillable Pro Palette ",
+    content: "Pro Palette Refillable Eyeshadow ",
+    price: "$200",
+  },
+  {
+    id: 4,
+    img: "Images/Eyeshadow/Eyeshadow_Img4.png",
+    icon: "#F5AC94",
+    title: "Vanilla Matte",
+    content: "Vanilla Nut Matte Eyeshadow",
+    price: "$200",
+  },
+  {
+    id: 5,
+    img: "Images/Eyeshadow/Eyeshadow_Img5.png",
+    icon: "#E08459",
+    title: "Colourful Eyeshadow",
+    content: "New Collection Colourful Eyeshadow",
+    price: "$200",
+  },
+  {
+    id: 6,
+    img: "Images/Eyeshadow/Eyeshadow_Img6.png",
+    icon: "#714851",
+    title: "Natural Translucent",
+    content: "Buttery Pigment-Rich Matte Foundation",
     price: "$200",
   },
   {
@@ -150,6 +278,70 @@ const BlushLiquid = [
     content: "Natural Pigment Long Lasting Blush",
     price: "$200",
   },
+  {
+    id: 4,
+    img: "Images/Blush/blush_Img4.png",
+    icon: "#FAAB92",
+    title: "Pressed Blush Peach",
+    content: "Highly Pigmented; Kind to Skin",
+    price: "$200",
+  },
+  {
+    id: 5,
+    img: "Images/Blush/blush_Img5.png",
+    icon: "#F18F8F",
+    title: "Rouge Red Pressed",
+    content: "Sheer-To-Buildable Powder Blush",
+    price: "$200",
+  },
+  {
+    id: 6,
+    img: "Images/Blush/blush_Img6.png",
+    icon: "#DBACA1",
+    title: "Pressed Mineral",
+    content: "Natural Pigment Long Lasting Blush",
+    price: "$200",
+  },
+  {
+    id: 5,
+    img: "Images/Blush/blush_Img5.png",
+    icon: "#F18F8F",
+    title: "Rouge Red Pressed",
+    content: "Sheer-To-Buildable Powder Blush",
+    price: "$200",
+  },
+  {
+    id: 6,
+    img: "Images/Blush/blush_Img6.png",
+    icon: "#DBACA1",
+    title: "Pressed Mineral",
+    content: "Natural Pigment Long Lasting Blush",
+    price: "$200",
+  },
+  {
+    id: 6,
+    img: "Images/Blush/blush_Img6.png",
+    icon: "#DBACA1",
+    title: "Pressed Mineral",
+    content: "Natural Pigment Long Lasting Blush",
+    price: "$200",
+  },
+  {
+    id: 4,
+    img: "Images/Blush/blush_Img4.png",
+    icon: "#FAAB92",
+    title: "Pressed Blush Peach",
+    content: "Highly Pigmented; Kind to Skin",
+    price: "$200",
+  },
+  {
+    id: 5,
+    img: "Images/Blush/blush_Img5.png",
+    icon: "#F18F8F",
+    title: "Rouge Red Pressed",
+    content: "Sheer-To-Buildable Powder Blush",
+    price: "$200",
+  },
 ];
 const FoundationLiquid = [
   {
@@ -193,11 +385,115 @@ const FoundationLiquid = [
     price: "$200",
   },
   {
+    id: 3,
+    img: "Images/Foundation/foundation_Img3.png",
+    icon: "#E3BF9E",
+    title: "Sheer Foundation",
+    content: "Hydrating Natural Foundation ",
+    price: "$200",
+  },
+  {
+    id: 4,
+    img: "Images/Foundation/foundation_Img4.png",
+    icon: "#BA8255",
+    title: "Catrice Liquid Coverage",
+    content: "HD Liquid Mattifying Foundation",
+    price: "$200",
+  },
+  {
+    id: 5,
+    img: "Images/Foundation/foundation_Img5.png",
+    icon: "#EABFAB",
+    title: "Flawless Liquid",
+    content: "Matte Flawless Foundation",
+    price: "$200",
+  },
+  {
     id: 6,
     img: "Images/Foundation/foundation_Img6.png",
     icon: "#D7B085",
     title: "Flawless Finish",
     content: "Buttery pigment-rich soft Matte Foundation",
+    price: "$200",
+  },
+  {
+    id: 2,
+    img: "Images/Foundation/foundation_Img5.png",
+    icon: "#EDCDB8",
+    title: "New York",
+    content: "Fit Me Matte + Poreless Foundation",
+    price: "$200",
+  },
+  {
+    id: 3,
+    img: "Images/Foundation/foundation_Img3.png",
+    icon: "#E3BF9E",
+    title: "Sheer Foundation",
+    content: "Hydrating Natural Foundation ",
+    price: "$200",
+  },
+  {
+    id: 4,
+    img: "Images/Foundation/foundation_Img4.png",
+    icon: "#BA8255",
+    title: "Catrice Liquid Coverage",
+    content: "HD Liquid Mattifying Foundation",
+    price: "$200",
+  },
+  {
+    id: 5,
+    img: "Images/Foundation/foundation_Img5.png",
+    icon: "#EABFAB",
+    title: "Flawless Liquid",
+    content: "Matte Flawless Foundation",
+    price: "$200",
+  },
+  {
+    id: 3,
+    img: "Images/Foundation/foundation_Img3.png",
+    icon: "#E3BF9E",
+    title: "Sheer Foundation",
+    content: "Hydrating Natural Foundation ",
+    price: "$200",
+  },
+  {
+    id: 4,
+    img: "Images/Foundation/foundation_Img4.png",
+    icon: "#BA8255",
+    title: "Catrice Liquid Coverage",
+    content: "HD Liquid Mattifying Foundation",
+    price: "$200",
+  },
+  {
+    id: 5,
+    img: "Images/Foundation/foundation_Img5.png",
+    icon: "#EABFAB",
+    title: "Flawless Liquid",
+    content: "Matte Flawless Foundation",
+    price: "$200",
+  },
+  {
+    id: 6,
+    img: "Images/Foundation/foundation_Img6.png",
+    icon: "#D7B085",
+    title: "Flawless Finish",
+    content: "Buttery pigment-rich soft Matte Foundation",
+    price: "$200",
+  },
+  {
+    id: 2,
+    img: "Images/Foundation/foundation_Img5.png",
+    icon: "#EDCDB8",
+    title: "New York",
+    content: "Fit Me Matte + Poreless Foundation",
+    price: "$200",
+  },
+  {
+    id: 3,
+    img: "Images/Foundation/foundation_Img3.png",
+    icon: "#E3BF9E",
+    title: "Sheer Foundation",
+    content: "Hydrating Natural Foundation ",
     price: "$200",
   },
 ];
@@ -251,41 +547,64 @@ const ConcealerLiquid = [
     content: "Buttery Pigment-rich Soft Liquid Concealer",
     price: "$200",
   },
+  {
+    id: 1,
+    img: "Images/Concealer/Concealer_Img1.png",
+    icon: "#996C52",
+    title: "Neverending Long Lasting ",
+    content: "Cure Long Lasting Concealer",
+    price: "$200",
+  },
+  {
+    id: 2,
+    img: "Images/Concealer/Concealer_Img2.png",
+    icon: "#EDC0A7",
+    title: "Make-Up Lift Effect",
+    content: "Make-Up Lift Effect Concealer",
+    price: "$200",
+  },
+  {
+    id: 3,
+    img: "Images/Concealer/Concealer_Img3.png",
+    icon: "#F4D0AE",
+    title: "Waterproof Natural ",
+    content: "Natural Dark Acne Mark Concealer ",
+    price: "$200",
+  },
+  {
+    id: 5,
+    img: "Images/Concealer/Concealer_Img5.png",
+    icon: "#FFF0E5",
+    title: "HD Photogenic Liquid Concealer",
+    content: "Buildable lip colour with a blurred, soft-focus effect",
+    price: "$200",
+  },
+  {
+    id: 6,
+    img: "Images/Concealer/Concealer_Img6.png",
+    icon: "#7D492A",
+    title: "Liquid Concealer",
+    content: "Buttery Pigment-rich Soft Liquid Concealer",
+    price: "$200",
+  },
+  {
+    id: 1,
+    img: "Images/Concealer/Concealer_Img1.png",
+    icon: "#996C52",
+    title: "Neverending Long Lasting ",
+    content: "Cure Long Lasting Concealer",
+    price: "$200",
+  },
+  {
+    id: 2,
+    img: "Images/Concealer/Concealer_Img2.png",
+    icon: "#EDC0A7",
+    title: "Make-Up Lift Effect",
+    content: "Make-Up Lift Effect Concealer",
+    price: "$200",
+  },
 ];
 
-function scrollToSection(sectionId) {
-  const section = document.getElementById(sectionId);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
-  }
-}
-
-function showLandingPageSection(sectionId, button) {
-  const landingSections = document.querySelectorAll(".LandingPageContainer");
-  landingSections.forEach((section) => {
-    section.style.display = "none";
-  });
-
-  const selectedLandingSection = document.getElementById(sectionId);
-  if (selectedLandingSection) {
-    selectedLandingSection.style.display = "block";
-    localStorage.setItem("selectedLandingSection", sectionId);
-  }
-
-  if (button) {
-    button.classList.add("selectedlandingpage");
-    localStorage.setItem(
-      "selectedButtonlandingpage",
-      button.getAttribute("href")
-    );
-  }
-
-  scrollToSection(sectionId);
-}
-
-function setSelectedSection(sectionId, button) {
-  showSection(sectionId, button);
-}
 
 let selectedItesmsArray =
   JSON.parse(localStorage.getItem("selectedItesmsArray")) || [];
@@ -637,18 +956,11 @@ function generateCartModelContent() {
 document.addEventListener("DOMContentLoaded", () => {
   const storedSection = localStorage.getItem("selectedSection");
   const storedButton = localStorage.getItem("selectedButton");
-  const storedButtonLanding = localStorage.getItem("selectedButtonlandingpage");
-  // if (!storedButtonLanding) {
-  //   window.location.href = "LandingPage.html";
-  // }else{
-  //   showSection("aibeauty");
-  // }
   if (storedButton && storedSection) {
     const selectedButton = document.querySelector(
       `.Sidebar_InnerContainer a[href="${storedButton}"]`
     );
     showSection(storedSection, selectedButton);
-    showLandingPageSection(storedButtonLanding);
   } else {
     showSection("aibeauty"); // Default selection if no data is stored
 
@@ -678,322 +990,321 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   generateCartModelContent();
 
-  // Event listener to open the modal when the "Add to Cart" button is clicked
-  const addToCartButton = document.querySelector(".addToCartButton");
-  addToCartButton.addEventListener("click", () => {
-    if (selectedItesmsArray?.length === 0) {
-      const emptyCartMessage = document.getElementById("emptyCartMessage");
-      emptyCartMessage.style.display = "block";
-
-      // Hide the message after a short delay
-      setTimeout(() => {
-        emptyCartMessage.style.display = "none";
-      }, 2000);
-    } else {
-      openCartModal();
-      toggleCartModal();
-    }
-  });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const sidebarMainContainer = document.querySelector(".Sidebar_MainContainer");
-  const toggleButton = document.createElement("div");
-  toggleButton.classList.add("toggle-button");
-  toggleButton.innerHTML = `
-    <div class="toggle-line"></div>
-    <div class="toggle-line"></div>
-    <div class="toggle-line"></div>
-  `;
-
-  document.body.appendChild(toggleButton);
-
-  function removeToggleLines() {
-    const toggleLines = toggleButton.querySelectorAll(".toggle-line");
-    toggleLines.forEach((line) => {
-      line.style.display = "none";
-    });
-  }
-
-  function addToggleLines() {
-    const toggleLines = toggleButton.querySelectorAll(".toggle-line");
-    toggleLines.forEach((line) => {
-      line.style.display = "block";
-    });
-  }
-
-  function addArrowButton() {
-    const arrowButton = document.createElement("div");
-    arrowButton.classList.add("arrow-button");
-    arrowButton.innerHTML = "&#8592;";
-    toggleButton.appendChild(arrowButton);
-  }
-
-  function removeArrowButton() {
-    const arrowButton = toggleButton.querySelector(".arrow-button");
-    if (arrowButton) {
-      toggleButton.removeChild(arrowButton);
-    }
-  }
-
-  function closeSidebar() {
-    sidebarMainContainer.classList.remove("active");
-    removeArrowButton();
-    addToggleLines();
-  }
-
-  function showSectionAndCloseSidebar(sectionId, button) {
-    closeSidebar();
-    showSection(sectionId, button);
-
-    // window.location.reload();
-  }
-
-  const sidebarButtons = document.querySelectorAll(".Sidebar_InnerContainer a");
-  sidebarButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const sectionId = button.getAttribute("href").substring(1);
-      showSectionAndCloseSidebar(sectionId, button);
-    });
-  });
-
-  toggleButton.addEventListener("click", () => {
-    sidebarMainContainer.classList.toggle("active");
-
-    if (sidebarMainContainer.classList.contains("active")) {
-      removeToggleLines();
-      addArrowButton();
-    } else {
-      removeArrowButton();
-      addToggleLines();
-    }
-  });
-});
-
-function closeAndToggleCartModal() {
-  closeCartModal();
-  toggleCartModal();
-}
-
-// Function to toggle the blur effect on the background elements
-function toggleBlurBackground() {
-  const cartModal = document.getElementById("cartModal");
-  const backgroundElements = document.querySelectorAll(".blur");
-
-  function handleBackgroundClick(event) {
-    if (event.target === cartModal) {
-      closeAndToggleCartModal();
-    }
-  }
-
-  if (cartModal.classList.contains("active")) {
-    backgroundElements.forEach((element) => {
-      element.classList.add("blur-background");
-      element.classList.add("unselectable");
-      element.style.pointerEvents = "none";
-      element.addEventListener("click", handleBackgroundClick);
-    });
-  } else {
-    backgroundElements.forEach((element) => {
-      element.classList.remove("blur-background");
-      element.classList.remove("unselectable");
-      element.style.pointerEvents = "auto";
-      element.removeEventListener("click", handleBackgroundClick);
-    });
-  }
-}
-
-window.addEventListener("click", (event) => {
-  const cartModal = document.getElementById("bbbb");
-  // Check if the clicked element is outside the modal
-  if (event.target == cartModal) {
-    closeCartModal();
-    toggleCartModal();
-  }
-});
-
-// Function to open the cart modal
-function openCartModal() {
-  const cartModal = document.getElementById("cartModal");
-  cartModal.style.display = "block";
-  document.body.style.overflow = "hidden";
-  toggleBlurBackground();
-  generateCartModelContent();
-}
-
-function closeEmptyCartModal() {
-  const emptyCartModal = document.getElementById("emptyCartModal");
-  emptyCartModal.style.display = "none";
-}
-
-// Event listener to open the modal when the "Add to Cart" button is clicked
-document.addEventListener("DOMContentLoaded", () => {
-  const addToCartButton = document.querySelector(".addToCartButton");
-  addToCartButton.addEventListener("click", () => {
-    if (selectedItesmsArray.length <= 0) {
-      const emptyCartModal = document.getElementById("emptyCartModal");
-      emptyCartModal.style.display = "block";
-
-      setTimeout(() => {
-        emptyCartModal.style.display = "none";
-      }, 3000);
-    } else {
-      openCartModal();
-    }
-  });
-});
-
-// Function to close the cart modal
-function closeCartModal() {
-  const cartModal = document.getElementById("cartModal");
-  cartModal.style.display = "none";
-  document.body.style.overflow = "auto";
-  toggleBlurBackground();
-}
-
-function toggleCartModal() {
-  const cartModal = document.getElementById("cartModal");
-  const toggleButton = document.querySelector(".toggle-button");
-  cartModal.classList.toggle("active");
-  toggleButton.style.display = cartModal.classList.contains("active")
-    ? "none"
-    : "block";
-
-  if (cartModal.classList.contains("active")) {
-    cartModal.style.display = "block";
-  } else {
-    cartModal.style.display = "none";
-  }
-
-  toggleBlurBackground();
-}
-function toggleOrderModal() {
-  const orderModal = document.getElementById("orderModal");
-  const toggleButton = document.querySelector(".toggle-button");
-  orderModal.classList.toggle("active");
-  toggleButton.style.display = orderModal.classList.contains("active")
-    ? "none"
-    : "block";
-
-  if (orderModal.classList.contains("active")) {
-    orderModal.style.display = "block";
-  } else {
-    orderModal.style.display = "none";
-  }
-
-  toggleBlurBackground();
-}
-function togglePaymentModal() {
-  const paymentModal = document.getElementById("paymentModal");
-  const toggleButton = document.querySelector(".toggle-button");
-  paymentModal.classList.toggle("active");
-  toggleButton.style.display = paymentModal.classList.contains("active")
-    ? "none"
-    : "block";
-
-  if (paymentModal.classList.contains("active")) {
-    paymentModal.style.display = "block";
-  } else {
-    paymentModal.style.display = "none";
-  }
-
-  toggleBlurBackground();
-}
-
-// Event listener to close the modal when the "Close" button (x) is clicked
-const closeButton = document.querySelector(".close");
-closeButton.addEventListener("click", () => {
-  closeAndToggleCartModal();
-});
-
-const closeArrowCartButton = document.querySelector(".ArrowCart");
-closeArrowCartButton.addEventListener("click", () => {
-  closeCartModal();
-  toggleCartModal();
-});
-const closeArrowOrderButton = document.querySelector(".ArrowOrder");
-closeArrowOrderButton.addEventListener("click", () => {
-  closeOrderModal();
-  removeToggleLines();
-  toggleOrderModal();
-});
-const closeArrowPaymentButton = document.querySelector(".ArrowPyment");
-closeArrowPaymentButton.addEventListener("click", () => {
-  closePaymentModal();
-  removeToggleLines();
-  togglePaymentModal();
-});
-
-// Function to place the order
-function openOrderModal() {
-  // closeCartModal();
-  const orderModal = document.getElementById("orderModal");
-  orderModal.style.display = "block";
-}
-
-function closeOrderModal() {
-  const orderModal = document.getElementById("orderModal");
-  orderModal.style.display = "none";
-  openCartModal();
-}
-
-function submitOrder() {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const address = document.getElementById("address").value;
-  closeOrderModal();
-}
-
-function openPaymentModal() {
-  closeCartModal();
-  const orderModal = document.getElementById("paymentModal");
-  orderModal.style.display = "block";
-}
-
-function closePaymentModal() {
-  const orderModal = document.getElementById("paymentModal");
-  orderModal.style.display = "none";
-}
-function openPaynowModal() {
-  const orderModal = document.getElementById("payNow");
-  orderModal.style.display = "block";
-}
-
-function closePaynowModal() {
-  const orderModal = document.getElementById("payNow");
-  orderModal.style.display = "none";
-}
-
-function submitPayment() {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const address = document.getElementById("address").value;
-  closeOrderModal();
-}
-
-function submitPaynowbtn() {
-  const modals = document.getElementsByClassName("modal");
-  for (const modal of modals) {
-    modal.style.display = "none";
-  }
-
-  // Remove the blur effect on the background elements
-  const backgroundElements = document.querySelectorAll(".blur");
-  backgroundElements.forEach((element) => {
-    element.classList.remove("blur-background");
-    element.classList.remove("unselectable");
-    element.style.pointerEvents = "auto";
-  });
-
-  // Clear the selected lipsticks array and remove the lipsticks from the addToCart section
-  selectedItesmsArray = [];
-  const addToCartSection = document.querySelector(".addToCart");
-  addToCartSection.innerHTML = "";
-  localStorage.removeItem("selectedItesmsArray"); // Clear local storage
-
-  toggleCartModal();
-}
-
+   // Event listener to open the modal when the "Add to Cart" button is clicked
+   const addToCartButton = document.querySelector(".addToCartButton");
+   addToCartButton.addEventListener("click", () => {
+     if (selectedItesmsArray?.length === 0) {
+       const emptyCartMessage = document.getElementById("emptyCartMessage");
+       emptyCartMessage.style.display = "block";
+ 
+       // Hide the message after a short delay
+       setTimeout(() => {
+         emptyCartMessage.style.display = "none";
+       }, 2000);
+     } else {
+       openCartModal();
+       toggleCartModal();
+     }
+   });
+ });
+ 
+ document.addEventListener("DOMContentLoaded", () => {
+   const sidebarMainContainer = document.querySelector(".Sidebar_MainContainer");
+   const toggleButton = document.createElement("div");
+   toggleButton.classList.add("toggle-button");
+   toggleButton.innerHTML = `
+     <div class="toggle-line"></div>
+     <div class="toggle-line"></div>
+     <div class="toggle-line"></div>
+   `;
+ 
+   document.body.appendChild(toggleButton);
+ 
+   function removeToggleLines() {
+     const toggleLines = toggleButton.querySelectorAll(".toggle-line");
+     toggleLines.forEach((line) => {
+       line.style.display = "none";
+     });
+   }
+ 
+   function addToggleLines() {
+     const toggleLines = toggleButton.querySelectorAll(".toggle-line");
+     toggleLines.forEach((line) => {
+       line.style.display = "block";
+     });
+   }
+ 
+   function addArrowButton() {
+     const arrowButton = document.createElement("div");
+     arrowButton.classList.add("arrow-button");
+     arrowButton.innerHTML = "&#8592;";
+     toggleButton.appendChild(arrowButton);
+   }
+ 
+   function removeArrowButton() {
+     const arrowButton = toggleButton.querySelector(".arrow-button");
+     if (arrowButton) {
+       toggleButton.removeChild(arrowButton);
+     }
+   }
+ 
+   function closeSidebar() {
+     sidebarMainContainer.classList.remove("active");
+     removeArrowButton();
+     addToggleLines();
+   }
+ 
+   function showSectionAndCloseSidebar(sectionId, button) {
+     closeSidebar();
+     showSection(sectionId, button);
+ 
+     // window.location.reload();
+   }
+ 
+   const sidebarButtons = document.querySelectorAll(".Sidebar_InnerContainer a");
+   sidebarButtons.forEach((button) => {
+     button.addEventListener("click", () => {
+       const sectionId = button.getAttribute("href").substring(1);
+       showSectionAndCloseSidebar(sectionId, button);
+     });
+   });
+ 
+   toggleButton.addEventListener("click", () => {
+     sidebarMainContainer.classList.toggle("active");
+ 
+     if (sidebarMainContainer.classList.contains("active")) {
+       removeToggleLines();
+       addArrowButton();
+     } else {
+       removeArrowButton();
+       addToggleLines();
+     }
+   });
+ });
+ 
+ function closeAndToggleCartModal() {
+   closeCartModal();
+   toggleCartModal();
+ }
+ 
+ // Function to toggle the blur effect on the background elements
+ function toggleBlurBackground() {
+   const cartModal = document.getElementById("cartModal");
+   const backgroundElements = document.querySelectorAll(".blur");
+ 
+   function handleBackgroundClick(event) {
+     if (event.target === cartModal) {
+       closeAndToggleCartModal();
+     }
+   }
+ 
+   if (cartModal.classList.contains("active")) {
+     backgroundElements.forEach((element) => {
+       element.classList.add("blur-background");
+       element.classList.add("unselectable");
+       element.style.pointerEvents = "none";
+       element.addEventListener("click", handleBackgroundClick);
+     });
+   } else {
+     backgroundElements.forEach((element) => {
+       element.classList.remove("blur-background");
+       element.classList.remove("unselectable");
+       element.style.pointerEvents = "auto";
+       element.removeEventListener("click", handleBackgroundClick);
+     });
+   }
+ }
+ 
+ window.addEventListener("click", (event) => {
+   const cartModal = document.getElementById("bbbb");
+   // Check if the clicked element is outside the modal
+   if (event.target == cartModal) {
+     closeCartModal();
+     toggleCartModal();
+   }
+ });
+ 
+ // Function to open the cart modal
+ function openCartModal() {
+   const cartModal = document.getElementById("cartModal");
+   cartModal.style.display = "block";
+   document.body.style.overflow = "hidden";
+   toggleBlurBackground();
+   generateCartModelContent();
+ }
+ 
+ function closeEmptyCartModal() {
+   const emptyCartModal = document.getElementById("emptyCartModal");
+   emptyCartModal.style.display = "none";
+ }
+ 
+ // Event listener to open the modal when the "Add to Cart" button is clicked
+ document.addEventListener("DOMContentLoaded", () => {
+   const addToCartButton = document.querySelector(".addToCartButton");
+   addToCartButton.addEventListener("click", () => {
+     if (selectedItesmsArray.length <= 0) {
+       const emptyCartModal = document.getElementById("emptyCartModal");
+       emptyCartModal.style.display = "block";
+ 
+       setTimeout(() => {
+         emptyCartModal.style.display = "none";
+       }, 3000);
+     } else {
+       openCartModal();
+     }
+   });
+ });
+ 
+ // Function to close the cart modal
+ function closeCartModal() {
+   const cartModal = document.getElementById("cartModal");
+   cartModal.style.display = "none";
+   document.body.style.overflow = "auto";
+   toggleBlurBackground();
+ }
+ 
+ function toggleCartModal() {
+   const cartModal = document.getElementById("cartModal");
+   const toggleButton = document.querySelector(".toggle-button");
+   cartModal.classList.toggle("active");
+   toggleButton.style.display = cartModal.classList.contains("active")
+     ? "none"
+     : "block";
+ 
+   if (cartModal.classList.contains("active")) {
+     cartModal.style.display = "block";
+   } else {
+     cartModal.style.display = "none";
+   }
+ 
+   toggleBlurBackground();
+ }
+ function toggleOrderModal() {
+   const orderModal = document.getElementById("orderModal");
+   const toggleButton = document.querySelector(".toggle-button");
+   orderModal.classList.toggle("active");
+   toggleButton.style.display = orderModal.classList.contains("active")
+     ? "none"
+     : "block";
+ 
+   if (orderModal.classList.contains("active")) {
+     orderModal.style.display = "block";
+   } else {
+     orderModal.style.display = "none";
+   }
+ 
+   toggleBlurBackground();
+ }
+ function togglePaymentModal() {
+   const paymentModal = document.getElementById("paymentModal");
+   const toggleButton = document.querySelector(".toggle-button");
+   paymentModal.classList.toggle("active");
+   toggleButton.style.display = paymentModal.classList.contains("active")
+     ? "none"
+     : "block";
+ 
+   if (paymentModal.classList.contains("active")) {
+     paymentModal.style.display = "block";
+   } else {
+     paymentModal.style.display = "none";
+   }
+ 
+   toggleBlurBackground();
+ }
+ 
+ // Event listener to close the modal when the "Close" button (x) is clicked
+ const closeButton = document.querySelector(".close");
+ closeButton.addEventListener("click", () => {
+   closeAndToggleCartModal();
+ });
+ 
+ const closeArrowCartButton = document.querySelector(".ArrowCart");
+ closeArrowCartButton.addEventListener("click", () => {
+   closeCartModal();
+   toggleCartModal();
+ });
+ const closeArrowOrderButton = document.querySelector(".ArrowOrder");
+ closeArrowOrderButton.addEventListener("click", () => {
+   closeOrderModal();
+   removeToggleLines();
+   toggleOrderModal();
+ });
+ const closeArrowPaymentButton = document.querySelector(".ArrowPyment");
+ closeArrowPaymentButton.addEventListener("click", () => {
+   closePaymentModal();
+   removeToggleLines();
+   togglePaymentModal();
+ });
+ 
+ // Function to place the order
+ function openOrderModal() {
+   // closeCartModal();
+   const orderModal = document.getElementById("orderModal");
+   orderModal.style.display = "block";
+ }
+ 
+ function closeOrderModal() {
+   const orderModal = document.getElementById("orderModal");
+   orderModal.style.display = "none";
+   openCartModal();
+ }
+ 
+ function submitOrder() {
+   const name = document.getElementById("name").value;
+   const email = document.getElementById("email").value;
+   const address = document.getElementById("address").value;
+   closeOrderModal();
+ }
+ 
+ function openPaymentModal() {
+   closeCartModal();
+   const orderModal = document.getElementById("paymentModal");
+   orderModal.style.display = "block";
+ }
+ 
+ function closePaymentModal() {
+   const orderModal = document.getElementById("paymentModal");
+   orderModal.style.display = "none";
+ }
+ function openPaynowModal() {
+   const orderModal = document.getElementById("payNow");
+   orderModal.style.display = "block";
+ }
+ 
+ function closePaynowModal() {
+   const orderModal = document.getElementById("payNow");
+   orderModal.style.display = "none";
+ }
+ 
+ function submitPayment() {
+   const name = document.getElementById("name").value;
+   const email = document.getElementById("email").value;
+   const address = document.getElementById("address").value;
+   closeOrderModal();
+ }
+ 
+ function submitPaynowbtn() {
+   const modals = document.getElementsByClassName("modal");
+   for (const modal of modals) {
+     modal.style.display = "none";
+   }
+ 
+   // Remove the blur effect on the background elements
+   const backgroundElements = document.querySelectorAll(".blur");
+   backgroundElements.forEach((element) => {
+     element.classList.remove("blur-background");
+     element.classList.remove("unselectable");
+     element.style.pointerEvents = "auto";
+   });
+ 
+   // Clear the selected lipsticks array and remove the lipsticks from the addToCart section
+   selectedItesmsArray = [];
+   const addToCartSection = document.querySelector(".addToCart");
+   addToCartSection.innerHTML = "";
+   localStorage.removeItem("selectedItesmsArray"); // Clear local storage
+ 
+   toggleCartModal();
+ }
 // ...................eyeshadow js here ................//
 
 // let selectedItesmsArray = [];
