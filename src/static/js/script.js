@@ -176,8 +176,6 @@ function createMakeupMask(faceLandmarks, makeup_data) {
     }
 }
 
-let photo = document.get
-
 async function get_facemesh() {
     // load HTML canvas
     var canvas = document.getElementById('canvas')
@@ -311,16 +309,59 @@ let colorShadesAiRec = [
 // }
 
 //all shades
-const shades = [
-    'matte',
-    'glossy',
-    'frosted',
-    'satin/Sheer',
-    'lip Glass',
-    'Lip Pamper',
-    'pearl',
-    'creamy',
-]
+const shades = {
+    'lipstick': [
+        'matte',
+        'glossy',
+        'frosted',
+        'satin/Sheer',
+        'lip Glass',
+        'Lip Pamper',
+        'pearl',
+        'creamy',
+    ],
+    'eye shadow': [
+        'matte',
+        'satin',
+        'metallic',
+        'shimmer',
+        'glitter',
+        'frost',
+        'luster',
+        'neon',
+    ],
+    'foundation': [
+        'liquid',
+        'powder',
+        'cream',
+        'stick',
+        'mineral',
+        'tinted',
+        'serum',
+    ],
+    'blush': [
+        'pressed',
+        'mineral',
+        'cream',
+        'cheek tint',
+        'blush stick',
+        'Liquid',
+    ],
+    'concealer': ['liquid', 'cream', 'stick', 'balm'],
+}
+
+const toolTipTextObj = {
+    'lipstick':
+        'Matte lipsticks are great for any occasion for its long-lasting and bold colours. Its typically the ideal addition to any formal or professional setting.',
+    'eye shadow':
+        'Matte eyeshadow is a non-shiny, velvety eye color. Use it for a sophisticated, no-gloss look.',
+    'foundation':
+        'Liquid foundation is used to even out skin tone and provide a smooth base for makeup application. It should be used when you want a seamless, natural-looking complexion.',
+    'blush':
+        'Pressed blush is a compact powder blush that gives off a more long-lasting finish. Use it for any occasion to add a pop of color to your cheeks.',
+    'concealer':
+        'Liquid concealer is a fluid-based formula for light to medium coverage, ideal for under-eye circles and minor imperfections.',
+}
 
 //races
 const races = ['A', 'B', 'C']
@@ -844,7 +885,7 @@ const products = {
             src: '../static/img/foundation/foundation_img1.png',
             color: '#E6BF9E',
             title: 'Powermatte Long Lasting ',
-            type: 'matte',
+            type: 'liquid',
             content: 'Transfer-resistant, matte foundation',
             price: '$200',
             productType: 'foundation',
@@ -852,7 +893,7 @@ const products = {
         {
             src: '../static/img/foundation/foundation_img2.png',
             color: '#EDCDB8',
-            type: 'matte',
+            type: 'liquid',
             title: 'Matte foundation',
             content: 'Rich foundation with high color payoff',
             price: '$200',
@@ -861,7 +902,7 @@ const products = {
         {
             src: '../static/img/foundation/foundation_img3.png',
             color: '#E3BF9E',
-            type: 'matte',
+            type: 'liquid',
             title: 'Matte Refillable foundation ',
             content: 'Transfer-resistant, matte foundation ',
             price: '$200',
@@ -870,7 +911,7 @@ const products = {
         {
             src: '../static/img/foundation/foundation_img4.png',
             color: '#BA8255',
-            type: 'matte',
+            type: 'liquid',
             title: 'Velvet Matte foundation',
             content: 'Transfer-resistant, matte foundation',
             price: '$200',
@@ -881,14 +922,14 @@ const products = {
             color: '#BA8255',
             title: 'Powermatte Long Lasting',
             content: 'Transfer-resistant, matte foundation',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img6.png',
             color: '#D7B085',
-            type: 'matte',
+            type: 'liquid',
             title: 'Kind Words Matte foundation',
             content: 'Transfer-resistant, matte foundation',
             price: '$200',
@@ -897,7 +938,7 @@ const products = {
         {
             src: '../static/img/foundation/foundation_img1.png',
             color: '#E6BF9E',
-            type: 'matte',
+            type: 'liquid',
 
             title: 'Powermatte Long Lasting ',
 
@@ -909,7 +950,7 @@ const products = {
         {
             src: '../static/img/foundation/foundation_img2.png',
             color: '#EDCDB8',
-            type: 'matte',
+            type: 'liquid',
 
             title: 'Matte foundation',
             content: 'Rich foundation with high color payoff',
@@ -919,7 +960,7 @@ const products = {
         {
             src: '../static/img/foundation/foundation_img3.png',
             color: '#E3BF9E',
-            type: 'matte',
+            type: 'liquid',
             title: 'Matte Refillable foundation ',
             content: 'Transfer-resistant, matte foundation ',
             price: '$200',
@@ -930,7 +971,7 @@ const products = {
             color: '#BA8255',
             title: 'Velvet Matte foundation',
             content: 'Transfer-resistant, matte foundation',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'foundation',
         },
@@ -939,7 +980,7 @@ const products = {
             color: '#BA8255',
             title: 'Powermatte Long Lasting',
             content: 'Transfer-resistant, matte foundation',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'foundation',
         },
@@ -948,14 +989,14 @@ const products = {
             color: '#D7B085',
             title: 'Kind Words Matte foundation',
             content: 'Transfer-resistant, matte foundation',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'foundation',
         },
         {
             src: '../static/img/foundation/foundation_img1.png',
             color: '#E6BF9E',
-            type: 'matte',
+            type: 'liquid',
             title: 'Powermatte Long Lasting',
 
             price: '$200',
@@ -966,7 +1007,7 @@ const products = {
             color: '#EDCDB8',
             title: 'Kind Words Matte foundation',
             content: 'Transfer-resistant, matte foundation',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'foundation',
         },
@@ -975,7 +1016,7 @@ const products = {
             color: '#E3BF9E',
             title: 'Velvet Matte foundation',
             content: 'Transfer-resistant, matte foundation',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'foundation',
         },
@@ -984,7 +1025,7 @@ const products = {
             color: '#BA8255',
             title: 'Powermatte Long Lasting ',
             content: 'Transfer-resistant, matte foundation',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'foundation',
         },
@@ -992,7 +1033,7 @@ const products = {
             src: '../static/img/foundation/foundation_img5.png',
             color: '#BA8255',
             title: 'Matte foundation',
-            type: 'matte',
+            type: 'liquid',
             content: 'Rich foundation with high color payoff',
             price: '$200',
             productType: 'foundation',
@@ -1000,7 +1041,7 @@ const products = {
         {
             src: '../static/img/foundation/foundation_img6.png',
             color: '#D7B085',
-            type: 'matte',
+            type: 'liquid',
             title: 'Matte Refillable foundation ',
             content: 'Transfer-resistant, matte foundation ',
             price: '$200',
@@ -1011,7 +1052,7 @@ const products = {
             color: '#E6BF9E',
             title: 'Velvet Matte foundation',
             content: 'Transfer-resistant, matte foundation',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'foundation',
         },
@@ -1021,7 +1062,7 @@ const products = {
             src: '../static/img/blush/blush_img1.png',
             color: '#EDC3B6',
             title: 'Powermatte Long Lasting ',
-            type: 'matte',
+            type: 'pressed',
             content: 'Transfer-resistant, matte blush',
             price: '$200',
             productType: 'blush',
@@ -1029,7 +1070,7 @@ const products = {
         {
             src: '../static/img/blush/blush_img2.png',
             color: '#C57A67',
-            type: 'matte',
+            type: 'pressed',
             title: 'Matte blush',
             content: 'Rich blush with high color payoff',
             price: '$200',
@@ -1038,7 +1079,7 @@ const products = {
         {
             src: '../static/img/blush/blush_img3.png',
             color: '#FFBBBB',
-            type: 'matte',
+            type: 'pressed',
             title: 'Matte Refillable blush ',
             content: 'Transfer-resistant, matte blush ',
             price: '$200',
@@ -1047,7 +1088,7 @@ const products = {
         {
             src: '../static/img/blush/blush_img4.png',
             color: '#FAAB92',
-            type: 'matte',
+            type: 'pressed',
             title: 'Velvet Matte blush',
             content: 'Transfer-resistant, matte blush',
             price: '$200',
@@ -1058,14 +1099,14 @@ const products = {
             color: '#F18F8F',
             title: 'Powermatte Long Lasting',
             content: 'Transfer-resistant, matte blush',
-            type: 'matte',
+            type: 'pressed',
             price: '$200',
             productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img6.png',
             color: '#DBACA1',
-            type: 'matte',
+            type: 'pressed',
             title: 'Kind Words Matte blush',
             content: 'Transfer-resistant, matte blush',
             price: '$200',
@@ -1074,7 +1115,7 @@ const products = {
         {
             src: '../static/img/blush/blush_img1.png',
             color: '#EDC3B6',
-            type: 'matte',
+            type: 'pressed',
 
             title: 'Powermatte Long Lasting ',
 
@@ -1086,7 +1127,7 @@ const products = {
         {
             src: '../static/img/blush/blush_img2.png',
             color: '#C57A67',
-            type: 'matte',
+            type: 'pressed',
 
             title: 'Matte blush',
             content: 'Rich blush with high color payoff',
@@ -1096,7 +1137,7 @@ const products = {
         {
             src: '../static/img/blush/blush_img3.png',
             color: '#FFBBBB',
-            type: 'matte',
+            type: 'pressed',
             title: 'Matte Refillable blush ',
             content: 'Transfer-resistant, matte blush ',
             price: '$200',
@@ -1107,7 +1148,7 @@ const products = {
             color: '#FAAB92',
             title: 'Velvet Matte blush',
             content: 'Transfer-resistant, matte blush',
-            type: 'matte',
+            type: 'pressed',
             price: '$200',
             productType: 'blush',
         },
@@ -1116,7 +1157,7 @@ const products = {
             color: '#F18F8F',
             title: 'Powermatte Long Lasting',
             content: 'Transfer-resistant, matte blush',
-            type: 'matte',
+            type: 'pressed',
             price: '$200',
             productType: 'blush',
         },
@@ -1125,14 +1166,14 @@ const products = {
             color: '#DBACA1',
             title: 'Kind Words Matte blush',
             content: 'Transfer-resistant, matte blush',
-            type: 'matte',
+            type: 'pressed',
             price: '$200',
             productType: 'blush',
         },
         {
             src: '../static/img/blush/blush_img1.png',
             color: '#EDC3B6',
-            type: 'matte',
+            type: 'pressed',
             title: 'Powermatte Long Lasting',
 
             price: '$200',
@@ -1143,7 +1184,7 @@ const products = {
             color: '#C57A67',
             title: 'Kind Words Matte blush',
             content: 'Transfer-resistant, matte blush',
-            type: 'matte',
+            type: 'pressed',
             price: '$200',
             productType: 'blush',
         },
@@ -1152,7 +1193,7 @@ const products = {
             color: '#FFBBBB',
             title: 'Velvet Matte blush',
             content: 'Transfer-resistant, matte blush',
-            type: 'matte',
+            type: 'pressed',
             price: '$200',
             productType: 'blush',
         },
@@ -1161,7 +1202,7 @@ const products = {
             color: '#FAAB92',
             title: 'Powermatte Long Lasting ',
             content: 'Transfer-resistant, matte blush',
-            type: 'matte',
+            type: 'pressed',
             price: '$200',
             productType: 'blush',
         },
@@ -1169,7 +1210,7 @@ const products = {
             src: '../static/img/blush/blush_img5.png',
             color: '#F18F8F',
             title: 'Matte blush',
-            type: 'matte',
+            type: 'pressed',
             content: 'Rich blush with high color payoff',
             price: '$200',
             productType: 'blush',
@@ -1177,7 +1218,7 @@ const products = {
         {
             src: '../static/img/blush/blush_img6.png',
             color: '#DBACA1',
-            type: 'matte',
+            type: 'pressed',
             title: 'Matte Refillable blush ',
             content: 'Transfer-resistant, matte blush ',
             price: '$200',
@@ -1188,7 +1229,7 @@ const products = {
             color: '#EDC3B6',
             title: 'Velvet Matte blush',
             content: 'Transfer-resistant, matte blush',
-            type: 'matte',
+            type: 'pressed',
             price: '$200',
             productType: 'blush',
         },
@@ -1198,7 +1239,7 @@ const products = {
             src: '../static/img/concealer/concealer_img1.png',
             color: '#996C52',
             title: 'Powermatte Long Lasting ',
-            type: 'matte',
+            type: 'liquid',
             content: 'Transfer-resistant, matte concealer',
             price: '$200',
             productType: 'concealer',
@@ -1206,7 +1247,7 @@ const products = {
         {
             src: '../static/img/concealer/concealer_img2.png',
             color: '#EDC0A7',
-            type: 'matte',
+            type: 'liquid',
             title: 'Matte concealer',
             content: 'Rich concealer with high color payoff',
             price: '$200',
@@ -1215,7 +1256,7 @@ const products = {
         {
             src: '../static/img/concealer/concealer_img3.png',
             color: '#F4D0AE',
-            type: 'matte',
+            type: 'liquid',
             title: 'Matte Refillable concealer ',
             content: 'Transfer-resistant, matte concealer ',
             price: '$200',
@@ -1224,7 +1265,7 @@ const products = {
         {
             src: '../static/img/concealer/concealer_img4.png',
             color: '#FADDCD',
-            type: 'matte',
+            type: 'liquid',
             title: 'Velvet Matte concealer',
             content: 'Transfer-resistant, matte concealer',
             price: '$200',
@@ -1235,14 +1276,14 @@ const products = {
             color: '#FFF0E5',
             title: 'Powermatte Long Lasting',
             content: 'Transfer-resistant, matte concealer',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img6.png',
             color: '#7D492A',
-            type: 'matte',
+            type: 'liquid',
             title: 'Kind Words Matte concealer',
             content: 'Transfer-resistant, matte concealer',
             price: '$200',
@@ -1251,7 +1292,7 @@ const products = {
         {
             src: '../static/img/concealer/concealer_img1.png',
             color: '#996C52',
-            type: 'matte',
+            type: 'liquid',
             title: 'Powermatte Long Lasting ',
             content: 'Transfer-resistant, matte concealer',
             price: '$200',
@@ -1260,7 +1301,7 @@ const products = {
         {
             src: '../static/img/concealer/concealer_img2.png',
             color: '#EDC0A7',
-            type: 'matte',
+            type: 'liquid',
 
             title: 'Matte concealer',
             content: 'Rich concealer with high color payoff',
@@ -1270,7 +1311,7 @@ const products = {
         {
             src: '../static/img/concealer/concealer_img3.png',
             color: '#F4D0AE',
-            type: 'matte',
+            type: 'liquid',
             title: 'Matte Refillable concealer ',
             content: 'Transfer-resistant, matte concealer ',
             price: '$200',
@@ -1281,7 +1322,7 @@ const products = {
             color: '#FADDCD',
             title: 'Velvet Matte concealer',
             content: 'Transfer-resistant, matte concealer',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'concealer',
         },
@@ -1290,7 +1331,7 @@ const products = {
             color: '#FFF0E5',
             title: 'Powermatte Long Lasting',
             content: 'Transfer-resistant, matte concealer',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'concealer',
         },
@@ -1299,14 +1340,14 @@ const products = {
             color: '#7D492A',
             title: 'Kind Words Matte concealer',
             content: 'Transfer-resistant, matte concealer',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'concealer',
         },
         {
             src: '../static/img/concealer/concealer_img1.png',
             color: '#996C52',
-            type: 'matte',
+            type: 'liquid',
             title: 'Powermatte Long Lasting',
 
             price: '$200',
@@ -1317,7 +1358,7 @@ const products = {
             color: '#EDC0A7',
             title: 'Kind Words Matte concealer',
             content: 'Transfer-resistant, matte concealer',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'concealer',
         },
@@ -1326,7 +1367,7 @@ const products = {
             color: '#F4D0AE',
             title: 'Velvet Matte concealer',
             content: 'Transfer-resistant, matte concealer',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'concealer',
         },
@@ -1335,7 +1376,7 @@ const products = {
             color: '#FADDCD',
             title: 'Powermatte Long Lasting ',
             content: 'Transfer-resistant, matte concealer',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'concealer',
         },
@@ -1343,7 +1384,7 @@ const products = {
             src: '../static/img/concealer/concealer_img5.png',
             color: '#FFF0E5',
             title: 'Matte concealer',
-            type: 'matte',
+            type: 'liquid',
             content: 'Rich concealer with high color payoff',
             price: '$200',
             productType: 'concealer',
@@ -1351,7 +1392,7 @@ const products = {
         {
             src: '../static/img/concealer/concealer_img6.png',
             color: '#7D492A',
-            type: 'matte',
+            type: 'liquid',
             title: 'Matte Refillable concealer ',
             content: 'Transfer-resistant, matte concealer ',
             price: '$200',
@@ -1362,7 +1403,7 @@ const products = {
             color: '#996C52',
             title: 'Velvet Matte concealer',
             content: 'Transfer-resistant, matte concealer',
-            type: 'matte',
+            type: 'liquid',
             price: '$200',
             productType: 'concealer',
         },
@@ -1463,97 +1504,105 @@ const listItemsInCart = () => {
     }
 }
 // list all product
-const listAllProducts = (shade = 'matte') => {
+const listAllProducts = (shade) => {
+    let headerValue = document.getElementById('header').innerHTML
+
+    if (!shade) {
+        if (headerValue === 'foundation') {
+            shade = 'liquid'
+        } else if (headerValue === 'blush') {
+            shade = 'pressed'
+        } else if (headerValue === 'concealer') {
+            shade = 'liquid'
+        } else if (headerValue === 'lipstick') {
+            shade = 'matte'
+        } else if (headerValue === 'eye shadow') {
+            shade = 'matte'
+        }
+    }
+
     document.getElementById('products').innerHTML = ''
 
     // checking if that particular product has any element in the array
-    if (products[document.getElementById('header').innerHTML].length !== 0) {
+    if (products[headerValue].length !== 0) {
         document.getElementById('products').classList.remove('comingSoonToggle')
-        if (
-            products[document.getElementById('header').innerHTML].find(
-                (i) => i.type === shade
-            )
-        ) {
-            products[document.getElementById('header').innerHTML].forEach(
-                (item, i) => {
-                    if (item.type === shade) {
-                        let product = document.createElement('div')
-                        let productImage = document.createElement('img')
-                        let productColor = document.createElement('div')
-                        let productTitle = document.createElement('div')
-                        let productContent = document.createElement('div')
-                        product.setAttribute('id', 'product')
+        if (products[headerValue].find((i) => i.type === shade)) {
+            products[headerValue].forEach((item, i) => {
+                if (item.type === shade) {
+                    let product = document.createElement('div')
+                    let productImage = document.createElement('img')
+                    let productColor = document.createElement('div')
+                    let productTitle = document.createElement('div')
+                    let productContent = document.createElement('div')
+                    product.setAttribute('id', 'product')
 
-                        // add click event listener to each color div
-                        product.addEventListener('click', function () {
-                            //adding to cart
-                            cartItems[item.productType] = item
+                    // add click event listener to each color div
+                    product.addEventListener('click', function () {
+                        //adding to cart
+                        cartItems[item.productType] = item
 
-                            listItemsInCart()
+                        listItemsInCart()
 
-                            i > 6 && product.scrollIntoView()
+                        i > 6 && product.scrollIntoView()
 
-                            if (window.innerWidth < 786) {
-                                handleCloseSideBar()
+                        if (window.innerWidth < 786) {
+                            handleCloseSideBar()
+                        }
+                        if (product.classList.contains('productBorder')) {
+                            product.classList.remove('productBorder')
+                            document
+                                .querySelectorAll('#product')
+                                .forEach((item) =>
+                                    item.classList.remove('productBorder')
+                                )
+                            if (item.productType === 'lipstick') {
+                                setLipstickColor([0, 0, 0])
+                            } else if (item.productType === 'eye shadow') {
+                                setEyeshadeColor([0, 0, 0])
+                            } else if (item.productType === 'foundation') {
+                                setFoundationColor([0, 0, 0])
+                            } else if (item.productType === 'blush') {
+                                setBlushColor([0, 0, 0])
+                            } else if (item.productType === 'concealer') {
+                                setConcealerColor([0, 0, 0])
                             }
-                            if (product.classList.contains('productBorder')) {
-                                product.classList.remove('productBorder')
-                                document
-                                    .querySelectorAll('#product')
-                                    .forEach((item) =>
-                                        item.classList.remove('productBorder')
-                                    )
-                                if (item.productType === 'lipstick') {
-                                    setLipstickColor([0, 0, 0])
-                                } else if (item.productType === 'eye shadow') {
-                                    setEyeshadeColor([0, 0, 0])
-                                } else if (item.productType === 'foundation') {
-                                    setFoundationColor([0, 0, 0])
-                                } else if (item.productType === 'blush') {
-                                    setBlushColor([0, 0, 0])
-                                } else if (item.productType === 'concealer') {
-                                    setConcealerColor([0, 0, 0])
-                                }
-                            } else {
-                                document
-                                    .querySelectorAll('#product')
-                                    .forEach((item) =>
-                                        item.classList.remove('productBorder')
-                                    )
-                                product.classList.add('productBorder')
+                        } else {
+                            document
+                                .querySelectorAll('#product')
+                                .forEach((item) =>
+                                    item.classList.remove('productBorder')
+                                )
+                            product.classList.add('productBorder')
 
-                                if (item.productType === 'lipstick') {
-                                    setLipstickColor(item.color.convertToRGB())
-                                } else if (item.productType === 'eye shadow') {
-                                    setEyeshadeColor(item.color.convertToRGB())
-                                } else if (item.productType === 'foundation') {
-                                    setFoundationColor(
-                                        item.color.convertToRGB()
-                                    )
-                                } else if (item.productType === 'blush') {
-                                    setBlushColor(item.color.convertToRGB())
-                                } else if (item.productType === 'concealer') {
-                                    setConcealerColor(item.color.convertToRGB())
-                                }
+                            if (item.productType === 'lipstick') {
+                                setLipstickColor(item.color.convertToRGB())
+                            } else if (item.productType === 'eye shadow') {
+                                setEyeshadeColor(item.color.convertToRGB())
+                            } else if (item.productType === 'foundation') {
+                                setFoundationColor(item.color.convertToRGB())
+                            } else if (item.productType === 'blush') {
+                                setBlushColor(item.color.convertToRGB())
+                            } else if (item.productType === 'concealer') {
+                                setConcealerColor(item.color.convertToRGB())
                             }
-                        })
+                        }
+                    })
 
-                        productTitle.innerHTML = item.title
-                        productTitle.classList.add('product__title')
-                        productContent.classList.add('product__content')
-                        productContent.innerHTML = item.content
-                        productColor.style.backgroundColor = item.color
-                        productColor.classList.add('color')
-                        productImage.src = item.src
-                        product.classList.add('product')
-                        product.appendChild(productImage)
-                        product.appendChild(productColor)
-                        product.appendChild(productTitle)
-                        product.appendChild(productContent)
-                        document.getElementById('products').appendChild(product)
-                    }
+                    productTitle.innerHTML = item.title
+                    productTitle.classList.add('product__title')
+                    productContent.classList.add('product__content')
+                    productContent.innerHTML = item.content
+                    productColor.style.backgroundColor = item.color
+                    productColor.classList.add('color')
+                    productImage.src = item.src
+                    product.classList.add('product')
+                    product.appendChild(productImage)
+                    product.appendChild(productColor)
+                    product.appendChild(productTitle)
+                    product.appendChild(productContent)
+                    document.getElementById('products').appendChild(product)
                 }
-            )
+            })
         } else {
             comingsoonImage()
         }
@@ -1650,18 +1699,38 @@ const renderShadesOrRaces = () => {
         })
     } else {
         // rendering all shades
-        shades.forEach((item) => {
-            let shade = document.createElement('div')
-            shade.addEventListener('click', onClickShadeHandler)
-            if (item === 'matte') {
-                shade.classList.add('selectedShade')
+        shades[document.getElementById('header').innerHTML].forEach(
+            (item, i) => {
+                let shadeContainer = document.createElement('div')
+                shadeContainer.addEventListener('click', onClickShadeHandler)
+                let shade = document.createElement('div')
+                shade.myParam = item
+                shade.innerHTML = item
+                shadeContainer.appendChild(shade)
+                if (i === 0) {
+                    shadeContainer.classList.add('selectedShade')
+                    let tooltip = document.createElement('div')
+
+                    let toolTipText = document.createElement('span')
+                    toolTipText.classList.add('tooltiptext')
+                    toolTipText.innerHTML =
+                        toolTipTextObj[
+                            document.getElementById('header').innerHTML
+                        ]
+                    tooltip.appendChild(toolTipText)
+                    tooltip.classList.add('tooltip')
+
+                    let img = document.createElement('img')
+                    img.src = '../static/img/i.svg'
+
+                    tooltip.append(img)
+                    shadeContainer.appendChild(tooltip)
+                }
+                shadeContainer.classList.add('shade')
+                shadeContainer.setAttribute('id', item)
+                document.getElementById('shades').appendChild(shadeContainer)
             }
-            shade.myParam = item
-            shade.innerHTML = item
-            shade.classList.add('shade')
-            shade.setAttribute('id', item)
-            document.getElementById('shades').appendChild(shade)
-        })
+        )
     }
 }
 
@@ -1733,13 +1802,13 @@ window.onload = function () {
     // // setting width & height to 1 as we dont want to show the video, only want to capture frames from it
     video.width = '1'
     video.height = '1'
-    if (navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices
-            .getUserMedia({ video: true })
-            .then(function (stream) {
-                video.srcObject = stream
-            })
-    }
+    // if (navigator.mediaDevices.getUserMedia) {
+    //     navigator.mediaDevices
+    //         .getUserMedia({ video: true })
+    //         .then(function (stream) {
+    //             video.srcObject = stream
+    //         })
+    // }
 
     // run face-mesh model once the video is ready for processing
     main()

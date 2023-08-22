@@ -92,6 +92,11 @@ body {
     font-size: x-large;
     margin-top: 10px;
 }
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .header {
     padding: 1em 0;
@@ -102,12 +107,32 @@ body {
     text-transform: capitalize;
 }
 
+.search {
+    padding: 0em 5em 0 1em;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    color: #dcdcdc;
+}
+
+.search img {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
 .shades {
     height: 10%;
     padding: 1em 0;
     display: flex;
 }
+
 .shade {
+    display: flex;
+    align-items: center;
+
     margin-right: 10px;
     padding: 0.8em 2em;
     background-color: #f5f6f6;
@@ -117,6 +142,38 @@ body {
     cursor: pointer;
     font-size: 1rem;
 }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+.tooltip img {
+    cursor: pointer;
+    margin: 3px 0 0 3px;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #ffffff;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 1em;
+    border: 2px solid #947474;
+    font-weight: 900;
+    font-size: 0.8em;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -100%;
+    left: 100%;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
 .raceHeader {
     margin-right: 10px;
     padding: 0.7em 1.5em;
@@ -332,7 +389,7 @@ body {
     font-family: visbyround;
     display: flex;
     box-sizing: border-box;
-    height: 9vh;
+    height: 8vh;
     cursor: pointer;
     background-color: #baabab;
     color: #ffffff;
@@ -349,9 +406,26 @@ body {
     display: flex;
     font-family: 'Goldman';
     justify-content: center;
-    font-size: 1.3em;
-    height: 5vh;
+    font-size: 1.8em;
+    height: 10vh;
 }
+
+.branding2 {
+    font-family: 'Goldman';
+    justify-content: center;
+    font-size: 1.8rem;
+    height: 10vh;
+}
+
+.branding__footer {
+    font-size: 1rem;
+}
+
+.branding__footer__logo {
+    margin-left: 10px;
+    font-size: 1.8rem;
+}
+
 .closed > p {
     margin-left: 10%;
 }
@@ -441,7 +515,7 @@ body {
         width: 150px;
     }
     .shade {
-        padding: 0.6em 2em;
+        padding: 0.8em 2em;
         font-size: 0.7em;
     }
     .shades {
@@ -450,6 +524,12 @@ body {
     }
     .closed {
         font-size: 0.8em;
+    }
+    .branding {
+        font-size: 1.8em;
+    }
+    .branding2 {
+        font-size: 0.5em;
     }
     .closed > img {
         height: 45px;
@@ -558,6 +638,7 @@ body {
     .closed {
         font-size: 16px;
     }
+
     .shade {
         padding: 0.6em 2em;
         font-size: 0.8em;
@@ -580,6 +661,7 @@ body {
         background-color: #baabab;
         -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
     }
+
     .header {
         width: 100%;
         display: flex;
