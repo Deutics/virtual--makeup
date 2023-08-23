@@ -7,6 +7,7 @@
   border: 3px solid #947474 !important;
   border-radius: 1rem;
 }
+
 .icon {
   width: 25px;
   min-height: 25px;
@@ -453,8 +454,6 @@
 
 .addToCart {
   overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
 }
 .addToCart::-webkit-scrollbar {
   width: 0.4rem;
@@ -592,7 +591,8 @@
 
 .total_Price {
   float: right;
-  margin-top: 0rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 /* Style for the close button (X) */
 .close {
@@ -629,7 +629,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  padding: 10px;
+  margin-top: 1rem;
   border-radius: 8px;
   background-color: transparent;
 }
@@ -2711,7 +2711,9 @@ button#submitOrderBtnConcealer:hover {
   }
   .modal-content .total_Price {
     font-size: 1rem;
-    margin-right: 1rem;
+    font-size: 1rem;
+    width: 100%;
+    justify-content: space-between;
   }
   #totalPrice {
     font-size: 1rem;
@@ -3031,7 +3033,8 @@ button#submitOrderBtnConcealer:hover {
   .addToCartButton:hover {
     background-color: #999393;
   }
-  .addToCartIcon ,.addToCartImg {
+  .addToCartIcon,
+  .addToCartImg {
     display: flex;
     width: 3rem;
   }
@@ -3738,7 +3741,7 @@ button#submitOrderBtnConcealer:hover {
     background-color: #999393;
   }
   .modal {
-    width: 40%;
+    width: 50%;
   }
   .mateContainer {
     width: 100%;

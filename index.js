@@ -605,7 +605,6 @@ const ConcealerLiquid = [
   },
 ];
 
-
 let selectedItesmsArray =
   JSON.parse(localStorage.getItem("selectedItesmsArray")) || [];
 
@@ -634,9 +633,11 @@ function showSection(sectionId, button) {
     button.classList.add("selected");
     localStorage.setItem("selectedButton", button.getAttribute("href"));
   }
+
   //Give the selected path in the URL
   window.history.pushState(null, null, `#${sectionId}`);
 }
+
 // Store the selectd Side Bar section and Selected Side Bar Border button in local storage
 const storedSection = localStorage.getItem("selectedSection");
 const storedButton = localStorage.getItem("selectedButton");
@@ -714,7 +715,7 @@ function displaySelectedLipstick(img, icon, title, price) {
       <img class="addToCartIcon icon-color" style="background-color: ${icon};" />
       <div class=" lipstick_Details" >
       <h4>${title}</h4>
-      <p >${price}</p>
+      <p >${price}</p>  
       </div>
       <div class="deleteButton" onclick="removeSelectedItem(this.parentNode)"><img class="delete_icon" src="/Images/Icons/detele_Icon.png" /></div>
       </div>
@@ -728,9 +729,9 @@ function displaySelectedLipstick(img, icon, title, price) {
     // Call the function to remove the selected lipstick from the array and update the display
     removeSelectedItem(selectedLipstickDiv, indexToRemove);
   });
-
   // Append the div to the addToCartSection
   addToCartSection.appendChild(selectedLipstickDiv);
+
   generateCartModelContent();
 }
 
@@ -767,28 +768,25 @@ function updateSelectionInAllSections(
   selectedItemData.sectionClassName = sectionClassName;
   selectedItesmsArray.push(selectedItemData);
 
-  // Store the updated Add to Cart array in localStorage
+  // Display the selected item in the specified section
+  const addToCartSection = document.querySelector("." + sectionClassName);
+
+  addToCartSection.innerHTML = ""; // Clear the cart content
+
+  displayFunction(
+    selectedItemData.img,
+    selectedItemData.icon,
+    selectedItemData.title,
+    selectedItemData.price,
+    selectedItesmsArray.length,
+    addToCartSection
+  );
+
+  // Persist the updated array to local storage
   localStorage.setItem(
     "selectedItesmsArray",
     JSON.stringify(selectedItesmsArray)
   );
-
-  // Display the selected item in the specified section
-  const addToCartSection = document.querySelector("." + sectionClassName);
-
-  if (selectedItesmsArray.length === 0) {
-    addToCartSection.innerHTML = "Your cart is empty"; // Show the empty cart message
-  } else {
-    addToCartSection.innerHTML = ""; // Clear the cart content
-    displayFunction(
-      selectedItemData.img,
-      selectedItemData.icon,
-      selectedItemData.title,
-      selectedItemData.price,
-      selectedItesmsArray.length,
-      addToCartSection
-    );
-  }
 }
 
 function removeSelectedCartLipstick(cartItemDiv, indexToRemove) {
@@ -848,25 +846,42 @@ function handleLipstickImageClick(img, icon, title, price) {
   );
 }
 
-function displaySelectedLipstickOnLoad() {
+function displaySelectedItemsOnLoad(sectionClassName, displayFunction) {
   // Retrieve the selected lipsticks Add to Cart from localStorage
   const storedLipsticks = localStorage.getItem("selectedItesmsArray");
+  const addToCartSection = document.querySelector("." + sectionClassName);
+
   if (storedLipsticks) {
     selectedItesmsArray = JSON.parse(storedLipsticks);
 
-    // Display each selected lipstick in the addToCart section
-    selectedItesmsArray.forEach((lipstickData, index) => {
-      displaySelectedLipstick(
-        lipstickData.img,
-        lipstickData.icon,
-        lipstickData.title,
-        lipstickData.price,
-        index
-      );
-    });
+    // Display each selected item in the section
+    addToCartSection.innerHTML = ""; // Clear the cart content
+
+    if (selectedItesmsArray.length === 0) {
+      addToCartSection.innerHTML = "Your Cart is Empty";
+    } else {
+      selectedItesmsArray.forEach((itemData, index) => {
+        displayFunction(
+          itemData.img,
+          itemData.icon,
+          itemData.title,
+          itemData.price,
+          index,
+          addToCartSection
+        );
+      });
+    }
+  } else {
+    addToCartSection.innerHTML = "Your Cart is Empty"; // Show the message when there's no stored items
   }
 }
-displaySelectedLipstickOnLoad();
+
+// Call this for each section
+displaySelectedItemsOnLoad("addToCart", displaySelectedLipstick);
+displaySelectedItemsOnLoad("addToCartEyeshadow", displaySelectedEyeshadow);
+displaySelectedItemsOnLoad("addToCartFoundation", displaySelectedFoundation);
+displaySelectedItemsOnLoad("addToCartBlush", displaySelectedBlush);
+displaySelectedItemsOnLoad("addToCartConcealer", displaySelectedConcealer);
 
 function generateAllImagesContent(containerId, items, clickHandler) {
   const container = document.getElementById(containerId);
@@ -941,6 +956,9 @@ function generateCartModelContent() {
     });
 
     cartItemsContainer.appendChild(cartItemDiv);
+    
+  const horizontalLine = document.createElement("hr");
+  cartItemsContainer.appendChild(horizontalLine);
   });
 
   // Calculate and display the total price
@@ -990,324 +1008,336 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   generateCartModelContent();
 
-   // Event listener to open the modal when the "Add to Cart" button is clicked
-   const addToCartButton = document.querySelector(".addToCartButton");
-   addToCartButton.addEventListener("click", () => {
-     if (selectedItesmsArray?.length === 0) {
-       const emptyCartMessage = document.getElementById("emptyCartMessage");
-       emptyCartMessage.style.display = "block";
- 
-       // Hide the message after a short delay
-       setTimeout(() => {
-         emptyCartMessage.style.display = "none";
-       }, 2000);
-     } else {
-       openCartModal();
-       toggleCartModal();
-     }
-   });
- });
- 
- document.addEventListener("DOMContentLoaded", () => {
-   const sidebarMainContainer = document.querySelector(".Sidebar_MainContainer");
-   const toggleButton = document.createElement("div");
-   toggleButton.classList.add("toggle-button");
-   toggleButton.innerHTML = `
+  // Event listener to open the modal when the "Add to Cart" button is clicked
+  const addToCartButton = document.querySelector(".addToCartButton");
+  addToCartButton.addEventListener("click", () => {
+    if (selectedItesmsArray?.length === 0) {
+      const emptyCartMessage = document.getElementById("emptyCartMessage");
+      emptyCartMessage.style.display = "block";
+
+      // Hide the message after a short delay
+      setTimeout(() => {
+        emptyCartMessage.style.display = "none";
+      }, 2000);
+    } else {
+      openCartModal();
+      toggleCartModal();
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sidebarMainContainer = document.querySelector(".Sidebar_MainContainer");
+  const toggleButton = document.createElement("div");
+  toggleButton.classList.add("toggle-button");
+  toggleButton.innerHTML = `
      <div class="toggle-line"></div>
      <div class="toggle-line"></div>
      <div class="toggle-line"></div>
    `;
- 
-   document.body.appendChild(toggleButton);
- 
-   function removeToggleLines() {
-     const toggleLines = toggleButton.querySelectorAll(".toggle-line");
-     toggleLines.forEach((line) => {
-       line.style.display = "none";
-     });
-   }
- 
-   function addToggleLines() {
-     const toggleLines = toggleButton.querySelectorAll(".toggle-line");
-     toggleLines.forEach((line) => {
-       line.style.display = "block";
-     });
-   }
- 
-   function addArrowButton() {
-     const arrowButton = document.createElement("div");
-     arrowButton.classList.add("arrow-button");
-     arrowButton.innerHTML = "&#8592;";
-     toggleButton.appendChild(arrowButton);
-   }
- 
-   function removeArrowButton() {
-     const arrowButton = toggleButton.querySelector(".arrow-button");
-     if (arrowButton) {
-       toggleButton.removeChild(arrowButton);
-     }
-   }
- 
-   function closeSidebar() {
-     sidebarMainContainer.classList.remove("active");
-     removeArrowButton();
-     addToggleLines();
-   }
- 
-   function showSectionAndCloseSidebar(sectionId, button) {
-     closeSidebar();
-     showSection(sectionId, button);
- 
-     // window.location.reload();
-   }
- 
-   const sidebarButtons = document.querySelectorAll(".Sidebar_InnerContainer a");
-   sidebarButtons.forEach((button) => {
-     button.addEventListener("click", () => {
-       const sectionId = button.getAttribute("href").substring(1);
-       showSectionAndCloseSidebar(sectionId, button);
-     });
-   });
- 
-   toggleButton.addEventListener("click", () => {
-     sidebarMainContainer.classList.toggle("active");
- 
-     if (sidebarMainContainer.classList.contains("active")) {
-       removeToggleLines();
-       addArrowButton();
-     } else {
-       removeArrowButton();
-       addToggleLines();
-     }
-   });
- });
- 
- function closeAndToggleCartModal() {
-   closeCartModal();
-   toggleCartModal();
- }
- 
- // Function to toggle the blur effect on the background elements
- function toggleBlurBackground() {
-   const cartModal = document.getElementById("cartModal");
-   const backgroundElements = document.querySelectorAll(".blur");
- 
-   function handleBackgroundClick(event) {
-     if (event.target === cartModal) {
-       closeAndToggleCartModal();
-     }
-   }
- 
-   if (cartModal.classList.contains("active")) {
-     backgroundElements.forEach((element) => {
-       element.classList.add("blur-background");
-       element.classList.add("unselectable");
-       element.style.pointerEvents = "none";
-       element.addEventListener("click", handleBackgroundClick);
-     });
-   } else {
-     backgroundElements.forEach((element) => {
-       element.classList.remove("blur-background");
-       element.classList.remove("unselectable");
-       element.style.pointerEvents = "auto";
-       element.removeEventListener("click", handleBackgroundClick);
-     });
-   }
- }
- 
- window.addEventListener("click", (event) => {
-   const cartModal = document.getElementById("bbbb");
-   // Check if the clicked element is outside the modal
-   if (event.target == cartModal) {
-     closeCartModal();
-     toggleCartModal();
-   }
- });
- 
- // Function to open the cart modal
- function openCartModal() {
-   const cartModal = document.getElementById("cartModal");
-   cartModal.style.display = "block";
-   document.body.style.overflow = "hidden";
-   toggleBlurBackground();
-   generateCartModelContent();
- }
- 
- function closeEmptyCartModal() {
-   const emptyCartModal = document.getElementById("emptyCartModal");
-   emptyCartModal.style.display = "none";
- }
- 
- // Event listener to open the modal when the "Add to Cart" button is clicked
- document.addEventListener("DOMContentLoaded", () => {
-   const addToCartButton = document.querySelector(".addToCartButton");
-   addToCartButton.addEventListener("click", () => {
-     if (selectedItesmsArray.length <= 0) {
-       const emptyCartModal = document.getElementById("emptyCartModal");
-       emptyCartModal.style.display = "block";
- 
-       setTimeout(() => {
-         emptyCartModal.style.display = "none";
-       }, 3000);
-     } else {
-       openCartModal();
-     }
-   });
- });
- 
- // Function to close the cart modal
- function closeCartModal() {
-   const cartModal = document.getElementById("cartModal");
-   cartModal.style.display = "none";
-   document.body.style.overflow = "auto";
-   toggleBlurBackground();
- }
- 
- function toggleCartModal() {
-   const cartModal = document.getElementById("cartModal");
-   const toggleButton = document.querySelector(".toggle-button");
-   cartModal.classList.toggle("active");
-   toggleButton.style.display = cartModal.classList.contains("active")
-     ? "none"
-     : "block";
- 
-   if (cartModal.classList.contains("active")) {
-     cartModal.style.display = "block";
-   } else {
-     cartModal.style.display = "none";
-   }
- 
-   toggleBlurBackground();
- }
- function toggleOrderModal() {
-   const orderModal = document.getElementById("orderModal");
-   const toggleButton = document.querySelector(".toggle-button");
-   orderModal.classList.toggle("active");
-   toggleButton.style.display = orderModal.classList.contains("active")
-     ? "none"
-     : "block";
- 
-   if (orderModal.classList.contains("active")) {
-     orderModal.style.display = "block";
-   } else {
-     orderModal.style.display = "none";
-   }
- 
-   toggleBlurBackground();
- }
- function togglePaymentModal() {
-   const paymentModal = document.getElementById("paymentModal");
-   const toggleButton = document.querySelector(".toggle-button");
-   paymentModal.classList.toggle("active");
-   toggleButton.style.display = paymentModal.classList.contains("active")
-     ? "none"
-     : "block";
- 
-   if (paymentModal.classList.contains("active")) {
-     paymentModal.style.display = "block";
-   } else {
-     paymentModal.style.display = "none";
-   }
- 
-   toggleBlurBackground();
- }
- 
- // Event listener to close the modal when the "Close" button (x) is clicked
- const closeButton = document.querySelector(".close");
- closeButton.addEventListener("click", () => {
-   closeAndToggleCartModal();
- });
- 
- const closeArrowCartButton = document.querySelector(".ArrowCart");
- closeArrowCartButton.addEventListener("click", () => {
-   closeCartModal();
-   toggleCartModal();
- });
- const closeArrowOrderButton = document.querySelector(".ArrowOrder");
- closeArrowOrderButton.addEventListener("click", () => {
-   closeOrderModal();
-   removeToggleLines();
-   toggleOrderModal();
- });
- const closeArrowPaymentButton = document.querySelector(".ArrowPyment");
- closeArrowPaymentButton.addEventListener("click", () => {
-   closePaymentModal();
-   removeToggleLines();
-   togglePaymentModal();
- });
- 
- // Function to place the order
- function openOrderModal() {
-   // closeCartModal();
-   const orderModal = document.getElementById("orderModal");
-   orderModal.style.display = "block";
- }
- 
- function closeOrderModal() {
-   const orderModal = document.getElementById("orderModal");
-   orderModal.style.display = "none";
-   openCartModal();
- }
- 
- function submitOrder() {
-   const name = document.getElementById("name").value;
-   const email = document.getElementById("email").value;
-   const address = document.getElementById("address").value;
-   closeOrderModal();
- }
- 
- function openPaymentModal() {
-   closeCartModal();
-   const orderModal = document.getElementById("paymentModal");
-   orderModal.style.display = "block";
- }
- 
- function closePaymentModal() {
-   const orderModal = document.getElementById("paymentModal");
-   orderModal.style.display = "none";
- }
- function openPaynowModal() {
-   const orderModal = document.getElementById("payNow");
-   orderModal.style.display = "block";
- }
- 
- function closePaynowModal() {
-   const orderModal = document.getElementById("payNow");
-   orderModal.style.display = "none";
- }
- 
- function submitPayment() {
-   const name = document.getElementById("name").value;
-   const email = document.getElementById("email").value;
-   const address = document.getElementById("address").value;
-   closeOrderModal();
- }
- 
- function submitPaynowbtn() {
-   const modals = document.getElementsByClassName("modal");
-   for (const modal of modals) {
-     modal.style.display = "none";
-   }
- 
-   // Remove the blur effect on the background elements
-   const backgroundElements = document.querySelectorAll(".blur");
-   backgroundElements.forEach((element) => {
-     element.classList.remove("blur-background");
-     element.classList.remove("unselectable");
-     element.style.pointerEvents = "auto";
-   });
- 
-   // Clear the selected lipsticks array and remove the lipsticks from the addToCart section
-   selectedItesmsArray = [];
-   const addToCartSection = document.querySelector(".addToCart");
-   addToCartSection.innerHTML = "";
-   localStorage.removeItem("selectedItesmsArray"); // Clear local storage
- 
-   toggleCartModal();
- }
+
+  document.body.appendChild(toggleButton);
+
+  function removeToggleLines() {
+    const toggleLines = toggleButton.querySelectorAll(".toggle-line");
+    toggleLines.forEach((line) => {
+      line.style.display = "none";
+    });
+  }
+
+  function addToggleLines() {
+    const toggleLines = toggleButton.querySelectorAll(".toggle-line");
+    toggleLines.forEach((line) => {
+      line.style.display = "block";
+    });
+  }
+
+  function addArrowButton() {
+    const arrowButton = document.createElement("div");
+    arrowButton.classList.add("arrow-button");
+    arrowButton.innerHTML = "&#8592;";
+    toggleButton.appendChild(arrowButton);
+  }
+
+  function removeArrowButton() {
+    const arrowButton = toggleButton.querySelector(".arrow-button");
+    if (arrowButton) {
+      toggleButton.removeChild(arrowButton);
+    }
+  }
+
+  function closeSidebar() {
+    sidebarMainContainer.classList.remove("active");
+    removeArrowButton();
+    addToggleLines();
+  }
+
+  function showSectionAndCloseSidebar(sectionId, button) {
+    closeSidebar();
+    showSection(sectionId, button);
+  }
+
+  // when you click on sidebar items the sidebar will close and section apperars ypu clicked
+  const sidebarButtons = document.querySelectorAll(".Sidebar_InnerContainer a");
+  sidebarButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const sectionId = button.getAttribute("href").substring(1);
+      showSectionAndCloseSidebar(sectionId, button);
+
+      const sectionDisplayMappings = {
+        addToCart: displaySelectedLipstick,
+        addToCartFoundation: displaySelectedFoundation,
+        addToCartEyeshadow: displaySelectedEyeshadow,
+        addToCartBlush: displaySelectedBlush,
+        addToCartConcealer: displaySelectedConcealer,
+      };
+
+      // Loop through the object and update cart data for each section
+      for (const sectionClassName in sectionDisplayMappings) {
+        const displayFunction = sectionDisplayMappings[sectionClassName];
+        displaySelectedItemsOnLoad(sectionClassName, displayFunction);
+      }
+    });
+  });
+
+  toggleButton.addEventListener("click", () => {
+    sidebarMainContainer.classList.toggle("active");
+
+    if (sidebarMainContainer.classList.contains("active")) {
+      removeToggleLines();
+      addArrowButton();
+    } else {
+      removeArrowButton();
+      addToggleLines();
+    }
+  });
+});
+
+function closeAndToggleCartModal() {
+  closeCartModal();
+  toggleCartModal();
+}
+
+// Function to toggle the blur effect on the background elements
+function toggleBlurBackground() {
+  const cartModal = document.getElementById("cartModal");
+  const backgroundElements = document.querySelectorAll(".blur");
+
+  function handleBackgroundClick(event) {
+    if (event.target === cartModal) {
+      closeAndToggleCartModal();
+    }
+  }
+
+  if (cartModal.classList.contains("active")) {
+    backgroundElements.forEach((element) => {
+      element.classList.add("blur-background");
+      element.classList.add("unselectable");
+      element.style.pointerEvents = "none";
+      element.addEventListener("click", handleBackgroundClick);
+    });
+  } else {
+    backgroundElements.forEach((element) => {
+      element.classList.remove("blur-background");
+      element.classList.remove("unselectable");
+      element.style.pointerEvents = "auto";
+      element.removeEventListener("click", handleBackgroundClick);
+    });
+  }
+}
+
+// Check if the clicked element is outside the modal
+window.addEventListener("click", (event) => {
+  const cartModal = document.getElementById("bbbb");
+  if (event.target == cartModal) {
+    closeCartModal();
+    toggleCartModal();
+  }
+});
+
+// Function to open the cart modal
+function openCartModal() {
+  const cartModal = document.getElementById("cartModal");
+  cartModal.style.display = "block";
+  document.body.style.overflow = "hidden";
+  toggleBlurBackground();
+  generateCartModelContent();
+}
+
+function closeEmptyCartModal() {
+  const emptyCartModal = document.getElementById("emptyCartModal");
+  emptyCartModal.style.display = "none";
+}
+
+// Event listener to open the modal when the "Add to Cart" button is clicked
+document.addEventListener("DOMContentLoaded", () => {
+  const addToCartButton = document.querySelector(".addToCartButton");
+  addToCartButton.addEventListener("click", () => {
+    if (selectedItesmsArray.length <= 0) {
+      const emptyCartModal = document.getElementById("emptyCartModal");
+      emptyCartModal.style.display = "block";
+
+      setTimeout(() => {
+        emptyCartModal.style.display = "none";
+      }, 3000);
+    } else {
+      openCartModal();
+    }
+  });
+});
+
+// Function to close the cart modal
+function closeCartModal() {
+  const cartModal = document.getElementById("cartModal");
+  cartModal.style.display = "none";
+  document.body.style.overflow = "auto";
+  toggleBlurBackground();
+}
+
+function toggleCartModal() {
+  const cartModal = document.getElementById("cartModal");
+  const toggleButton = document.querySelector(".toggle-button");
+  cartModal.classList.toggle("active");
+  toggleButton.style.display = cartModal.classList.contains("active")
+    ? "none"
+    : "block";
+
+  if (cartModal.classList.contains("active")) {
+    cartModal.style.display = "block";
+  } else {
+    cartModal.style.display = "none";
+  }
+
+  toggleBlurBackground();
+}
+function toggleOrderModal() {
+  const orderModal = document.getElementById("orderModal");
+  const toggleButton = document.querySelector(".toggle-button");
+  orderModal.classList.toggle("active");
+  toggleButton.style.display = orderModal.classList.contains("active")
+    ? "none"
+    : "block";
+
+  if (orderModal.classList.contains("active")) {
+    orderModal.style.display = "block";
+  } else {
+    orderModal.style.display = "none";
+  }
+
+  toggleBlurBackground();
+}
+function togglePaymentModal() {
+  const paymentModal = document.getElementById("paymentModal");
+  const toggleButton = document.querySelector(".toggle-button");
+  paymentModal.classList.toggle("active");
+  toggleButton.style.display = paymentModal.classList.contains("active")
+    ? "none"
+    : "block";
+
+  if (paymentModal.classList.contains("active")) {
+    paymentModal.style.display = "block";
+  } else {
+    paymentModal.style.display = "none";
+  }
+
+  toggleBlurBackground();
+}
+
+// Event listener to close the modal when the "Close" button (x) is clicked
+const closeButton = document.querySelector(".close");
+closeButton.addEventListener("click", () => {
+  closeAndToggleCartModal();
+});
+
+const closeArrowCartButton = document.querySelector(".ArrowCart");
+closeArrowCartButton.addEventListener("click", () => {
+  closeCartModal();
+  toggleCartModal();
+});
+const closeArrowOrderButton = document.querySelector(".ArrowOrder");
+closeArrowOrderButton.addEventListener("click", () => {
+  closeOrderModal();
+  removeToggleLines();
+  toggleOrderModal();
+});
+const closeArrowPaymentButton = document.querySelector(".ArrowPyment");
+closeArrowPaymentButton.addEventListener("click", () => {
+  closePaymentModal();
+  removeToggleLines();
+  togglePaymentModal();
+});
+
+// Function to place the order
+function openOrderModal() {
+  const orderModal = document.getElementById("orderModal");
+  orderModal.style.display = "block";
+}
+
+function closeOrderModal() {
+  const orderModal = document.getElementById("orderModal");
+  orderModal.style.display = "none";
+  openCartModal();
+}
+
+function submitOrder() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const address = document.getElementById("address").value;
+  closeOrderModal();
+}
+
+function openPaymentModal() {
+  closeCartModal();
+  const orderModal = document.getElementById("paymentModal");
+  orderModal.style.display = "block";
+}
+
+function closePaymentModal() {
+  const orderModal = document.getElementById("paymentModal");
+  orderModal.style.display = "none";
+}
+function openPaynowModal() {
+  const orderModal = document.getElementById("payNow");
+  orderModal.style.display = "block";
+}
+
+function closePaynowModal() {
+  const orderModal = document.getElementById("payNow");
+  orderModal.style.display = "none";
+}
+
+function submitPayment() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const address = document.getElementById("address").value;
+  closeOrderModal();
+}
+
+function submitPaynowbtn() {
+  const modals = document.getElementsByClassName("modal");
+  for (const modal of modals) {
+    modal.style.display = "none";
+  }
+
+  // Remove the blur effect on the background elements
+  const backgroundElements = document.querySelectorAll(".blur");
+  backgroundElements.forEach((element) => {
+    element.classList.remove("blur-background");
+    element.classList.remove("unselectable");
+    element.style.pointerEvents = "auto";
+  });
+
+  // Clear the selected lipsticks array and remove the lipsticks from the addToCart section
+  selectedItesmsArray = [];
+  const addToCartSection = document.querySelector(".addToCart");
+  addToCartSection.innerHTML = "";
+  localStorage.removeItem("selectedItesmsArray"); // Clear local storage
+
+  toggleCartModal();
+}
+
 // ...................eyeshadow js here ................//
 
-// let selectedItesmsArray = [];
 function showEyeshadowSection(sectionId, button) {
   // Hide all sections
   const sectionsEyeshadow = document.querySelectorAll(".eyeshadowContent");
@@ -1463,27 +1493,6 @@ function handleEyeshadowImageClick(img, icon, title, price) {
     displaySelectedEyeshadow
   );
 }
-
-function displaySelectedEyeshadowOnLoad() {
-  // Retrieve the selected eyeshadows Add to Cart from localStorage
-  const storedEyeshadow = localStorage.getItem("selectedItesmsArray");
-  if (storedEyeshadow) {
-    selectedItesmsArray = JSON.parse(storedEyeshadow);
-
-    // Display each selected eyeshadow in the addToCart section
-    selectedItesmsArray.forEach((eyeshadowData, index) => {
-      displaySelectedEyeshadow(
-        eyeshadowData.img,
-        eyeshadowData.icon,
-        eyeshadowData.title,
-        eyeshadowData.price,
-        index
-      );
-    });
-  }
-}
-
-displaySelectedEyeshadowOnLoad();
 
 function generateCartModelEyeshadowContent() {
   const cartItemsContainerEyeshadow = document.querySelector(
@@ -2007,10 +2016,9 @@ function removeSelectedCartFoundation(
     "selectedItesmsArray",
     JSON.stringify(selectedItesmsArray)
   );
-
-  // Regenerate the cart items and update the total price in the modal
-  generateCartModelFoundationContent();
 }
+// Regenerate the cart items and update the total price in the modal
+generateCartModelFoundationContent();
 
 function handleFoundationImageClick(img, icon, title, price) {
   const clickedImage = event.currentTarget;
@@ -2035,27 +2043,6 @@ function handleFoundationImageClick(img, icon, title, price) {
     displaySelectedFoundation
   );
 }
-
-function displaySelectedFoundationOnLoad() {
-  // Retrieve the selected foundation Add to Cart from localStorage
-  const storedFoundation = localStorage.getItem("selectedItesmsArray");
-  if (storedFoundation) {
-    selectedItesmsArray = JSON.parse(storedFoundation);
-
-    // Display each selected foundation in the addToCart section
-    selectedItesmsArray.forEach((foundationData, index) => {
-      displaySelectedFoundation(
-        foundationData.img,
-        foundationData.icon,
-        foundationData.title,
-        foundationData.price,
-        index
-      );
-    });
-  }
-}
-
-displaySelectedFoundationOnLoad();
 
 function generateCartModelFoundationContent() {
   const cartItemsContainerFoundation = document.querySelector(
@@ -2588,27 +2575,6 @@ function handleBlushImageClick(img, icon, title, price) {
   );
 }
 
-function displaySelectedBlushOnLoad() {
-  // Retrieve the selected Blush Add to Cart from localStorage
-  const storedBlush = localStorage.getItem("selectedItesmsArray");
-  if (storedBlush) {
-    selectedItesmsArray = JSON.parse(storedBlush);
-
-    // Display each selected Blush in the addToCart section
-    selectedItesmsArray.forEach((BlushData, index) => {
-      displaySelectedBlush(
-        BlushData.img,
-        BlushData.icon,
-        BlushData.title,
-        BlushData.price,
-        index
-      );
-    });
-  }
-}
-
-displaySelectedBlushOnLoad();
-
 function generateCartModelBlushContent() {
   const cartItemsContainerBlush = document.querySelector(".cart-items-Blush");
   cartItemsContainerBlush.innerHTML = ""; // Clear previous content
@@ -3126,27 +3092,6 @@ function handleConcealerImageClick(img, icon, title, price) {
     displaySelectedConcealer
   );
 }
-
-function displaySelectedConcealerOnLoad() {
-  // Retrieve the selected Concealers Add to Cart from localStorage
-  const storedConcealer = localStorage.getItem("selectedItesmsArray");
-  if (storedConcealer) {
-    selectedItesmsArray = JSON.parse(storedConcealer);
-
-    // Display each selected Concealer in the addToCart section
-    selectedItesmsArray.forEach((concealerData, index) => {
-      displaySelectedConcealer(
-        concealerData.img,
-        concealerData.icon,
-        concealerData.title,
-        concealerData.price,
-        index
-      );
-    });
-  }
-}
-
-displaySelectedConcealerOnLoad();
 
 function generateCartModelConcealerContent() {
   const cartItemsContainerConcealer = document.querySelector(
