@@ -3,6 +3,80 @@
     src: url(visby.ttf);
 }
 
+body {
+    margin: 0;
+    font-family: visbyround;
+
+    background-color: #faf9f6;
+}
+
+.landingPage {
+    background-color: #828282;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Goldman';
+    background-image: linear-gradient(#baabab, #947474);
+}
+.lp__outer__wrapper {
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    height: 100%;
+    display: table;
+}
+
+.lp__inner__wrapper {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.lp__header {
+    color: #fff;
+    font-size: 2rem;
+}
+
+.lp__categories {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.lp__section {
+    display: flex;
+    height: 100%;
+}
+
+.category {
+    margin: 1em;
+    background-color: #fff;
+    min-height: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.category__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    margin: 10px;
+}
+.category__title {
+    text-transform: capitalize;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+.category__img img {
+    max-width: 100%;
+    width: 200px;
+    cursor: pointer;
+}
+
+.lp__footer {
+    color: #fff;
+}
+
 ::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 7px;
@@ -14,13 +88,7 @@
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
-body {
-    margin: 0;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    background-color: #faf9f6;
-}
-
-.outerWrapper {
+.app {
     display: flex;
     justify-content: space-between;
 }
@@ -600,6 +668,18 @@ body {
 }
 
 @media only screen and (max-width: 786px) {
+    .lp__categories {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .lp__section {
+        flex-direction: column;
+    }
+    .category__img img {
+        width: 25%;
+    }
     .product {
         text-align: center;
         display: flex;

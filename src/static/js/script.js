@@ -283,31 +283,6 @@ let colorShadesAiRec = [
     },
 ]
 
-// // removal values
-// const resetValues = [
-//     'lipstick_color=(0, 0, 0)',
-//     'concealer_color=(0, 0, 0)',
-//     'foundation_color=(0, 0, 0)',
-//     'blush_color=(0, 0, 0)',
-//     'eyeshadow_color=(0, 0, 0)',
-// ]
-
-// // function to remove all colors
-// const reset = () => {
-//     resetValues.forEach((item) => {
-//         var xhttp = new XMLHttpRequest()
-//         xhttp.open('POST', '/recommendation_data', true)
-//         xhttp.setRequestHeader(
-//             'Content-type',
-//             'application/x-www-form-urlencoded'
-//         )
-//         xhttp.send(item)
-//     })
-//     document
-//         .querySelectorAll('#color')
-//         .forEach((item) => item.classList.remove('addborder'))
-// }
-
 //all shades
 const shades = {
     'lipstick': [
@@ -516,8 +491,6 @@ const updateCartItems = () => {
         }
     })
 }
-
-updateCartItems()
 
 // all products
 const products = {
@@ -1518,6 +1491,8 @@ const listAllProducts = (shade) => {
             shade = 'matte'
         } else if (headerValue === 'eye shadow') {
             shade = 'matte'
+        } else if (headerValue === 'ai beauty') {
+            shade = 'matte'
         }
     }
 
@@ -1613,24 +1588,13 @@ const listAllProducts = (shade) => {
 }
 
 function getPersonRace(race) {
-    //console.log('race from backend', race)
-
     suggested_race = race
-    // white_race.classList.remove('race-selected')
-    // black_race.classList.remove('race-selected')
-    // brown_race.classList.remove('race-selected')
-
-    // if (race === 'white') {
-    //     white_race.classList.add('race-selected')
-    // } else if (race === 'black') {
-    //     black_race.classList.add('race-selected')
-    // } else {
-    //     brown_race.classList.add('race-selected')
-    // }
-
     if (document.getElementById('header').innerHTML === 'ai beauty') {
         setAiRecommendations(race)
         renderShadesOrRaces()
+
+        updateCartItems()
+        listItemsInCart()
         listAllProducts()
     }
 }
@@ -1638,7 +1602,6 @@ function getPersonRace(race) {
 function setAiRecommendations(race) {
     if (race) {
         ai_colors = aiColorsRecommendations[race]
-        //console.log(ai_colors)
         setLipstickColor(ai_colors.lipstick)
         setBlushColor(ai_colors.blush)
         setConcealerColor(ai_colors.concealer)
@@ -1654,6 +1617,7 @@ const sideBarItemClick = (item) => {
     if (item === 'ai beauty') {
         listItemsInCart()
         getPersonRace()
+        updateCartItems()
     }
 
     document.getElementById('header').innerHTML = item
@@ -1745,29 +1709,32 @@ const onClickShadeHandler = (shade) => {
     document.getElementById(shade.target.myParam).classList.add('selectedShade')
 }
 
+// function to go to app
+
+const handleOnClickcategory = (val) => {
+    // hiding landing page and showing app
+    document.getElementById('app').style.display = 'flex'
+    document.getElementById('landingPage').style.display = 'none'
+
+    document.getElementById('header').innerHTML = val
+    document.getElementById(val).classList.add('borderForSidebar')
+
+    listAllProducts()
+    renderShadesOrRaces()
+}
+
 // when document is rendered
 window.onload = function () {
-    // setting loader
-    let photo = document.getElementById('photo')
-
-    // setting the header value
-    if (document.getElementById('header').innerHTML === 'Header') {
-        document.getElementById('header').innerHTML = 'lipstick'
-        document.getElementById('lipstick').classList.add('borderForSidebar')
-    }
-
-    // declaring races
-    // black_race = document.getElementById('black_race')
-    // brown_race = document.getElementById('brown_race')
-    // white_race = document.getElementById('white_race')
+    // showing header only
+    document.getElementById('app').style.display = 'none'
 
     // handling sidebar for mobile version
     if (window.innerWidth < 786) {
         handleCloseSideBar()
     }
 
-    listAllProducts()
-    renderShadesOrRaces()
+    //listAllProducts()
+    //renderShadesOrRaces()
 
     // Periodically update the race every 30 seconds
     setInterval(getPersonRace, 30000)
@@ -1802,13 +1769,13 @@ window.onload = function () {
     // // setting width & height to 1 as we dont want to show the video, only want to capture frames from it
     video.width = '1'
     video.height = '1'
-    // if (navigator.mediaDevices.getUserMedia) {
-    //     navigator.mediaDevices
-    //         .getUserMedia({ video: true })
-    //         .then(function (stream) {
-    //             video.srcObject = stream
-    //         })
-    // }
+    if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices
+            .getUserMedia({ video: true })
+            .then(function (stream) {
+                video.srcObject = stream
+            })
+    }
 
     // run face-mesh model once the video is ready for processing
     main()
