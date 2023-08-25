@@ -4043,7 +4043,7 @@ button#submitOrderBtnConcealer:hover {
 }
 @media only screen and (min-width: 1901px) {
   .lipstickItem{
-    width: 20%;
+    width: 23%;
   }
   .LandingPage {
     flex-basis: calc( 17% - 20px );
