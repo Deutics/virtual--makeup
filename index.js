@@ -1009,17 +1009,17 @@ function generateCartModelContent() {
 
 // Call the function when the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-  const storedSection = localStorage.getItem("selectedSection");
-  const storedButton = localStorage.getItem("selectedButton");
+  // const storedSection = localStorage.getItem("selectedSection");
+  // const storedButton = localStorage.getItem("selectedButton");
 
-  if (storedButton && storedSection) {
-    const selectedButton = document.querySelector(
-      `.Sidebar_InnerContainer a[href="${storedButton}"]`
-    );
-    showSection(storedSection, selectedButton);
-  } else {
-    toggleSections("landingpageMainBody");
-  }
+  // if (storedButton && storedSection) {
+  //   const selectedButton = document.querySelector(
+  //     `.Sidebar_InnerContainer a[href="${storedButton}"]`
+  //   );
+  //   showSection(storedSection, selectedButton);
+  // } else {
+  //   toggleSections("landingpageMainBody");
+  // }
 
   const landingPageLinks = document.querySelectorAll(".LandingPage a");
   landingPageLinks.forEach((link) => {
