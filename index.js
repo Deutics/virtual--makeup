@@ -666,10 +666,10 @@ function showSection(sectionId, button) {
   // }
 
   // Add the "selected Side Bar Border Button" class to the clicked button
-  // if (button) {
-  //   button.classList.add("selected");
-  //   localStorage.setItem("selectedButton", button.getAttribute("href"));
-  // }
+  if (button) {
+    button.classList.add("selected");
+    // localStorage.setItem("selectedButton", button.getAttribute("href"));
+  }
 
   // Call toggleSections here with the correct sectionId
   toggleSections(sectionId , button);
@@ -707,17 +707,17 @@ function showLipstickSection(sectionId, button) {
   });
 
   // Show the selected section
-  // const selectedSectionlipstick = document.getElementById(sectionId);
-  // if (selectedSectionlipstick) {
-  //   selectedSectionlipstick.style.display = "flex";
-  //   // localStorage.setItem("selectedSectionlipstick", sectionId);
-  // }
+  const selectedSectionlipstick = document.getElementById(sectionId);
+  if (selectedSectionlipstick) {
+    selectedSectionlipstick.style.display = "flex";
+    // localStorage.setItem("selectedSectionlipstick", sectionId);
+  }
 
-  // // Add the "selected  Lipstick Categories" class to the clicked button
-  // if (button) {
-  //   button.classList.add("selectedlipstick");
-  //   // localStorage.setItem("selectedButtonlipstick", button.getAttribute("href"));
-  // }
+  // Add the "selected  Lipstick Categories" class to the clicked button
+  if (button) {
+    button.classList.add("selectedlipstick");
+    // localStorage.setItem("selectedButtonlipstick", button.getAttribute("href"));
+  }
   window.history.pushState(null, `#lipstick-${sectionId}`);
 }
 // Store the selectd  lipstick section and selected listick hover button in local storage
@@ -1396,20 +1396,20 @@ function showEyeshadowSection(sectionId, button) {
   });
 
   // Show the selected section
-  // const selectedSectionEyeshadow = document.getElementById(sectionId);
-  // if (selectedSectionEyeshadow) {
-  //   selectedSectionEyeshadow.style.display = "flex";
-  //   // localStorage.setItem("selectedSectionEyeshadow", sectionId);
-  // }
+  const selectedSectionEyeshadow = document.getElementById(sectionId);
+  if (selectedSectionEyeshadow) {
+    selectedSectionEyeshadow.style.display = "flex";
+    // localStorage.setItem("selectedSectionEyeshadow", sectionId);
+  }
 
-  // // Add the "selected  eyeshadow Categories" class to the clicked button
-  // if (button) {
-  //   button.classList.add("selectedEyeshadow");
-  //   // localStorage.setItem(
-  //   //   "selectedButtoneyeshadow",
-  //   //   button.getAttribute("href")
-  //   // );
-  // }
+  // Add the "selected  eyeshadow Categories" class to the clicked button
+  if (button) {
+    button.classList.add("selectedEyeshadow");
+    // localStorage.setItem(
+    //   "selectedButtoneyeshadow",
+    //   button.getAttribute("href")
+    // );
+  }
   window.history.pushState(null, `#eyeshadow${sectionId}`);
 }
 
@@ -1946,20 +1946,20 @@ function showFoundationSection(sectionId, button) {
   });
 
   // Show the selected section
-  // const selectedSectionFoundation = document.getElementById(sectionId);
-  // if (selectedSectionFoundation) {
-  //   selectedSectionFoundation.style.display = "flex";
-  //   // localStorage.setItem("selectedSectionFoundation", sectionId);
-  // }
+  const selectedSectionFoundation = document.getElementById(sectionId);
+  if (selectedSectionFoundation) {
+    selectedSectionFoundation.style.display = "flex";
+    // localStorage.setItem("selectedSectionFoundation", sectionId);
+  }
 
-  // // Add the "selected  Foundation Categories" class to the clicked button
-  // if (button) {
-  //   button.classList.add("selectedFoundation");
-  //   // localStorage.setItem(
-  //   //   "selectedButtonfoundation",
-  //   //   button.getAttribute("href")
-  //   // );
-  // }
+  // Add the "selected  Foundation Categories" class to the clicked button
+  if (button) {
+    button.classList.add("selectedFoundation");
+    // localStorage.setItem(
+    //   "selectedButtonfoundation",
+    //   button.getAttribute("href")
+    // );
+  }
   window.history.pushState(null, `#foundation${sectionId}`);
 }
 
@@ -2500,18 +2500,18 @@ function showBlushSection(sectionId, button) {
     btn.classList.remove("selectedBlush");
   });
 
-  // // Show the selected section
-  // const selectedSectionBlush = document.getElementById(sectionId);
-  // if (selectedSectionBlush) {
-  //   selectedSectionBlush.style.display = "flex";
-  //   // localStorage.setItem("selectedSectionBlush", sectionId);
-  // }
+  // Show the selected section
+  const selectedSectionBlush = document.getElementById(sectionId);
+  if (selectedSectionBlush) {
+    selectedSectionBlush.style.display = "flex";
+    // localStorage.setItem("selectedSectionBlush", sectionId);
+  }
 
-  // // Add the "selected  Blush Categories" class to the clicked button
-  // if (button) {
-  //   button.classList.add("selectedBlush");
-  //   // localStorage.setItem("selectedButtonblush", button.getAttribute("href"));
-  // }
+  // Add the "selected  Blush Categories" class to the clicked button
+  if (button) {
+    button.classList.add("selectedBlush");
+    // localStorage.setItem("selectedButtonblush", button.getAttribute("href"));
+  }
   window.history.pushState(null, `#blush${sectionId}`);
 }
 
@@ -3004,20 +3004,20 @@ function showConcealerSection(sectionId, button) {
   });
 
   // Show the selected section
-  // const selectedSectionConcealer = document.getElementById(sectionId);
-  // if (selectedSectionConcealer) {
-  //   selectedSectionConcealer.style.display = "flex";
-  //   // localStorage.setItem("selectedSectionConcealer", sectionId);
-  // }
+  const selectedSectionConcealer = document.getElementById(sectionId);
+  if (selectedSectionConcealer) {
+    selectedSectionConcealer.style.display = "flex";
+    // localStorage.setItem("selectedSectionConcealer", sectionId);
+  }
 
-  // // Add the "selected  Concealer Categories" class to the clicked button
-  // if (button) {
-  //   button.classList.add("selectedConcealer");
-  //   // localStorage.setItem(
-  //   //   "selectedButtonconcealer",
-  //   //   button.getAttribute("href")
-  //   // );
-  // }
+  // Add the "selected  Concealer Categories" class to the clicked button
+  if (button) {
+    button.classList.add("selectedConcealer");
+    // localStorage.setItem(
+    //   "selectedButtonconcealer",
+    //   button.getAttribute("href")
+    // );
+  }
   window.history.pushState(null, `#concealer${sectionId}`);
 }
 
