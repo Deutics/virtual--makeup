@@ -662,13 +662,13 @@ function showSection(sectionId, button) {
   const selectedSection = document.getElementById(sectionId);
   if (selectedSection) {
     selectedSection.style.display = "block";
-    localStorage.setItem("selectedSection", sectionId);
+    // localStorage.setItem("selectedSection", sectionId);
   }
 
   // Add the "selected Side Bar Border Button" class to the clicked button
   if (button) {
     button.classList.add("selected");
-    localStorage.setItem("selectedButton", button.getAttribute("href"));
+    // localStorage.setItem("selectedButton", button.getAttribute("href"));
   }
 
   // Call toggleSections here with the correct sectionId
