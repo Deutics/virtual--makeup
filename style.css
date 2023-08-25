@@ -7,6 +7,10 @@
   border: 3px solid #947474 !important;
   border-radius: 1rem;
 }
+.Sidebar_MainContainer,
+.MainContianer {
+  display: none;
+}
 
 .icon {
   width: 25px;
@@ -102,43 +106,61 @@
   font-weight: 500;
 }
 
-/* Landing Page css here */
-.landingpageMainBody {
-  background-color: #b9a9a9;
+
+.Header_LandingPage {
+  padding: 10px;
+  color: white;
+  text-align: center;
+  font-size: 2rem;
 }
+
 .Footer_LandingPage {
-  font-family: "Goldman", cursive;
-  color: #ffffff;
-  font-weight: 400;
-  font-size: 1.3rem;
+  padding: 10px;
+  color: white;
   text-align: center;
   margin-top: 1rem;
 }
+.landingpageMainBody {
+  display: flex ;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #828282;
+  width: 100vw;
+  min-height: 100vh;
+  font-family: "Goldman";
+  background-image: linear-gradient(#baabab, #947474);
+}
+
 .LandingPageContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
   justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
+  width: 80%;
+  margin: 0 auto;
 }
 .LandingPage {
-  background: #fff;
+  background-color: #fff;
+  padding: 1rem;
   border-radius: 10px;
-  width: 14rem;
-  height: 17rem;
-  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex-basis: calc(
+    20% - 20px
+  ); /* Set to 20% to fit 5 elements in a row with gap */
+  margin: 10px; /* Add margin for spacing between elements */
 }
 
+.LandingPage img {
+  width: 8rem;
+  height: 10rem;
+}
 .beautyImage {
   width: 100%;
   height: 80%;
   object-fit: contain;
   margin-top: 0.8rem;
-}
-
-.LandingPage h3 {
-  text-align: center;
 }
 
 /* MainContainer  Css here */
@@ -454,6 +476,8 @@
 
 .addToCart {
   overflow-y: scroll;
+  text-align: center;
+  color: gray;
 }
 .addToCart::-webkit-scrollbar {
   width: 0.4rem;
@@ -496,18 +520,21 @@
   justify-content: space-between;
   margin-top: 0.4rem;
   gap: 2rem;
+  color: #000;
 }
 .lipstick_Details h4 {
   font-size: 12px;
   font-weight: 500;
   display: flex;
-  align-items: justify;
+  text-align: left;
+  color: black;
 }
 .selectedLipstickInfo p {
   font-size: 14px;
   font-weight: 700;
   display: flex;
   align-items: center;
+  color: #000;
 }
 .smallScreenHeading {
   display: none;
@@ -1166,8 +1193,8 @@ button#submitOrderBtnEyeshadow:hover {
 
 .addToCartEyeshadow {
   overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
+  text-align: center;
+  color: gray;
 }
 .addToCartEyeshadow::-webkit-scrollbar {
   width: 0.4rem;
@@ -1191,7 +1218,8 @@ button#submitOrderBtnEyeshadow:hover {
   font-size: 12px;
   font-weight: 500;
   display: flex;
-  align-items: justify;
+  text-align: left;
+  color: black;
 }
 .Eyeshadow_Details {
   display: flex;
@@ -1216,6 +1244,7 @@ button#submitOrderBtnEyeshadow:hover {
   font-weight: 700;
   display: flex;
   align-items: center;
+  color: black;
 }
 .cart-item-Eyeshadow h4 {
   margin: 0;
@@ -1596,8 +1625,8 @@ button#submitOrderBtnFoundation:hover {
 
 .addToCartFoundation {
   overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
+  text-align: center;
+  color: gray;
 }
 .addToCartFoundation::-webkit-scrollbar {
   width: 0.4rem;
@@ -1621,7 +1650,8 @@ button#submitOrderBtnFoundation:hover {
   font-size: 12px;
   font-weight: 500;
   display: flex;
-  align-items: justify;
+  text-align: left;
+  color: black;
 }
 .Foundation_Details {
   display: flex;
@@ -1645,6 +1675,7 @@ button#submitOrderBtnFoundation:hover {
   font-size: 14px;
   font-weight: 700;
   display: flex;
+  color: black;
   align-items: center;
 }
 .cart-item-Foundation h4 {
@@ -2027,8 +2058,8 @@ button#submitOrderBtnBlush:hover {
 
 .addToCartBlush {
   overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
+  text-align: center;
+  color: gray;
 }
 .addToCartBlush::-webkit-scrollbar {
   width: 0.4rem;
@@ -2052,7 +2083,8 @@ button#submitOrderBtnBlush:hover {
   font-size: 12px;
   font-weight: 500;
   display: flex;
-  align-items: justify;
+  text-align: left;
+  color: black;
 }
 .Blush_Details {
   display: flex;
@@ -2077,6 +2109,7 @@ button#submitOrderBtnBlush:hover {
   font-weight: 700;
   display: flex;
   align-items: center;
+  color: black;
 }
 .cart-item-Blush h4 {
   margin: 0;
@@ -2457,8 +2490,8 @@ button#submitOrderBtnConcealer:hover {
 
 .addToCartConcealer {
   overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: #baabab rgba(255, 255, 255, 0.8);
+  text-align: center;
+  color: gray;
 }
 .addToCartConcealer::-webkit-scrollbar {
   width: 0.4rem;
@@ -2482,7 +2515,8 @@ button#submitOrderBtnConcealer:hover {
   font-size: 12px;
   font-weight: 500;
   display: flex;
-  align-items: justify;
+  text-align: left;
+  color: #000;
 }
 .Concealer_Details {
   display: flex;
@@ -2507,6 +2541,7 @@ button#submitOrderBtnConcealer:hover {
   font-weight: 700;
   display: flex;
   align-items: center;
+  color: black;
 }
 .cart-item-Concealer h4 {
   margin: 0;
@@ -2654,6 +2689,15 @@ button#submitOrderBtnConcealer:hover {
 }
 
 @media only screen and (max-width: 500px) {
+  .LandingPage h3{
+    font-size: 1rem;
+  }
+  .landingpageMainBody {
+    height: 100%;
+  }
+  .LandingPage img {
+    height: 6rem;
+  }
   #cartModal {
     width: 100% !important;
   }
@@ -3195,6 +3239,10 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 @media screen and (max-width: 768px) {
+  .LandingPageContainer {
+    width: 100%;
+    margin-top: 1rem;
+  }
   .LipstickItemselected {
     padding: 2px 1px 2px 0px;
     margin-bottom: 10px !important;
@@ -3917,6 +3965,9 @@ button#submitOrderBtnConcealer:hover {
 }
 
 @media only screen and (max-width: 1300px) {
+  .LandingPageContainer {
+    width: 100%;
+  }
   .LipstickContainerCategories {
     display: flex;
     justify-content: space-between;
@@ -3936,6 +3987,9 @@ button#submitOrderBtnConcealer:hover {
 }
 
 @media only screen and ((min-width: 1500px) and (max-width:1900px)) {
+  .LandingPageContainer {
+    width: 60%;
+  }
   #videoElement {
     height: 25rem;
   }
@@ -3988,6 +4042,13 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 @media only screen and (min-width: 1901px) {
+  .LandingPage {
+    flex-basis: calc( 17% - 20px );
+}
+  .LandingPageContainer {
+    width: 55%;
+    margin: 0 auto;
+  }
   .Content {
     position: absolute;
     top: 50%;

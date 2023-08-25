@@ -608,6 +608,43 @@ const ConcealerLiquid = [
 let selectedItesmsArray =
   JSON.parse(localStorage.getItem("selectedItesmsArray")) || [];
 
+  function toggleSections(sectionId, button) {
+    const landingpageMainBody = document.getElementById("landingpageMainBody");
+    const MainWrapper = document.getElementById("MainWrapper");
+  
+    if (sectionId === "landingpageMainBody") {
+      landingpageMainBody.style.display = "flex";
+      MainWrapper.style.display = "none";
+    } else {
+      landingpageMainBody.style.display = "none";
+      MainWrapper.style.display = "block";
+  
+      const selectedSectionlandingpage = document.getElementById(sectionId);
+  
+      if (selectedSectionlandingpage) {
+        selectedSectionlandingpage.scrollIntoView({ behavior: "smooth" });
+  
+        // Remove the "selected" class from all links
+        const landingPageLinks = document.querySelectorAll(".LandingPage a");
+        landingPageLinks.forEach((link) => {
+          link.classList.remove("selected");
+        });
+  
+        // Add the "selected" class to the clicked link
+        const selectedLink = document.querySelector(
+          `.LandingPage a[href="#${sectionId}"]`
+        );
+        if (selectedLink) {
+          selectedLink.classList.add("selected");
+          history.pushState(null, null, `#${sectionId}`);
+        }
+  
+      
+      }
+    }
+  }
+  
+
 function showSection(sectionId, button) {
   // Hide all sections
   const sections = document.querySelectorAll(".MainContianer");
@@ -634,8 +671,8 @@ function showSection(sectionId, button) {
     localStorage.setItem("selectedButton", button.getAttribute("href"));
   }
 
-  //Give the selected path in the URL
-  window.history.pushState(null, null, `#${sectionId}`);
+  // Call toggleSections here with the correct sectionId
+  toggleSections(sectionId , button);
 }
 
 // Store the selectd Side Bar section and Selected Side Bar Border button in local storage
@@ -956,9 +993,9 @@ function generateCartModelContent() {
     });
 
     cartItemsContainer.appendChild(cartItemDiv);
-    
-  const horizontalLine = document.createElement("hr");
-  cartItemsContainer.appendChild(horizontalLine);
+
+    const horizontalLine = document.createElement("hr");
+    cartItemsContainer.appendChild(horizontalLine);
   });
 
   // Calculate and display the total price
@@ -974,20 +1011,24 @@ function generateCartModelContent() {
 document.addEventListener("DOMContentLoaded", () => {
   const storedSection = localStorage.getItem("selectedSection");
   const storedButton = localStorage.getItem("selectedButton");
+
   if (storedButton && storedSection) {
     const selectedButton = document.querySelector(
       `.Sidebar_InnerContainer a[href="${storedButton}"]`
     );
     showSection(storedSection, selectedButton);
   } else {
-    showSection("aibeauty"); // Default selection if no data is stored
-
-    // Add the border to the default selected button "aibeauty"
-    const defaultSelectedButton = document.querySelector(
-      '.Sidebar_InnerContainer a[href="#aibeauty"]'
-    );
-    defaultSelectedButton.classList.add("selected");
+    toggleSections("landingpageMainBody");
   }
+
+  const landingPageLinks = document.querySelectorAll(".LandingPage a");
+  landingPageLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault(); // Prevent default link behavior
+      const sectionId = link.getAttribute("href").substring(1); // Get the section ID
+      showSection(sectionId, link); // Trigger the showSection function
+    });
+  });
 
   // For Lipstick Container Categories
 
@@ -1024,6 +1065,7 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleCartModal();
     }
   });
+
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1529,6 +1571,8 @@ function generateCartModelEyeshadowContent() {
     });
 
     cartItemsContainerEyeshadow.appendChild(cartItemDivEyeshadow);
+    const horizontalLine = document.createElement("hr");
+    cartItemsContainerEyeshadow.appendChild(horizontalLine);
   });
 
   // Calculate and display the total price
@@ -2082,6 +2126,9 @@ function generateCartModelFoundationContent() {
     });
 
     cartItemsContainerFoundation.appendChild(cartItemDivFoundation);
+
+    const horizontalLine = document.createElement("hr");
+    cartItemsContainerFoundation.appendChild(horizontalLine);
   });
 
   // Calculate and display the total price
@@ -2608,6 +2655,9 @@ function generateCartModelBlushContent() {
     });
 
     cartItemsContainerBlush.appendChild(cartItemDivBlush);
+
+    const horizontalLine = document.createElement("hr");
+    cartItemsContainerBlush.appendChild(horizontalLine);
   });
 
   // Calculate and display the total price
@@ -3128,6 +3178,9 @@ function generateCartModelConcealerContent() {
     });
 
     cartItemsContainerConcealer.appendChild(cartItemDivConcealer);
+
+    const horizontalLine = document.createElement("hr");
+    cartItemsContainerConcealer.appendChild(horizontalLine);
   });
 
   // Calculate and display the total price
