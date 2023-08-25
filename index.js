@@ -1017,8 +1017,9 @@ document.addEventListener("DOMContentLoaded", () => {
       `.Sidebar_InnerContainer a[href="${storedButton}"]`
     );
     showSection(storedSection, selectedButton);
-  } else {
-    toggleSections("landingpageMainBody");
+  }
+   else {
+    showSection("aibeauty");
   }
 
   const landingPageLinks = document.querySelectorAll(".LandingPage a");
