@@ -346,7 +346,7 @@
 .lipstickItem {
   display: flex;
   flex-direction: column;
-  width: 11rem;
+  width: 30%;
   align-items: center;
   text-align: center;
   margin-bottom: 1rem;
@@ -4042,6 +4042,9 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 @media only screen and (min-width: 1901px) {
+  .lipstickItem{
+    width: 20%;
+  }
   .LandingPage {
     flex-basis: calc( 17% - 20px );
 }
