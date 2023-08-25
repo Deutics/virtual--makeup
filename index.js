@@ -659,11 +659,11 @@ function showSection(sectionId, button) {
   });
 
   // Show the selected SideBar section
-  // const selectedSection = document.getElementById(sectionId);
-  // if (selectedSection) {
-  //   selectedSection.style.display = "block";
-  //   localStorage.setItem("selectedSection", sectionId);
-  // }
+  const selectedSection = document.getElementById(sectionId);
+  if (selectedSection) {
+    selectedSection.style.display = "block";
+    // localStorage.setItem("selectedSection", sectionId);
+  }
 
   // Add the "selected Side Bar Border Button" class to the clicked button
   if (button) {
