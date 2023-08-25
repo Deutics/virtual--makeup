@@ -1397,7 +1397,6 @@ const handleOpenSideBar = () => {
 // close side bar
 const handleCloseSideBar = () => {
     document.getElementById('sideBar').style.display = 'none'
-
     document.getElementById('cross').style.display = 'none'
     document.getElementById('hamburger').style.display = 'block'
 }
@@ -1725,8 +1724,26 @@ const handleOnClickcategory = (val) => {
 
 // when document is rendered
 window.onload = function () {
+    let page = document.getElementById('page')
+    let sideBar = document.getElementById('sideBar')
+
+    page.addEventListener('click', () => {
+        if (sideBar.style.display === 'block') {
+            handleCloseSideBar()
+        }
+    })
+
+    function myFunction(x) {
+        handleOpenSideBar()
+    }
+
+    var x = window.matchMedia('(max-width: 786px)')
+    myFunction(x) // Call listener function at run time
+    x.addListener(myFunction) // Attach listener function on state changes
+
     // showing header only
-    document.getElementById('app').style.display = 'none'
+    document.getElementById('app').style.display = 'flex'
+    document.getElementById('landingPage').style.display = 'none'
 
     // handling sidebar for mobile version
     if (window.innerWidth < 786) {
