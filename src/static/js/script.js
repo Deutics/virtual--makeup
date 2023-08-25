@@ -1724,9 +1724,6 @@ const handleOnClickcategory = (val) => {
 
 // when document is rendered
 window.onload = function () {
-    let page = document.getElementById('page')
-    let sideBar = document.getElementById('sideBar')
-
     page.addEventListener('click', () => {
         if (sideBar.style.display === 'block') {
             handleCloseSideBar()
@@ -1742,8 +1739,7 @@ window.onload = function () {
     x.addListener(myFunction) // Attach listener function on state changes
 
     // showing header only
-    document.getElementById('app').style.display = 'flex'
-    document.getElementById('landingPage').style.display = 'none'
+    document.getElementById('app').style.display = 'none'
 
     // handling sidebar for mobile version
     if (window.innerWidth < 786) {
