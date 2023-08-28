@@ -395,6 +395,10 @@ body {
     border-radius: 20%;
 }
 
+.comingSoon img {
+    width: 100%;
+}
+
 .sideBar {
     max-width: 70vw;
     width: 20vw;
@@ -792,6 +796,10 @@ body {
     .shades {
         width: 90dvw;
         overflow-x: scroll;
+    }
+    .comingSoonToggle div {
+        font-size: small;
+        margin-top: 10px;
     }
     ::-webkit-scrollbar {
         -webkit-appearance: none;

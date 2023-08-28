@@ -339,7 +339,7 @@ const toolTipTextObj = {
 }
 
 //races
-const races = ['A', 'B', 'C']
+var races = ['A', 'B', 'C']
 
 const productsForRaces = {
     white: [
@@ -1611,6 +1611,11 @@ function setAiRecommendations(race) {
 
 // sidebar items click handler
 const sideBarItemClick = (item) => {
+    // closing sidebar if in mobile view
+    if (sideBar.style.display === 'block' && window.innerWidth < 786) {
+        handleCloseSideBar()
+    }
+
     // listing cart items if it's ai beauty
 
     if (item === 'ai beauty') {
@@ -1698,14 +1703,18 @@ const renderShadesOrRaces = () => {
 }
 
 const onClickShadeHandler = (shade) => {
-    // showing respected products
-    listAllProducts(shade.target.myParam)
+    let element = document.getElementById(shade.target.myParam)
 
-    // updating Ui
-    document
-        .querySelectorAll('.shade')
-        .forEach((item) => item.classList.remove('selectedShade'))
-    document.getElementById(shade.target.myParam).classList.add('selectedShade')
+    if (element && !element.classList.contains('selectedShade')) {
+        console.log(shade.target.myParam)
+        // showing respected products
+        listAllProducts(shade.target.myParam)
+        // updating Ui
+        document
+            .querySelectorAll('.shade')
+            .forEach((item) => item.classList.remove('selectedShade'))
+        element.classList.add('selectedShade')
+    }
 }
 
 // function to go to app
@@ -1725,7 +1734,7 @@ const handleOnClickcategory = (val) => {
 // when document is rendered
 window.onload = function () {
     page.addEventListener('click', () => {
-        if (sideBar.style.display === 'block') {
+        if (sideBar.style.display === 'block' && window.innerWidth < 786) {
             handleCloseSideBar()
         }
     })
