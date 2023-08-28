@@ -608,44 +608,55 @@ const ConcealerLiquid = [
 let selectedItesmsArray =
   JSON.parse(localStorage.getItem("selectedItesmsArray")) || [];
 
-  function toggleSections(sectionId, button) {
-    const landingpageMainBody = document.getElementById("landingpageMainBody");
-    const MainWrapper = document.getElementById("MainWrapper");
-  
-    if (sectionId === "landingpageMainBody") {
-      landingpageMainBody.style.display = "flex";
-      MainWrapper.style.display = "none";
-    } else {
-      landingpageMainBody.style.display = "none";
-      MainWrapper.style.display = "block";
-  
-      const selectedSectionlandingpage = document.getElementById(sectionId);
-  
-      if (selectedSectionlandingpage) {
-        selectedSectionlandingpage.scrollIntoView({ behavior: "smooth" });
-  
-        // Remove the "selected" class from all links
-        const landingPageLinks = document.querySelectorAll(".LandingPage a");
-        landingPageLinks.forEach((link) => {
-          link.classList.remove("selected");
-        });
-  
-        // Add the "selected" class to the clicked link
-        const selectedLink = document.querySelector(
-          `.LandingPage a[href="#${sectionId}"]`
-        );
-        if (selectedLink) {
-          selectedLink.classList.add("selected");
-          history.pushState(null, null, `#${sectionId}`);
-        }
-  
-      
+function toggleSections(sectionId ) {
+  const landingpageMainBody = document.getElementById("landingpageMainBody");
+  const MainWrapper = document.getElementById("MainWrapper");
+
+  if (sectionId === "landingpageMainBody") {
+    landingpageMainBody.style.display = "flex";
+    MainWrapper.style.display = "none";
+    
+
+    // // Remove toggle-lines from landing page
+    // const toggleLineslandingpage = document.querySelectorAll("body .toggle-line");
+    // toggleLineslandingpage.forEach((line) => {
+    //   line.remove();
+    // });
+    
+  } else {
+    landingpageMainBody.style.display = "none";
+    MainWrapper.style.display = "block";
+
+    const selectedSectionlandingpage = document.getElementById(sectionId);
+
+    if (selectedSectionlandingpage) {
+      selectedSectionlandingpage.scrollIntoView({ behavior: "smooth" });
+
+      // Add the "selected" class URl in the URL  to the clicked Section
+      const selectedLink = document.querySelector(
+        `.LandingPage a[href="#${sectionId}"]`
+      );
+      // When a selected section Url link is clicked
+      if (selectedLink) {
+        selectedLink.classList.add("selected");
+        history.pushState(null, null, `#${sectionId}`);
+        localStorage.setItem("selectedSection", "none");
+
+        
       }
     }
+   
   }
+}
+// On page load
+window.onload = function () {
+  history.replaceState(null, null, "index.html");
+  localStorage.removeItem("selectedSection");
   
+};
 
-function showSection(sectionId, button) {
+
+function showSection(sectionId) {
   // Hide all sections
   const sections = document.querySelectorAll(".MainContianer");
   sections.forEach((section) => {
@@ -662,36 +673,34 @@ function showSection(sectionId, button) {
   const selectedSection = document.getElementById(sectionId);
   if (selectedSection) {
     selectedSection.style.display = "block";
-    // localStorage.setItem("selectedSection", sectionId);
-  }
 
-  // Add the "selected Side Bar Border Button" class to the clicked button
-  if (button) {
-    button.classList.add("selected");
-    // localStorage.setItem("selectedButton", button.getAttribute("href"));
-  }
+    // Highlight the corresponding button border 
+    const selectedButton = document.querySelector(`.Sidebar_InnerContainer a[href="#${sectionId}"]`);
+    if (selectedButton) {
+      selectedButton.classList.add("selected");
+       // localStorage.setItem("selectedButton", button.getAttribute("href"));
 
-  // Call toggleSections here with the correct sectionId
-  toggleSections(sectionId , button);
+    }
+  }
 }
 
 // Store the selectd Side Bar section and Selected Side Bar Border button in local storage
-const storedSection = localStorage.getItem("selectedSection");
-const storedButton = localStorage.getItem("selectedButton");
+// const storedSection = localStorage.getItem("selectedSection");
+// const storedButton = localStorage.getItem("selectedButton");
 
-if (storedSection) {
-  showSection(storedSection);
-}
+// if (storedSection) {
+//   showSection(storedSection);
+// }
 
-// Restore the selected Side Bar  buttons border after the page is refreshed
-if (storedButton) {
-  const buttons = document.querySelectorAll(".Sidebar_InnerContainer a");
-  buttons.forEach((btn) => {
-    if (btn.getAttribute("href") === storedButton) {
-      btn.classList.add("selected");
-    }
-  });
-}
+// // Restore the selected Side Bar  buttons border after the page is refreshed
+// if (storedButton) {
+//   const buttons = document.querySelectorAll(".Sidebar_InnerContainer a");
+//   buttons.forEach((btn) => {
+//     if (btn.getAttribute("href") === storedButton) {
+//       btn.classList.add("selected");
+//     }
+//   });
+// }
 
 function showLipstickSection(sectionId, button) {
   // Hide all sections
@@ -718,25 +727,25 @@ function showLipstickSection(sectionId, button) {
     button.classList.add("selectedlipstick");
     // localStorage.setItem("selectedButtonlipstick", button.getAttribute("href"));
   }
-  window.history.pushState(null, `#lipstick-${sectionId}`);
+  // window.history.pushState(null, `#lipstick-${sectionId}`);
 }
 // Store the selectd  lipstick section and selected listick hover button in local storage
-const storedSectionlipstick = localStorage.getItem("selectedSectionlipstick");
-const storedButtonlipstick = localStorage.getItem("selectedButtonlipstick");
+// const storedSectionlipstick = localStorage.getItem("selectedSectionlipstick");
+// const storedButtonlipstick = localStorage.getItem("selectedButtonlipstick");
 
-if (storedSectionlipstick) {
-  showLipstickSection(storedSectionlipstick);
-}
+// if (storedSectionlipstick) {
+//   showLipstickSection(storedSectionlipstick);
+// }
 
-// Restore the selected Lipstick Container Categories and selected buttons border after the page is refreshed
-if (storedButtonlipstick) {
-  const buttons = document.querySelectorAll(".LipstickContainerCategories a");
-  buttons.forEach((btn) => {
-    if (btn.getAttribute("href") === storedButtonlipstick) {
-      btn.classList.add("selectedlipstick");
-    }
-  });
-}
+// // Restore the selected Lipstick Container Categories and selected buttons border after the page is refreshed
+// if (storedButtonlipstick) {
+//   const buttons = document.querySelectorAll(".LipstickContainerCategories a");
+//   buttons.forEach((btn) => {
+//     if (btn.getAttribute("href") === storedButtonlipstick) {
+//       btn.classList.add("selectedlipstick");
+//     }
+//   });
+// }
 
 // Helper function to display the selected lipstick in the addToCart section
 function displaySelectedLipstick(img, icon, title, price) {
@@ -1021,12 +1030,14 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleSections("landingpageMainBody");
   }
 
+  //Click event to navigate to desire section when click from  Landing Page
+
   const landingPageLinks = document.querySelectorAll(".LandingPage a");
   landingPageLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
-      event.preventDefault(); // Prevent default link behavior
-      const sectionId = link.getAttribute("href").substring(1); // Get the section ID
-      showSection(sectionId, link); // Trigger the showSection function
+      event.preventDefault();
+      const sectionId = link.getAttribute("href").substring(1);
+      showSection(sectionId, link);
     });
   });
 
@@ -1065,7 +1076,6 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleCartModal();
     }
   });
-
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1410,28 +1420,28 @@ function showEyeshadowSection(sectionId, button) {
     //   button.getAttribute("href")
     // );
   }
-  window.history.pushState(null, `#eyeshadow${sectionId}`);
+  // window.history.pushState(null, `#eyeshadow${sectionId}`);
 }
 
 // Store the selectd  lipstick section and selected listick hover button in local storage
-const storedSectioneyeshadow = localStorage.getItem("selectedSectionEyeshadow");
-const storedButtoneyeshadow = localStorage.getItem("selectedButtoneyeshadow");
+// const storedSectioneyeshadow = localStorage.getItem("selectedSectionEyeshadow");
+// const storedButtoneyeshadow = localStorage.getItem("selectedButtoneyeshadow");
 
-if (storedSectioneyeshadow) {
-  showEyeshadowSection(storedSectioneyeshadow);
-}
+// if (storedSectioneyeshadow) {
+//   showEyeshadowSection(storedSectioneyeshadow);
+// }
 
-// Restore the selected eyeshadow Container Categories and selected buttons border after the page is refreshed
-if (storedButtoneyeshadow) {
-  const buttonsEyeshadow = document.querySelectorAll(
-    ".eyeshadowContainerCategories a"
-  );
-  buttonsEyeshadow.forEach((btn) => {
-    if (btn.getAttribute("href") === storedButtoneyeshadow) {
-      btn.classList.add("selectedEyeshadow");
-    }
-  });
-}
+// // Restore the selected eyeshadow Container Categories and selected buttons border after the page is refreshed
+// if (storedButtoneyeshadow) {
+//   const buttonsEyeshadow = document.querySelectorAll(
+//     ".eyeshadowContainerCategories a"
+//   );
+//   buttonsEyeshadow.forEach((btn) => {
+//     if (btn.getAttribute("href") === storedButtoneyeshadow) {
+//       btn.classList.add("selectedEyeshadow");
+//     }
+//   });
+// }
 
 // Helper function to display the selected eyeshadow in the addToCart section
 function displaySelectedEyeshadow(img, icon, title, price, index) {
@@ -1960,30 +1970,30 @@ function showFoundationSection(sectionId, button) {
     //   button.getAttribute("href")
     // );
   }
-  window.history.pushState(null, `#foundation${sectionId}`);
+  // window.history.pushState(null, `#foundation${sectionId}`);
 }
 
 // Store the selectd  Foundation section and selected Foundation hover button in local storage
-const storedSectionfoundation = localStorage.getItem(
-  "selectedSectionFoundation"
-);
-const storedButtonfoundation = localStorage.getItem("selectedButtonfoundation");
+// const storedSectionfoundation = localStorage.getItem(
+//   "selectedSectionFoundation"
+// );
+// const storedButtonfoundation = localStorage.getItem("selectedButtonfoundation");
 
-if (storedSectionfoundation) {
-  showFoundationSection(storedSectionfoundation);
-}
+// if (storedSectionfoundation) {
+//   showFoundationSection(storedSectionfoundation);
+// }
 
-// Restore the selected foundation Container Categories and selected buttons border after the page is refreshed
-if (storedButtonfoundation) {
-  const buttonsFoundation = document.querySelectorAll(
-    ".foundationContainerCategories a"
-  );
-  buttonsFoundation.forEach((btn) => {
-    if (btn.getAttribute("href") === storedButtonfoundation) {
-      btn.classList.add("selectedFoundation");
-    }
-  });
-}
+// // Restore the selected foundation Container Categories and selected buttons border after the page is refreshed
+// if (storedButtonfoundation) {
+//   const buttonsFoundation = document.querySelectorAll(
+//     ".foundationContainerCategories a"
+//   );
+//   buttonsFoundation.forEach((btn) => {
+//     if (btn.getAttribute("href") === storedButtonfoundation) {
+//       btn.classList.add("selectedFoundation");
+//     }
+//   });
+// }
 
 // Helper function to display the selected foundation in the addToCart section
 function displaySelectedFoundation(img, icon, title, price, index) {
@@ -2512,26 +2522,26 @@ function showBlushSection(sectionId, button) {
     button.classList.add("selectedBlush");
     // localStorage.setItem("selectedButtonblush", button.getAttribute("href"));
   }
-  window.history.pushState(null, `#blush${sectionId}`);
+  // window.history.pushState(null, `#blush${sectionId}`);
 }
 
 // Store the selectd  Blush section and selected Blush hover button in local storage
-const storedSectionblush = localStorage.getItem("selectedSectionBlush");
-const storedButtonblush = localStorage.getItem("selectedButtonblush");
+// const storedSectionblush = localStorage.getItem("selectedSectionBlush");
+// const storedButtonblush = localStorage.getItem("selectedButtonblush");
 
-if (storedSectionblush) {
-  showBlushSection(storedSectionblush);
-}
+// if (storedSectionblush) {
+//   showBlushSection(storedSectionblush);
+// }
 
-// Restore the selected blush Container Categories and selected buttons border after the page is refreshed
-if (storedButtonblush) {
-  const buttonsBlush = document.querySelectorAll(".blushContainerCategories a");
-  buttonsBlush.forEach((btn) => {
-    if (btn.getAttribute("href") === storedButtonblush) {
-      btn.classList.add("selectedBlush");
-    }
-  });
-}
+// // Restore the selected blush Container Categories and selected buttons border after the page is refreshed
+// if (storedButtonblush) {
+//   const buttonsBlush = document.querySelectorAll(".blushContainerCategories a");
+//   buttonsBlush.forEach((btn) => {
+//     if (btn.getAttribute("href") === storedButtonblush) {
+//       btn.classList.add("selectedBlush");
+//     }
+//   });
+// }
 
 // Helper function to display the selected Blush in the addToCart section
 function displaySelectedBlush(img, icon, title, price, index) {
@@ -3018,28 +3028,28 @@ function showConcealerSection(sectionId, button) {
     //   button.getAttribute("href")
     // );
   }
-  window.history.pushState(null, `#concealer${sectionId}`);
+  // window.history.pushState(null, `#concealer${sectionId}`);
 }
 
 // Store the selectd  lipstick section and selected listick hover button in local storage
-const storedSectionconcealer = localStorage.getItem("selectedSectionConcealer");
-const storedButtonconcealer = localStorage.getItem("selectedButtonconcealer");
+// const storedSectionconcealer = localStorage.getItem("selectedSectionConcealer");
+// const storedButtonconcealer = localStorage.getItem("selectedButtonconcealer");
 
-if (storedSectionconcealer) {
-  showConcealerSection(storedSectionconcealer);
-}
+// if (storedSectionconcealer) {
+//   showConcealerSection(storedSectionconcealer);
+// }
 
-// Restore the selected Concealer Container Categories and selected buttons border after the page is refreshed
-if (storedButtonconcealer) {
-  const buttonsConcealer = document.querySelectorAll(
-    ".concealerContainerCategories a"
-  );
-  buttonsConcealer.forEach((btn) => {
-    if (btn.getAttribute("href") === storedButtonconcealer) {
-      btn.classList.add("selectedConcealer");
-    }
-  });
-}
+// // Restore the selected Concealer Container Categories and selected buttons border after the page is refreshed
+// if (storedButtonconcealer) {
+//   const buttonsConcealer = document.querySelectorAll(
+//     ".concealerContainerCategories a"
+//   );
+//   buttonsConcealer.forEach((btn) => {
+//     if (btn.getAttribute("href") === storedButtonconcealer) {
+//       btn.classList.add("selectedConcealer");
+//     }
+//   });
+// }
 
 // Helper function to display the selected Concealer in the addToCart section
 function displaySelectedConcealer(img, icon, title, price, index) {

@@ -106,7 +106,6 @@
   font-weight: 500;
 }
 
-
 .Header_LandingPage {
   padding: 10px;
   color: white;
@@ -121,7 +120,7 @@
   margin-top: 1rem;
 }
 .landingpageMainBody {
-  display: flex ;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -132,6 +131,7 @@
   font-family: "Goldman";
   background-image: linear-gradient(#baabab, #947474);
 }
+
 
 .LandingPageContainer {
   display: flex;
@@ -146,10 +146,8 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  flex-basis: calc(
-    20% - 20px
-  ); /* Set to 20% to fit 5 elements in a row with gap */
-  margin: 10px; /* Add margin for spacing between elements */
+  flex-basis: calc(20% - 20px);
+  margin: 10px;
 }
 
 .LandingPage img {
@@ -157,8 +155,6 @@
   height: 10rem;
 }
 .beautyImage {
-  width: 100%;
-  height: 80%;
   object-fit: contain;
   margin-top: 0.8rem;
 }
@@ -319,6 +315,8 @@
   border: 2px solid #947474;
   border-radius: 0.8rem;
 }
+
+
 .contentlipstick {
   width: 100%;
   flex-direction: row;
@@ -2689,10 +2687,10 @@ button#submitOrderBtnConcealer:hover {
 }
 
 @media only screen and (max-width: 500px) {
-  .lipstickItem h3{
-    font-size: .9rem;
+  .lipstickItem h3 {
+    font-size: 0.9rem;
   }
-  .LandingPage h3{
+  .LandingPage h3 {
     font-size: 1rem;
   }
   .landingpageMainBody {
@@ -3242,6 +3240,10 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 @media screen and (max-width: 768px) {
+  .body .toggle-line {
+    display: none;
+  }
+ 
   .LandingPageContainer {
     width: 100%;
     margin-top: 1rem;
@@ -4045,12 +4047,12 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 @media only screen and (min-width: 1901px) {
-  .lipstickItem{
+  .lipstickItem {
     width: 23%;
   }
   .LandingPage {
-    flex-basis: calc( 17% - 20px );
-}
+    flex-basis: calc(17% - 20px);
+  }
   .LandingPageContainer {
     width: 55%;
     margin: 0 auto;
