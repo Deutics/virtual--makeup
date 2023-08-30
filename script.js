@@ -3342,7 +3342,7 @@ function toggleBlurBackgroundConcealer() {
 
 window.addEventListener("click", (event) => {
   const cartModalConcealer = document.getElementById("bbbb");
-  // Check if the clicked element is outside the modal
+  // Checck if the clicked element is outside the modal
   if (event.target == cartModalConcealer) {
     closeCartModalConcealer();
     toggleCartModalConcealer();
@@ -3543,4 +3543,4 @@ function submitPaynowbtnConcealer() {
   localStorage.removeItem("selectedItesmsArray"); // Clear local storage
 
   toggleCartModalConcealer();
-}
+  }
