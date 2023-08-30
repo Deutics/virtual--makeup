@@ -3342,7 +3342,7 @@ function toggleBlurBackgroundConcealer() {
 
 window.addEventListener("click", (event) => {
   const cartModalConcealer = document.getElementById("bbbb");
-  // Checck if the clicked element is outside the modal
+  // Checck if the clicked element is outside the modaal
   if (event.target == cartModalConcealer) {
     closeCartModalConcealer();
     toggleCartModalConcealer();
