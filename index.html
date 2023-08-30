@@ -30,7 +30,7 @@
           /></a>
           <h3>AI Beauty</h3>
         </div>
-        <div id="SelectedLandingPage"  class="LandingPage">
+        <div  class="LandingPage">
           <a href="#lipstik" onclick="toggleSections('aibeauty', this)">
             <img src="/image/Lipsticks.png" alt="AI Beauty" class="beautyImage" />
           </a>
@@ -261,12 +261,13 @@
 
             <div class="Camera">
               <div class="CameraImageContainer blur">
-                <img
-                  id="videoElement"
-                  src="/Images/OtherImages/creative-set-make-up.avif"
-                  alt="camera_img"
-                />
-            </div>
+                <video playsinline autoplay muted id="videoElement" alt="camera_img"></video>
+                <canvas
+                  id="canvas"
+                  class="canvas"
+                  style="position: absolute; top: 0; left: 0; z-index: -3"
+                ></canvas>
+              </div>
              
               <div class="cartContainer blur">
                 <div class="addToCartHeading">Current Products</div>
@@ -1776,7 +1777,7 @@
       </div>
     </section>
    
-    <script src="/index.js"></script>
+    <script src="/script.js"></script>
   
   </body>
 </html>

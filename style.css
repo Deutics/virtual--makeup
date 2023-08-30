@@ -3,6 +3,26 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.loaderContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loader {
+  width: 50%;
+  height: 50%;
+}
+
+.processedImg {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+  display: none;
+}
+
 .LipstickItemselected .img {
   border: 3px solid #947474 !important;
   border-radius: 1rem;
@@ -408,7 +428,7 @@
   width: 70%;
   top: 0;
 }
-.CameraImageContainer img {
+.CameraImageContainer video {
   width: 100%;
   height: 90px;
 }
@@ -503,8 +523,8 @@
 .addToCartIcon {
   display: flex;
   justify-content: space-between;
-  width: 3.9rem;
-  height: 2rem;
+  width: 55px;
+  height: 30px;
   border: 1px solid #947474;
   border-radius: 25%;
 }
@@ -671,7 +691,7 @@
 .cart-item-icon {
   display: flex;
   justify-content: space-between;
-  width: 4rem;
+  width: 55px;
   height: 30px;
   border: 1px solid #947474;
   border-radius: 0.5rem;
@@ -3078,11 +3098,11 @@ button#submitOrderBtnConcealer:hover {
   .addToCartButton:hover {
     background-color: #999393;
   }
-  .addToCartIcon,
+  /* .addToCartIcon,
   .addToCartImg {
     display: flex;
     width: 3rem;
-  }
+  } */
   .CountourContainer {
     font-size: 1rem;
   }
