@@ -152,7 +152,6 @@
   background-image: linear-gradient(#baabab, #947474);
 }
 
-
 .LandingPageContainer {
   display: flex;
   flex-wrap: wrap;
@@ -335,7 +334,6 @@
   border: 2px solid #947474;
   border-radius: 0.8rem;
 }
-
 
 .contentlipstick {
   width: 100%;
@@ -691,7 +689,7 @@
 .cart-item-icon {
   display: flex;
   justify-content: space-between;
-  width: 55px;
+  width: 58px;
   height: 30px;
   border: 1px solid #947474;
   border-radius: 0.5rem;
@@ -2707,6 +2705,10 @@ button#submitOrderBtnConcealer:hover {
 }
 
 @media only screen and (max-width: 500px) {
+  .addToCartImg,
+  .addToCartIcon {
+    width: 43px;
+  }
   .lipstickItem h3 {
     font-size: 0.9rem;
   }
@@ -3263,7 +3265,7 @@ button#submitOrderBtnConcealer:hover {
   .body .toggle-line {
     display: none;
   }
- 
+
   .LandingPageContainer {
     width: 100%;
     margin-top: 1rem;
@@ -4067,6 +4069,21 @@ button#submitOrderBtnConcealer:hover {
   }
 }
 @media only screen and (min-width: 1901px) {
+  .addToCartImg,
+  .addToCartIcon {
+    height: 35px;
+  }
+  .cart-item-img,
+  .cart-item-icon {
+    height: 35px;
+  }
+  .addToCartButton,
+  .addToCartButtonBlush,
+  .addToCartButtonFoundation,
+  .addToCartButtonConcealer,
+  .addToCartButtonEyeshadow {
+    height: 3.5rem;
+  }
   .lipstickItem {
     width: 23%;
   }

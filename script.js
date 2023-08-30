@@ -612,16 +612,10 @@ function toggleSections(sectionId ) {
   const landingpageMainBody = document.getElementById("landingpageMainBody");
   const MainWrapper = document.getElementById("MainWrapper");
 
+
   if (sectionId === "landingpageMainBody") {
     landingpageMainBody.style.display = "flex";
     MainWrapper.style.display = "none";
-    
-
-    // // Remove toggle-lines from landing page
-    // const toggleLineslandingpage = document.querySelectorAll("body .toggle-line");
-    // toggleLineslandingpage.forEach((line) => {
-    //   line.remove();
-    // });
     
   } else {
     landingpageMainBody.style.display = "none";
@@ -642,7 +636,7 @@ function toggleSections(sectionId ) {
         history.pushState(null, null, `#${sectionId}`);
         localStorage.setItem("selectedSection", "none");
 
-        
+        toggleButton.classList.remove("hidden");
       }
     }
    
@@ -982,7 +976,7 @@ function generateCartModelContent() {
     cartItemDiv.innerHTML = `
       <div class="cart-item-info">
         <img class="cart-item-img" src="${ItemData.img}" />
-        <img class="addToCartIcon icon-color" style="background-color: ${ItemData.icon};" />
+        <img class="cart-item-icon icon-color" style="background-color: ${ItemData.icon};" />
         <h4>${ItemData.title}</h4>
         <p>${ItemData.price}</p>
       </div>
@@ -1078,7 +1072,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+
   const sidebarMainContainer = document.querySelector(".Sidebar_MainContainer");
   const toggleButton = document.createElement("div");
   toggleButton.classList.add("toggle-button");
@@ -1087,8 +1081,8 @@ document.addEventListener("DOMContentLoaded", () => {
      <div class="toggle-line"></div>
      <div class="toggle-line"></div>
    `;
-
-  document.body.appendChild(toggleButton);
+   const container = document.getElementById("MainWrapper");
+   container.appendChild(toggleButton);
 
   function removeToggleLines() {
     const toggleLines = toggleButton.querySelectorAll(".toggle-line");
@@ -1163,7 +1157,7 @@ document.addEventListener("DOMContentLoaded", () => {
       addToggleLines();
     }
   });
-});
+
 
 function closeAndToggleCartModal() {
   closeCartModal();
@@ -1641,8 +1635,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const sidebarMainContainer = document.querySelector(".Sidebar_MainContainer");
+
+  const sidebarMainContainerEyeshadow = document.querySelector(".Sidebar_MainContainer");
   const toggleButtonEyeshadow = document.createElement("div");
   toggleButtonEyeshadow.classList.add("toggle-button");
   toggleButtonEyeshadow.innerHTML = `
@@ -1650,8 +1644,9 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="toggle-line-Eyeshadow"></div>
     <div class="toggle-line-Eyeshadow"></div>
   `;
-
-  document.body.appendChild(toggleButtonEyeshadow);
+  const containerEyeshadw = document.getElementById("MainWrapper");
+  
+  containerEyeshadw.appendChild(toggleButtonEyeshadow);
 
   function addToggleLinesEyeshadow() {
     const toggleLines = toggleButtonEyeshadow.querySelectorAll(
@@ -1687,9 +1682,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   toggleButtonEyeshadow.addEventListener("click", () => {
-    sidebarMainContainer.classList.toggle("active");
+    sidebarMainContainerEyeshadow.classList.toggle("active");
 
-    if (sidebarMainContainer.classList.contains("active")) {
+    if (sidebarMainContainerEyeshadow.classList.contains("active")) {
       removeToggleLinesEyeshadow();
       addArrowButtonEyeshadow();
     } else {
@@ -1697,7 +1692,6 @@ document.addEventListener("DOMContentLoaded", () => {
       addToggleLinesEyeshadow();
     }
   });
-});
 
 function closeAndToggleCartModalEyeshadow() {
   closeCartModalEyeshadow();
@@ -2198,8 +2192,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const sidebarMainContainer = document.querySelector(".Sidebar_MainContainer");
+  const sidebarMainContainerFoundation = document.querySelector(".Sidebar_MainContainer");
   const toggleButtonFoundation = document.createElement("div");
   toggleButtonFoundation.classList.add("toggle-button");
   toggleButtonFoundation.innerHTML = `
@@ -2207,8 +2200,9 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="toggle-line-Foundation"></div>
     <div class="toggle-line-Foundation"></div>
   `;
+  const containerFoundation = document.getElementById("MainWrapper");
 
-  document.body.appendChild(toggleButtonFoundation);
+  containerFoundation.appendChild(toggleButtonFoundation);
 
   function addToggleLinesFoundation() {
     const toggleLines = toggleButtonFoundation.querySelectorAll(
@@ -2244,9 +2238,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   toggleButtonFoundation.addEventListener("click", () => {
-    sidebarMainContainer.classList.toggle("active");
+    sidebarMainContainerFoundation.classList.toggle("active");
 
-    if (sidebarMainContainer.classList.contains("active")) {
+    if (sidebarMainContainerFoundation.classList.contains("active")) {
       removeToggleLinesFoundation();
       addArrowButtonFoundation();
     } else {
@@ -2254,7 +2248,7 @@ document.addEventListener("DOMContentLoaded", () => {
       addToggleLinesFoundation();
     }
   });
-});
+
 
 function closeAndToggleCartModalFoundation() {
   closeCartModalFoundation();
@@ -2717,8 +2711,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const sidebarMainContainer = document.querySelector(".Sidebar_MainContainer");
+  const sidebarMainContainerBlush = document.querySelector(".Sidebar_MainContainer");
   const toggleButtonBlush = document.createElement("div");
   toggleButtonBlush.classList.add("toggle-button");
   toggleButtonBlush.innerHTML = `
@@ -2726,8 +2719,9 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="toggle-line-Blush"></div>
     <div class="toggle-line-Blush"></div>
   `;
+  const containerBlush = document.getElementById("MainWrapper");
 
-  document.body.appendChild(toggleButtonBlush);
+  containerBlush.appendChild(toggleButtonBlush);
 
   function addToggleLinesBlush() {
     const toggleLines =
@@ -2759,9 +2753,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   toggleButtonBlush.addEventListener("click", () => {
-    sidebarMainContainer.classList.toggle("active");
+    sidebarMainContainerBlush.classList.toggle("active");
 
-    if (sidebarMainContainer.classList.contains("active")) {
+    if (sidebarMainContainerBlush.classList.contains("active")) {
       removeToggleLinesBlush();
       addArrowButtonBlush();
     } else {
@@ -2769,7 +2763,7 @@ document.addEventListener("DOMContentLoaded", () => {
       addToggleLinesBlush();
     }
   });
-});
+
 
 function closeAndToggleCartModalBlush() {
   closeCartModalBlush();
@@ -3249,8 +3243,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const sidebarMainContainer = document.querySelector(".Sidebar_MainContainer");
+  const sidebarMainContainerConcealer = document.querySelector(".Sidebar_MainContainer");
   const toggleButtonConcealer = document.createElement("div");
   toggleButtonConcealer.classList.add("toggle-button");
   toggleButtonConcealer.innerHTML = `
@@ -3259,7 +3252,9 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="toggle-line-Concealer"></div>
   `;
 
-  document.body.appendChild(toggleButtonConcealer);
+  const containerConcealer = document.getElementById("MainWrapper");
+
+  containerConcealer.appendChild(toggleButtonConcealer);
 
   function addToggleLinesConcealer() {
     const toggleLines = toggleButtonConcealer.querySelectorAll(
@@ -3295,9 +3290,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   toggleButtonConcealer.addEventListener("click", () => {
-    sidebarMainContainer.classList.toggle("active");
+    sidebarMainContainerConcealer.classList.toggle("active");
 
-    if (sidebarMainContainer.classList.contains("active")) {
+    if (sidebarMainContainerConcealer.classList.contains("active")) {
       removeToggleLinesConcealer();
       addArrowButtonConcealer();
     } else {
@@ -3305,7 +3300,6 @@ document.addEventListener("DOMContentLoaded", () => {
       addToggleLinesConcealer();
     }
   });
-});
 
 function closeAndToggleCartModalConcealer() {
   closeCartModalConcealer();
