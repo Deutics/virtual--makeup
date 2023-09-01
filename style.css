@@ -766,7 +766,6 @@
   user-select: none;
 }
 
-
 .modal h1 {
   display: none;
 }
@@ -2736,9 +2735,9 @@ button#submitOrderBtnConcealer:hover {
   .ArrowCart {
     display: block;
     width: 40px;
-    font-size: 3rem;
+    font-size: 50px;
     margin-left: 5px;
-    margin-top: -3.3rem;
+    margin-top: -50px;
     cursor: pointer;
     color: black;
   }
@@ -3412,7 +3411,7 @@ button#submitOrderBtnConcealer:hover {
   }
   .Side_Bar {
     height: 570px !important;
-}
+  }
 
   .Sidebar_InnerContainer {
     height: auto !important;
@@ -3853,7 +3852,7 @@ button#submitOrderBtnConcealer:hover {
     padding: 0 1rem;
   }
   .Side_Bar {
-    height: 88% ;
+    height: 88%;
   }
   .addToCartButtonCommingSoon {
     margin-top: -3rem !important;
