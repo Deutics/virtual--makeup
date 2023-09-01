@@ -2716,10 +2716,9 @@ button#submitOrderBtnConcealer:hover {
     width: 100% !important;
   }
 
-  .modal h1 {
-    display: flex;
+  .logo_Sidebar_Cart {
     justify-content: center;
-    font-size: 2.5rem;
+    font-size: 35px;
     font-family: "Goldman", cursive;
     font-weight: 400;
   }
@@ -3255,7 +3254,7 @@ button#submitOrderBtnConcealer:hover {
 /* /v */
 @media screen and (max-width: 768px) {
   .arrow-button {
-    font-size: 3rem;
+    font-size: 45px;
     margin-left: 12px;
     margin-top: -7px;
     cursor: pointer;
