@@ -3256,7 +3256,7 @@ button#submitOrderBtnConcealer:hover {
   .arrow-button {
     font-size: 45px;
     margin-left: 12px;
-    margin-top: -7px;
+    /* margin-top: -7px; */
     cursor: pointer;
     color: white;
   }
