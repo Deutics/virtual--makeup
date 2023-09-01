@@ -3255,10 +3255,9 @@ button#submitOrderBtnConcealer:hover {
 }
 @media screen and (max-width: 768px) {
   .arrow-button {
-    width: 40% !important;
-    font-size: 3rem;
+    font-size: 45px;
     margin-left: -10px;
-    margin-top: -.5rem;
+    margin-top: -7px;
     cursor: pointer;
     color: white;
   }
