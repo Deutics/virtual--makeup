@@ -3253,6 +3253,7 @@ button#submitOrderBtnConcealer:hover {
     width: 50% !important;
   }
 }
+/* /v */
 @media screen and (max-width: 768px) {
   .arrow-button {
     font-size: 45px;
