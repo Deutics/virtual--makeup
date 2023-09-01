@@ -3414,8 +3414,8 @@ button#submitOrderBtnConcealer:hover {
     z-index: 999;
   }
   .Side_Bar {
-    height: 100% !important;
-  }
+    height: 90% !important;
+}
 
   .Sidebar_InnerContainer {
     height: auto !important;
@@ -3470,7 +3470,7 @@ button#submitOrderBtnConcealer:hover {
 
   .Sidebar_Footer {
     /* bottom: 20px; */
-    margin-bottom: -0.6rem;
+    margin-bottom: 0.4rem;
   }
 
   .lipstikContentNavbar {
@@ -3856,7 +3856,7 @@ button#submitOrderBtnConcealer:hover {
     padding: 0 1rem;
   }
   .Side_Bar {
-    height: 88% !important;
+    height: 88% ;
   }
   .addToCartButtonCommingSoon {
     margin-top: -3rem !important;
