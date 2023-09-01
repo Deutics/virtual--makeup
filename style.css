@@ -71,8 +71,8 @@
   background-color: #947474;
   padding: 0px;
   border-radius: 8px;
-  height: 3.5rem;
-  width: 3.5rem;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 .Side_Bar_Tittle {
@@ -80,6 +80,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 0.8rem;
 }
 
 #videoElementCommingSoon {
@@ -190,7 +191,7 @@
   color: #ffffff;
   font-weight: 400;
   font-size: 2.188rem;
-  margin: 1rem 0 1rem 0rem;
+  margin: 0.2rem 0 1rem 0rem;
 }
 
 .Sidebar_Footer {
@@ -226,7 +227,11 @@
 .Side_Bar {
   overflow-y: hidden;
   overflow-x: hidden;
-  height: 75%;
+  height: 80%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .Side_Bar a {
@@ -234,11 +239,6 @@
   gap: 1rem;
   color: #ffffff;
   font-family: "Poppins", sans-serif;
-}
-.Side_Bar {
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: #e0e0e0;
 }
 .Side_Bar::-webkit-scrollbar {
   width: 0rem;
@@ -767,11 +767,10 @@
 }
 
 .arrow-button {
-  /* Customize the styles for the arrow button */
   width: 40% !important;
   font-size: 3rem;
   margin-left: -10px;
-  margin-top: -0.4rem;
+  margin-top: -.5rem;
   cursor: pointer;
   color: white;
 }
@@ -3409,9 +3408,9 @@ button#submitOrderBtnConcealer:hover {
   }
 
   .Sidebar_MainContainer.active {
-    left: 0; /* Show the sidebar when active */
+    left: 0;
     width: 45%;
-    height: 150vh;
+    min-height: 41rem !important;
     z-index: 999;
   }
   .Side_Bar {
@@ -3424,7 +3423,7 @@ button#submitOrderBtnConcealer:hover {
 
   .toggle-button {
     position: absolute;
-    top: 20px;
+    top: 12px;
     left: 40px;
     cursor: pointer;
     z-index: 999;
@@ -3440,6 +3439,7 @@ button#submitOrderBtnConcealer:hover {
 
   .logo_Sidebar {
     text-align: center;
+    margin-left: 5rem;
   }
 
   .Conatiner {
@@ -3850,13 +3850,13 @@ button#submitOrderBtnConcealer:hover {
     width: 16rem;
   }
   .Sidebar_Footer {
-    bottom: 20px;
+    bottom: 3px;
   }
   .Navbar_Container {
     padding: 0 1rem;
   }
   .Side_Bar {
-    height: 70%;
+    height: 88% !important;
   }
   .addToCartButtonCommingSoon {
     margin-top: -3rem !important;
