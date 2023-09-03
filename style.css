@@ -2734,9 +2734,9 @@ button#submitOrderBtnConcealer:hover {
   .ArrowCart {
     display: block;
     width: 40px;
-    font-size: 50px;
+    font-size: 4rem;
     margin-left: 5px;
-    margin-top: -50px;
+    margin-top: -3.5rem;
     cursor: pointer;
     color: black;
   }
@@ -2804,9 +2804,9 @@ button#submitOrderBtnConcealer:hover {
   .ArrowCartEyeshadow {
     display: block;
     width: 40px;
-    font-size: 3rem;
+    font-size: 4rem;
     margin-left: 5px;
-    margin-top: -3.3rem;
+    margin-top: -3.5rem;
     cursor: pointer;
     color: black;
   }
@@ -2832,8 +2832,8 @@ button#submitOrderBtnConcealer:hover {
   .logo_Sidebar_Cart_Eyeshadow {
     display: flex !important;
     justify-content: center;
-    font-size: 2.5rem;
-  }
+    font-size: 35px;
+    }
   .arrow-button-Eyeshadow {
     color: black;
   }
@@ -2871,9 +2871,9 @@ button#submitOrderBtnConcealer:hover {
   .ArrowCartFoundation {
     display: block;
     width: 40px;
-    font-size: 3rem;
+    font-size: 4rem;
     margin-left: 5px;
-    margin-top: -3.3rem;
+    margin-top: -3.5rem;
     cursor: pointer;
     color: black;
   }
@@ -2899,8 +2899,8 @@ button#submitOrderBtnConcealer:hover {
   .logo_Sidebar_Cart_Foundation {
     display: flex !important;
     justify-content: center;
-    font-size: 2.5rem;
-  }
+    font-size: 35px;
+    }
   .arrow-button-Foundation {
     color: black;
   }
@@ -2939,9 +2939,9 @@ button#submitOrderBtnConcealer:hover {
   .ArrowCartBlush {
     display: block;
     width: 40px;
-    font-size: 3rem;
+    font-size: 4rem;
     margin-left: 5px;
-    margin-top: -3.3rem;
+    margin-top: -3.5rem;
     cursor: pointer;
     color: black;
   }
@@ -2967,8 +2967,7 @@ button#submitOrderBtnConcealer:hover {
   .logo_Sidebar_Cart_Blush {
     display: flex !important;
     justify-content: center;
-    font-size: 2.5rem;
-  }
+    font-size: 35px;  }
   .arrow-button-Blush {
     color: black;
   }
@@ -3007,9 +3006,9 @@ button#submitOrderBtnConcealer:hover {
   .ArrowCartConcealer {
     display: block;
     width: 40px;
-    font-size: 3rem;
+    font-size: 4rem;
     margin-left: 5px;
-    margin-top: -3.3rem;
+    margin-top: -3.5rem;
     cursor: pointer;
     color: black;
   }
@@ -3035,8 +3034,8 @@ button#submitOrderBtnConcealer:hover {
   .logo_Sidebar_Cart_Concealer {
     display: flex !important;
     justify-content: center;
-    font-size: 2.5rem;
-  }
+    font-size: 35px;
+    }
   .arrow-button-Concealer {
     color: black;
   }
