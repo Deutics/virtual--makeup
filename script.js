@@ -608,15 +608,13 @@ const ConcealerLiquid = [
 let selectedItesmsArray =
   JSON.parse(localStorage.getItem("selectedItesmsArray")) || [];
 
-function toggleSections(sectionId ) {
+function toggleSections(sectionId) {
   const landingpageMainBody = document.getElementById("landingpageMainBody");
   const MainWrapper = document.getElementById("MainWrapper");
-
 
   if (sectionId === "landingpageMainBody") {
     landingpageMainBody.style.display = "flex";
     MainWrapper.style.display = "none";
-    
   } else {
     landingpageMainBody.style.display = "none";
     MainWrapper.style.display = "block";
@@ -639,16 +637,13 @@ function toggleSections(sectionId ) {
         toggleButton.classList.remove("hidden");
       }
     }
-   
   }
 }
 // On page load
 window.onload = function () {
   history.replaceState(null, null, "index.html");
   localStorage.removeItem("selectedSection");
-  
 };
-
 
 function showSection(sectionId) {
   // Hide all sections
@@ -668,12 +663,13 @@ function showSection(sectionId) {
   if (selectedSection) {
     selectedSection.style.display = "block";
 
-    // Highlight the corresponding button border 
-    const selectedButton = document.querySelector(`.Sidebar_InnerContainer a[href="#${sectionId}"]`);
+    // Highlight the corresponding button border
+    const selectedButton = document.querySelector(
+      `.Sidebar_InnerContainer a[href="#${sectionId}"]`
+    );
     if (selectedButton) {
       selectedButton.classList.add("selected");
-       // localStorage.setItem("selectedButton", button.getAttribute("href"));
-
+      // localStorage.setItem("selectedButton", button.getAttribute("href"));
     }
   }
 }
@@ -1012,17 +1008,27 @@ function generateCartModelContent() {
 
 // Call the function when the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-  const storedSection = localStorage.getItem("selectedSection");
-  const storedButton = localStorage.getItem("selectedButton");
 
-  if (storedButton && storedSection) {
-    const selectedButton = document.querySelector(
-      `.Sidebar_InnerContainer a[href="${storedButton}"]`
-    );
-    showSection(storedSection, selectedButton);
-  } else {
-    toggleSections("landingpageMainBody");
+  const landingpageMainBody = document.getElementById("landingpageMainBody");
+  const MainWrapper = document.getElementById("MainWrapper");
+
+  if (landingpageMainBody) {
+    landingpageMainBody.style.display = "flex";
+    MainWrapper.style.display = "none";
+  } else if (MainWrapper) {
+    landingpageMainBody.style.display = "none";
+    MainWrapper.style.display = "block";
   }
+  // const storedSection = localStorage.getItem("selectedSection");
+  // const storedButton = localStorage.getItem("selectedButton");
+  // if (storedButton && storedSection) {
+  //   const selectedButton = document.querySelector(
+  //     `.Sidebar_InnerContainer a[href="${storedButton}"]`
+  //   );
+  //   showSection(storedSection, selectedButton);
+  // } else {
+  //   toggleSections("landingpageMainBody");
+  // }
 
   //Click event to navigate to desire section when click from  Landing Page
 
@@ -1072,92 +1078,90 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-  const sidebarMainContainer = document.querySelector(".Sidebar_MainContainer");
-  const toggleButton = document.createElement("div");
-  toggleButton.classList.add("toggle-button");
-  toggleButton.innerHTML = `
+const sidebarMainContainer = document.querySelector(".Sidebar_MainContainer");
+const toggleButton = document.createElement("div");
+toggleButton.classList.add("toggle-button");
+toggleButton.innerHTML = `
      <div class="toggle-line"></div>
      <div class="toggle-line"></div>
      <div class="toggle-line"></div>
    `;
-   const container = document.getElementById("MainWrapper");
-   container.appendChild(toggleButton);
+const container = document.getElementById("MainWrapper");
+container.appendChild(toggleButton);
 
-  function removeToggleLines() {
-    const toggleLines = toggleButton.querySelectorAll(".toggle-line");
-    toggleLines.forEach((line) => {
-      line.style.display = "none";
-    });
+function removeToggleLines() {
+  const toggleLines = toggleButton.querySelectorAll(".toggle-line");
+  toggleLines.forEach((line) => {
+    line.style.display = "none";
+  });
+}
+
+function addToggleLines() {
+  const toggleLines = toggleButton.querySelectorAll(".toggle-line");
+  toggleLines.forEach((line) => {
+    line.style.display = "block";
+  });
+}
+
+function addArrowButton() {
+  const arrowButton = document.createElement("div");
+  arrowButton.classList.add("arrow-button");
+  arrowButton.innerHTML = "&#8592;";
+  toggleButton.appendChild(arrowButton);
+}
+
+function removeArrowButton() {
+  const arrowButton = toggleButton.querySelector(".arrow-button");
+  if (arrowButton) {
+    toggleButton.removeChild(arrowButton);
   }
+}
 
-  function addToggleLines() {
-    const toggleLines = toggleButton.querySelectorAll(".toggle-line");
-    toggleLines.forEach((line) => {
-      line.style.display = "block";
-    });
-  }
+function closeSidebar() {
+  sidebarMainContainer.classList.remove("active");
+  removeArrowButton();
+  addToggleLines();
+}
 
-  function addArrowButton() {
-    const arrowButton = document.createElement("div");
-    arrowButton.classList.add("arrow-button");
-    arrowButton.innerHTML = "&#8592;";
-    toggleButton.appendChild(arrowButton);
-  }
+function showSectionAndCloseSidebar(sectionId, button) {
+  closeSidebar();
+  showSection(sectionId, button);
+}
 
-  function removeArrowButton() {
-    const arrowButton = toggleButton.querySelector(".arrow-button");
-    if (arrowButton) {
-      toggleButton.removeChild(arrowButton);
+// when you click on sidebar items the sidebar will close and section apperars ypu clicked
+const sidebarButtons = document.querySelectorAll(".Sidebar_InnerContainer a");
+sidebarButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const sectionId = button.getAttribute("href").substring(1);
+    showSectionAndCloseSidebar(sectionId, button);
+
+    const sectionDisplayMappings = {
+      addToCart: displaySelectedLipstick,
+      addToCartFoundation: displaySelectedFoundation,
+      addToCartEyeshadow: displaySelectedEyeshadow,
+      addToCartBlush: displaySelectedBlush,
+      addToCartConcealer: displaySelectedConcealer,
+    };
+
+    // Loop through the object and update cart data for each section
+    for (const sectionClassName in sectionDisplayMappings) {
+      const displayFunction = sectionDisplayMappings[sectionClassName];
+      displaySelectedItemsOnLoad(sectionClassName, displayFunction);
     }
-  }
+  });
+});
 
-  function closeSidebar() {
-    sidebarMainContainer.classList.remove("active");
+toggleButton.addEventListener("click", () => {
+  sidebarMainContainer.classList.toggle("active");
+
+  if (sidebarMainContainer.classList.contains("active")) {
+    removeToggleLines();
+    addArrowButton();
+  } else {
     removeArrowButton();
     addToggleLines();
   }
-
-  function showSectionAndCloseSidebar(sectionId, button) {
-    closeSidebar();
-    showSection(sectionId, button);
-  }
-
-  // when you click on sidebar items the sidebar will close and section apperars ypu clicked
-  const sidebarButtons = document.querySelectorAll(".Sidebar_InnerContainer a");
-  sidebarButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const sectionId = button.getAttribute("href").substring(1);
-      showSectionAndCloseSidebar(sectionId, button);
-
-      const sectionDisplayMappings = {
-        addToCart: displaySelectedLipstick,
-        addToCartFoundation: displaySelectedFoundation,
-        addToCartEyeshadow: displaySelectedEyeshadow,
-        addToCartBlush: displaySelectedBlush,
-        addToCartConcealer: displaySelectedConcealer,
-      };
-
-      // Loop through the object and update cart data for each section
-      for (const sectionClassName in sectionDisplayMappings) {
-        const displayFunction = sectionDisplayMappings[sectionClassName];
-        displaySelectedItemsOnLoad(sectionClassName, displayFunction);
-      }
-    });
-  });
-
-  toggleButton.addEventListener("click", () => {
-    sidebarMainContainer.classList.toggle("active");
-
-    if (sidebarMainContainer.classList.contains("active")) {
-      removeToggleLines();
-      addArrowButton();
-    } else {
-      removeArrowButton();
-      addToggleLines();
-    }
-  });
-
+});
 
 function closeAndToggleCartModal() {
   closeCartModal();
@@ -1635,63 +1639,64 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-  const sidebarMainContainerEyeshadow = document.querySelector(".Sidebar_MainContainer");
-  const toggleButtonEyeshadow = document.createElement("div");
-  toggleButtonEyeshadow.classList.add("toggle-button");
-  toggleButtonEyeshadow.innerHTML = `
+const sidebarMainContainerEyeshadow = document.querySelector(
+  ".Sidebar_MainContainer"
+);
+const toggleButtonEyeshadow = document.createElement("div");
+toggleButtonEyeshadow.classList.add("toggle-button");
+toggleButtonEyeshadow.innerHTML = `
     <div class="toggle-line-Eyeshadow"></div>
     <div class="toggle-line-Eyeshadow"></div>
     <div class="toggle-line-Eyeshadow"></div>
   `;
-  const containerEyeshadw = document.getElementById("MainWrapper");
-  
-  containerEyeshadw.appendChild(toggleButtonEyeshadow);
+const containerEyeshadw = document.getElementById("MainWrapper");
 
-  function addToggleLinesEyeshadow() {
-    const toggleLines = toggleButtonEyeshadow.querySelectorAll(
-      ".toggle-line-Eyeshadow"
-    );
-    toggleLines.forEach((line) => {
-      line.style.display = "block";
-    });
-  }
+containerEyeshadw.appendChild(toggleButtonEyeshadow);
 
-  function addArrowButtonEyeshadow() {
-    const arrowButton = document.createElement("div");
-    arrowButton.classList.add("arrow-button-Eyeshadow");
-    arrowButton.innerHTML = "&#8592;";
-    toggleButtonEyeshadow.appendChild(arrowButton);
-  }
-
-  function removeArrowButtonEyeshadow() {
-    const arrowButton = toggleButtonEyeshadow.querySelector(
-      ".arrow-button-Eyeshadow"
-    );
-    if (arrowButton) {
-      toggleButton.removeChild(arrowButton);
-    }
-  }
-
-  function removeToggleLinesEyeshadow() {
-    const toggleLines = toggleButtonEyeshadow.querySelectorAll(
-      ".toggle-line-Eyeshadow"
-    );
-    toggleLines.forEach((line) => {
-      line.style.display = "none";
-    });
-  }
-  toggleButtonEyeshadow.addEventListener("click", () => {
-    sidebarMainContainerEyeshadow.classList.toggle("active");
-
-    if (sidebarMainContainerEyeshadow.classList.contains("active")) {
-      removeToggleLinesEyeshadow();
-      addArrowButtonEyeshadow();
-    } else {
-      removeArrowButtonEyeshadow();
-      addToggleLinesEyeshadow();
-    }
+function addToggleLinesEyeshadow() {
+  const toggleLines = toggleButtonEyeshadow.querySelectorAll(
+    ".toggle-line-Eyeshadow"
+  );
+  toggleLines.forEach((line) => {
+    line.style.display = "block";
   });
+}
+
+function addArrowButtonEyeshadow() {
+  const arrowButton = document.createElement("div");
+  arrowButton.classList.add("arrow-button-Eyeshadow");
+  arrowButton.innerHTML = "&#8592;";
+  toggleButtonEyeshadow.appendChild(arrowButton);
+}
+
+function removeArrowButtonEyeshadow() {
+  const arrowButton = toggleButtonEyeshadow.querySelector(
+    ".arrow-button-Eyeshadow"
+  );
+  if (arrowButton) {
+    toggleButton.removeChild(arrowButton);
+  }
+}
+
+function removeToggleLinesEyeshadow() {
+  const toggleLines = toggleButtonEyeshadow.querySelectorAll(
+    ".toggle-line-Eyeshadow"
+  );
+  toggleLines.forEach((line) => {
+    line.style.display = "none";
+  });
+}
+toggleButtonEyeshadow.addEventListener("click", () => {
+  sidebarMainContainerEyeshadow.classList.toggle("active");
+
+  if (sidebarMainContainerEyeshadow.classList.contains("active")) {
+    removeToggleLinesEyeshadow();
+    addArrowButtonEyeshadow();
+  } else {
+    removeArrowButtonEyeshadow();
+    addToggleLinesEyeshadow();
+  }
+});
 
 function closeAndToggleCartModalEyeshadow() {
   closeCartModalEyeshadow();
@@ -2192,63 +2197,64 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-  const sidebarMainContainerFoundation = document.querySelector(".Sidebar_MainContainer");
-  const toggleButtonFoundation = document.createElement("div");
-  toggleButtonFoundation.classList.add("toggle-button");
-  toggleButtonFoundation.innerHTML = `
+const sidebarMainContainerFoundation = document.querySelector(
+  ".Sidebar_MainContainer"
+);
+const toggleButtonFoundation = document.createElement("div");
+toggleButtonFoundation.classList.add("toggle-button");
+toggleButtonFoundation.innerHTML = `
     <div class="toggle-line-Foundation"></div>
     <div class="toggle-line-Foundation"></div>
     <div class="toggle-line-Foundation"></div>
   `;
-  const containerFoundation = document.getElementById("MainWrapper");
+const containerFoundation = document.getElementById("MainWrapper");
 
-  containerFoundation.appendChild(toggleButtonFoundation);
+containerFoundation.appendChild(toggleButtonFoundation);
 
-  function addToggleLinesFoundation() {
-    const toggleLines = toggleButtonFoundation.querySelectorAll(
-      ".toggle-line-Foundation"
-    );
-    toggleLines.forEach((line) => {
-      line.style.display = "block";
-    });
-  }
-
-  function addArrowButtonFoundation() {
-    const arrowButton = document.createElement("div");
-    arrowButton.classList.add("arrow-button-Foundation");
-    arrowButton.innerHTML = "&#8592;";
-    toggleButtonFoundation.appendChild(arrowButton);
-  }
-
-  function removeArrowButtonFoundation() {
-    const arrowButton = toggleButtonFoundation.querySelector(
-      ".arrow-button-Foundation"
-    );
-    if (arrowButton) {
-      toggleButton.removeChild(arrowButton);
-    }
-  }
-
-  function removeToggleLinesFoundation() {
-    const toggleLines = toggleButtonFoundation.querySelectorAll(
-      ".toggle-line-Foundation"
-    );
-    toggleLines.forEach((line) => {
-      line.style.display = "none";
-    });
-  }
-  toggleButtonFoundation.addEventListener("click", () => {
-    sidebarMainContainerFoundation.classList.toggle("active");
-
-    if (sidebarMainContainerFoundation.classList.contains("active")) {
-      removeToggleLinesFoundation();
-      addArrowButtonFoundation();
-    } else {
-      removeArrowButtonFoundation();
-      addToggleLinesFoundation();
-    }
+function addToggleLinesFoundation() {
+  const toggleLines = toggleButtonFoundation.querySelectorAll(
+    ".toggle-line-Foundation"
+  );
+  toggleLines.forEach((line) => {
+    line.style.display = "block";
   });
+}
 
+function addArrowButtonFoundation() {
+  const arrowButton = document.createElement("div");
+  arrowButton.classList.add("arrow-button-Foundation");
+  arrowButton.innerHTML = "&#8592;";
+  toggleButtonFoundation.appendChild(arrowButton);
+}
+
+function removeArrowButtonFoundation() {
+  const arrowButton = toggleButtonFoundation.querySelector(
+    ".arrow-button-Foundation"
+  );
+  if (arrowButton) {
+    toggleButton.removeChild(arrowButton);
+  }
+}
+
+function removeToggleLinesFoundation() {
+  const toggleLines = toggleButtonFoundation.querySelectorAll(
+    ".toggle-line-Foundation"
+  );
+  toggleLines.forEach((line) => {
+    line.style.display = "none";
+  });
+}
+toggleButtonFoundation.addEventListener("click", () => {
+  sidebarMainContainerFoundation.classList.toggle("active");
+
+  if (sidebarMainContainerFoundation.classList.contains("active")) {
+    removeToggleLinesFoundation();
+    addArrowButtonFoundation();
+  } else {
+    removeArrowButtonFoundation();
+    addToggleLinesFoundation();
+  }
+});
 
 function closeAndToggleCartModalFoundation() {
   closeCartModalFoundation();
@@ -2711,59 +2717,58 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-  const sidebarMainContainerBlush = document.querySelector(".Sidebar_MainContainer");
-  const toggleButtonBlush = document.createElement("div");
-  toggleButtonBlush.classList.add("toggle-button");
-  toggleButtonBlush.innerHTML = `
+const sidebarMainContainerBlush = document.querySelector(
+  ".Sidebar_MainContainer"
+);
+const toggleButtonBlush = document.createElement("div");
+toggleButtonBlush.classList.add("toggle-button");
+toggleButtonBlush.innerHTML = `
     <div class="toggle-line-Blush"></div>
     <div class="toggle-line-Blush"></div>
     <div class="toggle-line-Blush"></div>
   `;
-  const containerBlush = document.getElementById("MainWrapper");
+const containerBlush = document.getElementById("MainWrapper");
 
-  containerBlush.appendChild(toggleButtonBlush);
+containerBlush.appendChild(toggleButtonBlush);
 
-  function addToggleLinesBlush() {
-    const toggleLines =
-      toggleButtonBlush.querySelectorAll(".toggle-line-Blush");
-    toggleLines.forEach((line) => {
-      line.style.display = "block";
-    });
-  }
-
-  function addArrowButtonBlush() {
-    const arrowButton = document.createElement("div");
-    arrowButton.classList.add("arrow-button-Blush");
-    arrowButton.innerHTML = "&#8592;";
-    toggleButtonBlush.appendChild(arrowButton);
-  }
-
-  function removeArrowButtonBlush() {
-    const arrowButton = toggleButtonBlush.querySelector(".arrow-button-Blush");
-    if (arrowButton) {
-      toggleButton.removeChild(arrowButton);
-    }
-  }
-
-  function removeToggleLinesBlush() {
-    const toggleLines =
-      toggleButtonBlush.querySelectorAll(".toggle-line-Blush");
-    toggleLines.forEach((line) => {
-      line.style.display = "none";
-    });
-  }
-  toggleButtonBlush.addEventListener("click", () => {
-    sidebarMainContainerBlush.classList.toggle("active");
-
-    if (sidebarMainContainerBlush.classList.contains("active")) {
-      removeToggleLinesBlush();
-      addArrowButtonBlush();
-    } else {
-      removeArrowButtonBlush();
-      addToggleLinesBlush();
-    }
+function addToggleLinesBlush() {
+  const toggleLines = toggleButtonBlush.querySelectorAll(".toggle-line-Blush");
+  toggleLines.forEach((line) => {
+    line.style.display = "block";
   });
+}
 
+function addArrowButtonBlush() {
+  const arrowButton = document.createElement("div");
+  arrowButton.classList.add("arrow-button-Blush");
+  arrowButton.innerHTML = "&#8592;";
+  toggleButtonBlush.appendChild(arrowButton);
+}
+
+function removeArrowButtonBlush() {
+  const arrowButton = toggleButtonBlush.querySelector(".arrow-button-Blush");
+  if (arrowButton) {
+    toggleButton.removeChild(arrowButton);
+  }
+}
+
+function removeToggleLinesBlush() {
+  const toggleLines = toggleButtonBlush.querySelectorAll(".toggle-line-Blush");
+  toggleLines.forEach((line) => {
+    line.style.display = "none";
+  });
+}
+toggleButtonBlush.addEventListener("click", () => {
+  sidebarMainContainerBlush.classList.toggle("active");
+
+  if (sidebarMainContainerBlush.classList.contains("active")) {
+    removeToggleLinesBlush();
+    addArrowButtonBlush();
+  } else {
+    removeArrowButtonBlush();
+    addToggleLinesBlush();
+  }
+});
 
 function closeAndToggleCartModalBlush() {
   closeCartModalBlush();
@@ -3243,63 +3248,65 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-  const sidebarMainContainerConcealer = document.querySelector(".Sidebar_MainContainer");
-  const toggleButtonConcealer = document.createElement("div");
-  toggleButtonConcealer.classList.add("toggle-button");
-  toggleButtonConcealer.innerHTML = `
+const sidebarMainContainerConcealer = document.querySelector(
+  ".Sidebar_MainContainer"
+);
+const toggleButtonConcealer = document.createElement("div");
+toggleButtonConcealer.classList.add("toggle-button");
+toggleButtonConcealer.innerHTML = `
     <div class="toggle-line-Concealer"></div>
     <div class="toggle-line-Concealer"></div>
     <div class="toggle-line-Concealer"></div>
   `;
 
-  const containerConcealer = document.getElementById("MainWrapper");
+const containerConcealer = document.getElementById("MainWrapper");
 
-  containerConcealer.appendChild(toggleButtonConcealer);
+containerConcealer.appendChild(toggleButtonConcealer);
 
-  function addToggleLinesConcealer() {
-    const toggleLines = toggleButtonConcealer.querySelectorAll(
-      ".toggle-line-Concealer"
-    );
-    toggleLines.forEach((line) => {
-      line.style.display = "block";
-    });
-  }
-
-  function addArrowButtonConcealer() {
-    const arrowButton = document.createElement("div");
-    arrowButton.classList.add("arrow-button-Concealer");
-    arrowButton.innerHTML = "&#8592;";
-    toggleButtonConcealer.appendChild(arrowButton);
-  }
-
-  function removeArrowButtonConcealer() {
-    const arrowButton = toggleButtonConcealer.querySelector(
-      ".arrow-button-Concealer"
-    );
-    if (arrowButton) {
-      toggleButton.removeChild(arrowButton);
-    }
-  }
-
-  function removeToggleLinesConcealer() {
-    const toggleLines = toggleButtonConcealer.querySelectorAll(
-      ".toggle-line-Concealer"
-    );
-    toggleLines.forEach((line) => {
-      line.style.display = "none";
-    });
-  }
-  toggleButtonConcealer.addEventListener("click", () => {
-    sidebarMainContainerConcealer.classList.toggle("active");
-
-    if (sidebarMainContainerConcealer.classList.contains("active")) {
-      removeToggleLinesConcealer();
-      addArrowButtonConcealer();
-    } else {
-      removeArrowButtonConcealer();
-      addToggleLinesConcealer();
-    }
+function addToggleLinesConcealer() {
+  const toggleLines = toggleButtonConcealer.querySelectorAll(
+    ".toggle-line-Concealer"
+  );
+  toggleLines.forEach((line) => {
+    line.style.display = "block";
   });
+}
+
+function addArrowButtonConcealer() {
+  const arrowButton = document.createElement("div");
+  arrowButton.classList.add("arrow-button-Concealer");
+  arrowButton.innerHTML = "&#8592;";
+  toggleButtonConcealer.appendChild(arrowButton);
+}
+
+function removeArrowButtonConcealer() {
+  const arrowButton = toggleButtonConcealer.querySelector(
+    ".arrow-button-Concealer"
+  );
+  if (arrowButton) {
+    toggleButton.removeChild(arrowButton);
+  }
+}
+
+function removeToggleLinesConcealer() {
+  const toggleLines = toggleButtonConcealer.querySelectorAll(
+    ".toggle-line-Concealer"
+  );
+  toggleLines.forEach((line) => {
+    line.style.display = "none";
+  });
+}
+toggleButtonConcealer.addEventListener("click", () => {
+  sidebarMainContainerConcealer.classList.toggle("active");
+
+  if (sidebarMainContainerConcealer.classList.contains("active")) {
+    removeToggleLinesConcealer();
+    addArrowButtonConcealer();
+  } else {
+    removeArrowButtonConcealer();
+    addToggleLinesConcealer();
+  }
+});
 
 function closeAndToggleCartModalConcealer() {
   closeCartModalConcealer();
@@ -3537,4 +3544,4 @@ function submitPaynowbtnConcealer() {
   localStorage.removeItem("selectedItesmsArray"); // Clear local storage
 
   toggleCartModalConcealer();
-  }
+}
