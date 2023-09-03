@@ -2833,6 +2833,8 @@ button#submitOrderBtnConcealer:hover {
     display: flex !important;
     justify-content: center;
     font-size: 35px;
+    font-family: "Goldman", cursive;
+    font-weight: 400;
     }
   .arrow-button-Eyeshadow {
     color: black;
@@ -2900,6 +2902,8 @@ button#submitOrderBtnConcealer:hover {
     display: flex !important;
     justify-content: center;
     font-size: 35px;
+    font-family: "Goldman", cursive;
+    font-weight: 400;
     }
   .arrow-button-Foundation {
     color: black;
@@ -2967,7 +2971,10 @@ button#submitOrderBtnConcealer:hover {
   .logo_Sidebar_Cart_Blush {
     display: flex !important;
     justify-content: center;
-    font-size: 35px;  }
+    font-size: 35px; 
+    font-family: "Goldman", cursive;
+    font-weight: 400;
+   }
   .arrow-button-Blush {
     color: black;
   }
@@ -3035,6 +3042,8 @@ button#submitOrderBtnConcealer:hover {
     display: flex !important;
     justify-content: center;
     font-size: 35px;
+    font-family: "Goldman", cursive;
+    font-weight: 400;
     }
   .arrow-button-Concealer {
     color: black;
