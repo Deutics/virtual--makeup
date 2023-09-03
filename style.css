@@ -2733,10 +2733,9 @@ button#submitOrderBtnConcealer:hover {
   }
   .ArrowCart {
     display: block;
-    width: 40px;
-    font-size: 4rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -3.5rem;
+    margin-top: -3rem;
     cursor: pointer;
     color: black;
   }
@@ -2803,10 +2802,9 @@ button#submitOrderBtnConcealer:hover {
   }
   .ArrowCartEyeshadow {
     display: block;
-    width: 40px;
-    font-size: 4rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -3.5rem;
+    margin-top: -3rem;
     cursor: pointer;
     color: black;
   }
@@ -2872,10 +2870,9 @@ button#submitOrderBtnConcealer:hover {
   }
   .ArrowCartFoundation {
     display: block;
-    width: 40px;
-    font-size: 4rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -3.5rem;
+    margin-top: -3rem;
     cursor: pointer;
     color: black;
   }
@@ -2942,10 +2939,9 @@ button#submitOrderBtnConcealer:hover {
   }
   .ArrowCartBlush {
     display: block;
-    width: 40px;
-    font-size: 4rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -3.5rem;
+    margin-top: -3rem;
     cursor: pointer;
     color: black;
   }
@@ -3012,10 +3008,9 @@ button#submitOrderBtnConcealer:hover {
   }
   .ArrowCartConcealer {
     display: block;
-    width: 40px;
-    font-size: 4rem;
+    font-size: 3rem;
     margin-left: 5px;
-    margin-top: -3.5rem;
+    margin-top: -3rem;
     cursor: pointer;
     color: black;
   }
@@ -3272,7 +3267,7 @@ button#submitOrderBtnConcealer:hover {
   .arrow-button {
     font-size: 45px;
     margin-left: 12px;
-    /* margin-top: -7px; */
+    margin-top: -7px;
     cursor: pointer;
     color: white;
   }
