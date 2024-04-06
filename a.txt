@@ -1,0 +1,12 @@
+numpy
+flask_socketio
+opencv_contrib_python
+eventlet
+
+opencv_python
+
+Flask
+mediapipe
+
+deepface
+django-environ==0.10.0
