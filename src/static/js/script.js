@@ -132,7 +132,7 @@ function setEyeshadeColor(color) {
 /***********************************************************************************************
  **************************************************************************************************/
 
-function createMakeupMask(faceLandmarks, makeup_data) {
+function createMakeupMask(faceLandmarks, makeup_data, ctx) {
     // if makeup is applied
     if (
         makeup_data.color[0] !== 0 ||
@@ -150,9 +150,6 @@ function createMakeupMask(faceLandmarks, makeup_data) {
             ', ' +
             makeup_data.beta_value.toString() +
             ')'
-        var canvas = document.getElementById('canvas')
-        const video = document.getElementById('videoElement')
-        var ctx = canvas.getContext('2d')
 
         for (let i = 0; i < makeup_data.landmarks.length; i++) {
             const landmark = makeup_data.landmarks[i]
@@ -198,8 +195,11 @@ async function get_facemesh() {
 
     // process input stream frame by frame
     while (1) {
-        canvas.height = video.videoHeight
+        // Set canvas dimensions to match the video
         canvas.width = video.videoWidth
+        canvas.height = video.videoHeight
+
+        // Draw the current video frame onto the hidden canvas
         ctx.drawImage(video, 0, 0)
 
         // detect faces
@@ -209,24 +209,25 @@ async function get_facemesh() {
             // loop through faces array to capture multiple faces
             var keypoints = faces[0].scaledMesh
 
-            createMakeupMask(keypoints, foundation_data)
-            createMakeupMask(keypoints, lipstick_data)
-            createMakeupMask(keypoints, concealer_data)
-            createMakeupMask(keypoints, eyeshade_data)
-            createMakeupMask(keypoints, blush_data)
+            createMakeupMask(keypoints, foundation_data, ctx)
+            createMakeupMask(keypoints, lipstick_data, ctx)
+            createMakeupMask(keypoints, concealer_data, ctx)
+            createMakeupMask(keypoints, eyeshade_data, ctx)
+            createMakeupMask(keypoints, blush_data, ctx)
         }
 
-        var dataURL = canvas.toDataURL()
-        ctx.clearRect(0, 0, video.videoWidth, video.videoHeight)
+        const dataUrl = canvas.toDataURL()
 
-        // Set data URL as the src attribute of the img tag
+        // Clear the hidden canvas for the next frame
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-        document.getElementById('photo').src = dataURL
+        photo.src = dataUrl
 
         // loop to process the next frame
         await tf.nextFrame()
     }
 }
+
 function rgbToList(rgbString) {
     var valuesString = rgbString.replace('rgb(', '').replace(')', '')
 
@@ -254,8 +255,6 @@ String.prototype.convertToRGB = function () {
     const r = parseInt(this.slice(1, 3), 16)
     const g = parseInt(this.slice(3, 5), 16)
     const b = parseInt(this.slice(5, 7), 16)
-    console.log(r, g, b)
-
     return [r, g, b]
 }
 
@@ -482,10 +481,10 @@ const productsForRaces = {
 var cartItems = {}
 
 const updateCartItems = () => {
-    Object.keys(productsForRaces).forEach((key) => {
+    Object.keys(productsForRaces).forEach(key => {
         let selectedRace = suggested_race ? suggested_race : default_race
         if (selectedRace === key) {
-            productsForRaces[key].forEach((item) => {
+            productsForRaces[key].forEach(item => {
                 cartItems[item.productType] = item
             })
         }
@@ -1421,11 +1420,11 @@ const comingsoonImage = () => {
 // list Items in cart
 const listItemsInCart = () => {
     document.getElementById('cart').innerHTML = ''
-    console.log(Object.keys(cartItems))
+
     if (Object.keys(cartItems).length === 0) {
         document.getElementById('cart').innerHTML = 'No product is selected.'
     } else {
-        Object.keys(cartItems).forEach((item) => {
+        Object.keys(cartItems).forEach(item => {
             let cart = document.getElementById('cart')
             let cartItem = document.createElement('div')
             cartItem.classList.add('cart__item')
@@ -1451,7 +1450,7 @@ const listItemsInCart = () => {
             remove.addEventListener('click', () => {
                 document
                     .querySelectorAll(`#shade`)
-                    .forEach((item) => item.classList.remove('productBorder'))
+                    .forEach(item => item.classList.remove('productBorder'))
 
                 if (cartItems[item].productType === 'lipstick') {
                     setLipstickColor([0, 0, 0])
@@ -1476,7 +1475,7 @@ const listItemsInCart = () => {
     }
 }
 // list all product
-const listAllProducts = (shade) => {
+const listAllProducts = shade => {
     let headerValue = document.getElementById('header').innerHTML
 
     if (!shade) {
@@ -1500,7 +1499,7 @@ const listAllProducts = (shade) => {
     // checking if that particular product has any element in the array
     if (products[headerValue].length !== 0) {
         document.getElementById('products').classList.remove('comingSoonToggle')
-        if (products[headerValue].find((i) => i.type === shade)) {
+        if (products[headerValue].find(i => i.type === shade)) {
             products[headerValue].forEach((item, i) => {
                 if (item.type === shade) {
                     let product = document.createElement('div')
@@ -1526,7 +1525,7 @@ const listAllProducts = (shade) => {
                             product.classList.remove('productBorder')
                             document
                                 .querySelectorAll('#product')
-                                .forEach((item) =>
+                                .forEach(item =>
                                     item.classList.remove('productBorder')
                                 )
                             if (item.productType === 'lipstick') {
@@ -1543,7 +1542,7 @@ const listAllProducts = (shade) => {
                         } else {
                             document
                                 .querySelectorAll('#product')
-                                .forEach((item) =>
+                                .forEach(item =>
                                     item.classList.remove('productBorder')
                                 )
                             product.classList.add('productBorder')
@@ -1610,7 +1609,7 @@ function setAiRecommendations(race) {
 }
 
 // sidebar items click handler
-const sideBarItemClick = (item) => {
+const sideBarItemClick = item => {
     // closing sidebar if in mobile view
     if (sideBar.style.display === 'block' && window.innerWidth < 786) {
         handleCloseSideBar()
@@ -1644,11 +1643,9 @@ const sideBarItemClick = (item) => {
 const renderShadesOrRaces = () => {
     document.getElementById('shades').innerHTML = ''
 
-    //console.log('suggested race', suggested_race)
-
     if (document.getElementById('header').innerHTML === 'ai beauty') {
         // rendering all shades
-        races.forEach((item) => {
+        races.forEach(item => {
             let shade = document.createElement('div')
 
             if (suggested_race === 'white' && item === 'A') {
@@ -1702,24 +1699,23 @@ const renderShadesOrRaces = () => {
     }
 }
 
-const onClickShadeHandler = (shade) => {
+const onClickShadeHandler = shade => {
     let element = document.getElementById(shade.target.myParam)
 
     if (element && !element.classList.contains('selectedShade')) {
-        console.log(shade.target.myParam)
         // showing respected products
         listAllProducts(shade.target.myParam)
         // updating Ui
         document
             .querySelectorAll('.shade')
-            .forEach((item) => item.classList.remove('selectedShade'))
+            .forEach(item => item.classList.remove('selectedShade'))
         element.classList.add('selectedShade')
     }
 }
 
 // function to go to app
 
-const handleOnClickcategory = (val) => {
+const handleOnClickcategory = val => {
     // hiding landing page and showing app
     document.getElementById('app').style.display = 'flex'
     document.getElementById('landingPage').style.display = 'none'
@@ -1745,7 +1741,10 @@ window.onload = function () {
 
     var x = window.matchMedia('(max-width: 786px)')
     myFunction(x) // Call listener function at run time
-    x.addListener(myFunction) // Attach listener function on state changes
+    // Attach listener function on state changes
+    x.addEventListener('change', function (e) {
+        myFunction(e.target)
+    })
 
     // showing header only
     document.getElementById('app').style.display = 'none'
@@ -1768,7 +1767,6 @@ window.onload = function () {
     )
 
     async function sendFrame() {
-        //console.log('Inside')
         const canvas = document.createElement('canvas')
         const context = canvas.getContext('2d')
         canvas.width = video.videoWidth

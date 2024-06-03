@@ -34,6 +34,17 @@ body {
     color: #fff;
     font-size: 2rem;
 }
+.lp__categories-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 88vh;
+    overflow: scroll;
+}
+
+.lp__categories-container::-webkit-scrollbar {
+    display: none;
+}
 
 .lp__categories {
     display: flex;
@@ -106,20 +117,18 @@ body {
 
 .processedImg {
     width: 100%;
-    height: 50vh;
+    /* height: 50vh; */
     object-fit: cover;
     display: none;
 }
 .page {
     background-color: #faf9f6;
-
     width: 80vw;
-
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
     text-align: center;
-
+    height: 100vh;
     /* background-image: url("../img/samples.jpg"); */
 }
 
@@ -132,6 +141,11 @@ body {
     display: flex;
     justify-content: space-between;
     padding-top: 1.5em;
+    height: 85vh;
+    overflow: scroll;
+}
+.contentContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .mainImage_innerWrapper {
@@ -147,8 +161,13 @@ body {
     width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 1.5rem;
     margin-left: 10px;
+    margin-right: 15px;
+    overflow: scroll;
+}
+.container::-webkit-scrollbar {
+    display: none;
 }
 
 .comingSoonToggle {
@@ -192,8 +211,8 @@ body {
 }
 
 .shades {
-    height: 10%;
-    padding: 1em 0;
+    /* height: 10%;
+    padding: 1em 0; */
     display: flex;
 }
 
@@ -329,14 +348,13 @@ body {
 }
 
 .cartContainer {
-    height: 30dvh;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 .cart {
     height: 50%;
-
     overflow-y: scroll;
 }
 ::-webkit-scrollbar {
@@ -362,11 +380,11 @@ body {
 .cart__title {
     font-weight: 700;
     text-align: left;
-    padding: 0.5em 0;
+    /* padding: 0.5em 0; */
     font-size: 1.2em;
 }
 .add_to_cart {
-    margin: 2em 0;
+    /* margin: 1em 0; */
     background-color: #baabab;
     width: 100%;
     padding: 1em 0em;
@@ -479,14 +497,14 @@ body {
     font-family: 'Goldman';
     justify-content: center;
     font-size: 1.8em;
-    height: 10vh;
+    height: 12vh;
 }
 
 .branding2 {
     font-family: 'Goldman';
     justify-content: center;
     font-size: 1.8rem;
-    height: 10vh;
+    height: 12vh;
 }
 
 .branding__footer {
@@ -590,7 +608,7 @@ body {
         font-size: 0.7em;
     }
     .shades {
-        width: 80dvw;
+        /* width: 80dvw; */
         overflow-x: scroll;
     }
     .closed {
@@ -607,7 +625,7 @@ body {
         width: 45px;
     }
     .cartContainer {
-        height: 30dvh;
+        height: fit-content;
     }
 }
 
@@ -715,7 +733,6 @@ body {
 
     .contentContainer {
         display: flex;
-
         justify-content: flex-start;
     }
     .products {
@@ -826,7 +843,7 @@ body {
         padding: 0.5em 0em;
     }
     .cartContainer {
-        height: 30dvh;
+        height: fit-content;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -840,17 +857,17 @@ body {
         flex-direction: column;
         justify-content: left;
         margin-left: 10px;
+        margin-right: 15px;
         height: 100%;
     }
     .processedImg {
         width: 100%;
-        height: 60vh;
+        height: 35vh;
         object-fit: cover;
         display: none;
     }
     .cart {
         height: 50%;
-
         overflow-y: scroll;
     }
     ::-webkit-scrollbar {
