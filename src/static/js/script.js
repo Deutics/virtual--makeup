@@ -132,101 +132,69 @@ function setEyeshadeColor(color) {
 /***********************************************************************************************
  **************************************************************************************************/
 
-function createMakeupMask(faceLandmarks, makeup_data, ctx) {
-    // if makeup is applied
-    if (
-        makeup_data.color[0] !== 0 ||
-        makeup_data.color[1] !== 0 ||
-        makeup_data.color[2] !== 0
-    ) {
-        // setting color in rgba format
-        color =
-            'rgba(' +
-            makeup_data.color[0].toString() +
-            ', ' +
-            makeup_data.color[1].toString() +
-            ', ' +
-            makeup_data.color[2].toString() +
-            ', ' +
-            makeup_data.beta_value.toString() +
-            ')'
+function createMakeupMask(faceLandmarks, makeup_data, frame) {
+    try {
+        if (
+            makeup_data.color[0] !== 0 ||
+            makeup_data.color[1] !== 0 ||
+            makeup_data.color[2] !== 0
+        ) {
+            // setting color in RGBA format
+            const color = new cv.Scalar(
+                makeup_data.color[0],
+                makeup_data.color[1],
+                makeup_data.color[2],
+                makeup_data.beta_value * 255 // OpenCV expects alpha to be between 0-255
+            )
 
-        for (let i = 0; i < makeup_data.landmarks.length; i++) {
-            const landmark = makeup_data.landmarks[i]
-            const points = []
-            for (let j = 0; j < landmark.length; j++) {
-                const idx = landmark[j]
-                const x = faceLandmarks[idx][0]
-                const y = faceLandmarks[idx][1]
-                points.push({ x: x, y: y })
+            for (let i = 0; i < makeup_data.landmarks.length; i++) {
+                const landmark = makeup_data.landmarks[i]
+                const points = []
+                for (let j = 0; j < landmark.length; j++) {
+                    const idx = landmark[j]
+                    const x = Math.floor(faceLandmarks[idx][0])
+                    const y = Math.floor(faceLandmarks[idx][1])
+                    points.push(x, y)
+                }
+
+                const mask = new cv.Mat.zeros(
+                    frame.rows,
+                    frame.cols,
+                    cv.CV_8UC4
+                )
+                const counterMat = cv.matFromArray(
+                    points.length / 2,
+                    1,
+                    cv.CV_32SC2,
+                    points
+                )
+                const contour = new cv.MatVector()
+                contour.push_back(counterMat)
+                cv.fillPoly(mask, contour, color)
+
+                // Apply blur if specified
+                if (makeup_data.blur) {
+                    const ksize = new cv.Size(5, 5) // You can adjust the kernel size
+                    cv.GaussianBlur(mask, mask, ksize, 0)
+                }
+
+                // Overlay the mask on the frame
+                cv.addWeighted(
+                    frame,
+                    1.0,
+                    mask,
+                    makeup_data.beta_value,
+                    0,
+                    frame
+                )
+
+                mask.delete()
+                counterMat.delete()
+                contour.delete()
             }
-            ctx.fillStyle = color
-            ctx.beginPath()
-            ctx.moveTo(points[0].x, points[0].y)
-            for (let k = 1; k < points.length; k++) {
-                ctx.lineTo(points[k].x, points[k].y)
-            }
-
-            console.log(makeup_data.blur)
-            ctx.filter = makeup_data.blur
-            ctx.closePath()
-            ctx.fill()
         }
-    }
-}
-
-async function get_facemesh() {
-    // load HTML canvas
-    var canvas = document.getElementById('canvas')
-    var ctx = canvas.getContext('2d')
-
-    // get video stream
-    const video = document.getElementById('videoElement')
-
-    // load facemesh model
-    const model = await facemesh.load((maxFaces = 1))
-
-    let photo = document.getElementById('photo')
-    photo.style.display = 'block'
-
-    let loaderContainer = document.getElementById('loaderContainer')
-    loaderContainer.style.display = 'none'
-
-    let loader = document.getElementById('loader')
-    loader.style.display = 'none'
-
-    // process input stream frame by frame
-    while (1) {
-        // Set canvas dimensions to match the video
-        canvas.width = video.videoWidth
-        canvas.height = video.videoHeight
-
-        // Draw the current video frame onto the hidden canvas
-        ctx.drawImage(video, 0, 0)
-
-        // detect faces
-        const faces = await model.estimateFaces(video)
-
-        if (faces.length != 0) {
-            // loop through faces array to capture multiple faces
-            var keypoints = faces[0].scaledMesh
-
-            createMakeupMask(keypoints, foundation_data, ctx)
-            createMakeupMask(keypoints, lipstick_data, ctx)
-            createMakeupMask(keypoints, concealer_data, ctx)
-            createMakeupMask(keypoints, eyeshade_data, ctx)
-            createMakeupMask(keypoints, blush_data, ctx)
-        }
-
-        const dataUrl = canvas.toDataURL()
-
-        // Clear the hidden canvas for the next frame
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-        photo.src = dataUrl
-
-        // loop to process the next frame
-        await tf.nextFrame()
+    } catch (err) {
+        console.log('Processing Makeup: ', err)
     }
 }
 
@@ -1730,8 +1698,6 @@ const handleOnClickcategory = val => {
 }
 
 function onOpenCvReady() {
-    console.log('OpenCV.js is ready.')
-
     window.onload = function () {
         page.addEventListener('click', () => {
             if (sideBar.style.display === 'block' && window.innerWidth < 786) {
@@ -1781,33 +1747,89 @@ function onOpenCvReady() {
 
         const video = document.getElementById('videoInput')
 
+        console.log(video.videoWidth, video.videoHeight)
+
+        console.log(video.width, video.height)
+
+        var canvas = document.getElementById('canvasOutput')
+        var ctx = canvas.getContext('2d')
+        console.log(canvas.width, canvas.height)
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
+
         // Load OpenCV asynchronously to avoid blocking the page load
         cv['onRuntimeInitialized'] = () => {
             navigator.mediaDevices
                 .getUserMedia({ video: true, audio: false })
                 .then(async stream => {
                     video.srcObject = stream
-                    await video.play()
+                    // await video.play()
+                    video.addEventListener('loadedmetadata', async () => {
+                        console.log(
+                            'Loaded Video Metadata Dimensions:',
+                            video.videoWidth,
+                            video.videoHeight
+                        )
+                        //Ensure video is playing to get correct video dimensions
+                        await video.play()
 
-                    console.log('Video element ready state:', video.readyState) // Check ready state
+                        const model = await facemesh.load()
 
-                    const cap = new cv.VideoCapture(video)
+                        // Ensure we have correct dimensions
+                        const videoWidth = video.videoWidth
+                        const videoHeight = video.videoHeight
 
-                    let src = new cv.Mat(video.height, video.width, cv.CV_8UC4)
-                    let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1)
+                        // Update canvas size to match video dimensions if needed
+                        // canvas.width = videoWidth
+                        // canvas.height = videoHeight
 
-                    function processFrame() {
-                        try {
-                            cap.read(src)
-                            cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY)
-                            cv.imshow('canvasOutput', dst)
-                        } catch (err) {
-                            console.error('Error processing frame', err)
+                        const cap = new cv.VideoCapture(video)
+                        const src = new cv.Mat(
+                            video.height,
+                            video.width,
+                            cv.CV_8UC4
+                        )
+
+                        async function processFrame() {
+                            try {
+                                cap.read(src)
+                                const faces = await model.estimateFaces(video)
+
+                                if (faces.length > 0) {
+                                    const keypoints = faces[0].scaledMesh
+                                    console.log('Keypoints:', keypoints)
+
+                                    // Create and draw masks
+                                    createMakeupMask(
+                                        keypoints,
+                                        foundation_data,
+                                        src
+                                    )
+                                    createMakeupMask(
+                                        keypoints,
+                                        lipstick_data,
+                                        src
+                                    )
+                                    createMakeupMask(
+                                        keypoints,
+                                        concealer_data,
+                                        src
+                                    )
+                                    createMakeupMask(
+                                        keypoints,
+                                        eyeshade_data,
+                                        src
+                                    )
+                                    createMakeupMask(keypoints, blush_data, src)
+                                }
+
+                                cv.imshow('canvasOutput', src)
+                            } catch (err) {
+                                console.error('Error processing frame', err)
+                            }
                         }
-                    }
 
-                    // Main processing loop
-                    setInterval(processFrame, 100)
+                        setInterval(processFrame, 100)
+                    })
                 })
                 .catch(err => {
                     console.error('Error accessing webcam: ', err)
