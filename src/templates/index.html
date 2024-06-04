@@ -4,30 +4,12 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script
-            src="https://cdn.socket.io/4.6.0/socket.io.min.js"
-            integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
-            crossorigin="anonymous"
-        ></script>
-        <link
-            rel="stylesheet"
-            href="{{ url_for('static', filename='css/style.css') }}"
-        />
-        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+        <!-- External StyleSheets -->
         <link
             href="https://fonts.googleapis.com/css?family=Goldman"
             rel="stylesheet"
         />
-        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/facemesh"></script>
-        <link
-            href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
-            rel="stylesheet"
-        />
-
-        <link rel="stylesheet" href="../static/css/style.css" />
-        <script src="../static/js/script.js"></script>
-
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
             rel="stylesheet"
@@ -38,6 +20,13 @@
             href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,200;10..48,700&display=swap"
             rel="stylesheet"
         />
+        <!-- Local CSS -->
+        <link rel="stylesheet" href="../static/css/style.css" />
+        <!-- <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        /> -->
+
         <title>Virtual Makeup</title>
     </head>
     <body>
@@ -298,7 +287,8 @@
                     <div class="contentContainer">
                         <div class="products" id="products"></div>
                         <div id="container" class="container">
-                            <img id="photo" class="processedImg" />
+                            <!-- <img id="photo" class="processedImg" /> -->
+                            <canvas id="photo" class="processedImg"></canvas>
                             <div class="loaderContainer" id="loaderContainer">
                                 <img
                                     id="loader"
@@ -349,6 +339,20 @@
                 </div>
             </div>
         </div>
-        <script></script>
+
+        <!-- External Scripts -->
+        <script
+            src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+            integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+            crossorigin="anonymous"
+        ></script>
+        <script async src="https://docs.opencv.org/master/opencv.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/facemesh"></script>
+
+        <!-- Local JS -->
+        <!-- <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
+
+        <script src="../static/js/script.js"></script>
     </body>
 </html>

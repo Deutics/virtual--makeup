@@ -166,6 +166,8 @@ function createMakeupMask(faceLandmarks, makeup_data, ctx) {
             for (let k = 1; k < points.length; k++) {
                 ctx.lineTo(points[k].x, points[k].y)
             }
+
+            console.log(makeup_data.blur)
             ctx.filter = makeup_data.blur
             ctx.closePath()
             ctx.fill()
@@ -1766,47 +1768,71 @@ window.onload = function () {
         }
     )
 
-    async function sendFrame() {
-        const canvas = document.createElement('canvas')
-        const context = canvas.getContext('2d')
-        canvas.width = video.videoWidth
-        canvas.height = video.videoHeight
-        context.drawImage(video, 0, 0, canvas.width, canvas.height)
-        const imageData = canvas.toDataURL('image/jpeg') // Convert the frame to base64-encoded JPEG image data
-
-        socket.emit('image', imageData) // Send the frame to the Python server
-
-        setTimeout(sendFrame, 30000) // Repeat every 30 seconds
-    }
-
     // Recieve race
     socket.on('race', function (race) {
         getPersonRace(race)
     })
 
-    video = document.getElementById('videoElement')
-
-    // // setting width & height to 1 as we dont want to show the video, only want to capture frames from it
-    video.width = '1'
-    video.height = '1'
-    if (navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices
-            .getUserMedia({ video: true })
-            .then(function (stream) {
-                video.srcObject = stream
-            })
+    const video = document.getElementById('video')
+    const canvas = document.getElementById('photo')
+    const context = canvas.getContext('2d')
+    let processing = false
+    // Use OpenCV.js for real-time processing
+    Module.onRuntimeInitialized = () => {
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices
+                .getUserMedia({ video: true })
+                .then(function (stream) {
+                    const video = document.getElementById('video')
+                    video.srcObject = stream
+                    video.play() // Start video playback
+                    video.addEventListener('playing', () => {
+                        processing = true
+                        processFrame()
+                    })
+                })
+        }
     }
 
-    // run face-mesh model once the video is ready for processing
-    main()
+    function processFrame() {
+        if (!processing) return // Avoid processing before video starts
 
-    function main() {
-        // check if the video is loaded and ready for processing
-        if (video.readyState == 4) {
-            get_facemesh()
-            sendFrame()
-        } else {
-            setTimeout(main, 1000 / 60)
+        const cap = new cv.VideoCapture(video)
+        if (!cap.isOpened()) {
+            console.error('Error opening video capture')
+            return
         }
+
+        const src = new cv.Mat(video.videoHeight, video.videoWidth, cv.CV_8UC4)
+        cap.read(src)
+
+        // Face detection (replace with your preferred method)
+        const faceCascade = new cv.CascadeClassifier()
+        faceCascade.load('haarcascade_frontalface_default.xml') // Load pre-trained face classifier (download and place file)
+        const gray = new cv.Mat()
+        cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY)
+        const faces = new cv.RectVector()
+        faceCascade.detectMultiScale(gray, faces)
+
+        // Apply makeup effects within the detected face regions (replace with your logic)
+        for (let i = 0; i < faces.size(); ++i) {
+            const faceRect = faces.get(i)
+            const faceMat = src.roi(faceRect)
+
+            // ... (replace with OpenCV.js functions for makeup effects)
+            // Example: cv.inRange(faceMat, lowerColor, upperColor) for lipstick masking
+            // Remember to convert colors to BGR format for OpenCV.js
+
+            // Draw face rectangle for visualization (optional)
+            cv.rectangle(src, faceRect, new cv.Scalar(0, 255, 0), 2)
+        }
+
+        cv.imshow('photo', src)
+
+        src.delete()
+        gray.delete()
+        cap.release() // Release resources efficiently
+
+        requestAnimationFrame(processFrame) // Optimized frame processing loop
     }
 }
