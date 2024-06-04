@@ -1729,138 +1729,89 @@ const handleOnClickcategory = val => {
     renderShadesOrRaces()
 }
 
-// when document is rendered
-window.onload = function () {
-    page.addEventListener('click', () => {
-        if (sideBar.style.display === 'block' && window.innerWidth < 786) {
+function onOpenCvReady() {
+    console.log('OpenCV.js is ready.')
+
+    window.onload = function () {
+        page.addEventListener('click', () => {
+            if (sideBar.style.display === 'block' && window.innerWidth < 786) {
+                handleCloseSideBar()
+            }
+        })
+
+        function myFunction(x) {
+            handleOpenSideBar()
+        }
+
+        var x = window.matchMedia('(max-width: 786px)')
+        myFunction(x) // Call listener function at run time
+        // Attach listener function on state changes
+        x.addEventListener('change', function (e) {
+            myFunction(e.target)
+        })
+
+        // showing header only
+        document.getElementById('app').style.display = 'none'
+
+        // handling sidebar for mobile version
+        if (window.innerWidth < 786) {
             handleCloseSideBar()
         }
-    })
 
-    function myFunction(x) {
-        handleOpenSideBar()
-    }
+        //listAllProducts();
+        //renderShadesOrRaces();
 
-    var x = window.matchMedia('(max-width: 786px)')
-    myFunction(x) // Call listener function at run time
-    // Attach listener function on state changes
-    x.addEventListener('change', function (e) {
-        myFunction(e.target)
-    })
-
-    // showing header only
-    document.getElementById('app').style.display = 'none'
-
-    // handling sidebar for mobile version
-    if (window.innerWidth < 786) {
-        handleCloseSideBar()
-    }
-
-    //listAllProducts()
-    //renderShadesOrRaces()
-
-    // Periodically update the race every 30 seconds
-    setInterval(getPersonRace, 30000)
-    var socket = io.connect(
-        window.location.protocol + '//' + document.domain + ':' + location.port,
-        {
-            transports: ['websocket'],
-        }
-    )
-
-    // Recieve race
-    socket.on('race', function (race) {
-        getPersonRace(race)
-    })
-
-    const video = document.getElementById('videoElement')
-    const canvas = document.getElementById('photo')
-    const context = canvas.getContext('2d')
-    let processing = false
-    // Use OpenCV.js for real-time processing
-    Module.onRuntimeInitialized = () => {
-        if (navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices
-                .getUserMedia({ video: true })
-                .then(function (stream) {
-                    video.srcObject = stream
-                    video.play() // Start video playback
-                    video.addEventListener('playing', () => {
-                        processing = true
-                        processFrame()
-                    })
-                })
-        }
-    }
-
-    async function processFrame() {
-        try {
-            if (!processing) return // Avoid processing before video starts
-
-            if (video.readyState === video.HAVE_ENOUGH_DATA) {
-                const cap = new cv.VideoCapture(video)
-                const src = new cv.Mat(
-                    video.videoHeight,
-                    video.videoHeight,
-                    cv.CV_8UC4
-                )
-                // let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1)
-                // if (!cap.isOpened()) {
-                //     console.error('Error opening video capture')
-                //     return
-                // }
-                // Face detection
-                // const faceCascade = new cv.CascadeClassifier()
-                // Update the path to the Haar Cascade file as needed
-
-                let classifier = new cv.CascadeClassifier() // initialize classifier
-
-                let utils = new Utils('errorMessage') //use utils class
-
-                let faceCascadeFile = 'haarcascade_frontalface_default.xml' // path to xml
-
-                // use createFileFromUrl to "pre-build" the xml
-                utils.createFileFromUrl(
-                    faceCascadeFile,
-                    faceCascadeFile,
-                    () => {
-                        classifier.load(faceCascadeFile) // in the callback, load the cascade from file
-                    }
-                )
-
-                // faceCascade.load('haarcascade_frontalface_default.xml')
-
-                const gray = new cv.Mat()
-                cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY)
-                const faces = new cv.RectVector()
-                faceCascade.detectMultiScale(gray, faces)
-
-                // Apply makeup effects within the detected face regions (replace with your logic)
-                for (let i = 0; i < faces.size(); ++i) {
-                    const faceRect = faces.get(i)
-                    const faceMat = src.roi(faceRect)
-
-                    // ... (replace with OpenCV.js functions for makeup effects)
-                    // Example: cv.inRange(faceMat, lowerColor, upperColor) for lipstick masking
-                    // Remember to convert colors to BGR format for OpenCV.js
-
-                    // Draw face rectangle for visualization (optional)
-                    cv.rectangle(src, faceRect, new cv.Scalar(0, 255, 0), 2)
-                }
-
-                cv.imshow('photo', src)
-
-                src.delete()
-                gray.delete()
-                cap.release() // Release resources efficiently
-
-                requestAnimationFrame(processFrame) // Optimized frame processing loop
-            } else {
-                console.log('Video is not ready yet')
-                requestAnimationFrame(processFrame) // Retry on next frame
+        // Periodically update the race every 30 seconds
+        setInterval(getPersonRace, 30000)
+        var socket = io.connect(
+            window.location.protocol +
+                '//' +
+                document.domain +
+                ':' +
+                location.port,
+            {
+                transports: ['websocket'],
             }
-        } catch (err) {
-            console.error('Error during processFrame:', err)
+        )
+
+        // Recieve race
+        socket.on('race', function (race) {
+            getPersonRace(race)
+        })
+
+        const video = document.getElementById('videoInput')
+
+        // Load OpenCV asynchronously to avoid blocking the page load
+        cv['onRuntimeInitialized'] = () => {
+            navigator.mediaDevices
+                .getUserMedia({ video: true, audio: false })
+                .then(async stream => {
+                    video.srcObject = stream
+                    await video.play()
+
+                    console.log('Video element ready state:', video.readyState) // Check ready state
+
+                    const cap = new cv.VideoCapture(video)
+
+                    let src = new cv.Mat(video.height, video.width, cv.CV_8UC4)
+                    let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1)
+
+                    function processFrame() {
+                        try {
+                            cap.read(src)
+                            cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY)
+                            cv.imshow('canvasOutput', dst)
+                        } catch (err) {
+                            console.error('Error processing frame', err)
+                        }
+                    }
+
+                    // Main processing loop
+                    setInterval(processFrame, 100)
+                })
+                .catch(err => {
+                    console.error('Error accessing webcam: ', err)
+                })
         }
     }
 }

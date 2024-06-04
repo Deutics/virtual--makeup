@@ -288,7 +288,7 @@
                         <div class="products" id="products"></div>
                         <div id="container" class="container">
                             <!-- <img id="photo" class="processedImg" /> -->
-                            <canvas id="photo" class="processedImg"></canvas>
+                            <canvas id="canvasOutput"></canvas>
                             <div class="loaderContainer" id="loaderContainer">
                                 <img
                                     id="loader"
@@ -301,7 +301,10 @@
                                 playsinline
                                 autoplay
                                 muted
-                                id="videoElement"
+                                id="videoInput"
+                                height="240"
+                                width="320"
+                                style="visibility: hidden"
                             ></video>
                             <!-- <canvas
                                 id="canvas"
@@ -311,7 +314,7 @@
                                     top: 0;
                                     left: 0;
                                     z-index: -3;
-                                    visibility: hidden;
+                                    
                                 "
                             ></canvas> -->
                             <div class="cartContainer">
@@ -346,7 +349,8 @@
             integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
             crossorigin="anonymous"
         ></script>
-        <script async src="https://docs.opencv.org/master/opencv.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/opencv.js/6.0.0/opencv.js"></script> -->
+
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/facemesh"></script>
 
@@ -354,5 +358,12 @@
         <!-- <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
 
         <script src="../static/js/script.js"></script>
+
+        <script
+            async
+            src="https://docs.opencv.org/4.x/opencv.js"
+            onload="onOpenCvReady();"
+            type="text/javascript"
+        ></script>
     </body>
 </html>
