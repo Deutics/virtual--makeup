@@ -1773,7 +1773,7 @@ window.onload = function () {
         getPersonRace(race)
     })
 
-    const video = document.getElementById('video')
+    const video = document.getElementById('videoElement')
     const canvas = document.getElementById('photo')
     const context = canvas.getContext('2d')
     let processing = false
@@ -1783,7 +1783,6 @@ window.onload = function () {
             navigator.mediaDevices
                 .getUserMedia({ video: true })
                 .then(function (stream) {
-                    const video = document.getElementById('video')
                     video.srcObject = stream
                     video.play() // Start video playback
                     video.addEventListener('playing', () => {
@@ -1794,45 +1793,74 @@ window.onload = function () {
         }
     }
 
-    function processFrame() {
-        if (!processing) return // Avoid processing before video starts
+    async function processFrame() {
+        try {
+            if (!processing) return // Avoid processing before video starts
 
-        const cap = new cv.VideoCapture(video)
-        if (!cap.isOpened()) {
-            console.error('Error opening video capture')
-            return
+            if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                const cap = new cv.VideoCapture(video)
+                const src = new cv.Mat(
+                    video.videoHeight,
+                    video.videoHeight,
+                    cv.CV_8UC4
+                )
+                // let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1)
+                // if (!cap.isOpened()) {
+                //     console.error('Error opening video capture')
+                //     return
+                // }
+                // Face detection
+                // const faceCascade = new cv.CascadeClassifier()
+                // Update the path to the Haar Cascade file as needed
+
+                let classifier = new cv.CascadeClassifier() // initialize classifier
+
+                let utils = new Utils('errorMessage') //use utils class
+
+                let faceCascadeFile = 'haarcascade_frontalface_default.xml' // path to xml
+
+                // use createFileFromUrl to "pre-build" the xml
+                utils.createFileFromUrl(
+                    faceCascadeFile,
+                    faceCascadeFile,
+                    () => {
+                        classifier.load(faceCascadeFile) // in the callback, load the cascade from file
+                    }
+                )
+
+                // faceCascade.load('haarcascade_frontalface_default.xml')
+
+                const gray = new cv.Mat()
+                cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY)
+                const faces = new cv.RectVector()
+                faceCascade.detectMultiScale(gray, faces)
+
+                // Apply makeup effects within the detected face regions (replace with your logic)
+                for (let i = 0; i < faces.size(); ++i) {
+                    const faceRect = faces.get(i)
+                    const faceMat = src.roi(faceRect)
+
+                    // ... (replace with OpenCV.js functions for makeup effects)
+                    // Example: cv.inRange(faceMat, lowerColor, upperColor) for lipstick masking
+                    // Remember to convert colors to BGR format for OpenCV.js
+
+                    // Draw face rectangle for visualization (optional)
+                    cv.rectangle(src, faceRect, new cv.Scalar(0, 255, 0), 2)
+                }
+
+                cv.imshow('photo', src)
+
+                src.delete()
+                gray.delete()
+                cap.release() // Release resources efficiently
+
+                requestAnimationFrame(processFrame) // Optimized frame processing loop
+            } else {
+                console.log('Video is not ready yet')
+                requestAnimationFrame(processFrame) // Retry on next frame
+            }
+        } catch (err) {
+            console.error('Error during processFrame:', err)
         }
-
-        const src = new cv.Mat(video.videoHeight, video.videoWidth, cv.CV_8UC4)
-        cap.read(src)
-
-        // Face detection (replace with your preferred method)
-        const faceCascade = new cv.CascadeClassifier()
-        faceCascade.load('haarcascade_frontalface_default.xml') // Load pre-trained face classifier (download and place file)
-        const gray = new cv.Mat()
-        cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY)
-        const faces = new cv.RectVector()
-        faceCascade.detectMultiScale(gray, faces)
-
-        // Apply makeup effects within the detected face regions (replace with your logic)
-        for (let i = 0; i < faces.size(); ++i) {
-            const faceRect = faces.get(i)
-            const faceMat = src.roi(faceRect)
-
-            // ... (replace with OpenCV.js functions for makeup effects)
-            // Example: cv.inRange(faceMat, lowerColor, upperColor) for lipstick masking
-            // Remember to convert colors to BGR format for OpenCV.js
-
-            // Draw face rectangle for visualization (optional)
-            cv.rectangle(src, faceRect, new cv.Scalar(0, 255, 0), 2)
-        }
-
-        cv.imshow('photo', src)
-
-        src.delete()
-        gray.delete()
-        cap.release() // Release resources efficiently
-
-        requestAnimationFrame(processFrame) // Optimized frame processing loop
     }
 }
