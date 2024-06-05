@@ -174,8 +174,9 @@ function createMakeupMask(faceLandmarks, makeup_data, frame) {
 
                 // Apply blur if specified
                 if (makeup_data.blur) {
-                    const ksize = new cv.Size(5, 5) // You can adjust the kernel size
-                    cv.GaussianBlur(mask, mask, ksize, 0)
+                    const ksize = new cv.Size(13, 13) // You can adjust the kernel size
+                    // console.log(ksize)
+                    cv.GaussianBlur(mask, mask, ksize, 2)
                 }
 
                 // Overlay the mask on the frame
@@ -1744,17 +1745,10 @@ function onOpenCvReady() {
         socket.on('race', function (race) {
             getPersonRace(race)
         })
-
         const video = document.getElementById('videoInput')
-
-        console.log(video.videoWidth, video.videoHeight)
-
-        console.log(video.width, video.height)
 
         var canvas = document.getElementById('canvasOutput')
         var ctx = canvas.getContext('2d')
-        console.log(canvas.width, canvas.height)
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
 
         // Load OpenCV asynchronously to avoid blocking the page load
         cv['onRuntimeInitialized'] = () => {
@@ -1764,28 +1758,19 @@ function onOpenCvReady() {
                     video.srcObject = stream
                     // await video.play()
                     video.addEventListener('loadedmetadata', async () => {
-                        console.log(
-                            'Loaded Video Metadata Dimensions:',
-                            video.videoWidth,
-                            video.videoHeight
-                        )
                         //Ensure video is playing to get correct video dimensions
                         await video.play()
-
+                        video.height = video.videoHeight
+                        video.width = video.videoWidth
+                        canvas.width = video.videoWidth
+                        canvas.height = video.videoHeight
+                        ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
                         const model = await facemesh.load()
-
-                        // Ensure we have correct dimensions
-                        const videoWidth = video.videoWidth
-                        const videoHeight = video.videoHeight
-
-                        // Update canvas size to match video dimensions if needed
-                        // canvas.width = videoWidth
-                        // canvas.height = videoHeight
 
                         const cap = new cv.VideoCapture(video)
                         const src = new cv.Mat(
-                            video.height,
-                            video.width,
+                            video.videoHeight,
+                            video.videoWidth,
                             cv.CV_8UC4
                         )
 
@@ -1795,8 +1780,16 @@ function onOpenCvReady() {
                                 const faces = await model.estimateFaces(video)
 
                                 if (faces.length > 0) {
+                                    let loaderContainer =
+                                        document.getElementById(
+                                            'loaderContainer'
+                                        )
+                                    loaderContainer.style.display = 'none'
+
+                                    let loader =
+                                        document.getElementById('loader')
+                                    loader.style.display = 'none'
                                     const keypoints = faces[0].scaledMesh
-                                    console.log('Keypoints:', keypoints)
 
                                     // Create and draw masks
                                     createMakeupMask(
@@ -1822,13 +1815,19 @@ function onOpenCvReady() {
                                     createMakeupMask(keypoints, blush_data, src)
                                 }
 
+                                ctx.clearRect(
+                                    0,
+                                    0,
+                                    video.videoWidth,
+                                    video.videoHeight
+                                )
                                 cv.imshow('canvasOutput', src)
                             } catch (err) {
                                 console.error('Error processing frame', err)
                             }
                         }
 
-                        setInterval(processFrame, 100)
+                        setInterval(processFrame, 20)
                     })
                 })
                 .catch(err => {
