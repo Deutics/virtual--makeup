@@ -177,6 +177,8 @@ async function get_facemesh() {
     // load HTML canvas
     var canvas = document.getElementById('canvas')
     var ctx = canvas.getContext('2d')
+    var canvasOutput = document.getElementById('photo')
+    var ctxOutput = canvasOutput.getContext('2d')
 
     // get video stream
     const video = document.getElementById('videoElement')
@@ -192,6 +194,9 @@ async function get_facemesh() {
 
     let loader = document.getElementById('loader')
     loader.style.display = 'none'
+
+    canvasOutput.height = video.videoHeight
+    canvasOutput.width = video.videoWidth
 
     // process input stream frame by frame
     while (1) {
@@ -216,12 +221,10 @@ async function get_facemesh() {
             createMakeupMask(keypoints, blush_data, ctx)
         }
 
-        const dataUrl = canvas.toDataURL()
+        ctxOutput.drawImage(canvas, 0, 0)
 
         // Clear the hidden canvas for the next frame
         ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-        photo.src = dataUrl
 
         // loop to process the next frame
         await tf.nextFrame()
