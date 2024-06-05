@@ -132,66 +132,104 @@ function setEyeshadeColor(color) {
 /***********************************************************************************************
  **************************************************************************************************/
 
-function createMakeupMask(faceLandmarks, makeup_data, frame) {
+function createMakeupMask(faceLandmarks, makeup_data, ctx, frame) {
     try {
+        // if (
+        //     makeup_data.color[0] !== 0 ||
+        //     makeup_data.color[1] !== 0 ||
+        //     makeup_data.color[2] !== 0
+        // ) {
+        //     // setting color in RGBA format
+        //     const color = new cv.Scalar(
+        //         makeup_data.color[0],
+        //         makeup_data.color[1],
+        //         makeup_data.color[2],
+        //         makeup_data.beta_value * 255 // OpenCV expects alpha to be between 0-255
+        //     )
+
+        //     for (let i = 0; i < makeup_data.landmarks.length; i++) {
+        //         const landmark = makeup_data.landmarks[i]
+        //         const points = []
+        //         for (let j = 0; j < landmark.length; j++) {
+        //             const idx = landmark[j]
+        //             const x = Math.floor(faceLandmarks[idx][0])
+        //             const y = Math.floor(faceLandmarks[idx][1])
+        //             points.push(x, y)
+        //         }
+
+        //         const mask = new cv.Mat.zeros(
+        //             frame.rows,
+        //             frame.cols,
+        //             cv.CV_8UC4
+        //         )
+        //         const counterMat = cv.matFromArray(
+        //             points.length / 2,
+        //             1,
+        //             cv.CV_32SC2,
+        //             points
+        //         )
+        //         const contour = new cv.MatVector()
+        //         contour.push_back(counterMat)
+        //         cv.fillPoly(mask, contour, color)
+
+        //         // Apply blur if specified
+        //         if (makeup_data.blur) {
+        //             const ksize = new cv.Size(13, 13) // You can adjust the kernel size
+        //             // console.log(ksize)
+        //             cv.GaussianBlur(mask, mask, ksize, 2)
+        //         }
+
+        //         // Overlay the mask on the frame
+        //         cv.addWeighted(
+        //             frame,
+        //             1.0,
+        //             mask,
+        //             makeup_data.beta_value,
+        //             0,
+        //             frame
+        //         )
+
+        //         mask.delete()
+        //         counterMat.delete()
+        //         contour.delete()
+        //     }
+        // }
+        // if makeup is applied
         if (
             makeup_data.color[0] !== 0 ||
             makeup_data.color[1] !== 0 ||
             makeup_data.color[2] !== 0
         ) {
-            // setting color in RGBA format
-            const color = new cv.Scalar(
-                makeup_data.color[0],
-                makeup_data.color[1],
-                makeup_data.color[2],
-                makeup_data.beta_value * 255 // OpenCV expects alpha to be between 0-255
-            )
+            // setting color in rgba format
+            color =
+                'rgba(' +
+                makeup_data.color[0].toString() +
+                ', ' +
+                makeup_data.color[1].toString() +
+                ', ' +
+                makeup_data.color[2].toString() +
+                ', ' +
+                makeup_data.beta_value.toString() +
+                ')'
 
             for (let i = 0; i < makeup_data.landmarks.length; i++) {
                 const landmark = makeup_data.landmarks[i]
                 const points = []
                 for (let j = 0; j < landmark.length; j++) {
                     const idx = landmark[j]
-                    const x = Math.floor(faceLandmarks[idx][0])
-                    const y = Math.floor(faceLandmarks[idx][1])
-                    points.push(x, y)
+                    const x = faceLandmarks[idx][0]
+                    const y = faceLandmarks[idx][1]
+                    points.push({ x: x, y: y })
                 }
-
-                const mask = new cv.Mat.zeros(
-                    frame.rows,
-                    frame.cols,
-                    cv.CV_8UC4
-                )
-                const counterMat = cv.matFromArray(
-                    points.length / 2,
-                    1,
-                    cv.CV_32SC2,
-                    points
-                )
-                const contour = new cv.MatVector()
-                contour.push_back(counterMat)
-                cv.fillPoly(mask, contour, color)
-
-                // Apply blur if specified
-                if (makeup_data.blur) {
-                    const ksize = new cv.Size(13, 13) // You can adjust the kernel size
-                    // console.log(ksize)
-                    cv.GaussianBlur(mask, mask, ksize, 2)
+                ctx.fillStyle = color
+                ctx.beginPath()
+                ctx.moveTo(points[0].x, points[0].y)
+                for (let k = 1; k < points.length; k++) {
+                    ctx.lineTo(points[k].x, points[k].y)
                 }
-
-                // Overlay the mask on the frame
-                cv.addWeighted(
-                    frame,
-                    1.0,
-                    mask,
-                    makeup_data.beta_value,
-                    0,
-                    frame
-                )
-
-                mask.delete()
-                counterMat.delete()
-                contour.delete()
+                ctx.filter = makeup_data.blur
+                ctx.closePath()
+                ctx.fill()
             }
         }
     } catch (err) {
@@ -1750,6 +1788,9 @@ function onOpenCvReady() {
         var canvas = document.getElementById('canvasOutput')
         var ctx = canvas.getContext('2d')
 
+        var canvasInput = document.getElementById('canvas')
+        var ctxInput = canvas.getContext('2d')
+
         // Load OpenCV asynchronously to avoid blocking the page load
         cv['onRuntimeInitialized'] = () => {
             navigator.mediaDevices
@@ -1764,7 +1805,9 @@ function onOpenCvReady() {
                         video.width = video.videoWidth
                         canvas.width = video.videoWidth
                         canvas.height = video.videoHeight
-                        ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
+                        canvasInput.width = video.videoWidth
+                        canvasInput.height = video.videoHeight
+
                         const model = await facemesh.load()
 
                         const cap = new cv.VideoCapture(video)
@@ -1776,6 +1819,13 @@ function onOpenCvReady() {
 
                         async function processFrame() {
                             try {
+                                ctxInput.drawImage(
+                                    video,
+                                    0,
+                                    0,
+                                    canvasInput.width,
+                                    canvasInput.height
+                                )
                                 cap.read(src)
                                 const faces = await model.estimateFaces(video)
 
@@ -1795,33 +1845,43 @@ function onOpenCvReady() {
                                     createMakeupMask(
                                         keypoints,
                                         foundation_data,
+                                        ctxInput,
                                         src
                                     )
                                     createMakeupMask(
                                         keypoints,
                                         lipstick_data,
+                                        ctxInput,
                                         src
                                     )
                                     createMakeupMask(
                                         keypoints,
                                         concealer_data,
+                                        ctxInput,
                                         src
                                     )
                                     createMakeupMask(
                                         keypoints,
                                         eyeshade_data,
+                                        ctxInput,
                                         src
                                     )
-                                    createMakeupMask(keypoints, blush_data, src)
+                                    createMakeupMask(
+                                        keypoints,
+                                        blush_data,
+                                        ctxInput,
+                                        src
+                                    )
                                 }
-
-                                ctx.clearRect(
+                                ctx.drawImage(canvasInput, 0, 0)
+                                console.log(canvasInput.toDataURL())
+                                // cv.imshow('canvasOutput')
+                                ctxInput.clearRect(
                                     0,
                                     0,
-                                    video.videoWidth,
-                                    video.videoHeight
+                                    canvasInput.width,
+                                    canvasInput.height
                                 )
-                                cv.imshow('canvasOutput', src)
                             } catch (err) {
                                 console.error('Error processing frame', err)
                             }
