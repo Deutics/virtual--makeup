@@ -1772,6 +1772,10 @@ window.onload = function () {
     // handling sidebar for mobile version
     if (window.innerWidth < 786) {
         handleCloseSideBar()
+        document.getElementById('app').style.display = 'none'
+    }
+    if (window.innerWidth > 786) {
+        document.getElementById('dropDownCart').style.display = 'block'
     }
 
     //listAllProducts()
