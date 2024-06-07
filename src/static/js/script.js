@@ -10,9 +10,9 @@ var lipstick_data = {
             317, 14, 87, 178, 88, 95, 78,
         ],
     ],
-    beta_value: 0.35,
+    beta_value: 0.4,
     color: [0, 0, 0],
-    blur: 'blur(3px) opacity(90%)',
+    blur: 'blur(3px) opacity(95%)',
 }
 
 var concealer_data = {
@@ -1394,6 +1394,9 @@ const handleOpenSideBar = () => {
     document.getElementById('sideBar').style.display = 'block'
     document.getElementById('hamburger').style.display = 'none'
     document.getElementById('cross').style.display = 'block'
+    document.getElementById('dropDownCart').style.display = 'none'
+    document.getElementById('crossCart').style.display = 'none'
+    document.getElementById('cartIcon').style.display = 'block'
 }
 
 // close side bar
@@ -1401,6 +1404,20 @@ const handleCloseSideBar = () => {
     document.getElementById('sideBar').style.display = 'none'
     document.getElementById('cross').style.display = 'none'
     document.getElementById('hamburger').style.display = 'block'
+}
+
+//open cart
+const handleOpenCart = () => {
+    document.getElementById('dropDownCart').style.display = 'block'
+    document.getElementById('cartIcon').style.display = 'none'
+    document.getElementById('crossCart').style.display = 'block'
+}
+
+// close cart
+const handleCloseCart = () => {
+    document.getElementById('dropDownCart').style.display = 'none'
+    document.getElementById('crossCart').style.display = 'none'
+    document.getElementById('cartIcon').style.display = 'block'
 }
 
 // coming soon image function

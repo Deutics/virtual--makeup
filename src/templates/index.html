@@ -4,29 +4,21 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script
-            src="https://cdn.socket.io/4.6.0/socket.io.min.js"
-            integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
-            crossorigin="anonymous"
-        ></script>
+
         <link
             rel="stylesheet"
             href="{{ url_for('static', filename='css/style.css') }}"
         />
-        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
         <link
             href="https://fonts.googleapis.com/css?family=Goldman"
             rel="stylesheet"
         />
-        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/facemesh"></script>
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
             rel="stylesheet"
         />
 
         <link rel="stylesheet" href="../static/css/style.css" />
-        <script src="../static/js/script.js"></script>
 
         <link
             href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
@@ -324,12 +316,18 @@
                                     visibility: hidden;
                                 "
                             ></canvas>
-                            <div class="cartContainer">
-                                <div class="cart__title">Current Products</div>
-                                <div id="cart" class="cart">
-                                    No product is selected.
+                            <div id="dropDownCart">
+                                <div class="cartContainer">
+                                    <div class="cart__title">
+                                        Current Products
+                                    </div>
+                                    <div id="cart" class="cart">
+                                        No product is selected.
+                                    </div>
+                                    <button class="add_to_cart">
+                                        Add To Cart
+                                    </button>
                                 </div>
-                                <button class="add_to_cart">Add To Cart</button>
                             </div>
                         </div>
                     </div>
@@ -347,8 +345,31 @@
                 <div class="cross" id="cross" onclick="handleCloseSideBar()">
                     <i class="ri-close-line"></i>
                 </div>
+                <div class="cartIcon" id="cartIcon" onclick="handleOpenCart()">
+                    <i class="fas fa-shopping-bag" style="font-size: 20px"></i>
+                </div>
+                <div
+                    class="crossCart"
+                    id="crossCart"
+                    onclick="handleCloseCart()"
+                >
+                    <i class="ri-close-line"></i>
+                </div>
             </div>
         </div>
-        <script></script>
+        <!-- Font Awesome Kit -->
+        <script
+            src="https://kit.fontawesome.com/1a28613309.js"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+            integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/facemesh"></script>
+        <script src="../static/js/script.js"></script>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </body>
 </html>
