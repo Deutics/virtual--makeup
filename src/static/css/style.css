@@ -133,6 +133,10 @@ body {
     /* background-image: url("../img/samples.jpg"); */
 }
 
+.showInMobile {
+    display: none;
+}
+
 .page_innerWrapper {
     width: 90%;
     margin: 0 12px;
@@ -207,6 +211,7 @@ body {
 
 .search img {
     margin-right: 10px;
+    margin-top: 5px;
     width: 20px;
     height: 20px;
 }
@@ -561,6 +566,10 @@ body {
     font-size: 8px;
 }
 
+.showInDesktop {
+    display: block;
+}
+
 .hamburger {
     position: absolute;
     top: 2.8%;
@@ -727,6 +736,22 @@ body {
     .lp__section {
         flex-direction: column;
     }
+
+    .showInMobile {
+        display: flex;
+        width: 95%;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+        flex-direction: column;
+        gap: 0.7rem;
+        margin-top: 0.5rem;
+    }
+
+    .showInDesktop {
+        display: none;
+    }
+
     .category {
         width: 100px;
         height: 100px;
@@ -746,14 +771,13 @@ body {
     }
 
     .search {
-        display: none;
         padding: 0em 2em 0 1em;
-        height: 25px;
-
+        /* height: 25px; */
         align-items: center;
         border: 1px solid #dcdcdc;
         border-radius: 10px;
         color: #dcdcdc;
+        width: 93%;
     }
 
     .search img {
@@ -767,7 +791,10 @@ body {
         flex-direction: column-reverse;
         /* justify-content: flex-start; */
         /* gap: 1rem; */
+        padding-top: 2%;
+        height: 70vh;
     }
+
     .products {
         width: 100%;
         height: 20vh;
@@ -903,6 +930,11 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        /* height: 100%; */
+        gap: 0rem;
+    }
+    #photo {
+        width: 100%;
         height: 100%;
     }
     .processedImg {
@@ -954,14 +986,15 @@ body {
 
 @media only screen and (max-width: 520px) {
     .products {
-        width: 25dvw;
+        /* width: 25dvw; */
     }
     .product {
         height: 120px;
         font-size: 1em;
     }
     .container {
-        width: 70dvw;
+        /* width: 70dvw; */
+        height: 55vh;
     }
 
     .shade {
@@ -969,7 +1002,6 @@ body {
         font-size: 0.6em;
         display: flex;
         flex-direction: row;
-
         justify-content: center;
     }
     .shade img {
