@@ -99,10 +99,11 @@ body {
 }
 
 .app {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    width: 100vw;
     height: 100vh;
-    overflow: auto;
+    /* overflow: auto; */
 }
 .loaderContainer {
     width: 100%;
@@ -124,7 +125,7 @@ body {
 }
 .page {
     background-color: #faf9f6;
-    width: 80vw;
+    width: calc(100vw - 16.7rem);
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
@@ -138,13 +139,16 @@ body {
 }
 
 .page_innerWrapper {
-    width: 90%;
+    width: 98%;
     margin: 0 12px;
 }
 
 .contentContainer {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    align-items: center;
+    /*  justify-content: center; */
+    /* width: 100%; */
     padding-top: 1.5em;
     height: 85vh;
     overflow: scroll;
@@ -163,12 +167,14 @@ body {
 }
 
 .container {
-    width: 50%;
+    /* width: calc(100vw, 30rem); */
+    width: 50vw;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     margin-left: 10px;
     margin-right: 15px;
+    height: 85vh;
     overflow: scroll;
 }
 .container::-webkit-scrollbar {
@@ -294,10 +300,12 @@ body {
 
 .products {
     display: flex;
-    width: 50%;
-    height: 70dvh;
+    width: 30vw;
+
+    /* width: calc(100vw, 70rem); */
+    height: 85vh;
     flex-wrap: wrap;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     justify-content: left;
     overflow-y: scroll;
 }
@@ -328,7 +336,7 @@ body {
 }
 
 .product__title {
-    height: 10%;
+    /* height: 10%; */
     font-weight: bold;
     font-size: 0.9rem;
 }
@@ -615,7 +623,7 @@ body {
         height: 90px;
     }
     .product__title {
-        height: 10%;
+        /* height: 10%; */
         font-weight: bold;
         font-size: 0.7rem;
         padding: 0.5em 0 0 0;
@@ -665,7 +673,7 @@ body {
         height: 75px;
     }
     .product__title {
-        height: 10%;
+        /* height: 10%; */
         font-weight: bold;
         font-size: 0.7rem;
         padding: 0.5em 0 0 0;
@@ -685,13 +693,29 @@ body {
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 2560px) {
+    .product img {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 974px) {
+    /* .products {
+        width: 25%;
+    } */
+
+    .container {
+        width: 65%;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
     .product img {
         width: 90px;
         height: 90px;
     }
     .product__title {
-        height: 10%;
+        /* height: 10%; */
         font-weight: bold;
         font-size: 0.7rem;
         padding: 0.5em 0 0 0;
@@ -708,25 +732,6 @@ body {
 
         height: 16px;
     }
-}
-
-@media screen and (max-width: 2560px) {
-    .product img {
-        width: 50%;
-    }
-}
-
-@media only screen and (max-width: 974px) {
-    .products {
-        width: 25%;
-    }
-
-    .container {
-        width: 65%;
-    }
-}
-
-@media only screen and (max-width: 786px) {
     .lp__categories {
         display: flex;
         flex-direction: row;
@@ -788,16 +793,17 @@ body {
 
     .contentContainer {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         /* justify-content: flex-start; */
         /* gap: 1rem; */
         padding-top: 2%;
-        height: 70vh;
+        height: 85vh;
     }
 
     .products {
         width: 100%;
         height: 20vh;
+        align-items: center;
     }
 
     .product {
@@ -833,10 +839,7 @@ body {
         display: block;
     }
     .sideBar {
-        display: block;
         position: absolute;
-        /* max-width: 70vw;
-        width: 70vw; */
     }
     .closed {
         font-size: 0.7em;
@@ -925,13 +928,14 @@ body {
         display: none;
     }
     .container {
-        width: 95%;
+        width: 98%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         /* height: 100%; */
         gap: 0rem;
+        height: 60vh;
     }
     #photo {
         width: 100%;
@@ -1084,3 +1088,7 @@ body {
 
     border-radius: 10px;
 }
+
+/* .products {
+    display: none;
+} */

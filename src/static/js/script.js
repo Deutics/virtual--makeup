@@ -349,7 +349,7 @@ const productsForRaces = {
             src: '../static/img/lipstik/lipstick_img1.png',
             color: '#C08C80',
             productType: 'lipstick',
-            title: 'Powermatte Long Lasting ',
+            title: 'Powermatte Long Lasting Lipstick',
             type: 'matte',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
@@ -358,8 +358,7 @@ const productsForRaces = {
             src: '../static/img/eyeshadow/eyeshadow_img1.png',
             color: '#EDA96A',
             productType: 'eye shadow',
-
-            title: 'Powermatte Long Lasting ',
+            title: 'Powermatte Long EyeShadow',
             type: 'matte',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
@@ -368,8 +367,7 @@ const productsForRaces = {
             src: '../static/img/foundation/foundation_img1.png',
             color: '#E6BF9E',
             productType: 'foundation',
-
-            title: 'Powermatte Long Lasting ',
+            title: 'Powermatte Long Lasting Foundation',
             type: 'matte',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
@@ -378,8 +376,7 @@ const productsForRaces = {
             src: '../static/img/blush/blush_img1.png',
             color: '#EDC3B6',
             productType: 'blush',
-
-            title: 'Powermatte Long Lasting ',
+            title: 'Powermatte Long Lasting Blush',
             type: 'matte',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
@@ -388,8 +385,7 @@ const productsForRaces = {
             src: '../static/img/concealer/concealer_img1.png',
             color: '#996C52',
             productType: 'concealer',
-
-            title: 'Powermatte Long Lasting ',
+            title: 'Powermatte Long Lasting Concealer',
             type: 'matte',
             content: 'Transfer-resistant, matte lipstick',
             price: '$200',
@@ -400,6 +396,7 @@ const productsForRaces = {
             src: '../static/img/lipstik/lipstick_img2.png',
             color: '#B8050F',
             type: 'matte',
+            productType: 'lipstick',
             title: 'Matte Lipstick',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
@@ -408,7 +405,8 @@ const productsForRaces = {
             src: '../static/img/eyeshadow/eyeshadow_img2.png',
             color: '#CEA598',
             type: 'matte',
-            title: 'Matte Lipstick',
+            productType: 'eye shadow',
+            title: 'Matte EyeShadow',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
         },
@@ -416,7 +414,8 @@ const productsForRaces = {
             src: '../static/img/foundation/foundation_img2.png',
             color: '#EDCDB8',
             type: 'matte',
-            title: 'Matte Lipstick',
+            productType: 'foundation',
+            title: 'Matte Foundation',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
         },
@@ -424,7 +423,8 @@ const productsForRaces = {
             src: '../static/img/blush/blush_img2.png',
             color: '#C57A67',
             type: 'matte',
-            title: 'Matte Lipstick',
+            productType: 'blush',
+            title: 'Matte Blush',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
         },
@@ -432,7 +432,8 @@ const productsForRaces = {
             src: '../static/img/concealer/concealer_img2.png',
             color: '#EDC0A7',
             type: 'matte',
-            title: 'Matte Lipstick',
+            productType: 'concealer',
+            title: 'Matte Concealer',
             content: 'Rich lipstick with high color payoff',
             price: '$200',
         },
@@ -442,7 +443,8 @@ const productsForRaces = {
             src: '../static/img/lipstik/lipstick_img3.png',
             color: '#C45251',
             type: 'matte',
-            title: 'Matte Refillable Lipstick ',
+            productType: 'lipstick',
+            title: 'Matte Refillable Lipstick',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
         },
@@ -450,7 +452,8 @@ const productsForRaces = {
             src: '../static/img/eyeshadow/eyeshadow_img3.png',
             color: '#E2AD9B',
             type: 'matte',
-            title: 'Matte Refillable Lipstick ',
+            productType: 'eye shadow',
+            title: 'Matte Refillable EyeShadow',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
         },
@@ -458,7 +461,8 @@ const productsForRaces = {
             src: '../static/img/foundation/foundation_img3.png',
             color: '#E3BF9E',
             type: 'matte',
-            title: 'Matte Refillable Lipstick ',
+            productType: 'foundation',
+            title: 'Matte Refillable Foundation',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
         },
@@ -466,7 +470,8 @@ const productsForRaces = {
             src: '../static/img/blush/blush_img3.png',
             color: '#FFBBBB',
             type: 'matte',
-            title: 'Matte Refillable Lipstick ',
+            productType: 'blush',
+            title: 'Matte Refillable Blush',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
         },
@@ -474,9 +479,10 @@ const productsForRaces = {
             src: '../static/img/concealer/concealer_img3.png',
             color: '#F4D0AE',
             type: 'matte',
-            title: 'Matte Refillable Lipstick ',
+            title: 'Matte Refillable Concealer',
             content: 'Transfer-resistant, matte lipstick ',
             price: '$200',
+            productType: 'concealer',
         },
     ],
 }
@@ -484,14 +490,15 @@ const productsForRaces = {
 var cartItems = {}
 
 const updateCartItems = () => {
-    Object.keys(productsForRaces).forEach(key => {
-        let selectedRace = suggested_race ? suggested_race : default_race
-        if (selectedRace === key) {
-            productsForRaces[key].forEach(item => {
-                cartItems[item.productType] = item
-            })
-        }
-    })
+    cartItems = {} // Clear cartItems before updating
+
+    let selectedRace = suggested_race ? suggested_race : default_race
+
+    if (productsForRaces[selectedRace]) {
+        productsForRaces[selectedRace].forEach(item => {
+            cartItems[item.productType] = item
+        })
+    }
 }
 
 // all products
@@ -1610,7 +1617,6 @@ function getPersonRace(race) {
     if (document.getElementById('header').innerHTML === 'ai beauty') {
         setAiRecommendations(race)
         renderShadesOrRaces()
-
         updateCartItems()
         listItemsInCart()
         listAllProducts()
@@ -1631,7 +1637,7 @@ function setAiRecommendations(race) {
 // sidebar items click handler
 const sideBarItemClick = item => {
     // closing sidebar if in mobile view
-    if (sideBar.style.display === 'block' && window.innerWidth < 786) {
+    if (sideBar.style.display === 'block' && window.innerWidth < 1024) {
         handleCloseSideBar()
     }
 
@@ -1750,7 +1756,7 @@ const handleOnClickcategory = val => {
 // when document is rendered
 window.onload = function () {
     page.addEventListener('click', () => {
-        if (sideBar.style.display === 'block' && window.innerWidth < 786) {
+        if (sideBar.style.display === 'block' && window.innerWidth < 1024) {
             handleCloseSideBar()
         }
     })
@@ -1770,11 +1776,11 @@ window.onload = function () {
     document.getElementById('app').style.display = 'none'
 
     // handling sidebar for mobile version
-    if (window.innerWidth < 786) {
+    if (window.innerWidth < 1024) {
         handleCloseSideBar()
         document.getElementById('app').style.display = 'none'
     }
-    if (window.innerWidth > 786) {
+    if (window.innerWidth > 1024) {
         document.getElementById('dropDownCart').style.display = 'block'
     }
 
@@ -1783,6 +1789,7 @@ window.onload = function () {
 
     // Periodically update the race every 30 seconds
     setInterval(getPersonRace, 30000)
+
     var socket = io.connect(
         window.location.protocol + '//' + document.domain + ':' + location.port,
         {
@@ -1803,9 +1810,23 @@ window.onload = function () {
         setTimeout(sendFrame, 30000) // Repeat every 30 seconds
     }
 
-    // Recieve race
+    socket.on('connect', function () {
+        sendFrame()
+    })
+
     socket.on('race', function (race) {
         getPersonRace(race)
+    })
+
+    socket.on('disconnect', function () {
+        console.log('WebSocket disconnected')
+    })
+
+    window.addEventListener('beforeunload', function () {
+        if (socket.connected) {
+            // Check if the socket is still connected
+            socket.disconnect()
+        }
     })
 
     video = document.getElementById('videoElement')
